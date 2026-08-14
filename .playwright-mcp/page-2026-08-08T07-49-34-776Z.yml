@@ -1,0 +1,506 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - text: 🌳 Banyan
+        - generic [ref=e5]: Listings Dashboard
+      - navigation [ref=e6]:
+        - link "🏠 Overview" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: 🏠
+          - generic [ref=e9]: Overview
+        - generic [ref=e10]:
+          - generic [ref=e11]: 🏠 Listings
+          - generic [ref=e12]:
+            - link "Overview" [ref=e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=e19]:
+          - generic [ref=e20]: 💼 Sales
+          - generic [ref=e21]:
+            - link "Client Inbox" [ref=e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=e27]: 🤝
+          - generic [ref=e28]: Relationships
+        - link "✅ My Work" [ref=e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=e30]: ✅
+          - generic [ref=e31]: My Work
+        - generic [ref=e32]:
+          - generic [ref=e33]: 📢 Marketing
+          - generic [ref=e34]:
+            - link "🖥️ Monitors 4" [ref=e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=e37]: "4"
+            - link "🚀 Promotion" [ref=e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=e43]: 🧭
+          - generic [ref=e44]: Navigation
+        - link "⚙️ Site settings" [ref=e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=e46]: ⚙️
+          - generic [ref=e47]: Site settings
+      - generic [ref=e48]:
+        - button "Sign out" [ref=e49] [cursor=pointer]
+        - generic [ref=e50]: Staging DB copy — production data is untouched.
+    - main [ref=e51]:
+      - generic [ref=e52]:
+        - heading "Banyan Live Shortlists — umar" [level=1] [ref=e53]
+        - paragraph [ref=e54]:
+          - link "← Back to client" [ref=e55] [cursor=pointer]:
+            - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702
+        - generic [ref=e56]:
+          - link "Untitled shortlist · 13" [ref=e57] [cursor=pointer]:
+            - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/shortlists?s=shl_0464325f-6f9b-414f-8ec1-8553f31bd522
+          - generic [ref=e58]:
+            - textbox "New shortlist name…" [ref=e59]
+            - button "+ New" [ref=e60] [cursor=pointer]
+        - generic [ref=e61]:
+          - generic [ref=e62]:
+            - heading "Filters" [level=2] [ref=e63]
+            - generic [ref=e64]:
+              - link "Rent" [ref=e65] [cursor=pointer]:
+                - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/shortlists?s=shl_0464325f-6f9b-414f-8ec1-8553f31bd522&interest=rent
+              - link "Buy Villa" [ref=e66] [cursor=pointer]:
+                - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/shortlists?s=shl_0464325f-6f9b-414f-8ec1-8553f31bd522&interest=buy_villa
+              - link "Buy Land" [ref=e67] [cursor=pointer]:
+                - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/shortlists?s=shl_0464325f-6f9b-414f-8ec1-8553f31bd522&interest=buy_land
+              - link "Buy Commercial" [ref=e68] [cursor=pointer]:
+                - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/shortlists?s=shl_0464325f-6f9b-414f-8ec1-8553f31bd522&interest=buy_commercial
+            - generic [ref=e69]:
+              - generic [ref=e70]:
+                - generic [ref=e71]: Monthly rent (IDR)
+                - generic [ref=e72]:
+                  - textbox "Min" [ref=e73]
+                  - textbox "Max" [ref=e74]
+              - generic [ref=e75]:
+                - generic [ref=e76]: Bedrooms · furnished · pets · move-in
+                - textbox "Search…" [ref=e77]
+              - button "Apply" [ref=e78] [cursor=pointer]
+            - generic [ref=e79]:
+              - generic [ref=e80]: Curate
+              - button "⚙ Add rules matches" [ref=e82] [cursor=pointer]
+              - button "✨ Add AI suggestions" [ref=e84] [cursor=pointer]
+              - button "🔀 Sort by AI fit" [ref=e86] [cursor=pointer]
+              - paragraph [ref=e87]: These write straight to the client's page — there is no draft to review first.
+          - generic [ref=e88]:
+            - heading "Available Listings (50)" [level=2] [ref=e89]:
+              - text: Available Listings
+              - generic [ref=e90]: (50)
+            - list [ref=e91]:
+              - listitem [ref=e92]:
+                - generic [ref=e93]:
+                  - generic [ref=e94]: 2-Bedroom Tropical Villa with Private Pool — Nyuh Kuning, Ubud
+                  - generic [ref=e95]: Ubud · IDR 35,000,000
+                - generic [ref=e96]: ✓ On shortlist
+              - listitem [ref=e97]:
+                - generic [ref=e98]:
+                  - generic [ref=e99]: 2-Story Villa with Garden — Nyuh Kuning, Ubud
+                  - generic [ref=e100]: Ubud · IDR 35,500,000
+                - generic [ref=e101]: ✓ On shortlist
+              - listitem [ref=e102]:
+                - generic [ref=e103]:
+                  - generic [ref=e104]: 3 Bedroom Villa with Stunning Rice Field & Sunrise Views in Nyuh Kuning, Ubud
+                  - generic [ref=e105]: Ubud · IDR 18,600,000
+                - generic [ref=e106]: ✓ On shortlist
+              - listitem [ref=e107]:
+                - generic [ref=e108]:
+                  - generic [ref=e109]: 3-Bedroom Eco-Luxury Home in Taman Petanu Eco Neighborhood
+                  - generic [ref=e110]: Ubud · IDR 35,770,028
+                - button "+ Add" [ref=e112] [cursor=pointer]
+              - listitem [ref=e113]:
+                - generic [ref=e114]:
+                  - generic [ref=e115]: 3-Bedroom Family Villa with Private Pool & Garden - Singakerta, 5 Mins to Nyuh Kuning, Ubud
+                  - generic [ref=e116]: Ubud · IDR 450,000,000
+                - button "+ Add" [ref=e118] [cursor=pointer]
+              - listitem [ref=e119]:
+                - generic [ref=e120]:
+                  - generic [ref=e121]: 4-Bedroom Family Villa Near Green School — Pool, Garden & Community Living
+                  - generic [ref=e122]: Ubud · IDR 127,877,851
+                - button "+ Add" [ref=e124] [cursor=pointer]
+              - listitem [ref=e125]:
+                - generic [ref=e126]:
+                  - generic [ref=e127]: 6BR Luxury Villa with Basketball Court, Pool & Rice Field Views — Ubud
+                  - generic [ref=e128]: Ubud · IDR 165,000,000
+                - button "+ Add" [ref=e130] [cursor=pointer]
+              - listitem [ref=e131]:
+                - generic [ref=e132]:
+                  - generic [ref=e133]: A Bright & Contemporary 2-Bedroom Villa in Ubud
+                  - generic [ref=e134]: Ubud · IDR 55,000,000
+                - button "+ Add" [ref=e136] [cursor=pointer]
+              - listitem [ref=e137]:
+                - generic [ref=e138]:
+                  - generic [ref=e139]: A Private 2 bedroom Villa Sanctuary in Pejeng — Contemporary Living Amid the Natural Beauty of Bali
+                  - generic [ref=e140]: Ubud · IDR 390,000,000
+                - button "+ Add" [ref=e142] [cursor=pointer]
+              - listitem [ref=e143]:
+                - generic [ref=e144]:
+                  - generic [ref=e145]: A Striking Contemporary Villa with Panoramic Rice Field Views in Abiansemal, Bali
+                  - generic [ref=e146]: Ubud · IDR 66,000,000
+                - button "+ Add" [ref=e148] [cursor=pointer]
+              - listitem [ref=e149]:
+                - generic [ref=e150]:
+                  - generic [ref=e151]: A Thoughtfully Designed 3-Bedroom Eco Villa in a Private Green Community — Sibang, Bali - 3 mins walk from Green School
+                  - generic [ref=e152]: Ubud · IDR 49,183,789
+                - button "+ Add" [ref=e154] [cursor=pointer]
+              - listitem [ref=e155]:
+                - generic [ref=e156]:
+                  - generic [ref=e157]: Affordable 2BR Private Pool Villa in Nyuh Kuning –Long Term Rental Family Home
+                  - generic [ref=e158]: Ubud · IDR 19,800,000
+                - button "+ Add" [ref=e160] [cursor=pointer]
+              - listitem [ref=e161]:
+                - generic [ref=e162]:
+                  - generic [ref=e163]: Alke Villa
+                  - generic [ref=e164]: Ubud · IDR 35,000,000
+                - button "+ Add" [ref=e166] [cursor=pointer]
+              - listitem [ref=e167]:
+                - generic [ref=e168]:
+                  - generic [ref=e169]: Bambu Nest GS
+                  - generic [ref=e170]: Ubud · IDR 89,000,000
+                - button "+ Add" [ref=e172] [cursor=pointer]
+              - listitem [ref=e173]:
+                - generic [ref=e174]:
+                  - generic [ref=e175]: Betawi
+                  - generic [ref=e176]: Ubud · IDR 12,000,000
+                - button "+ Add" [ref=e178] [cursor=pointer]
+              - listitem [ref=e179]:
+                - generic [ref=e180]:
+                  - generic [ref=e181]: Blue Swing Villa 1
+                  - generic [ref=e182]: Ubud · IDR 27,000,000
+                - button "+ Add" [ref=e184] [cursor=pointer]
+              - listitem [ref=e185]:
+                - generic [ref=e186]:
+                  - generic [ref=e187]: Blue Swing Villa 2
+                  - generic [ref=e188]: Ubud · IDR 27,000,000
+                - button "+ Add" [ref=e190] [cursor=pointer]
+              - listitem [ref=e191]:
+                - generic [ref=e192]:
+                  - generic [ref=e193]: Butterfly Bungalow
+                  - generic [ref=e194]: Ubud · IDR 15,000,000
+                - button "+ Add" [ref=e196] [cursor=pointer]
+              - listitem [ref=e197]:
+                - generic [ref=e198]:
+                  - generic [ref=e199]: Cala Villa
+                  - generic [ref=e200]: Ubud · IDR 12,000,000
+                - button "+ Add" [ref=e202] [cursor=pointer]
+              - listitem [ref=e203]:
+                - generic [ref=e204]:
+                  - generic [ref=e205]: Casa Yemi
+                  - generic [ref=e206]: Ubud · IDR 33,000,000
+                - button "+ Add" [ref=e208] [cursor=pointer]
+              - listitem [ref=e209]:
+                - generic [ref=e210]:
+                  - generic [ref=e211]: Casabelle Villa
+                  - generic [ref=e212]: Ubud · IDR 51,866,541
+                - button "+ Add" [ref=e214] [cursor=pointer]
+              - listitem [ref=e215]:
+                - generic [ref=e216]:
+                  - generic [ref=e217]: Charming 3-Bedroom Traditional Balinese Villa with Tropical Garden — 5 mins from Green School
+                  - generic [ref=e218]: Ubud · IDR 310,000,000
+                - button "+ Add" [ref=e220] [cursor=pointer]
+              - listitem [ref=e221]:
+                - generic [ref=e222]:
+                  - generic [ref=e223]: Charming Joglo House with Direct Rice Field Views and Lush Private Garden in Ubud, Bali
+                  - generic [ref=e224]: Ubud · IDR 35,500,000
+                - button "+ Add" [ref=e226] [cursor=pointer]
+              - listitem [ref=e227]:
+                - generic [ref=e228]:
+                  - generic [ref=e229]: Charming Villa in Nyuh Kuning — 2 Bedrooms + Studio
+                  - generic [ref=e230]: Ubud · IDR 28,000,000
+                - button "+ Add" [ref=e232] [cursor=pointer]
+              - listitem [ref=e233]:
+                - generic [ref=e234]:
+                  - generic [ref=e235]: Damai Eco Villa
+                  - generic [ref=e236]: Ubud · IDR 18,000,000
+                - button "+ Add" [ref=e238] [cursor=pointer]
+              - listitem [ref=e239]:
+                - generic [ref=e240]:
+                  - generic [ref=e241]: Emerald Lotus Villa
+                  - generic [ref=e242]: Ubud · IDR 76,900,000
+                - button "+ Add" [ref=e244] [cursor=pointer]
+              - listitem [ref=e245]:
+                - generic [ref=e246]:
+                  - generic [ref=e247]: Immersive Jungle Retreat with River Views in Nyuh Kuning, Ubud
+                  - generic [ref=e248]: Ubud · IDR 30,000,000
+                - button "+ Add" [ref=e250] [cursor=pointer]
+              - listitem [ref=e251]:
+                - generic [ref=e252]:
+                  - generic [ref=e253]: Jambul Room downstairs 1
+                  - generic [ref=e254]: Ubud · IDR 10,000,000
+                - button "+ Add" [ref=e256] [cursor=pointer]
+              - listitem [ref=e257]:
+                - generic [ref=e258]:
+                  - generic [ref=e259]: Jambul Room downstairs 2
+                  - generic [ref=e260]: Ubud · IDR 10,000,000
+                - button "+ Add" [ref=e262] [cursor=pointer]
+              - listitem [ref=e263]:
+                - generic [ref=e264]:
+                  - generic [ref=e265]: Jambul Room upstairs
+                  - generic [ref=e266]: Ubud · IDR 9,000,000
+                - button "+ Add" [ref=e268] [cursor=pointer]
+              - listitem [ref=e269]:
+                - generic [ref=e270]:
+                  - generic [ref=e271]: Jasmine Apartment
+                  - generic [ref=e272]: Ubud · IDR 6,500,000
+                - button "+ Add" [ref=e274] [cursor=pointer]
+              - listitem [ref=e275]:
+                - generic [ref=e276]:
+                  - generic [ref=e277]: Jasmine Eco Villa
+                  - generic [ref=e278]: Ubud · IDR 13,500,000
+                - button "+ Add" [ref=e280] [cursor=pointer]
+              - listitem [ref=e281]:
+                - generic [ref=e282]:
+                  - generic [ref=e283]: Joglo Sunrise Villa
+                  - generic [ref=e284]: Ubud · IDR 20,000,000
+                - button "+ Add" [ref=e286] [cursor=pointer]
+              - listitem [ref=e287]:
+                - generic [ref=e288]:
+                  - generic [ref=e289]: Kasa Apartment
+                  - generic [ref=e290]: Ubud · IDR 9,500,000
+                - button "+ Add" [ref=e292] [cursor=pointer]
+              - listitem [ref=e293]:
+                - generic [ref=e294]:
+                  - generic [ref=e295]: Lamitampa 1
+                  - generic [ref=e296]: Ubud · IDR 16,500,000
+                - button "+ Add" [ref=e298] [cursor=pointer]
+              - listitem [ref=e299]:
+                - generic [ref=e300]:
+                  - generic [ref=e301]: Lamitampa 2
+                  - generic [ref=e302]: Ubud · IDR 15,500,000
+                - button "+ Add" [ref=e304] [cursor=pointer]
+              - listitem [ref=e305]:
+                - generic [ref=e306]:
+                  - generic [ref=e307]: Lamitampa 3
+                  - generic [ref=e308]: Ubud · IDR 18,600,000
+                - button "+ Add" [ref=e310] [cursor=pointer]
+              - listitem [ref=e311]:
+                - generic [ref=e312]:
+                  - generic [ref=e313]: Loft New York
+                  - generic [ref=e314]: Ubud · IDR 74,300,000
+                - button "+ Add" [ref=e316] [cursor=pointer]
+              - listitem [ref=e317]:
+                - generic [ref=e318]:
+                  - generic [ref=e319]: Miami Villa
+                  - generic [ref=e320]: Ubud · IDR 134,000,000
+                - button "+ Add" [ref=e322] [cursor=pointer]
+              - listitem [ref=e323]:
+                - generic [ref=e324]:
+                  - generic [ref=e325]: Modern 2-Bedroom Villa for Rent in Ubud, Bali — Private Pool
+                  - generic [ref=e326]: Ubud · IDR 45,000,000
+                - button "+ Add" [ref=e328] [cursor=pointer]
+              - listitem [ref=e329]:
+                - generic [ref=e330]:
+                  - generic [ref=e331]: Morning Light House GS
+                  - generic [ref=e332]: Ubud · IDR 112,000,000
+                - button "+ Add" [ref=e334] [cursor=pointer]
+              - listitem [ref=e335]:
+                - generic [ref=e336]:
+                  - generic [ref=e337]: Nora House
+                  - generic [ref=e338]: Ubud · IDR 15,000,000
+                - button "+ Add" [ref=e340] [cursor=pointer]
+              - listitem [ref=e341]:
+                - generic [ref=e342]:
+                  - generic [ref=e343]: Peaceful Villa Space with Garden Access in the Heart of Nyuh Kuning, Ubud
+                  - generic [ref=e344]: Ubud · IDR 29,000,000
+                - button "+ Add" [ref=e346] [cursor=pointer]
+              - listitem [ref=e347]:
+                - generic [ref=e348]:
+                  - generic [ref=e349]: Pengkolan Villa
+                  - generic [ref=e350]: Ubud · IDR 45,000,000
+                - button "+ Add" [ref=e352] [cursor=pointer]
+              - listitem [ref=e353]:
+                - generic [ref=e354]:
+                  - generic [ref=e355]: Rejeki 3 – Full House
+                  - generic [ref=e356]: Ubud · IDR 22,000,000
+                - button "+ Add" [ref=e358] [cursor=pointer]
+              - listitem [ref=e359]:
+                - generic [ref=e360]:
+                  - generic [ref=e361]: Rejeki Cozy Studio
+                  - generic [ref=e362]: Ubud · IDR 6,500,000
+                - button "+ Add" [ref=e364] [cursor=pointer]
+              - listitem [ref=e365]:
+                - generic [ref=e366]:
+                  - generic [ref=e367]: Rumah Baliku
+                  - generic [ref=e368]: Ubud · IDR 17,500,000
+                - button "+ Add" [ref=e370] [cursor=pointer]
+              - listitem [ref=e371]:
+                - generic [ref=e372]:
+                  - generic [ref=e373]: Rumah Gerbang Biru Downstairs
+                  - generic [ref=e374]: Ubud · IDR 22,000,000
+                - button "+ Add" [ref=e376] [cursor=pointer]
+              - listitem [ref=e377]:
+                - generic [ref=e378]:
+                  - generic [ref=e379]: Rumah Gerbang Biru Upstairs
+                  - generic [ref=e380]: Ubud · IDR 22,000,000
+                - button "+ Add" [ref=e382] [cursor=pointer]
+              - listitem [ref=e383]:
+                - generic [ref=e384]:
+                  - generic [ref=e385]: Rumah Kelusa Asri
+                  - generic [ref=e386]: Ubud · IDR 6,000,000
+                - button "+ Add" [ref=e388] [cursor=pointer]
+          - generic [ref=e389]:
+            - generic [ref=e390]:
+              - generic [ref=e391]:
+                - heading "On this shortlist" [level=2] [ref=e392]
+                - generic [ref=e393]: 13 shown to the client
+                - generic [ref=e394]: ✓ Live
+              - list [ref=e395]:
+                - listitem [ref=e396]:
+                  - generic [ref=e397]:
+                    - strong [ref=e398]: ♥2-Story Villa with Garden — Nyuh Kuning, Ubud
+                    - button "↑" [disabled] [ref=e399] [cursor=pointer]
+                    - button "↓" [ref=e400] [cursor=pointer]
+                    - button "✕" [ref=e401] [cursor=pointer]
+                  - generic [ref=e402]: Ubud · IDR 35,500,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e403]
+                - listitem [ref=e404]:
+                  - generic [ref=e405]:
+                    - strong [ref=e406]: 2-Bedroom Tropical Villa with Private Pool — Nyuh Kuning, Ubud
+                    - button "↑" [ref=e407] [cursor=pointer]
+                    - button "↓" [ref=e408] [cursor=pointer]
+                    - button "✕" [ref=e409] [cursor=pointer]
+                  - generic [ref=e410]: Ubud · IDR 35,000,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e411]
+                - listitem [ref=e412]:
+                  - generic [ref=e413]:
+                    - strong [ref=e414]: 3 Bedroom Villa with Stunning Rice Field & Sunrise Views in Nyuh Kuning, Ubud
+                    - button "↑" [ref=e415] [cursor=pointer]
+                    - button "↓" [ref=e416] [cursor=pointer]
+                    - button "✕" [ref=e417] [cursor=pointer]
+                  - generic [ref=e418]: Ubud · IDR 18,600,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e419]
+                - listitem [ref=e420]:
+                  - generic [ref=e421]:
+                    - strong [ref=e422]: "** 1 Bedroom exclusive Villa**"
+                    - button "↑" [ref=e423] [cursor=pointer]
+                    - button "↓" [ref=e424] [cursor=pointer]
+                    - button "✕" [ref=e425] [cursor=pointer]
+                  - generic [ref=e426]: Ubud · IDR 3,487,577,751
+                  - textbox "Internal note (never shown to the client)…" [ref=e427]
+                - listitem [ref=e428]:
+                  - generic [ref=e429]:
+                    - strong [ref=e430]: "** 2 Bedroom Off Plan Boutique Villa in Sayan**"
+                    - button "↑" [ref=e431] [cursor=pointer]
+                    - button "↓" [ref=e432] [cursor=pointer]
+                    - button "✕" [ref=e433] [cursor=pointer]
+                  - generic [ref=e434]: Ubud · IDR 3,550,000,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e435]
+                - listitem [ref=e436]:
+                  - generic [ref=e437]:
+                    - strong [ref=e438]: "** 3-Bedroom Tropical Villa with Private Pool in Peliatan**"
+                    - button "↑" [ref=e439] [cursor=pointer]
+                    - button "↓" [ref=e440] [cursor=pointer]
+                    - button "✕" [ref=e441] [cursor=pointer]
+                  - generic [ref=e442]: Ubud · IDR 2,800,000,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e443]
+                - listitem [ref=e444]:
+                  - generic [ref=e445]:
+                    - strong [ref=e446]: "** Brand New 2 Bedroom Villa in Singakerta**"
+                    - button "↑" [ref=e447] [cursor=pointer]
+                    - button "↓" [ref=e448] [cursor=pointer]
+                    - button "✕" [ref=e449] [cursor=pointer]
+                  - generic [ref=e450]: Ubud · IDR 4,749,500,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e451]
+                - listitem [ref=e452]:
+                  - generic [ref=e453]:
+                    - strong [ref=e454]: "**1 Bedroom Modern Tropical Villa in Bingin**"
+                    - button "↑" [ref=e455] [cursor=pointer]
+                    - button "↓" [ref=e456] [cursor=pointer]
+                    - button "✕" [ref=e457] [cursor=pointer]
+                  - generic [ref=e458]: Bukit · IDR 4,024,128,175
+                  - textbox "Internal note (never shown to the client)…" [ref=e459]
+                - listitem [ref=e460]:
+                  - generic [ref=e461]:
+                    - strong [ref=e462]: "**1 Bedroom Villa in Uluwatu Walking Distance to The Istana**"
+                    - button "↑" [ref=e463] [cursor=pointer]
+                    - button "↓" [ref=e464] [cursor=pointer]
+                    - button "✕" [ref=e465] [cursor=pointer]
+                  - generic [ref=e466]: Bukit · IDR 3,450,000,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e467]
+                - listitem [ref=e468]:
+                  - generic [ref=e469]:
+                    - strong [ref=e470]: "**1 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)**"
+                    - button "↑" [ref=e471] [cursor=pointer]
+                    - button "↓" [ref=e472] [cursor=pointer]
+                    - button "✕" [ref=e473] [cursor=pointer]
+                  - generic [ref=e474]: Bukit · IDR 3,831,000,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e475]
+                - listitem [ref=e476]:
+                  - generic [ref=e477]:
+                    - strong [ref=e478]: "**12.25 Are Freehold Land in Petulu – Rare Jungle & River View Pink-Zone Plot Near Central Ubud**"
+                    - button "↑" [ref=e479] [cursor=pointer]
+                    - button "↓" [ref=e480] [cursor=pointer]
+                    - button "✕" [ref=e481] [cursor=pointer]
+                  - generic [ref=e482]: Ubud · IDR 7,064,580,573
+                  - textbox "Internal note (never shown to the client)…" [ref=e483]
+                - listitem [ref=e484]:
+                  - generic [ref=e485]:
+                    - strong [ref=e486]: "**12.3 are Keliki - 12.3 are Leasehold Land in Keliki with Beautiful Green Views**"
+                    - button "↑" [ref=e487] [cursor=pointer]
+                    - button "↓" [ref=e488] [cursor=pointer]
+                    - button "✕" [ref=e489] [cursor=pointer]
+                  - generic [ref=e490]: Ubud · IDR 1,488,300,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e491]
+                - listitem [ref=e492]:
+                  - generic [ref=e493]:
+                    - strong [ref=e494]: "**15 are Singakerta Warung Tipat - Flexible 15 Are Land for Leasehold in Singakerta**"
+                    - button "↑" [ref=e495] [cursor=pointer]
+                    - button "↓" [disabled] [ref=e496] [cursor=pointer]
+                    - button "✕" [ref=e497] [cursor=pointer]
+                  - generic [ref=e498]: Ubud · IDR 2,437,500,000
+                  - textbox "Internal note (never shown to the client)…" [ref=e499]
+            - generic [ref=e501]:
+              - heading "Favourites by person" [level=3] [ref=e502]
+              - list [ref=e503]:
+                - listitem [ref=e504]:
+                  - generic [ref=e505]:
+                    - strong [ref=e506]: Someone (no name given)
+                    - generic "A first name they typed into the shared link — not a verified identity, and not a Relationship" [ref=e507]: self-declared
+                    - generic [ref=e508]: 1 ♥
+                  - list [ref=e509]:
+                    - listitem [ref=e510]: ♥2-Story Villa with Garden — Nyuh Kuning, Ubud
+            - generic [ref=e511]:
+              - heading "Client link" [level=3] [ref=e512]
+              - generic [ref=e513]:
+                - link "open ↗" [ref=e514] [cursor=pointer]:
+                  - /url: /shortlists/shr_9516005c5b3549fdfa1dc2b9b8cfa30b
+                - button "Copy link" [ref=e515] [cursor=pointer]
+              - paragraph [ref=e516]: One link for this shortlist. Adding or removing a property never changes it, so the client is never sent a second one — only archiving stops it opening.
+            - generic [ref=e517]:
+              - textbox "Shortlist name…" [ref=e518]
+              - button "Rename" [ref=e519] [cursor=pointer]
+            - generic [ref=e520]:
+              - heading "Client engagement" [level=3] [ref=e521]
+              - generic [ref=e522]:
+                - generic [ref=e523]:
+                  - strong [ref=e524]: "2"
+                  - text: opens
+                - generic [ref=e525]:
+                  - strong [ref=e526]: "1"
+                  - text: favourites
+                - generic [ref=e527]:
+                  - strong [ref=e528]: "0"
+                  - text: viewing requests
+                - generic [ref=e529]:
+                  - strong [ref=e530]: "1"
+                  - text: hidden
+                - generic [ref=e531]:
+                  - strong [ref=e532]: "0"
+                  - text: comments
+              - generic [ref=e533]: "Last viewed: 06/08/2026, 23:20:16 · time-spent not tracked"
+            - generic [ref=e534]:
+              - button "Archive this shortlist" [ref=e535] [cursor=pointer]
+              - paragraph [ref=e536]: The link stops opening. Nothing is deleted.
+  - alert [ref=e537]

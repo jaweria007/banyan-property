@@ -1,0 +1,355 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - text: 🌳 Banyan
+        - generic [ref=e5]: Listings Dashboard
+      - navigation [ref=e6]:
+        - link "🏠 Overview" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: 🏠
+          - generic [ref=e9]: Overview
+        - generic [ref=e10]:
+          - generic [ref=e11]: 🏠 Listings
+          - generic [ref=e12]:
+            - link "Overview" [ref=e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=e19]:
+          - generic [ref=e20]: 💼 Sales
+          - generic [ref=e21]:
+            - link "Client Inbox" [ref=e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=e27]: 🤝
+          - generic [ref=e28]: Relationships
+        - link "✅ My Work" [ref=e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=e30]: ✅
+          - generic [ref=e31]: My Work
+        - generic [ref=e32]:
+          - generic [ref=e33]: 📢 Marketing
+          - generic [ref=e34]:
+            - link "🖥️ Monitors 4" [ref=e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=e37]: "4"
+            - link "🚀 Promotion" [ref=e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=e43]: 🧭
+          - generic [ref=e44]: Navigation
+        - link "⚙️ Site settings" [ref=e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=e46]: ⚙️
+          - generic [ref=e47]: Site settings
+      - generic [ref=e48]:
+        - button "Sign out" [ref=e49] [cursor=pointer]
+        - generic [ref=e50]: Staging DB copy — production data is untouched.
+    - main [ref=e51]:
+      - generic [ref=e52]:
+        - link "← Listings" [ref=e53] [cursor=pointer]:
+          - /url: /master
+        - heading "Supply Overview" [level=1] [ref=e54]
+        - paragraph [ref=e55]: Live inventory summary — all counts computed from current listings.
+        - generic [ref=e56]:
+          - generic [ref=e57]:
+            - heading "Inventory by Property Type" [level=2] [ref=e58]
+            - table [ref=e59]:
+              - rowgroup [ref=e60]:
+                - row [ref=e61]:
+                  - cell "Rent" [ref=e62]
+                  - cell "207" [ref=e63]
+                - row [ref=e64]:
+                  - cell "Buy" [ref=e65]
+                  - cell "153" [ref=e66]
+                - row [ref=e67]:
+                  - cell "Land" [ref=e68]
+                  - cell "33" [ref=e69]
+                - row [ref=e70]:
+                  - cell "Commercial" [ref=e71]
+                  - cell "10" [ref=e72]
+          - generic [ref=e73]:
+            - heading "Workflow Distribution" [level=2] [ref=e74]
+            - table [ref=e75]:
+              - rowgroup [ref=e76]:
+                - row [ref=e77]:
+                  - cell "Inbox" [ref=e78]
+                  - cell "3" [ref=e79]
+                - row [ref=e80]:
+                  - cell "Enrich" [ref=e81]
+                  - cell "33" [ref=e82]
+                - row [ref=e83]:
+                  - cell "Review" [ref=e84]
+                  - cell "0" [ref=e85]
+                - row [ref=e86]:
+                  - cell "Live" [ref=e87]
+                  - cell "222" [ref=e88]
+                - row [ref=e89]:
+                  - cell "Closed" [ref=e90]
+                  - cell "145" [ref=e91]
+          - generic [ref=e92]:
+            - heading "Rentals — Price Bands (monthly IDR)" [level=2] [ref=e93]:
+              - text: Rentals — Price Bands
+              - generic [ref=e94]: (monthly IDR)
+            - table [ref=e95]:
+              - rowgroup [ref=e96]:
+                - row [ref=e97]:
+                  - cell "< IDR 25M" [ref=e98]
+                  - cell "36" [ref=e99]
+                - row [ref=e100]:
+                  - cell "IDR 25M–50M" [ref=e101]
+                  - cell "35" [ref=e102]
+                - row [ref=e103]:
+                  - cell "IDR 50M–100M" [ref=e104]
+                  - cell "18" [ref=e105]
+                - row [ref=e106]:
+                  - cell "IDR 100M–200M" [ref=e107]
+                  - cell "5" [ref=e108]
+                - row [ref=e109]:
+                  - cell "> IDR 200M" [ref=e110]
+                  - cell "6" [ref=e111]
+                - row [ref=e112]:
+                  - cell "No price" [ref=e113]
+                  - cell "2" [ref=e114]
+                - row [ref=e115]:
+                  - cell "Total" [ref=e116]
+                  - cell "102" [ref=e117]
+          - generic [ref=e118]:
+            - heading "Villa Sales — Price Bands (USD)" [level=2] [ref=e119]:
+              - text: Villa Sales — Price Bands
+              - generic [ref=e120]: (USD)
+            - table [ref=e121]:
+              - rowgroup [ref=e122]:
+                - row [ref=e123]:
+                  - cell "< $250k" [ref=e124]
+                  - cell "12" [ref=e125]
+                - row [ref=e126]:
+                  - cell "$250–500k" [ref=e127]
+                  - cell "13" [ref=e128]
+                - row [ref=e129]:
+                  - cell "$500k–1M" [ref=e130]
+                  - cell "1" [ref=e131]
+                - row [ref=e132]:
+                  - cell "> $1M" [ref=e133]
+                  - cell "3" [ref=e134]
+                - row [ref=e135]:
+                  - cell "No price" [ref=e136]
+                  - cell "85" [ref=e137]
+                - row [ref=e138]:
+                  - cell "Total" [ref=e139]
+                  - cell "114" [ref=e140]
+          - generic [ref=e141]:
+            - heading "Land — Price Bands (USD)" [level=2] [ref=e142]:
+              - text: Land — Price Bands
+              - generic [ref=e143]: (USD)
+            - table [ref=e144]:
+              - rowgroup [ref=e145]:
+                - row [ref=e146]:
+                  - cell "< $150k" [ref=e147]
+                  - cell "3" [ref=e148]
+                - row [ref=e149]:
+                  - cell "$150–300k" [ref=e150]
+                  - cell "2" [ref=e151]
+                - row [ref=e152]:
+                  - cell "$300–750k" [ref=e153]
+                  - cell "2" [ref=e154]
+                - row [ref=e155]:
+                  - cell "> $750k" [ref=e156]
+                  - cell "0" [ref=e157]
+                - row [ref=e158]:
+                  - cell "No price" [ref=e159]
+                  - cell "25" [ref=e160]
+                - row [ref=e161]:
+                  - cell "Total" [ref=e162]
+                  - cell "32" [ref=e163]
+        - generic [ref=e164]:
+          - heading "Inventory by Area" [level=2] [ref=e165]
+          - paragraph [ref=e166]: Click a primary area to see its secondary areas.
+          - list [ref=e167]:
+            - listitem [ref=e168]:
+              - button "Ubud 229" [expanded] [active] [ref=e169] [cursor=pointer]:
+                - generic [ref=e170]:
+                  - generic [ref=e171]: ▾
+                  - text: Ubud
+                - generic [ref=e172]: "229"
+              - list [ref=e339]:
+                - listitem [ref=e340]:
+                  - generic [ref=e341]: (area only)
+                  - generic [ref=e342]: "229"
+            - listitem [ref=e173]:
+              - button "Sanur 1" [ref=e174] [cursor=pointer]:
+                - generic [ref=e175]:
+                  - generic [ref=e176]: ▸
+                  - text: Sanur
+                - generic [ref=e177]: "1"
+            - listitem [ref=e178]:
+              - button "Bukit 17" [ref=e179] [cursor=pointer]:
+                - generic [ref=e180]:
+                  - generic [ref=e181]: ▸
+                  - text: Bukit
+                - generic [ref=e182]: "17"
+            - listitem [ref=e183]:
+              - button "Tanah Lot – Canggu 2" [ref=e184] [cursor=pointer]:
+                - generic [ref=e185]:
+                  - generic [ref=e186]: ▸
+                  - text: Tanah Lot – Canggu
+                - generic [ref=e187]: "2"
+            - listitem [ref=e188]:
+              - button "Nusa & Gili Islands 2" [ref=e189] [cursor=pointer]:
+                - generic [ref=e190]:
+                  - generic [ref=e191]: ▸
+                  - text: Nusa & Gili Islands
+                - generic [ref=e192]: "2"
+            - listitem [ref=e193]:
+              - generic [ref=e194]:
+                - generic [ref=e195]: Unmapped
+                - generic [ref=e196]: "7"
+        - generic [ref=e197]:
+          - heading "Rentals — Secondary Area × Price Band" [level=2] [ref=e198]
+          - table [ref=e200]:
+            - rowgroup [ref=e201]:
+              - row [ref=e202]:
+                - columnheader "Secondary Area" [ref=e203]
+                - columnheader "< IDR 25M" [ref=e204]
+                - columnheader "IDR 25M–50M" [ref=e205]
+                - columnheader "IDR 50M–100M" [ref=e206]
+                - columnheader "IDR 100M–200M" [ref=e207]
+                - columnheader "> IDR 200M" [ref=e208]
+                - columnheader "No price" [ref=e209]
+                - columnheader "Total" [ref=e210]
+            - rowgroup [ref=e211]:
+              - row [ref=e212]:
+                - cell "Ubud" [ref=e213]
+                - cell "36" [ref=e214]
+                - cell "35" [ref=e215]
+                - cell "18" [ref=e216]
+                - cell "5" [ref=e217]
+                - cell "5" [ref=e218]
+                - cell "2" [ref=e219]
+                - cell "101" [ref=e220]
+              - row [ref=e221]:
+                - cell "Unmapped" [ref=e222]
+                - cell "·" [ref=e223]
+                - cell "·" [ref=e224]
+                - cell "·" [ref=e225]
+                - cell "·" [ref=e226]
+                - cell "1" [ref=e227]
+                - cell "·" [ref=e228]
+                - cell "1" [ref=e229]
+        - generic [ref=e230]:
+          - heading "Villa Sales — Secondary Area × Price Band" [level=2] [ref=e231]
+          - table [ref=e233]:
+            - rowgroup [ref=e234]:
+              - row [ref=e235]:
+                - columnheader "Secondary Area" [ref=e236]
+                - columnheader "< $250k" [ref=e237]
+                - columnheader "$250–500k" [ref=e238]
+                - columnheader "$500k–1M" [ref=e239]
+                - columnheader "> $1M" [ref=e240]
+                - columnheader "No price" [ref=e241]
+                - columnheader "Total" [ref=e242]
+            - rowgroup [ref=e243]:
+              - row [ref=e244]:
+                - cell "Ubud" [ref=e245]
+                - cell "10" [ref=e246]
+                - cell "10" [ref=e247]
+                - cell "1" [ref=e248]
+                - cell "3" [ref=e249]
+                - cell "69" [ref=e250]
+                - cell "93" [ref=e251]
+              - row [ref=e252]:
+                - cell "Bukit" [ref=e253]
+                - cell "2" [ref=e254]
+                - cell "3" [ref=e255]
+                - cell "·" [ref=e256]
+                - cell "·" [ref=e257]
+                - cell "11" [ref=e258]
+                - cell "16" [ref=e259]
+              - row [ref=e260]:
+                - cell "Nusa & Gili Islands" [ref=e261]
+                - cell "·" [ref=e262]
+                - cell "·" [ref=e263]
+                - cell "·" [ref=e264]
+                - cell "·" [ref=e265]
+                - cell "2" [ref=e266]
+                - cell "2" [ref=e267]
+              - row [ref=e268]:
+                - cell "Sanur" [ref=e269]
+                - cell "·" [ref=e270]
+                - cell "·" [ref=e271]
+                - cell "·" [ref=e272]
+                - cell "·" [ref=e273]
+                - cell "1" [ref=e274]
+                - cell "1" [ref=e275]
+              - row [ref=e276]:
+                - cell "Tanah Lot – Canggu" [ref=e277]
+                - cell "·" [ref=e278]
+                - cell "·" [ref=e279]
+                - cell "·" [ref=e280]
+                - cell "·" [ref=e281]
+                - cell "1" [ref=e282]
+                - cell "1" [ref=e283]
+              - row [ref=e284]:
+                - cell "Unmapped" [ref=e285]
+                - cell "·" [ref=e286]
+                - cell "·" [ref=e287]
+                - cell "·" [ref=e288]
+                - cell "·" [ref=e289]
+                - cell "1" [ref=e290]
+                - cell "1" [ref=e291]
+        - generic [ref=e292]:
+          - heading "Land — Secondary Area × Price Band" [level=2] [ref=e293]
+          - table [ref=e295]:
+            - rowgroup [ref=e296]:
+              - row [ref=e297]:
+                - columnheader "Secondary Area" [ref=e298]
+                - columnheader "< $150k" [ref=e299]
+                - columnheader "$150–300k" [ref=e300]
+                - columnheader "$300–750k" [ref=e301]
+                - columnheader "> $750k" [ref=e302]
+                - columnheader "No price" [ref=e303]
+                - columnheader "Total" [ref=e304]
+            - rowgroup [ref=e305]:
+              - row [ref=e306]:
+                - cell "Ubud" [ref=e307]
+                - cell "3" [ref=e308]
+                - cell "2" [ref=e309]
+                - cell "2" [ref=e310]
+                - cell "·" [ref=e311]
+                - cell "22" [ref=e312]
+                - cell "29" [ref=e313]
+              - row [ref=e314]:
+                - cell "Bukit" [ref=e315]
+                - cell "·" [ref=e316]
+                - cell "·" [ref=e317]
+                - cell "·" [ref=e318]
+                - cell "·" [ref=e319]
+                - cell "1" [ref=e320]
+                - cell "1" [ref=e321]
+              - row [ref=e322]:
+                - cell "Tanah Lot – Canggu" [ref=e323]
+                - cell "·" [ref=e324]
+                - cell "·" [ref=e325]
+                - cell "·" [ref=e326]
+                - cell "·" [ref=e327]
+                - cell "1" [ref=e328]
+                - cell "1" [ref=e329]
+              - row [ref=e330]:
+                - cell "Unmapped" [ref=e331]
+                - cell "·" [ref=e332]
+                - cell "·" [ref=e333]
+                - cell "·" [ref=e334]
+                - cell "·" [ref=e335]
+                - cell "1" [ref=e336]
+                - cell "1" [ref=e337]
+  - alert [ref=e338]

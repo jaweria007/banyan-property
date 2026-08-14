@@ -1,0 +1,1966 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - complementary [ref=f1e3]:
+      - generic [ref=f1e4]:
+        - text: 🌳 Banyan
+        - generic [ref=f1e5]: Listings Dashboard
+      - navigation [ref=f1e6]:
+        - link "🏠 Overview" [ref=f1e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f1e8]: 🏠
+          - generic [ref=f1e9]: Overview
+        - generic [ref=f1e10]:
+          - generic [ref=f1e11]: 🏠 Listings
+          - generic [ref=f1e12]:
+            - link "Overview" [ref=f1e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=f1e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=f1e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=f1e19]:
+          - generic [ref=f1e20]: 💼 Sales
+          - generic [ref=f1e21]:
+            - link "Client Inbox" [ref=f1e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=f1e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=f1e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=f1e27]: 🤝
+          - generic [ref=f1e28]: Relationships
+        - link "✅ My Work" [ref=f1e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=f1e30]: ✅
+          - generic [ref=f1e31]: My Work
+        - generic [ref=f1e32]:
+          - generic [ref=f1e33]: 📢 Marketing
+          - generic [ref=f1e34]:
+            - link "🖥️ Monitors 4" [ref=f1e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=f1e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=f1e37]: "4"
+            - link "🚀 Promotion" [ref=f1e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=f1e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=f1e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=f1e43]: 🧭
+          - generic [ref=f1e44]: Navigation
+        - link "⚙️ Site settings" [ref=f1e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=f1e46]: ⚙️
+          - generic [ref=f1e47]: Site settings
+      - generic [ref=f1e48]:
+        - button "Sign out" [ref=f1e49] [cursor=pointer]
+        - generic [ref=f1e50]: Staging DB copy — production data is untouched.
+    - main [ref=f1e51]:
+      - generic [ref=f1e52]:
+        - generic [ref=f1e53]:
+          - heading "Listings (207)" [level=1] [ref=f1e54]:
+            - text: Listings
+            - generic [ref=f1e55]: (207)
+          - generic [ref=f1e56]:
+            - link "cards" [ref=f1e57] [cursor=pointer]:
+              - /url: /master?category=rent&page=1
+            - link "table" [ref=f1e58] [cursor=pointer]:
+              - /url: /master?category=rent&view=table&page=1
+        - paragraph [ref=f1e59]:
+          - text: Card view — thumbnails, action badges and live demand metrics.
+          - link "Show empty/reserved rows" [ref=f1e60] [cursor=pointer]:
+            - /url: /master?category=rent&all=1&page=1
+        - generic [ref=f1e61]:
+          - link "All (403)" [ref=f1e62] [cursor=pointer]:
+            - /url: /master?
+            - text: All
+            - generic [ref=f1e63]: (403)
+          - link "Rent (207)" [ref=f1e64] [cursor=pointer]:
+            - /url: /master?category=rent
+            - text: Rent
+            - generic [ref=f1e65]: (207)
+          - link "Sale (153)" [ref=f1e66] [cursor=pointer]:
+            - /url: /master?category=sale
+            - text: Sale
+            - generic [ref=f1e67]: (153)
+          - link "Land (33)" [ref=f1e68] [cursor=pointer]:
+            - /url: /master?category=land
+            - text: Land
+            - generic [ref=f1e69]: (33)
+          - link "Commercial (10)" [ref=f1e70] [cursor=pointer]:
+            - /url: /master?category=commercial
+            - text: Commercial
+            - generic [ref=f1e71]: (10)
+        - generic [ref=f1e72]:
+          - link "All (207)" [ref=f1e73] [cursor=pointer]:
+            - /url: /master?category=rent
+            - text: All
+            - generic [ref=f1e74]: (207)
+          - link "Inbox (2)" [ref=f1e75] [cursor=pointer]:
+            - /url: /master?category=rent&stage=inbox
+            - text: Inbox
+            - generic [ref=f1e76]: (2)
+          - link "Enrich (6)" [ref=f1e77] [cursor=pointer]:
+            - /url: /master?category=rent&stage=enrich
+            - text: Enrich
+            - generic [ref=f1e78]: (6)
+          - link "Review (0)" [ref=f1e79] [cursor=pointer]:
+            - /url: /master?category=rent&stage=review
+            - text: Review
+            - generic [ref=f1e80]: (0)
+          - link "Live (94)" [ref=f1e81] [cursor=pointer]:
+            - /url: /master?category=rent&stage=live
+            - text: Live
+            - generic [ref=f1e82]: (94)
+          - link "Closed (105)" [ref=f1e83] [cursor=pointer]:
+            - /url: /master?category=rent&stage=closed
+            - text: Closed
+            - generic [ref=f1e84]: (105)
+        - group [ref=f1e85]:
+          - generic "Areas — 5 mapped · 7 unmapped listings" [ref=f1e86] [cursor=pointer]
+        - generic [ref=f1e87]:
+          - textbox "Search name, ID, location…" [ref=f1e88]
+          - combobox [ref=f1e89]:
+            - option "All marketing" [selected]
+            - option "Archived"
+            - option "Under Negotiation"
+            - option "Upon Request"
+            - option "🔴 Archived"
+            - option "🔵 Available"
+            - option "🔵Available"
+            - option "🟠 Upon Request"
+            - option "🟣 Rented"
+            - option "🟣 Sold"
+          - combobox [ref=f1e90]:
+            - 'option "Sort: name" [selected]'
+            - option "Price ↑"
+            - option "Price ↓"
+            - option "Recently updated"
+          - button "Filter" [ref=f1e91] [cursor=pointer]
+        - generic [ref=f1e92]:
+          - generic [ref=f1e93]:
+            - link "🏠" [ref=f1e94] [cursor=pointer]:
+              - /url: /master/cms_762680ff67f34bbf9f7f
+            - generic [ref=f1e97]:
+              - link "— 123 villa karachi 📥 Triage IDR 77,173,835,885 Updated 17 Jul 2026" [ref=f1e98] [cursor=pointer]:
+                - /url: /master/cms_762680ff67f34bbf9f7f
+                - generic [ref=f1e99]:
+                  - code [ref=f1e100]: —
+                  - strong [ref=f1e101]: 123 villa
+                  - generic [ref=f1e102]: karachi
+                  - generic [ref=f1e103]: 📥 Triage
+                - generic [ref=f1e104]:
+                  - generic [ref=f1e105]: IDR 77,173,835,885
+                  - generic [ref=f1e106]: Updated 17 Jul 2026
+              - link "★☆☆☆☆ 20%" [ref=f1e107] [cursor=pointer]:
+                - /url: /master/cms_762680ff67f34bbf9f7f#health
+                - text: ★☆☆☆☆
+                - generic [ref=f1e108]: 20%
+              - link "⚠️ Stagnant >48h ↗" [ref=f1e110] [cursor=pointer]:
+                - /url: /master/cms_762680ff67f34bbf9f7f
+              - generic [ref=f1e111]:
+                - generic [ref=f1e112]:
+                  - emphasis [ref=f1e113]: not tracked
+                  - text: Source
+                - generic [ref=f1e114]:
+                  - emphasis [ref=f1e115]: not tracked
+                  - text: Priority
+                - generic [ref=f1e116]:
+                  - strong [ref=f1e117]: karachi
+                  - text: Location
+                - generic [ref=f1e118]:
+                  - strong [ref=f1e119]: 40%
+                  - text: Missing
+              - generic [ref=f1e120]:
+                - button "Approve → Enrich" [ref=f1e121] [cursor=pointer]
+                - button "Reject" [ref=f1e122] [cursor=pointer]
+          - generic [ref=f1e123]:
+            - link [ref=f1e124] [cursor=pointer]:
+              - /url: /master/recfzEwWA6ZOfRE5c
+            - generic [ref=f1e126]:
+              - link "RENT-1535 2-Bedroom Tropical Villa with Private Pool — Nyuh Kuning, Ubud Ubud 🟢 Published IDR 35,000,000 Updated 04 Apr 2026 🟣 Rented" [ref=f1e127] [cursor=pointer]:
+                - /url: /master/recfzEwWA6ZOfRE5c
+                - generic [ref=f1e128]:
+                  - code [ref=f1e129]: RENT-1535
+                  - strong [ref=f1e130]: 2-Bedroom Tropical Villa with Private Pool — Nyuh Kuning, Ubud
+                  - generic [ref=f1e131]: Ubud
+                  - generic [ref=f1e132]: 🟢 Published
+                - generic [ref=f1e133]:
+                  - generic [ref=f1e134]: IDR 35,000,000
+                  - generic [ref=f1e135]: Updated 04 Apr 2026
+                  - generic [ref=f1e136]: 🟣 Rented
+              - link "★★★☆☆ 60%" [ref=f1e137] [cursor=pointer]:
+                - /url: /master/recfzEwWA6ZOfRE5c#health
+                - text: ★★★☆☆
+                - generic [ref=f1e138]: 60%
+              - generic [ref=f1e139]:
+                - generic [ref=f1e140]:
+                  - strong [ref=f1e141]: "0"
+                  - text: Favourites
+                - generic [ref=f1e142]:
+                  - strong [ref=f1e143]: "4"
+                  - text: Shortlists
+                - generic [ref=f1e144]:
+                  - strong [ref=f1e145]: Booked
+                  - text: Available from
+                - generic [ref=f1e146]:
+                  - emphasis [ref=f1e147]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e148]:
+                  - emphasis [ref=f1e149]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e150]:
+                  - emphasis [ref=f1e151]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e152]:
+                  - strong [ref=f1e153]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e154]:
+                  - strong [ref=f1e155]: "0"
+                  - text: Tasks
+          - generic [ref=f1e156]:
+            - link [ref=f1e157] [cursor=pointer]:
+              - /url: /master/rec9djPwaJuR8hiOT
+            - generic [ref=f1e159]:
+              - link "★ 4 RENT-1635 2-Story Villa with Garden — Nyuh Kuning, Ubud Ubud 🟢 Published IDR 35,500,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e160] [cursor=pointer]:
+                - /url: /master/rec9djPwaJuR8hiOT
+                - generic [ref=f1e161]:
+                  - generic [ref=f1e162]: ★ 4
+                  - code [ref=f1e163]: RENT-1635
+                  - strong [ref=f1e164]: 2-Story Villa with Garden — Nyuh Kuning, Ubud
+                  - generic [ref=f1e165]: Ubud
+                  - generic [ref=f1e166]: 🟢 Published
+                - generic [ref=f1e167]:
+                  - generic [ref=f1e168]: IDR 35,500,000
+                  - generic [ref=f1e169]: Updated 04 Apr 2026
+                  - generic [ref=f1e170]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e171] [cursor=pointer]:
+                - /url: /master/rec9djPwaJuR8hiOT#health
+                - text: ★★★☆☆
+                - generic [ref=f1e172]: 60%
+              - generic [ref=f1e173]:
+                - generic [ref=f1e174]:
+                  - strong [ref=f1e175]: "4"
+                  - text: Favourites
+                - generic [ref=f1e176]:
+                  - strong [ref=f1e177]: "4"
+                  - text: Shortlists
+                - generic [ref=f1e178]:
+                  - strong [ref=f1e179]: Now
+                  - text: Available from
+                - generic [ref=f1e180]:
+                  - emphasis [ref=f1e181]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e182]:
+                  - emphasis [ref=f1e183]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e184]:
+                  - emphasis [ref=f1e185]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e186]:
+                  - strong [ref=f1e187]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e188]:
+                  - strong [ref=f1e189]: "0"
+                  - text: Tasks
+          - generic [ref=f1e190]:
+            - link [ref=f1e191] [cursor=pointer]:
+              - /url: /master/recrcazwKiSunIwT3
+            - generic [ref=f1e193]:
+              - link "RENT-1650 3 Bedroom Villa with Stunning Rice Field & Sunrise Views in Nyuh Kuning, Ubud Ubud 🟢 Published IDR 18,600,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e194] [cursor=pointer]:
+                - /url: /master/recrcazwKiSunIwT3
+                - generic [ref=f1e195]:
+                  - code [ref=f1e196]: RENT-1650
+                  - strong [ref=f1e197]: 3 Bedroom Villa with Stunning Rice Field & Sunrise Views in Nyuh Kuning, Ubud
+                  - generic [ref=f1e198]: Ubud
+                  - generic [ref=f1e199]: 🟢 Published
+                - generic [ref=f1e200]:
+                  - generic [ref=f1e201]: IDR 18,600,000
+                  - generic [ref=f1e202]: Updated 04 Apr 2026
+                  - generic [ref=f1e203]: 🔵 Available
+              - link "★★★☆☆ 68%" [ref=f1e204] [cursor=pointer]:
+                - /url: /master/recrcazwKiSunIwT3#health
+                - text: ★★★☆☆
+                - generic [ref=f1e205]: 68%
+              - generic [ref=f1e206]:
+                - generic [ref=f1e207]:
+                  - strong [ref=f1e208]: "0"
+                  - text: Favourites
+                - generic [ref=f1e209]:
+                  - strong [ref=f1e210]: "3"
+                  - text: Shortlists
+                - generic [ref=f1e211]:
+                  - strong [ref=f1e212]: Now
+                  - text: Available from
+                - generic [ref=f1e213]:
+                  - emphasis [ref=f1e214]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e215]:
+                  - emphasis [ref=f1e216]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e217]:
+                  - emphasis [ref=f1e218]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e219]:
+                  - strong [ref=f1e220]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e221]:
+                  - strong [ref=f1e222]: "0"
+                  - text: Tasks
+          - generic [ref=f1e223]:
+            - link [ref=f1e224] [cursor=pointer]:
+              - /url: /master/recVToM2cwPfEB6Hg
+            - generic [ref=f1e226]:
+              - link "RENT-1638 3-Bedroom Eco-Luxury Home in Taman Petanu Eco Neighborhood Ubud 🟢 Published IDR 35,770,028 Updated 04 Apr 2026 🔵 Available" [ref=f1e227] [cursor=pointer]:
+                - /url: /master/recVToM2cwPfEB6Hg
+                - generic [ref=f1e228]:
+                  - code [ref=f1e229]: RENT-1638
+                  - strong [ref=f1e230]: 3-Bedroom Eco-Luxury Home in Taman Petanu Eco Neighborhood
+                  - generic [ref=f1e231]: Ubud
+                  - generic [ref=f1e232]: 🟢 Published
+                - generic [ref=f1e233]:
+                  - generic [ref=f1e234]: IDR 35,770,028
+                  - generic [ref=f1e235]: Updated 04 Apr 2026
+                  - generic [ref=f1e236]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e237] [cursor=pointer]:
+                - /url: /master/recVToM2cwPfEB6Hg#health
+                - text: ★★★☆☆
+                - generic [ref=f1e238]: 60%
+              - generic [ref=f1e239]:
+                - generic [ref=f1e240]:
+                  - strong [ref=f1e241]: "0"
+                  - text: Favourites
+                - generic [ref=f1e242]:
+                  - strong [ref=f1e243]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e244]:
+                  - strong [ref=f1e245]: Now
+                  - text: Available from
+                - generic [ref=f1e246]:
+                  - emphasis [ref=f1e247]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e248]:
+                  - emphasis [ref=f1e249]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e250]:
+                  - emphasis [ref=f1e251]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e252]:
+                  - strong [ref=f1e253]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e254]:
+                  - strong [ref=f1e255]: "0"
+                  - text: Tasks
+          - generic [ref=f1e256]:
+            - link [ref=f1e257] [cursor=pointer]:
+              - /url: /master/rec6oqyvcBjAlgXhO
+            - generic [ref=f1e259]:
+              - link "RENT-1656 3-Bedroom Family Villa with Private Pool & Garden - Singakerta, 5 Mins to Nyuh Kuning, Ubud Ubud 🟢 Published IDR 450,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e260] [cursor=pointer]:
+                - /url: /master/rec6oqyvcBjAlgXhO
+                - generic [ref=f1e261]:
+                  - code [ref=f1e262]: RENT-1656
+                  - strong [ref=f1e263]: 3-Bedroom Family Villa with Private Pool & Garden - Singakerta, 5 Mins to Nyuh Kuning, Ubud
+                  - generic [ref=f1e264]: Ubud
+                  - generic [ref=f1e265]: 🟢 Published
+                - generic [ref=f1e266]:
+                  - generic [ref=f1e267]: IDR 450,000,000
+                  - generic [ref=f1e268]: Updated 04 Apr 2026
+                  - generic [ref=f1e269]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e270] [cursor=pointer]:
+                - /url: /master/rec6oqyvcBjAlgXhO#health
+                - text: ★★★☆☆
+                - generic [ref=f1e271]: 60%
+              - generic [ref=f1e272]:
+                - generic [ref=f1e273]:
+                  - strong [ref=f1e274]: "0"
+                  - text: Favourites
+                - generic [ref=f1e275]:
+                  - strong [ref=f1e276]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e277]:
+                  - strong [ref=f1e278]: Now
+                  - text: Available from
+                - generic [ref=f1e279]:
+                  - emphasis [ref=f1e280]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e281]:
+                  - emphasis [ref=f1e282]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e283]:
+                  - emphasis [ref=f1e284]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e285]:
+                  - strong [ref=f1e286]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e287]:
+                  - strong [ref=f1e288]: "0"
+                  - text: Tasks
+          - generic [ref=f1e289]:
+            - link "🏠" [ref=f1e290] [cursor=pointer]:
+              - /url: /master/recSBYVwRvbDtp9Ca
+            - generic [ref=f1e293]:
+              - link "RENT-1528 3-Bedroom Villa for Rent in Nyuh Kuning, Ubud — Private Pool Ubud 🟠 On Hold — Updated 04 Apr 2026 🟣 Rented" [ref=f1e294] [cursor=pointer]:
+                - /url: /master/recSBYVwRvbDtp9Ca
+                - generic [ref=f1e295]:
+                  - code [ref=f1e296]: RENT-1528
+                  - strong [ref=f1e297]: 3-Bedroom Villa for Rent in Nyuh Kuning, Ubud — Private Pool
+                  - generic [ref=f1e298]: Ubud
+                  - generic [ref=f1e299]: 🟠 On Hold
+                - generic [ref=f1e300]:
+                  - generic [ref=f1e301]: —
+                  - generic [ref=f1e302]: Updated 04 Apr 2026
+                  - generic [ref=f1e303]: 🟣 Rented
+              - link "★★☆☆☆ 43%" [ref=f1e304] [cursor=pointer]:
+                - /url: /master/recSBYVwRvbDtp9Ca#health
+                - text: ★★☆☆☆
+                - generic [ref=f1e305]: 43%
+              - generic [ref=f1e306]:
+                - generic [ref=f1e307]:
+                  - strong [ref=f1e308]: "0"
+                  - text: Favourites
+                - generic [ref=f1e309]:
+                  - strong [ref=f1e310]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e311]:
+                  - strong [ref=f1e312]: "0"
+                  - text: Tasks
+          - generic [ref=f1e313]:
+            - link [ref=f1e314] [cursor=pointer]:
+              - /url: /master/recXoebUHmnfgj532
+            - generic [ref=f1e316]:
+              - link "RENT-1653 4-Bedroom Family Villa Near Green School — Pool, Garden & Community Living Ubud 🟢 Published IDR 127,877,851 Updated 04 Apr 2026 🔵 Available" [ref=f1e317] [cursor=pointer]:
+                - /url: /master/recXoebUHmnfgj532
+                - generic [ref=f1e318]:
+                  - code [ref=f1e319]: RENT-1653
+                  - strong [ref=f1e320]: 4-Bedroom Family Villa Near Green School — Pool, Garden & Community Living
+                  - generic [ref=f1e321]: Ubud
+                  - generic [ref=f1e322]: 🟢 Published
+                - generic [ref=f1e323]:
+                  - generic [ref=f1e324]: IDR 127,877,851
+                  - generic [ref=f1e325]: Updated 04 Apr 2026
+                  - generic [ref=f1e326]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e327] [cursor=pointer]:
+                - /url: /master/recXoebUHmnfgj532#health
+                - text: ★★★☆☆
+                - generic [ref=f1e328]: 60%
+              - generic [ref=f1e329]:
+                - generic [ref=f1e330]:
+                  - strong [ref=f1e331]: "0"
+                  - text: Favourites
+                - generic [ref=f1e332]:
+                  - strong [ref=f1e333]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e334]:
+                  - strong [ref=f1e335]: July 2026
+                  - text: Available from
+                - generic [ref=f1e336]:
+                  - emphasis [ref=f1e337]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e338]:
+                  - emphasis [ref=f1e339]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e340]:
+                  - emphasis [ref=f1e341]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e342]:
+                  - strong [ref=f1e343]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e344]:
+                  - strong [ref=f1e345]: "0"
+                  - text: Tasks
+          - generic [ref=f1e346]:
+            - link [ref=f1e347] [cursor=pointer]:
+              - /url: /master/recm2ipGdjWwxcR2b
+            - generic [ref=f1e349]:
+              - link "RENT-1640 6BR Luxury Villa with Basketball Court, Pool & Rice Field Views — Ubud Ubud 🟢 Published IDR 165,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e350] [cursor=pointer]:
+                - /url: /master/recm2ipGdjWwxcR2b
+                - generic [ref=f1e351]:
+                  - code [ref=f1e352]: RENT-1640
+                  - strong [ref=f1e353]: 6BR Luxury Villa with Basketball Court, Pool & Rice Field Views — Ubud
+                  - generic [ref=f1e354]: Ubud
+                  - generic [ref=f1e355]: 🟢 Published
+                - generic [ref=f1e356]:
+                  - generic [ref=f1e357]: IDR 165,000,000
+                  - generic [ref=f1e358]: Updated 04 Apr 2026
+                  - generic [ref=f1e359]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e360] [cursor=pointer]:
+                - /url: /master/recm2ipGdjWwxcR2b#health
+                - text: ★★★☆☆
+                - generic [ref=f1e361]: 60%
+              - generic [ref=f1e362]:
+                - generic [ref=f1e363]:
+                  - strong [ref=f1e364]: "0"
+                  - text: Favourites
+                - generic [ref=f1e365]:
+                  - strong [ref=f1e366]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e367]:
+                  - strong [ref=f1e368]: Now
+                  - text: Available from
+                - generic [ref=f1e369]:
+                  - emphasis [ref=f1e370]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e371]:
+                  - emphasis [ref=f1e372]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e373]:
+                  - emphasis [ref=f1e374]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e375]:
+                  - strong [ref=f1e376]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e377]:
+                  - strong [ref=f1e378]: "0"
+                  - text: Tasks
+          - generic [ref=f1e379]:
+            - link [ref=f1e380] [cursor=pointer]:
+              - /url: /master/recv48eiOAqeBzpI2
+            - generic [ref=f1e382]:
+              - link "RENT-1628 A Bright & Contemporary 2-Bedroom Villa in Ubud Ubud 🟢 Published IDR 55,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e383] [cursor=pointer]:
+                - /url: /master/recv48eiOAqeBzpI2
+                - generic [ref=f1e384]:
+                  - code [ref=f1e385]: RENT-1628
+                  - strong [ref=f1e386]: A Bright & Contemporary 2-Bedroom Villa in Ubud
+                  - generic [ref=f1e387]: Ubud
+                  - generic [ref=f1e388]: 🟢 Published
+                - generic [ref=f1e389]:
+                  - generic [ref=f1e390]: IDR 55,000,000
+                  - generic [ref=f1e391]: Updated 04 Apr 2026
+                  - generic [ref=f1e392]: 🔵 Available
+              - link "★★★☆☆ 68%" [ref=f1e393] [cursor=pointer]:
+                - /url: /master/recv48eiOAqeBzpI2#health
+                - text: ★★★☆☆
+                - generic [ref=f1e394]: 68%
+              - generic [ref=f1e395]:
+                - generic [ref=f1e396]:
+                  - strong [ref=f1e397]: "0"
+                  - text: Favourites
+                - generic [ref=f1e398]:
+                  - strong [ref=f1e399]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e400]:
+                  - strong [ref=f1e401]: Now
+                  - text: Available from
+                - generic [ref=f1e402]:
+                  - emphasis [ref=f1e403]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e404]:
+                  - emphasis [ref=f1e405]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e406]:
+                  - emphasis [ref=f1e407]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e408]:
+                  - strong [ref=f1e409]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e410]:
+                  - strong [ref=f1e411]: "0"
+                  - text: Tasks
+          - generic [ref=f1e412]:
+            - link [ref=f1e413] [cursor=pointer]:
+              - /url: /master/recCljMSDHM2Trski
+            - generic [ref=f1e415]:
+              - link "RENT-1660 A Charming 3-Bedroom Villa for Rent in the Heart of Ubud — Peliatan, Bali Ubud 🟡 Draft — Updated 04 Apr 2026 🔵 Available" [ref=f1e416] [cursor=pointer]:
+                - /url: /master/recCljMSDHM2Trski
+                - generic [ref=f1e417]:
+                  - code [ref=f1e418]: RENT-1660
+                  - strong [ref=f1e419]: A Charming 3-Bedroom Villa for Rent in the Heart of Ubud — Peliatan, Bali
+                  - generic [ref=f1e420]: Ubud
+                  - generic [ref=f1e421]: 🟡 Draft
+                - generic [ref=f1e422]:
+                  - generic [ref=f1e423]: —
+                  - generic [ref=f1e424]: Updated 04 Apr 2026
+                  - generic [ref=f1e425]: 🔵 Available
+              - link "★★★☆☆ 51%" [ref=f1e426] [cursor=pointer]:
+                - /url: /master/recCljMSDHM2Trski#health
+                - text: ★★★☆☆
+                - generic [ref=f1e427]: 51%
+              - link "⚠️ Stagnant >48h ↗" [ref=f1e429] [cursor=pointer]:
+                - /url: /master/recCljMSDHM2Trski
+              - generic [ref=f1e430]:
+                - generic [ref=f1e431]:
+                  - strong [ref=f1e432]: 80%
+                  - text: Complete
+                - generic [ref=f1e433]:
+                  - strong [ref=f1e434]: "0"
+                  - text: Tasks
+          - generic [ref=f1e435]:
+            - link [ref=f1e436] [cursor=pointer]:
+              - /url: /master/recsV6rdkPcORlBIl
+            - generic [ref=f1e438]:
+              - link "RENT-1659 A Jungle View Wellness Villa for Rent — 5 Bedrooms, 80 sqm Pool, Gym & Yoga Deck in Tegallalang, Ubud Ubud 🟡 Draft IDR 890,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e439] [cursor=pointer]:
+                - /url: /master/recsV6rdkPcORlBIl
+                - generic [ref=f1e440]:
+                  - code [ref=f1e441]: RENT-1659
+                  - strong [ref=f1e442]: A Jungle View Wellness Villa for Rent — 5 Bedrooms, 80 sqm Pool, Gym & Yoga Deck in Tegallalang, Ubud
+                  - generic [ref=f1e443]: Ubud
+                  - generic [ref=f1e444]: 🟡 Draft
+                - generic [ref=f1e445]:
+                  - generic [ref=f1e446]: IDR 890,000,000
+                  - generic [ref=f1e447]: Updated 04 Apr 2026
+                  - generic [ref=f1e448]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e449] [cursor=pointer]:
+                - /url: /master/recsV6rdkPcORlBIl#health
+                - text: ★★★☆☆
+                - generic [ref=f1e450]: 60%
+              - link "⚠️ Stagnant >48h ↗" [ref=f1e452] [cursor=pointer]:
+                - /url: /master/recsV6rdkPcORlBIl
+              - generic [ref=f1e453]:
+                - generic [ref=f1e454]:
+                  - strong [ref=f1e455]: 100%
+                  - text: Complete
+                - generic [ref=f1e456]:
+                  - strong [ref=f1e457]: "0"
+                  - text: Tasks
+          - generic [ref=f1e458]:
+            - link [ref=f1e459] [cursor=pointer]:
+              - /url: /master/recgP04FTpFTEviHk
+            - generic [ref=f1e461]:
+              - link "RENT-1624 A Private 2 bedroom Villa Sanctuary in Pejeng — Contemporary Living Amid the Natural Beauty of Bali Ubud 🟢 Published IDR 390,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e462] [cursor=pointer]:
+                - /url: /master/recgP04FTpFTEviHk
+                - generic [ref=f1e463]:
+                  - code [ref=f1e464]: RENT-1624
+                  - strong [ref=f1e465]: A Private 2 bedroom Villa Sanctuary in Pejeng — Contemporary Living Amid the Natural Beauty of Bali
+                  - generic [ref=f1e466]: Ubud
+                  - generic [ref=f1e467]: 🟢 Published
+                - generic [ref=f1e468]:
+                  - generic [ref=f1e469]: IDR 390,000,000
+                  - generic [ref=f1e470]: Updated 04 Apr 2026
+                  - generic [ref=f1e471]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e472] [cursor=pointer]:
+                - /url: /master/recgP04FTpFTEviHk#health
+                - text: ★★★☆☆
+                - generic [ref=f1e473]: 60%
+              - generic [ref=f1e474]:
+                - generic [ref=f1e475]:
+                  - strong [ref=f1e476]: "0"
+                  - text: Favourites
+                - generic [ref=f1e477]:
+                  - strong [ref=f1e478]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e479]:
+                  - strong [ref=f1e480]: Now
+                  - text: Available from
+                - generic [ref=f1e481]:
+                  - emphasis [ref=f1e482]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e483]:
+                  - emphasis [ref=f1e484]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e485]:
+                  - emphasis [ref=f1e486]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e487]:
+                  - strong [ref=f1e488]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e489]:
+                  - strong [ref=f1e490]: "0"
+                  - text: Tasks
+          - generic [ref=f1e491]:
+            - link [ref=f1e492] [cursor=pointer]:
+              - /url: /master/rec1NdL0bvbymHGJN
+            - generic [ref=f1e494]:
+              - link "RENT-1658 A Spacious Luxury Estate for Rent — 6 Bedrooms, Separate Guest House & Two Private Pools in Singakerta, Ubud Ubud 🟡 Draft — Updated 04 Apr 2026 🔵 Available" [ref=f1e495] [cursor=pointer]:
+                - /url: /master/rec1NdL0bvbymHGJN
+                - generic [ref=f1e496]:
+                  - code [ref=f1e497]: RENT-1658
+                  - strong [ref=f1e498]: A Spacious Luxury Estate for Rent — 6 Bedrooms, Separate Guest House & Two Private Pools in Singakerta, Ubud
+                  - generic [ref=f1e499]: Ubud
+                  - generic [ref=f1e500]: 🟡 Draft
+                - generic [ref=f1e501]:
+                  - generic [ref=f1e502]: —
+                  - generic [ref=f1e503]: Updated 04 Apr 2026
+                  - generic [ref=f1e504]: 🔵 Available
+              - link "★★★☆☆ 51%" [ref=f1e505] [cursor=pointer]:
+                - /url: /master/rec1NdL0bvbymHGJN#health
+                - text: ★★★☆☆
+                - generic [ref=f1e506]: 51%
+              - link "⚠️ Stagnant >48h ↗" [ref=f1e508] [cursor=pointer]:
+                - /url: /master/rec1NdL0bvbymHGJN
+              - generic [ref=f1e509]:
+                - generic [ref=f1e510]:
+                  - strong [ref=f1e511]: 80%
+                  - text: Complete
+                - generic [ref=f1e512]:
+                  - strong [ref=f1e513]: "0"
+                  - text: Tasks
+          - generic [ref=f1e514]:
+            - link [ref=f1e515] [cursor=pointer]:
+              - /url: /master/recA0BW4P83MrwXUe
+            - generic [ref=f1e517]:
+              - link "RENT-1639 A Striking Contemporary Villa with Panoramic Rice Field Views in Abiansemal, Bali Ubud 🟢 Published IDR 66,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e518] [cursor=pointer]:
+                - /url: /master/recA0BW4P83MrwXUe
+                - generic [ref=f1e519]:
+                  - code [ref=f1e520]: RENT-1639
+                  - strong [ref=f1e521]: A Striking Contemporary Villa with Panoramic Rice Field Views in Abiansemal, Bali
+                  - generic [ref=f1e522]: Ubud
+                  - generic [ref=f1e523]: 🟢 Published
+                - generic [ref=f1e524]:
+                  - generic [ref=f1e525]: IDR 66,000,000
+                  - generic [ref=f1e526]: Updated 04 Apr 2026
+                  - generic [ref=f1e527]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e528] [cursor=pointer]:
+                - /url: /master/recA0BW4P83MrwXUe#health
+                - text: ★★★☆☆
+                - generic [ref=f1e529]: 60%
+              - generic [ref=f1e530]:
+                - generic [ref=f1e531]:
+                  - strong [ref=f1e532]: "0"
+                  - text: Favourites
+                - generic [ref=f1e533]:
+                  - strong [ref=f1e534]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e535]:
+                  - strong [ref=f1e536]: Now
+                  - text: Available from
+                - generic [ref=f1e537]:
+                  - emphasis [ref=f1e538]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e539]:
+                  - emphasis [ref=f1e540]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e541]:
+                  - emphasis [ref=f1e542]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e543]:
+                  - strong [ref=f1e544]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e545]:
+                  - strong [ref=f1e546]: "0"
+                  - text: Tasks
+          - generic [ref=f1e547]:
+            - link [ref=f1e548] [cursor=pointer]:
+              - /url: /master/recWnTd7J5pfKehLc
+            - generic [ref=f1e550]:
+              - link "RENT-1652 A Thoughtfully Designed 3-Bedroom Eco Villa in a Private Green Community — Sibang, Bali - 3 mins walk from Green School Ubud 🟢 Published IDR 49,183,789 Updated 04 Apr 2026 🔵 Available" [ref=f1e551] [cursor=pointer]:
+                - /url: /master/recWnTd7J5pfKehLc
+                - generic [ref=f1e552]:
+                  - code [ref=f1e553]: RENT-1652
+                  - strong [ref=f1e554]: A Thoughtfully Designed 3-Bedroom Eco Villa in a Private Green Community — Sibang, Bali - 3 mins walk from Green School
+                  - generic [ref=f1e555]: Ubud
+                  - generic [ref=f1e556]: 🟢 Published
+                - generic [ref=f1e557]:
+                  - generic [ref=f1e558]: IDR 49,183,789
+                  - generic [ref=f1e559]: Updated 04 Apr 2026
+                  - generic [ref=f1e560]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e561] [cursor=pointer]:
+                - /url: /master/recWnTd7J5pfKehLc#health
+                - text: ★★★☆☆
+                - generic [ref=f1e562]: 60%
+              - generic [ref=f1e563]:
+                - generic [ref=f1e564]:
+                  - strong [ref=f1e565]: "0"
+                  - text: Favourites
+                - generic [ref=f1e566]:
+                  - strong [ref=f1e567]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e568]:
+                  - strong [ref=f1e569]: Now
+                  - text: Available from
+                - generic [ref=f1e570]:
+                  - emphasis [ref=f1e571]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e572]:
+                  - emphasis [ref=f1e573]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e574]:
+                  - emphasis [ref=f1e575]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e576]:
+                  - strong [ref=f1e577]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e578]:
+                  - strong [ref=f1e579]: "0"
+                  - text: Tasks
+          - generic [ref=f1e580]:
+            - link [ref=f1e581] [cursor=pointer]:
+              - /url: /master/recFB8JGurK2DxEo7
+            - generic [ref=f1e583]:
+              - link "RENT-1599 Affordable 2BR Private Pool Villa in Nyuh Kuning –Long Term Rental Family Home Ubud 🟢 Published IDR 19,800,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e584] [cursor=pointer]:
+                - /url: /master/recFB8JGurK2DxEo7
+                - generic [ref=f1e585]:
+                  - code [ref=f1e586]: RENT-1599
+                  - strong [ref=f1e587]: Affordable 2BR Private Pool Villa in Nyuh Kuning –Long Term Rental Family Home
+                  - generic [ref=f1e588]: Ubud
+                  - generic [ref=f1e589]: 🟢 Published
+                - generic [ref=f1e590]:
+                  - generic [ref=f1e591]: IDR 19,800,000
+                  - generic [ref=f1e592]: Updated 04 Apr 2026
+                  - generic [ref=f1e593]: 🔵 Available
+              - link "★★★☆☆ 68%" [ref=f1e594] [cursor=pointer]:
+                - /url: /master/recFB8JGurK2DxEo7#health
+                - text: ★★★☆☆
+                - generic [ref=f1e595]: 68%
+              - generic [ref=f1e596]:
+                - generic [ref=f1e597]:
+                  - strong [ref=f1e598]: "0"
+                  - text: Favourites
+                - generic [ref=f1e599]:
+                  - strong [ref=f1e600]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e601]:
+                  - strong [ref=f1e602]: 1 August 2026
+                  - text: Available from
+                - generic [ref=f1e603]:
+                  - emphasis [ref=f1e604]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e605]:
+                  - emphasis [ref=f1e606]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e607]:
+                  - emphasis [ref=f1e608]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e609]:
+                  - strong [ref=f1e610]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e611]:
+                  - strong [ref=f1e612]: "0"
+                  - text: Tasks
+          - generic [ref=f1e613]:
+            - link [ref=f1e614] [cursor=pointer]:
+              - /url: /master/recT6HdaMroWiXpWL
+            - generic [ref=f1e616]:
+              - link "RENT-1451 Alke Villa Ubud 🟢 Published IDR 35,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e617] [cursor=pointer]:
+                - /url: /master/recT6HdaMroWiXpWL
+                - generic [ref=f1e618]:
+                  - code [ref=f1e619]: RENT-1451
+                  - strong [ref=f1e620]: Alke Villa
+                  - generic [ref=f1e621]: Ubud
+                  - generic [ref=f1e622]: 🟢 Published
+                - generic [ref=f1e623]:
+                  - generic [ref=f1e624]: IDR 35,000,000
+                  - generic [ref=f1e625]: Updated 04 Apr 2026
+                  - generic [ref=f1e626]: 🔵 Available
+              - link "★★★☆☆ 68%" [ref=f1e627] [cursor=pointer]:
+                - /url: /master/recT6HdaMroWiXpWL#health
+                - text: ★★★☆☆
+                - generic [ref=f1e628]: 68%
+              - generic [ref=f1e629]:
+                - generic [ref=f1e630]:
+                  - strong [ref=f1e631]: "0"
+                  - text: Favourites
+                - generic [ref=f1e632]:
+                  - strong [ref=f1e633]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e634]:
+                  - strong [ref=f1e635]: Now
+                  - text: Available from
+                - generic [ref=f1e636]:
+                  - emphasis [ref=f1e637]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e638]:
+                  - emphasis [ref=f1e639]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e640]:
+                  - emphasis [ref=f1e641]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e642]:
+                  - strong [ref=f1e643]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e644]:
+                  - strong [ref=f1e645]: "0"
+                  - text: Tasks
+          - generic [ref=f1e646]:
+            - link "🏠" [ref=f1e647] [cursor=pointer]:
+              - /url: /master/rechwp2QCQbPiZqpX
+            - generic [ref=f1e650]:
+              - link "RENT-1452 Atma Joglo House Ubud 🔴 Archived — Updated 04 Apr 2026 🟣 Rented" [ref=f1e651] [cursor=pointer]:
+                - /url: /master/rechwp2QCQbPiZqpX
+                - generic [ref=f1e652]:
+                  - code [ref=f1e653]: RENT-1452
+                  - strong [ref=f1e654]: Atma Joglo House
+                  - generic [ref=f1e655]: Ubud
+                  - generic [ref=f1e656]: 🔴 Archived
+                - generic [ref=f1e657]:
+                  - generic [ref=f1e658]: —
+                  - generic [ref=f1e659]: Updated 04 Apr 2026
+                  - generic [ref=f1e660]: 🟣 Rented
+              - link "★★★☆☆ 51%" [ref=f1e661] [cursor=pointer]:
+                - /url: /master/rechwp2QCQbPiZqpX#health
+                - text: ★★★☆☆
+                - generic [ref=f1e662]: 51%
+              - generic [ref=f1e663]:
+                - generic [ref=f1e664]:
+                  - emphasis [ref=f1e665]: not tracked
+                  - text: Closed reason
+                - generic [ref=f1e666]:
+                  - strong [ref=f1e667]: "0"
+                  - text: Tasks
+          - generic [ref=f1e668]:
+            - link [ref=f1e669] [cursor=pointer]:
+              - /url: /master/recwkSMuudeToUb9B
+            - generic [ref=f1e671]:
+              - link "RENT-1453 Bambu Nest GS Ubud 🟢 Published IDR 89,000,000 Updated 04 Apr 2026 🟣 Rented" [ref=f1e672] [cursor=pointer]:
+                - /url: /master/recwkSMuudeToUb9B
+                - generic [ref=f1e673]:
+                  - code [ref=f1e674]: RENT-1453
+                  - strong [ref=f1e675]: Bambu Nest GS
+                  - generic [ref=f1e676]: Ubud
+                  - generic [ref=f1e677]: 🟢 Published
+                - generic [ref=f1e678]:
+                  - generic [ref=f1e679]: IDR 89,000,000
+                  - generic [ref=f1e680]: Updated 04 Apr 2026
+                  - generic [ref=f1e681]: 🟣 Rented
+              - link "★★★☆☆ 60%" [ref=f1e682] [cursor=pointer]:
+                - /url: /master/recwkSMuudeToUb9B#health
+                - text: ★★★☆☆
+                - generic [ref=f1e683]: 60%
+              - generic [ref=f1e684]:
+                - generic [ref=f1e685]:
+                  - strong [ref=f1e686]: "0"
+                  - text: Favourites
+                - generic [ref=f1e687]:
+                  - strong [ref=f1e688]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e689]:
+                  - strong [ref=f1e690]: Now
+                  - text: Available from
+                - generic [ref=f1e691]:
+                  - emphasis [ref=f1e692]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e693]:
+                  - emphasis [ref=f1e694]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e695]:
+                  - emphasis [ref=f1e696]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e697]:
+                  - strong [ref=f1e698]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e699]:
+                  - strong [ref=f1e700]: "0"
+                  - text: Tasks
+          - generic [ref=f1e701]:
+            - link "🏠" [ref=f1e702] [cursor=pointer]:
+              - /url: /master/recYwJ8Wbi2ctK9oT
+            - generic [ref=f1e705]:
+              - link "RENT-1613 Benny House Ubud 🟠 On Hold — Updated 04 Apr 2026 🔵 Available" [ref=f1e706] [cursor=pointer]:
+                - /url: /master/recYwJ8Wbi2ctK9oT
+                - generic [ref=f1e707]:
+                  - code [ref=f1e708]: RENT-1613
+                  - strong [ref=f1e709]: Benny House
+                  - generic [ref=f1e710]: Ubud
+                  - generic [ref=f1e711]: 🟠 On Hold
+                - generic [ref=f1e712]:
+                  - generic [ref=f1e713]: —
+                  - generic [ref=f1e714]: Updated 04 Apr 2026
+                  - generic [ref=f1e715]: 🔵 Available
+              - link "★☆☆☆☆ 17%" [ref=f1e716] [cursor=pointer]:
+                - /url: /master/recYwJ8Wbi2ctK9oT#health
+                - text: ★☆☆☆☆
+                - generic [ref=f1e717]: 17%
+              - generic [ref=f1e718]:
+                - generic [ref=f1e719]:
+                  - strong [ref=f1e720]: "0"
+                  - text: Favourites
+                - generic [ref=f1e721]:
+                  - strong [ref=f1e722]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e723]:
+                  - strong [ref=f1e724]: "0"
+                  - text: Tasks
+          - generic [ref=f1e725]:
+            - link [ref=f1e726] [cursor=pointer]:
+              - /url: /master/recDhwbJaKq74MrQ8
+            - generic [ref=f1e728]:
+              - link "RENT-1522 Betawi Ubud 🟢 Published IDR 12,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e729] [cursor=pointer]:
+                - /url: /master/recDhwbJaKq74MrQ8
+                - generic [ref=f1e730]:
+                  - code [ref=f1e731]: RENT-1522
+                  - strong [ref=f1e732]: Betawi
+                  - generic [ref=f1e733]: Ubud
+                  - generic [ref=f1e734]: 🟢 Published
+                - generic [ref=f1e735]:
+                  - generic [ref=f1e736]: IDR 12,000,000
+                  - generic [ref=f1e737]: Updated 04 Apr 2026
+                  - generic [ref=f1e738]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e739] [cursor=pointer]:
+                - /url: /master/recDhwbJaKq74MrQ8#health
+                - text: ★★★☆☆
+                - generic [ref=f1e740]: 60%
+              - generic [ref=f1e741]:
+                - generic [ref=f1e742]:
+                  - strong [ref=f1e743]: "0"
+                  - text: Favourites
+                - generic [ref=f1e744]:
+                  - strong [ref=f1e745]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e746]:
+                  - strong [ref=f1e747]: Now
+                  - text: Available from
+                - generic [ref=f1e748]:
+                  - emphasis [ref=f1e749]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e750]:
+                  - emphasis [ref=f1e751]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e752]:
+                  - emphasis [ref=f1e753]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e754]:
+                  - strong [ref=f1e755]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e756]:
+                  - strong [ref=f1e757]: "0"
+                  - text: Tasks
+          - generic [ref=f1e758]:
+            - link [ref=f1e759] [cursor=pointer]:
+              - /url: /master/recpvQhQnjXUb7PUn
+            - generic [ref=f1e761]:
+              - link "RENT-1456 Blue Swing Villa 1 Ubud 🟢 Published IDR 27,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e762] [cursor=pointer]:
+                - /url: /master/recpvQhQnjXUb7PUn
+                - generic [ref=f1e763]:
+                  - code [ref=f1e764]: RENT-1456
+                  - strong [ref=f1e765]: Blue Swing Villa 1
+                  - generic [ref=f1e766]: Ubud
+                  - generic [ref=f1e767]: 🟢 Published
+                - generic [ref=f1e768]:
+                  - generic [ref=f1e769]: IDR 27,000,000
+                  - generic [ref=f1e770]: Updated 04 Apr 2026
+                  - generic [ref=f1e771]: 🔵 Available
+              - link "★★★☆☆ 68%" [ref=f1e772] [cursor=pointer]:
+                - /url: /master/recpvQhQnjXUb7PUn#health
+                - text: ★★★☆☆
+                - generic [ref=f1e773]: 68%
+              - generic [ref=f1e774]:
+                - generic [ref=f1e775]:
+                  - strong [ref=f1e776]: "0"
+                  - text: Favourites
+                - generic [ref=f1e777]:
+                  - strong [ref=f1e778]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e779]:
+                  - strong [ref=f1e780]: Now
+                  - text: Available from
+                - generic [ref=f1e781]:
+                  - emphasis [ref=f1e782]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e783]:
+                  - emphasis [ref=f1e784]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e785]:
+                  - emphasis [ref=f1e786]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e787]:
+                  - strong [ref=f1e788]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e789]:
+                  - strong [ref=f1e790]: "0"
+                  - text: Tasks
+          - generic [ref=f1e791]:
+            - link [ref=f1e792] [cursor=pointer]:
+              - /url: /master/recr5KhPkCjgkLrJ7
+            - generic [ref=f1e794]:
+              - link "RENT-1457 Blue Swing Villa 2 Ubud 🟢 Published IDR 27,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e795] [cursor=pointer]:
+                - /url: /master/recr5KhPkCjgkLrJ7
+                - generic [ref=f1e796]:
+                  - code [ref=f1e797]: RENT-1457
+                  - strong [ref=f1e798]: Blue Swing Villa 2
+                  - generic [ref=f1e799]: Ubud
+                  - generic [ref=f1e800]: 🟢 Published
+                - generic [ref=f1e801]:
+                  - generic [ref=f1e802]: IDR 27,000,000
+                  - generic [ref=f1e803]: Updated 04 Apr 2026
+                  - generic [ref=f1e804]: 🔵 Available
+              - link "★★★☆☆ 68%" [ref=f1e805] [cursor=pointer]:
+                - /url: /master/recr5KhPkCjgkLrJ7#health
+                - text: ★★★☆☆
+                - generic [ref=f1e806]: 68%
+              - generic [ref=f1e807]:
+                - generic [ref=f1e808]:
+                  - strong [ref=f1e809]: "0"
+                  - text: Favourites
+                - generic [ref=f1e810]:
+                  - strong [ref=f1e811]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e812]:
+                  - strong [ref=f1e813]: Now
+                  - text: Available from
+                - generic [ref=f1e814]:
+                  - emphasis [ref=f1e815]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e816]:
+                  - emphasis [ref=f1e817]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e818]:
+                  - emphasis [ref=f1e819]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e820]:
+                  - strong [ref=f1e821]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e822]:
+                  - strong [ref=f1e823]: "0"
+                  - text: Tasks
+          - generic [ref=f1e824]:
+            - link [ref=f1e825] [cursor=pointer]:
+              - /url: /master/rec8p6Fk3J2S3i6V2
+            - generic [ref=f1e827]:
+              - link "RENT-1458 Butterfly Bungalow Ubud 🟢 Published IDR 15,000,000 Updated 04 Apr 2026 🟣 Rented" [ref=f1e828] [cursor=pointer]:
+                - /url: /master/rec8p6Fk3J2S3i6V2
+                - generic [ref=f1e829]:
+                  - code [ref=f1e830]: RENT-1458
+                  - strong [ref=f1e831]: Butterfly Bungalow
+                  - generic [ref=f1e832]: Ubud
+                  - generic [ref=f1e833]: 🟢 Published
+                - generic [ref=f1e834]:
+                  - generic [ref=f1e835]: IDR 15,000,000
+                  - generic [ref=f1e836]: Updated 04 Apr 2026
+                  - generic [ref=f1e837]: 🟣 Rented
+              - link "★★★☆☆ 60%" [ref=f1e838] [cursor=pointer]:
+                - /url: /master/rec8p6Fk3J2S3i6V2#health
+                - text: ★★★☆☆
+                - generic [ref=f1e839]: 60%
+              - generic [ref=f1e840]:
+                - generic [ref=f1e841]:
+                  - strong [ref=f1e842]: "0"
+                  - text: Favourites
+                - generic [ref=f1e843]:
+                  - strong [ref=f1e844]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e845]:
+                  - strong [ref=f1e846]: January 1, 2027
+                  - text: Available from
+                - generic [ref=f1e847]:
+                  - emphasis [ref=f1e848]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e849]:
+                  - emphasis [ref=f1e850]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e851]:
+                  - emphasis [ref=f1e852]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e853]:
+                  - strong [ref=f1e854]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e855]:
+                  - strong [ref=f1e856]: "0"
+                  - text: Tasks
+          - generic [ref=f1e857]:
+            - link [ref=f1e858] [cursor=pointer]:
+              - /url: /master/recluSf1sjRBfXilz
+            - generic [ref=f1e860]:
+              - link "RENT-1459 Cala Villa Ubud 🟢 Published IDR 12,000,000 Updated 04 Apr 2026 🟣 Rented" [ref=f1e861] [cursor=pointer]:
+                - /url: /master/recluSf1sjRBfXilz
+                - generic [ref=f1e862]:
+                  - code [ref=f1e863]: RENT-1459
+                  - strong [ref=f1e864]: Cala Villa
+                  - generic [ref=f1e865]: Ubud
+                  - generic [ref=f1e866]: 🟢 Published
+                - generic [ref=f1e867]:
+                  - generic [ref=f1e868]: IDR 12,000,000
+                  - generic [ref=f1e869]: Updated 04 Apr 2026
+                  - generic [ref=f1e870]: 🟣 Rented
+              - link "★★★☆☆ 60%" [ref=f1e871] [cursor=pointer]:
+                - /url: /master/recluSf1sjRBfXilz#health
+                - text: ★★★☆☆
+                - generic [ref=f1e872]: 60%
+              - generic [ref=f1e873]:
+                - generic [ref=f1e874]:
+                  - strong [ref=f1e875]: "0"
+                  - text: Favourites
+                - generic [ref=f1e876]:
+                  - strong [ref=f1e877]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e878]:
+                  - strong [ref=f1e879]: Now
+                  - text: Available from
+                - generic [ref=f1e880]:
+                  - emphasis [ref=f1e881]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e882]:
+                  - emphasis [ref=f1e883]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e884]:
+                  - emphasis [ref=f1e885]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e886]:
+                  - strong [ref=f1e887]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e888]:
+                  - strong [ref=f1e889]: "0"
+                  - text: Tasks
+          - generic [ref=f1e890]:
+            - link "🏠" [ref=f1e891] [cursor=pointer]:
+              - /url: /master/recrhYtvnXr52P1lW
+            - generic [ref=f1e894]:
+              - link "RENT-1460 Casa Lily Ubud 🔴 Archived — Updated 04 Apr 2026 Upon Request" [ref=f1e895] [cursor=pointer]:
+                - /url: /master/recrhYtvnXr52P1lW
+                - generic [ref=f1e896]:
+                  - code [ref=f1e897]: RENT-1460
+                  - strong [ref=f1e898]: Casa Lily
+                  - generic [ref=f1e899]: Ubud
+                  - generic [ref=f1e900]: 🔴 Archived
+                - generic [ref=f1e901]:
+                  - generic [ref=f1e902]: —
+                  - generic [ref=f1e903]: Updated 04 Apr 2026
+                  - generic [ref=f1e904]: Upon Request
+              - link "★★★☆☆ 51%" [ref=f1e905] [cursor=pointer]:
+                - /url: /master/recrhYtvnXr52P1lW#health
+                - text: ★★★☆☆
+                - generic [ref=f1e906]: 51%
+              - generic [ref=f1e907]:
+                - generic [ref=f1e908]:
+                  - emphasis [ref=f1e909]: not tracked
+                  - text: Closed reason
+                - generic [ref=f1e910]:
+                  - strong [ref=f1e911]: "0"
+                  - text: Tasks
+          - generic [ref=f1e912]:
+            - link "🏠" [ref=f1e913] [cursor=pointer]:
+              - /url: /master/recJhofYY1LPr0r9s
+            - generic [ref=f1e916]:
+              - link "RENT-1461 Casa Mano Ubud 🟠 On Hold — Updated 04 Apr 2026 🟣 Rented" [ref=f1e917] [cursor=pointer]:
+                - /url: /master/recJhofYY1LPr0r9s
+                - generic [ref=f1e918]:
+                  - code [ref=f1e919]: RENT-1461
+                  - strong [ref=f1e920]: Casa Mano
+                  - generic [ref=f1e921]: Ubud
+                  - generic [ref=f1e922]: 🟠 On Hold
+                - generic [ref=f1e923]:
+                  - generic [ref=f1e924]: —
+                  - generic [ref=f1e925]: Updated 04 Apr 2026
+                  - generic [ref=f1e926]: 🟣 Rented
+              - link "★★★☆☆ 51%" [ref=f1e927] [cursor=pointer]:
+                - /url: /master/recJhofYY1LPr0r9s#health
+                - text: ★★★☆☆
+                - generic [ref=f1e928]: 51%
+              - generic [ref=f1e929]:
+                - generic [ref=f1e930]:
+                  - strong [ref=f1e931]: "0"
+                  - text: Favourites
+                - generic [ref=f1e932]:
+                  - strong [ref=f1e933]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e934]:
+                  - strong [ref=f1e935]: "0"
+                  - text: Tasks
+          - generic [ref=f1e936]:
+            - link "🏠" [ref=f1e937] [cursor=pointer]:
+              - /url: /master/recU30xGs7ohLEz7K
+            - generic [ref=f1e940]:
+              - link "RENT-1463 Casa Wari Ubud 🔴 Archived — Updated 04 Apr 2026 Archived" [ref=f1e941] [cursor=pointer]:
+                - /url: /master/recU30xGs7ohLEz7K
+                - generic [ref=f1e942]:
+                  - code [ref=f1e943]: RENT-1463
+                  - strong [ref=f1e944]: Casa Wari
+                  - generic [ref=f1e945]: Ubud
+                  - generic [ref=f1e946]: 🔴 Archived
+                - generic [ref=f1e947]:
+                  - generic [ref=f1e948]: —
+                  - generic [ref=f1e949]: Updated 04 Apr 2026
+                  - generic [ref=f1e950]: Archived
+              - link "★★★☆☆ 51%" [ref=f1e951] [cursor=pointer]:
+                - /url: /master/recU30xGs7ohLEz7K#health
+                - text: ★★★☆☆
+                - generic [ref=f1e952]: 51%
+              - generic [ref=f1e953]:
+                - generic [ref=f1e954]:
+                  - emphasis [ref=f1e955]: not tracked
+                  - text: Closed reason
+                - generic [ref=f1e956]:
+                  - strong [ref=f1e957]: "0"
+                  - text: Tasks
+          - generic [ref=f1e958]:
+            - link "🏠" [ref=f1e959] [cursor=pointer]:
+              - /url: /master/reckN1Qm1e3WVRGXt
+            - generic [ref=f1e962]:
+              - link "RENT-1464 Casa Yandi Ubud 🔴 Archived — Updated 04 Apr 2026 Archived" [ref=f1e963] [cursor=pointer]:
+                - /url: /master/reckN1Qm1e3WVRGXt
+                - generic [ref=f1e964]:
+                  - code [ref=f1e965]: RENT-1464
+                  - strong [ref=f1e966]: Casa Yandi
+                  - generic [ref=f1e967]: Ubud
+                  - generic [ref=f1e968]: 🔴 Archived
+                - generic [ref=f1e969]:
+                  - generic [ref=f1e970]: —
+                  - generic [ref=f1e971]: Updated 04 Apr 2026
+                  - generic [ref=f1e972]: Archived
+              - link "★★★☆☆ 51%" [ref=f1e973] [cursor=pointer]:
+                - /url: /master/reckN1Qm1e3WVRGXt#health
+                - text: ★★★☆☆
+                - generic [ref=f1e974]: 51%
+              - generic [ref=f1e975]:
+                - generic [ref=f1e976]:
+                  - emphasis [ref=f1e977]: not tracked
+                  - text: Closed reason
+                - generic [ref=f1e978]:
+                  - strong [ref=f1e979]: "0"
+                  - text: Tasks
+          - generic [ref=f1e980]:
+            - link [ref=f1e981] [cursor=pointer]:
+              - /url: /master/rec2rnTts3aVeODXu
+            - generic [ref=f1e983]:
+              - link "RENT-1462 Casa Yemi Ubud 🟢 Published IDR 33,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e984] [cursor=pointer]:
+                - /url: /master/rec2rnTts3aVeODXu
+                - generic [ref=f1e985]:
+                  - code [ref=f1e986]: RENT-1462
+                  - strong [ref=f1e987]: Casa Yemi
+                  - generic [ref=f1e988]: Ubud
+                  - generic [ref=f1e989]: 🟢 Published
+                - generic [ref=f1e990]:
+                  - generic [ref=f1e991]: IDR 33,000,000
+                  - generic [ref=f1e992]: Updated 04 Apr 2026
+                  - generic [ref=f1e993]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e994] [cursor=pointer]:
+                - /url: /master/rec2rnTts3aVeODXu#health
+                - text: ★★★☆☆
+                - generic [ref=f1e995]: 60%
+              - generic [ref=f1e996]:
+                - generic [ref=f1e997]:
+                  - strong [ref=f1e998]: "0"
+                  - text: Favourites
+                - generic [ref=f1e999]:
+                  - strong [ref=f1e1000]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1001]:
+                  - strong [ref=f1e1002]: Now
+                  - text: Available from
+                - generic [ref=f1e1003]:
+                  - emphasis [ref=f1e1004]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e1005]:
+                  - emphasis [ref=f1e1006]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e1007]:
+                  - emphasis [ref=f1e1008]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e1009]:
+                  - strong [ref=f1e1010]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e1011]:
+                  - strong [ref=f1e1012]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1013]:
+            - link [ref=f1e1014] [cursor=pointer]:
+              - /url: /master/recpGvXYF2kc8eaIh
+            - generic [ref=f1e1016]:
+              - link "RENT-1465 Casabelle Villa Ubud 🟢 Published IDR 51,866,541 Updated 04 Apr 2026 🟣 Rented" [ref=f1e1017] [cursor=pointer]:
+                - /url: /master/recpGvXYF2kc8eaIh
+                - generic [ref=f1e1018]:
+                  - code [ref=f1e1019]: RENT-1465
+                  - strong [ref=f1e1020]: Casabelle Villa
+                  - generic [ref=f1e1021]: Ubud
+                  - generic [ref=f1e1022]: 🟢 Published
+                - generic [ref=f1e1023]:
+                  - generic [ref=f1e1024]: IDR 51,866,541
+                  - generic [ref=f1e1025]: Updated 04 Apr 2026
+                  - generic [ref=f1e1026]: 🟣 Rented
+              - link "★★★☆☆ 60%" [ref=f1e1027] [cursor=pointer]:
+                - /url: /master/recpGvXYF2kc8eaIh#health
+                - text: ★★★☆☆
+                - generic [ref=f1e1028]: 60%
+              - generic [ref=f1e1029]:
+                - generic [ref=f1e1030]:
+                  - strong [ref=f1e1031]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1032]:
+                  - strong [ref=f1e1033]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1034]:
+                  - strong [ref=f1e1035]: 1 October 2027
+                  - text: Available from
+                - generic [ref=f1e1036]:
+                  - emphasis [ref=f1e1037]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e1038]:
+                  - emphasis [ref=f1e1039]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e1040]:
+                  - emphasis [ref=f1e1041]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e1042]:
+                  - strong [ref=f1e1043]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e1044]:
+                  - strong [ref=f1e1045]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1046]:
+            - link [ref=f1e1047] [cursor=pointer]:
+              - /url: /master/rec14uC7Cne6bcuxD
+            - generic [ref=f1e1049]:
+              - link "RENT-1622 Charming 3-Bedroom Balinese Villa with Open-Air Bathrooms — Pejeng, Ubud Ubud 🟠 On Hold IDR 21,730,292 Updated 04 Apr 2026 🔵 Available" [ref=f1e1050] [cursor=pointer]:
+                - /url: /master/rec14uC7Cne6bcuxD
+                - generic [ref=f1e1051]:
+                  - code [ref=f1e1052]: RENT-1622
+                  - strong [ref=f1e1053]: Charming 3-Bedroom Balinese Villa with Open-Air Bathrooms — Pejeng, Ubud
+                  - generic [ref=f1e1054]: Ubud
+                  - generic [ref=f1e1055]: 🟠 On Hold
+                - generic [ref=f1e1056]:
+                  - generic [ref=f1e1057]: IDR 21,730,292
+                  - generic [ref=f1e1058]: Updated 04 Apr 2026
+                  - generic [ref=f1e1059]: 🔵 Available
+              - link "★★★☆☆ 51%" [ref=f1e1060] [cursor=pointer]:
+                - /url: /master/rec14uC7Cne6bcuxD#health
+                - text: ★★★☆☆
+                - generic [ref=f1e1061]: 51%
+              - generic [ref=f1e1062]:
+                - generic [ref=f1e1063]:
+                  - strong [ref=f1e1064]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1065]:
+                  - strong [ref=f1e1066]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1067]:
+                  - strong [ref=f1e1068]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1069]:
+            - link "🏠" [ref=f1e1070] [cursor=pointer]:
+              - /url: /master/rec0GUTPXhBg3qGHc
+            - generic [ref=f1e1073]:
+              - link "RENT-1620 Charming 3-Bedroom Jungle Villa with Private Spa & Rice Field Views – Ubud, Bali Ubud 🟠 On Hold IDR 40,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e1074] [cursor=pointer]:
+                - /url: /master/rec0GUTPXhBg3qGHc
+                - generic [ref=f1e1075]:
+                  - code [ref=f1e1076]: RENT-1620
+                  - strong [ref=f1e1077]: Charming 3-Bedroom Jungle Villa with Private Spa & Rice Field Views – Ubud, Bali
+                  - generic [ref=f1e1078]: Ubud
+                  - generic [ref=f1e1079]: 🟠 On Hold
+                - generic [ref=f1e1080]:
+                  - generic [ref=f1e1081]: IDR 40,000,000
+                  - generic [ref=f1e1082]: Updated 04 Apr 2026
+                  - generic [ref=f1e1083]: 🔵 Available
+              - link "★★★☆☆ 51%" [ref=f1e1084] [cursor=pointer]:
+                - /url: /master/rec0GUTPXhBg3qGHc#health
+                - text: ★★★☆☆
+                - generic [ref=f1e1085]: 51%
+              - generic [ref=f1e1086]:
+                - generic [ref=f1e1087]:
+                  - strong [ref=f1e1088]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1089]:
+                  - strong [ref=f1e1090]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1091]:
+                  - strong [ref=f1e1092]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1093]:
+            - link [ref=f1e1094] [cursor=pointer]:
+              - /url: /master/recIadbMiUnGZmhSi
+            - generic [ref=f1e1096]:
+              - link "RENT-1654 Charming 3-Bedroom Traditional Balinese Villa with Tropical Garden — 5 mins from Green School Ubud 🟢 Published IDR 310,000,000 Updated 04 Apr 2026 🟣 Rented" [ref=f1e1097] [cursor=pointer]:
+                - /url: /master/recIadbMiUnGZmhSi
+                - generic [ref=f1e1098]:
+                  - code [ref=f1e1099]: RENT-1654
+                  - strong [ref=f1e1100]: Charming 3-Bedroom Traditional Balinese Villa with Tropical Garden — 5 mins from Green School
+                  - generic [ref=f1e1101]: Ubud
+                  - generic [ref=f1e1102]: 🟢 Published
+                - generic [ref=f1e1103]:
+                  - generic [ref=f1e1104]: IDR 310,000,000
+                  - generic [ref=f1e1105]: Updated 04 Apr 2026
+                  - generic [ref=f1e1106]: 🟣 Rented
+              - link "★★★☆☆ 60%" [ref=f1e1107] [cursor=pointer]:
+                - /url: /master/recIadbMiUnGZmhSi#health
+                - text: ★★★☆☆
+                - generic [ref=f1e1108]: 60%
+              - generic [ref=f1e1109]:
+                - generic [ref=f1e1110]:
+                  - strong [ref=f1e1111]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1112]:
+                  - strong [ref=f1e1113]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1114]:
+                  - strong [ref=f1e1115]: N.a
+                  - text: Available from
+                - generic [ref=f1e1116]:
+                  - emphasis [ref=f1e1117]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e1118]:
+                  - emphasis [ref=f1e1119]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e1120]:
+                  - emphasis [ref=f1e1121]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e1122]:
+                  - strong [ref=f1e1123]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e1124]:
+                  - strong [ref=f1e1125]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1126]:
+            - link [ref=f1e1127] [cursor=pointer]:
+              - /url: /master/rec1qOFWFOCsEFmAu
+            - generic [ref=f1e1129]:
+              - link "RENT-1612 Charming Joglo House with Direct Rice Field Views and Lush Private Garden in Ubud, Bali Ubud 🟢 Published IDR 35,500,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e1130] [cursor=pointer]:
+                - /url: /master/rec1qOFWFOCsEFmAu
+                - generic [ref=f1e1131]:
+                  - code [ref=f1e1132]: RENT-1612
+                  - strong [ref=f1e1133]: Charming Joglo House with Direct Rice Field Views and Lush Private Garden in Ubud, Bali
+                  - generic [ref=f1e1134]: Ubud
+                  - generic [ref=f1e1135]: 🟢 Published
+                - generic [ref=f1e1136]:
+                  - generic [ref=f1e1137]: IDR 35,500,000
+                  - generic [ref=f1e1138]: Updated 04 Apr 2026
+                  - generic [ref=f1e1139]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e1140] [cursor=pointer]:
+                - /url: /master/rec1qOFWFOCsEFmAu#health
+                - text: ★★★☆☆
+                - generic [ref=f1e1141]: 60%
+              - generic [ref=f1e1142]:
+                - generic [ref=f1e1143]:
+                  - strong [ref=f1e1144]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1145]:
+                  - strong [ref=f1e1146]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1147]:
+                  - strong [ref=f1e1148]: Now
+                  - text: Available from
+                - generic [ref=f1e1149]:
+                  - emphasis [ref=f1e1150]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e1151]:
+                  - emphasis [ref=f1e1152]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e1153]:
+                  - emphasis [ref=f1e1154]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e1155]:
+                  - strong [ref=f1e1156]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e1157]:
+                  - strong [ref=f1e1158]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1159]:
+            - link [ref=f1e1160] [cursor=pointer]:
+              - /url: /master/recJwWc1mfCyXZyTo
+            - generic [ref=f1e1162]:
+              - link "RENT-1631 Charming Villa in Nyuh Kuning — 2 Bedrooms + Studio Ubud 🟢 Published IDR 28,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e1163] [cursor=pointer]:
+                - /url: /master/recJwWc1mfCyXZyTo
+                - generic [ref=f1e1164]:
+                  - code [ref=f1e1165]: RENT-1631
+                  - strong [ref=f1e1166]: Charming Villa in Nyuh Kuning — 2 Bedrooms + Studio
+                  - generic [ref=f1e1167]: Ubud
+                  - generic [ref=f1e1168]: 🟢 Published
+                - generic [ref=f1e1169]:
+                  - generic [ref=f1e1170]: IDR 28,000,000
+                  - generic [ref=f1e1171]: Updated 04 Apr 2026
+                  - generic [ref=f1e1172]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e1173] [cursor=pointer]:
+                - /url: /master/recJwWc1mfCyXZyTo#health
+                - text: ★★★☆☆
+                - generic [ref=f1e1174]: 60%
+              - generic [ref=f1e1175]:
+                - generic [ref=f1e1176]:
+                  - strong [ref=f1e1177]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1178]:
+                  - strong [ref=f1e1179]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1180]:
+                  - strong [ref=f1e1181]: Now
+                  - text: Available from
+                - generic [ref=f1e1182]:
+                  - emphasis [ref=f1e1183]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e1184]:
+                  - emphasis [ref=f1e1185]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e1186]:
+                  - emphasis [ref=f1e1187]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e1188]:
+                  - strong [ref=f1e1189]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e1190]:
+                  - strong [ref=f1e1191]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1192]:
+            - link "🏠" [ref=f1e1193] [cursor=pointer]:
+              - /url: /master/reco0s9B7H8RnPgBJ
+            - generic [ref=f1e1196]:
+              - link "RENT-1467 Cocoa Villa Ubud 🟠 On Hold — Updated 04 Apr 2026 Upon Request" [ref=f1e1197] [cursor=pointer]:
+                - /url: /master/reco0s9B7H8RnPgBJ
+                - generic [ref=f1e1198]:
+                  - code [ref=f1e1199]: RENT-1467
+                  - strong [ref=f1e1200]: Cocoa Villa
+                  - generic [ref=f1e1201]: Ubud
+                  - generic [ref=f1e1202]: 🟠 On Hold
+                - generic [ref=f1e1203]:
+                  - generic [ref=f1e1204]: —
+                  - generic [ref=f1e1205]: Updated 04 Apr 2026
+                  - generic [ref=f1e1206]: Upon Request
+              - link "★★★☆☆ 51%" [ref=f1e1207] [cursor=pointer]:
+                - /url: /master/reco0s9B7H8RnPgBJ#health
+                - text: ★★★☆☆
+                - generic [ref=f1e1208]: 51%
+              - generic [ref=f1e1209]:
+                - generic [ref=f1e1210]:
+                  - strong [ref=f1e1211]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1212]:
+                  - strong [ref=f1e1213]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1214]:
+                  - strong [ref=f1e1215]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1216]:
+            - link [ref=f1e1217] [cursor=pointer]:
+              - /url: /master/recv222ObaVYkv05Q
+            - generic [ref=f1e1219]:
+              - link "RENT-1468 Damai Eco Villa Ubud 🟢 Published IDR 18,000,000 Updated 04 Apr 2026 🔵 Available" [ref=f1e1220] [cursor=pointer]:
+                - /url: /master/recv222ObaVYkv05Q
+                - generic [ref=f1e1221]:
+                  - code [ref=f1e1222]: RENT-1468
+                  - strong [ref=f1e1223]: Damai Eco Villa
+                  - generic [ref=f1e1224]: Ubud
+                  - generic [ref=f1e1225]: 🟢 Published
+                - generic [ref=f1e1226]:
+                  - generic [ref=f1e1227]: IDR 18,000,000
+                  - generic [ref=f1e1228]: Updated 04 Apr 2026
+                  - generic [ref=f1e1229]: 🔵 Available
+              - link "★★★☆☆ 60%" [ref=f1e1230] [cursor=pointer]:
+                - /url: /master/recv222ObaVYkv05Q#health
+                - text: ★★★☆☆
+                - generic [ref=f1e1231]: 60%
+              - generic [ref=f1e1232]:
+                - generic [ref=f1e1233]:
+                  - strong [ref=f1e1234]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1235]:
+                  - strong [ref=f1e1236]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1237]:
+                  - strong [ref=f1e1238]: Now
+                  - text: Available from
+                - generic [ref=f1e1239]:
+                  - emphasis [ref=f1e1240]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e1241]:
+                  - emphasis [ref=f1e1242]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e1243]:
+                  - emphasis [ref=f1e1244]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e1245]:
+                  - strong [ref=f1e1246]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e1247]:
+                  - strong [ref=f1e1248]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1249]:
+            - link [ref=f1e1250] [cursor=pointer]:
+              - /url: /master/rec07b3u3dRLQZiWY
+            - generic [ref=f1e1252]:
+              - link "RENT-1469 Emerald Lotus Villa Ubud 🟢 Published IDR 76,900,000 Updated 04 Apr 2026 🟣 Rented" [ref=f1e1253] [cursor=pointer]:
+                - /url: /master/rec07b3u3dRLQZiWY
+                - generic [ref=f1e1254]:
+                  - code [ref=f1e1255]: RENT-1469
+                  - strong [ref=f1e1256]: Emerald Lotus Villa
+                  - generic [ref=f1e1257]: Ubud
+                  - generic [ref=f1e1258]: 🟢 Published
+                - generic [ref=f1e1259]:
+                  - generic [ref=f1e1260]: IDR 76,900,000
+                  - generic [ref=f1e1261]: Updated 04 Apr 2026
+                  - generic [ref=f1e1262]: 🟣 Rented
+              - link "★★★☆☆ 60%" [ref=f1e1263] [cursor=pointer]:
+                - /url: /master/rec07b3u3dRLQZiWY#health
+                - text: ★★★☆☆
+                - generic [ref=f1e1264]: 60%
+              - generic [ref=f1e1265]:
+                - generic [ref=f1e1266]:
+                  - strong [ref=f1e1267]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1268]:
+                  - strong [ref=f1e1269]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1270]:
+                  - strong [ref=f1e1271]: 1 September 2026
+                  - text: Available from
+                - generic [ref=f1e1272]:
+                  - emphasis [ref=f1e1273]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=f1e1274]:
+                  - emphasis [ref=f1e1275]: not tracked
+                  - text: Last promo
+                - generic [ref=f1e1276]:
+                  - emphasis [ref=f1e1277]: not tracked
+                  - text: Promos 60d
+                - generic [ref=f1e1278]:
+                  - strong [ref=f1e1279]: 125d ago
+                  - text: Edited
+                - generic [ref=f1e1280]:
+                  - strong [ref=f1e1281]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1282]:
+            - link "🏠" [ref=f1e1283] [cursor=pointer]:
+              - /url: /master/recFoMGeqz6Hxd8a2
+            - generic [ref=f1e1286]:
+              - link "RENT-1470 Firefly BNB Ubud 🟠 On Hold — Updated 04 Apr 2026 Archived" [ref=f1e1287] [cursor=pointer]:
+                - /url: /master/recFoMGeqz6Hxd8a2
+                - generic [ref=f1e1288]:
+                  - code [ref=f1e1289]: RENT-1470
+                  - strong [ref=f1e1290]: Firefly BNB
+                  - generic [ref=f1e1291]: Ubud
+                  - generic [ref=f1e1292]: 🟠 On Hold
+                - generic [ref=f1e1293]:
+                  - generic [ref=f1e1294]: —
+                  - generic [ref=f1e1295]: Updated 04 Apr 2026
+                  - generic [ref=f1e1296]: Archived
+              - link "★★☆☆☆ 34%" [ref=f1e1297] [cursor=pointer]:
+                - /url: /master/recFoMGeqz6Hxd8a2#health
+                - text: ★★☆☆☆
+                - generic [ref=f1e1298]: 34%
+              - generic [ref=f1e1299]:
+                - generic [ref=f1e1300]:
+                  - strong [ref=f1e1301]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1302]:
+                  - strong [ref=f1e1303]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1304]:
+                  - strong [ref=f1e1305]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1306]:
+            - link "🏠" [ref=f1e1307] [cursor=pointer]:
+              - /url: /master/recb3lKNmQMJIoWqi
+            - generic [ref=f1e1310]:
+              - link "RENT-1471 Flamboyant Boutique Hotel Ubud 🟠 On Hold — Updated 04 Apr 2026 Upon Request" [ref=f1e1311] [cursor=pointer]:
+                - /url: /master/recb3lKNmQMJIoWqi
+                - generic [ref=f1e1312]:
+                  - code [ref=f1e1313]: RENT-1471
+                  - strong [ref=f1e1314]: Flamboyant Boutique Hotel
+                  - generic [ref=f1e1315]: Ubud
+                  - generic [ref=f1e1316]: 🟠 On Hold
+                - generic [ref=f1e1317]:
+                  - generic [ref=f1e1318]: —
+                  - generic [ref=f1e1319]: Updated 04 Apr 2026
+                  - generic [ref=f1e1320]: Upon Request
+              - link "★☆☆☆☆ 26%" [ref=f1e1321] [cursor=pointer]:
+                - /url: /master/recb3lKNmQMJIoWqi#health
+                - text: ★☆☆☆☆
+                - generic [ref=f1e1322]: 26%
+              - generic [ref=f1e1323]:
+                - generic [ref=f1e1324]:
+                  - strong [ref=f1e1325]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1326]:
+                  - strong [ref=f1e1327]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1328]:
+                  - strong [ref=f1e1329]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1330]:
+            - link "🏠" [ref=f1e1331] [cursor=pointer]:
+              - /url: /master/recPQ8bMbEXMyX0pA
+            - generic [ref=f1e1334]:
+              - link "RENT-1472 Flamboyant Villa 1 Ubud 🟠 On Hold — Updated 04 Apr 2026 Upon Request" [ref=f1e1335] [cursor=pointer]:
+                - /url: /master/recPQ8bMbEXMyX0pA
+                - generic [ref=f1e1336]:
+                  - code [ref=f1e1337]: RENT-1472
+                  - strong [ref=f1e1338]: Flamboyant Villa 1
+                  - generic [ref=f1e1339]: Ubud
+                  - generic [ref=f1e1340]: 🟠 On Hold
+                - generic [ref=f1e1341]:
+                  - generic [ref=f1e1342]: —
+                  - generic [ref=f1e1343]: Updated 04 Apr 2026
+                  - generic [ref=f1e1344]: Upon Request
+              - link "★☆☆☆☆ 26%" [ref=f1e1345] [cursor=pointer]:
+                - /url: /master/recPQ8bMbEXMyX0pA#health
+                - text: ★☆☆☆☆
+                - generic [ref=f1e1346]: 26%
+              - generic [ref=f1e1347]:
+                - generic [ref=f1e1348]:
+                  - strong [ref=f1e1349]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1350]:
+                  - strong [ref=f1e1351]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1352]:
+                  - strong [ref=f1e1353]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1354]:
+            - link "🏠" [ref=f1e1355] [cursor=pointer]:
+              - /url: /master/recgcP5CcQJGPKQ1R
+            - generic [ref=f1e1358]:
+              - link "RENT-1473 Flamboyant Villa 2 Ubud 🟠 On Hold — Updated 04 Apr 2026 Upon Request" [ref=f1e1359] [cursor=pointer]:
+                - /url: /master/recgcP5CcQJGPKQ1R
+                - generic [ref=f1e1360]:
+                  - code [ref=f1e1361]: RENT-1473
+                  - strong [ref=f1e1362]: Flamboyant Villa 2
+                  - generic [ref=f1e1363]: Ubud
+                  - generic [ref=f1e1364]: 🟠 On Hold
+                - generic [ref=f1e1365]:
+                  - generic [ref=f1e1366]: —
+                  - generic [ref=f1e1367]: Updated 04 Apr 2026
+                  - generic [ref=f1e1368]: Upon Request
+              - link "★☆☆☆☆ 26%" [ref=f1e1369] [cursor=pointer]:
+                - /url: /master/recgcP5CcQJGPKQ1R#health
+                - text: ★☆☆☆☆
+                - generic [ref=f1e1370]: 26%
+              - generic [ref=f1e1371]:
+                - generic [ref=f1e1372]:
+                  - strong [ref=f1e1373]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1374]:
+                  - strong [ref=f1e1375]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1376]:
+                  - strong [ref=f1e1377]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1378]:
+            - link "🏠" [ref=f1e1379] [cursor=pointer]:
+              - /url: /master/recn8kiSUUxTr1sdp
+            - generic [ref=f1e1382]:
+              - link "RENT-1474 Flamboyant Villa 3 Ubud 🟠 On Hold — Updated 04 Apr 2026 Upon Request" [ref=f1e1383] [cursor=pointer]:
+                - /url: /master/recn8kiSUUxTr1sdp
+                - generic [ref=f1e1384]:
+                  - code [ref=f1e1385]: RENT-1474
+                  - strong [ref=f1e1386]: Flamboyant Villa 3
+                  - generic [ref=f1e1387]: Ubud
+                  - generic [ref=f1e1388]: 🟠 On Hold
+                - generic [ref=f1e1389]:
+                  - generic [ref=f1e1390]: —
+                  - generic [ref=f1e1391]: Updated 04 Apr 2026
+                  - generic [ref=f1e1392]: Upon Request
+              - link "★☆☆☆☆ 26%" [ref=f1e1393] [cursor=pointer]:
+                - /url: /master/recn8kiSUUxTr1sdp#health
+                - text: ★☆☆☆☆
+                - generic [ref=f1e1394]: 26%
+              - generic [ref=f1e1395]:
+                - generic [ref=f1e1396]:
+                  - strong [ref=f1e1397]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1398]:
+                  - strong [ref=f1e1399]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1400]:
+                  - strong [ref=f1e1401]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1402]:
+            - link "🏠" [ref=f1e1403] [cursor=pointer]:
+              - /url: /master/recUWZG3aCWgqWjnb
+            - generic [ref=f1e1406]:
+              - link "RENT-1476 Full Moon Ubud 🟠 On Hold — Updated 04 Apr 2026 🟣 Rented" [ref=f1e1407] [cursor=pointer]:
+                - /url: /master/recUWZG3aCWgqWjnb
+                - generic [ref=f1e1408]:
+                  - code [ref=f1e1409]: RENT-1476
+                  - strong [ref=f1e1410]: Full Moon
+                  - generic [ref=f1e1411]: Ubud
+                  - generic [ref=f1e1412]: 🟠 On Hold
+                - generic [ref=f1e1413]:
+                  - generic [ref=f1e1414]: —
+                  - generic [ref=f1e1415]: Updated 04 Apr 2026
+                  - generic [ref=f1e1416]: 🟣 Rented
+              - link "★★☆☆☆ 34%" [ref=f1e1417] [cursor=pointer]:
+                - /url: /master/recUWZG3aCWgqWjnb#health
+                - text: ★★☆☆☆
+                - generic [ref=f1e1418]: 34%
+              - generic [ref=f1e1419]:
+                - generic [ref=f1e1420]:
+                  - strong [ref=f1e1421]: "0"
+                  - text: Favourites
+                - generic [ref=f1e1422]:
+                  - strong [ref=f1e1423]: "0"
+                  - text: Shortlists
+                - generic [ref=f1e1424]:
+                  - strong [ref=f1e1425]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1426]:
+            - link "🏠" [ref=f1e1427] [cursor=pointer]:
+              - /url: /master/recRvIQe7He5HrSjT
+            - generic [ref=f1e1430]:
+              - link "RENT-1477 Gaia Villa Ubud 🔴 Archived — Updated 04 Apr 2026 Archived" [ref=f1e1431] [cursor=pointer]:
+                - /url: /master/recRvIQe7He5HrSjT
+                - generic [ref=f1e1432]:
+                  - code [ref=f1e1433]: RENT-1477
+                  - strong [ref=f1e1434]: Gaia Villa
+                  - generic [ref=f1e1435]: Ubud
+                  - generic [ref=f1e1436]: 🔴 Archived
+                - generic [ref=f1e1437]:
+                  - generic [ref=f1e1438]: —
+                  - generic [ref=f1e1439]: Updated 04 Apr 2026
+                  - generic [ref=f1e1440]: Archived
+              - link "★★☆☆☆ 34%" [ref=f1e1441] [cursor=pointer]:
+                - /url: /master/recRvIQe7He5HrSjT#health
+                - text: ★★☆☆☆
+                - generic [ref=f1e1442]: 34%
+              - generic [ref=f1e1443]:
+                - generic [ref=f1e1444]:
+                  - emphasis [ref=f1e1445]: not tracked
+                  - text: Closed reason
+                - generic [ref=f1e1446]:
+                  - strong [ref=f1e1447]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1448]:
+            - link "🏠" [ref=f1e1449] [cursor=pointer]:
+              - /url: /master/recz7zflLdyCoAzmw
+            - generic [ref=f1e1452]:
+              - link "RENT-1478 Ganesha Villa Ubud 🔴 Archived — Updated 04 Apr 2026 Archived" [ref=f1e1453] [cursor=pointer]:
+                - /url: /master/recz7zflLdyCoAzmw
+                - generic [ref=f1e1454]:
+                  - code [ref=f1e1455]: RENT-1478
+                  - strong [ref=f1e1456]: Ganesha Villa
+                  - generic [ref=f1e1457]: Ubud
+                  - generic [ref=f1e1458]: 🔴 Archived
+                - generic [ref=f1e1459]:
+                  - generic [ref=f1e1460]: —
+                  - generic [ref=f1e1461]: Updated 04 Apr 2026
+                  - generic [ref=f1e1462]: Archived
+              - link "★★☆☆☆ 43%" [ref=f1e1463] [cursor=pointer]:
+                - /url: /master/recz7zflLdyCoAzmw#health
+                - text: ★★☆☆☆
+                - generic [ref=f1e1464]: 43%
+              - generic [ref=f1e1465]:
+                - generic [ref=f1e1466]:
+                  - emphasis [ref=f1e1467]: not tracked
+                  - text: Closed reason
+                - generic [ref=f1e1468]:
+                  - strong [ref=f1e1469]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1470]:
+            - link "🏠" [ref=f1e1471] [cursor=pointer]:
+              - /url: /master/reccYoSe1nsQZGmOU
+            - generic [ref=f1e1474]:
+              - link "RENT-1479 Hana Villa 2 (INACTIVE) Ubud 🔴 Archived — Updated 04 Apr 2026 Archived" [ref=f1e1475] [cursor=pointer]:
+                - /url: /master/reccYoSe1nsQZGmOU
+                - generic [ref=f1e1476]:
+                  - code [ref=f1e1477]: RENT-1479
+                  - strong [ref=f1e1478]: Hana Villa 2 (INACTIVE)
+                  - generic [ref=f1e1479]: Ubud
+                  - generic [ref=f1e1480]: 🔴 Archived
+                - generic [ref=f1e1481]:
+                  - generic [ref=f1e1482]: —
+                  - generic [ref=f1e1483]: Updated 04 Apr 2026
+                  - generic [ref=f1e1484]: Archived
+              - link "★★☆☆☆ 34%" [ref=f1e1485] [cursor=pointer]:
+                - /url: /master/reccYoSe1nsQZGmOU#health
+                - text: ★★☆☆☆
+                - generic [ref=f1e1486]: 34%
+              - generic [ref=f1e1487]:
+                - generic [ref=f1e1488]:
+                  - emphasis [ref=f1e1489]: not tracked
+                  - text: Closed reason
+                - generic [ref=f1e1490]:
+                  - strong [ref=f1e1491]: "0"
+                  - text: Tasks
+          - generic [ref=f1e1492]:
+            - link "🏠" [ref=f1e1493] [cursor=pointer]:
+              - /url: /master/recRxRW9TTJzixBYg
+            - generic [ref=f1e1496]:
+              - link "RENT-1480 Hana Villa 3 (INACTIVE) Ubud 🔴 Archived — Updated 04 Apr 2026 Archived" [ref=f1e1497] [cursor=pointer]:
+                - /url: /master/recRxRW9TTJzixBYg
+                - generic [ref=f1e1498]:
+                  - code [ref=f1e1499]: RENT-1480
+                  - strong [ref=f1e1500]: Hana Villa 3 (INACTIVE)
+                  - generic [ref=f1e1501]: Ubud
+                  - generic [ref=f1e1502]: 🔴 Archived
+                - generic [ref=f1e1503]:
+                  - generic [ref=f1e1504]: —
+                  - generic [ref=f1e1505]: Updated 04 Apr 2026
+                  - generic [ref=f1e1506]: Archived
+              - link "★★☆☆☆ 34%" [ref=f1e1507] [cursor=pointer]:
+                - /url: /master/recRxRW9TTJzixBYg#health
+                - text: ★★☆☆☆
+                - generic [ref=f1e1508]: 34%
+              - generic [ref=f1e1509]:
+                - generic [ref=f1e1510]:
+                  - emphasis [ref=f1e1511]: not tracked
+                  - text: Closed reason
+                - generic [ref=f1e1512]:
+                  - strong [ref=f1e1513]: "0"
+                  - text: Tasks
+        - generic [ref=f1e1514]:
+          - generic [ref=f1e1515]: Page 1 of 5
+          - link "Next →" [ref=f1e1517] [cursor=pointer]:
+            - /url: /master?category=rent&page=2
+  - alert [ref=f1e1518]

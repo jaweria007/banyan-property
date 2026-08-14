@@ -1,0 +1,399 @@
+- generic [active] [ref=f16e1]:
+  - generic [ref=f16e2]:
+    - complementary [ref=f16e3]:
+      - generic [ref=f16e4]:
+        - text: 🌳 Banyan
+        - generic [ref=f16e5]: Listings Dashboard
+      - navigation [ref=f16e6]:
+        - link "🏠 Overview" [ref=f16e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f16e8]: 🏠
+          - generic [ref=f16e9]: Overview
+        - generic [ref=f16e10]:
+          - generic [ref=f16e11]: 🏠 Listings
+          - generic [ref=f16e12]:
+            - link "Overview" [ref=f16e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=f16e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=f16e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=f16e19]:
+          - generic [ref=f16e20]: 💼 Sales
+          - generic [ref=f16e21]:
+            - link "Client Inbox" [ref=f16e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=f16e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=f16e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=f16e27]: 🤝
+          - generic [ref=f16e28]: Relationships
+        - link "✅ My Work" [ref=f16e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=f16e30]: ✅
+          - generic [ref=f16e31]: My Work
+        - generic [ref=f16e32]:
+          - generic [ref=f16e33]: 📢 Marketing
+          - generic [ref=f16e34]:
+            - link "🖥️ Monitors 4" [ref=f16e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=f16e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=f16e37]: "4"
+            - link "🚀 Promotion" [ref=f16e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=f16e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=f16e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=f16e43]: 🧭
+          - generic [ref=f16e44]: Navigation
+        - link "⚙️ Site settings" [ref=f16e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=f16e46]: ⚙️
+          - generic [ref=f16e47]: Site settings
+      - generic [ref=f16e48]:
+        - button "Sign out" [ref=f16e49] [cursor=pointer]
+        - generic [ref=f16e50]: Staging DB copy — production data is untouched.
+    - main [ref=f16e51]:
+      - generic [ref=f16e52]:
+        - heading "Client Inbox" [level=1] [ref=f16e53]
+        - paragraph [ref=f16e54]: Every journey that needs attention today, and everything that has just arrived — searchable.
+        - generic [ref=f16e55]:
+          - link "0 Proposal Not Opened" [ref=f16e56] [cursor=pointer]:
+            - /url: /sales?attention=proposal_not_opened
+            - generic [ref=f16e57]: "0"
+            - generic [ref=f16e58]: Proposal Not Opened
+          - link "15 Follow-up Overdue" [ref=f16e59] [cursor=pointer]:
+            - /url: /sales?attention=follow_up_overdue
+            - generic [ref=f16e60]: "15"
+            - generic [ref=f16e61]: Follow-up Overdue
+          - link "1 Viewing Today" [ref=f16e62] [cursor=pointer]:
+            - /url: /sales?attention=viewing_today
+            - generic [ref=f16e63]: "1"
+            - generic [ref=f16e64]: Viewing Today
+          - link "0 Waiting on Client" [ref=f16e65] [cursor=pointer]:
+            - /url: /sales?attention=waiting_on_client
+            - generic [ref=f16e66]: "0"
+            - generic [ref=f16e67]: Waiting on Client
+          - link "0 Negotiation Stalled" [ref=f16e68] [cursor=pointer]:
+            - /url: /sales?attention=negotiation_stalled
+            - generic [ref=f16e69]: "0"
+            - generic [ref=f16e70]: Negotiation Stalled
+        - generic [ref=f16e71]:
+          - textbox "Search name, phone, email…" [ref=f16e72]
+          - combobox [ref=f16e73]:
+            - option "All stages" [selected]
+            - option "New"
+            - option "Qualified"
+            - option "Requirements Defined"
+            - option "Shortlist Active"
+            - option "Viewing"
+            - option "Negotiation"
+            - option "Contracts"
+            - option "Closed"
+            - option "Lost"
+          - combobox [ref=f16e74]:
+            - option "All interests" [selected]
+            - option "Rent"
+            - option "Buy Villa"
+            - option "Buy Land"
+            - option "Buy Commercial"
+          - combobox [ref=f16e75]:
+            - option "All objectives" [selected]
+            - option "Find Long-Term Home"
+            - option "Find Short-Term Accommodation"
+            - option "Holiday Home"
+            - option "Investment"
+            - option "Development"
+            - option "Land Banking"
+            - option "Business Use"
+            - option "Unsure"
+          - textbox "Agent" [ref=f16e76]
+          - button "Filter" [ref=f16e77] [cursor=pointer]
+        - table [ref=f16e79]:
+          - rowgroup [ref=f16e80]:
+            - row [ref=f16e81]:
+              - columnheader "Client" [ref=f16e82]
+              - columnheader "Journey" [ref=f16e83]
+              - columnheader "Interest" [ref=f16e84]
+              - columnheader "Objective" [ref=f16e85]
+              - columnheader "Agent" [ref=f16e86]
+              - columnheader "Priority" [ref=f16e87]
+              - columnheader "Needs Attention" [ref=f16e88]
+          - rowgroup [ref=f16e89]:
+            - row [ref=f16e90]:
+              - cell [ref=f16e91]:
+                - link "Unnamed" [ref=f16e92] [cursor=pointer]:
+                  - /url: /opportunities/lead_57a04097d7574cde82ba0bc2015657d5
+              - cell "New" [ref=f16e93]
+              - cell "—" [ref=f16e94]
+              - cell "Unsure" [ref=f16e95]
+              - cell "—" [ref=f16e96]
+              - cell "med" [ref=f16e97]
+              - cell "Follow-up Overdue" [ref=f16e98]
+            - row [ref=f16e99]:
+              - cell "umar 123" [ref=f16e100]:
+                - link "umar" [ref=f16e101] [cursor=pointer]:
+                  - /url: /opportunities/lead_90e621b792f24c50b2f1d4a7859e8b54
+                - generic [ref=f16e102]: "123"
+              - cell "Contracts" [ref=f16e103]
+              - cell "—" [ref=f16e104]
+              - cell "Unsure" [ref=f16e105]
+              - cell "kashif" [ref=f16e106]
+              - cell "high" [ref=f16e107]
+              - cell "Follow-up Overdue" [ref=f16e108]
+            - row [ref=f16e109]:
+              - cell "Unnamed 08123456789" [ref=f16e110]:
+                - link "Unnamed" [ref=f16e111] [cursor=pointer]:
+                  - /url: /opportunities/lead_3d51783eb3854640b101b73e7f04f523
+                - generic [ref=f16e112]: "08123456789"
+              - cell "Viewing" [ref=f16e113]
+              - cell "Rent" [ref=f16e114]
+              - cell "Find Short-Term Accommodation" [ref=f16e115]
+              - cell "—" [ref=f16e116]
+              - cell "med" [ref=f16e117]
+              - cell "Follow-up Overdue" [ref=f16e118]
+            - row [ref=f16e119]:
+              - cell "umar 123" [ref=f16e120]:
+                - link "umar" [ref=f16e121] [cursor=pointer]:
+                  - /url: /opportunities/opp_d896afac6d9c416097feb29573955c21
+                - generic [ref=f16e122]: "123"
+              - cell "New" [ref=f16e123]
+              - cell "Rent, Buy Villa" [ref=f16e124]
+              - cell "Find Short-Term Accommodation" [ref=f16e125]
+              - cell "—" [ref=f16e126]
+              - cell "med" [ref=f16e127]
+              - cell "Follow-up Overdue" [ref=f16e128]
+            - row [ref=f16e129]:
+              - cell "umar 123" [ref=f16e130]:
+                - link "umar" [ref=f16e131] [cursor=pointer]:
+                  - /url: /opportunities/opp_cac8957dbd4d430ca90204c57fcf2f18
+                - generic [ref=f16e132]: "123"
+              - cell "New" [ref=f16e133]
+              - cell "—" [ref=f16e134]
+              - cell "Unsure" [ref=f16e135]
+              - cell "—" [ref=f16e136]
+              - cell "med" [ref=f16e137]
+              - cell "Follow-up Overdue" [ref=f16e138]
+            - row [ref=f16e139]:
+              - cell "umar 123" [ref=f16e140]:
+                - link "umar" [ref=f16e141] [cursor=pointer]:
+                  - /url: /opportunities/opp_4c1da6bc4cbf425f99c328e4a3d05eed
+                - generic [ref=f16e142]: "123"
+              - cell "Viewing" [ref=f16e143]
+              - cell "Rent" [ref=f16e144]
+              - cell "Find Long-Term Home" [ref=f16e145]
+              - cell "—" [ref=f16e146]
+              - cell "med" [ref=f16e147]
+              - cell "Follow-up Overdue" [ref=f16e148]
+            - row [ref=f16e149]:
+              - cell "Unnamed 08123456789" [ref=f16e150]:
+                - link "Unnamed" [ref=f16e151] [cursor=pointer]:
+                  - /url: /opportunities/opp_dab3e7767051422d82077fe8b215db91
+                - generic [ref=f16e152]: "08123456789"
+              - cell "New" [ref=f16e153]
+              - cell "—" [ref=f16e154]
+              - cell "Unsure" [ref=f16e155]
+              - cell "—" [ref=f16e156]
+              - cell "med" [ref=f16e157]
+              - cell "Follow-up Overdue" [ref=f16e158]
+            - row [ref=f16e159]:
+              - cell "Unnamed 08123456789" [ref=f16e160]:
+                - link "Unnamed" [ref=f16e161] [cursor=pointer]:
+                  - /url: /opportunities/opp_3dce052aa7ee4d0f8a0ee755e687691c
+                - generic [ref=f16e162]: "08123456789"
+              - cell "New" [ref=f16e163]
+              - cell "—" [ref=f16e164]
+              - cell "Unsure" [ref=f16e165]
+              - cell "—" [ref=f16e166]
+              - cell "med" [ref=f16e167]
+              - cell "Follow-up Overdue" [ref=f16e168]
+            - row [ref=f16e169]:
+              - cell "Unnamed 08123456789" [ref=f16e170]:
+                - link "Unnamed" [ref=f16e171] [cursor=pointer]:
+                  - /url: /opportunities/opp_8ab169368e714d45b63e1b55d7e58382
+                - generic [ref=f16e172]: "08123456789"
+              - cell "New" [ref=f16e173]
+              - cell "—" [ref=f16e174]
+              - cell "Unsure" [ref=f16e175]
+              - cell "—" [ref=f16e176]
+              - cell "med" [ref=f16e177]
+              - cell "Follow-up Overdue" [ref=f16e178]
+            - row [ref=f16e179]:
+              - cell "Unnamed 08123456789" [ref=f16e180]:
+                - link "Unnamed" [ref=f16e181] [cursor=pointer]:
+                  - /url: /opportunities/opp_39de3035bc294b8f811022c06d301b3f
+                - generic [ref=f16e182]: "08123456789"
+              - cell "New" [ref=f16e183]
+              - cell "—" [ref=f16e184]
+              - cell "Unsure" [ref=f16e185]
+              - cell "—" [ref=f16e186]
+              - cell "med" [ref=f16e187]
+              - cell "Follow-up Overdue" [ref=f16e188]
+            - row [ref=f16e189]:
+              - cell "Unnamed 08123456789" [ref=f16e190]:
+                - link "Unnamed" [ref=f16e191] [cursor=pointer]:
+                  - /url: /opportunities/opp_9cfac6d5c86b446b877aba74ac9758bd
+                - generic [ref=f16e192]: "08123456789"
+              - cell "New" [ref=f16e193]
+              - cell "—" [ref=f16e194]
+              - cell "Unsure" [ref=f16e195]
+              - cell "—" [ref=f16e196]
+              - cell "med" [ref=f16e197]
+              - cell "Follow-up Overdue" [ref=f16e198]
+            - row [ref=f16e199]:
+              - cell "Unnamed 08123456789" [ref=f16e200]:
+                - link "Unnamed" [ref=f16e201] [cursor=pointer]:
+                  - /url: /opportunities/opp_56bf4c66ce10430b83e78c55309e983d
+                - generic [ref=f16e202]: "08123456789"
+              - cell "New" [ref=f16e203]
+              - cell "—" [ref=f16e204]
+              - cell "Unsure" [ref=f16e205]
+              - cell "—" [ref=f16e206]
+              - cell "med" [ref=f16e207]
+              - cell "Follow-up Overdue" [ref=f16e208]
+            - row [ref=f16e209]:
+              - cell "Unnamed 08123456789" [ref=f16e210]:
+                - link "Unnamed" [ref=f16e211] [cursor=pointer]:
+                  - /url: /opportunities/opp_cb47c5eb45a1499bab02210d8300f5ce
+                - generic [ref=f16e212]: "08123456789"
+              - cell "New" [ref=f16e213]
+              - cell "—" [ref=f16e214]
+              - cell "Unsure" [ref=f16e215]
+              - cell "—" [ref=f16e216]
+              - cell "med" [ref=f16e217]
+              - cell "Follow-up Overdue" [ref=f16e218]
+            - row [ref=f16e219]:
+              - cell "Unnamed 08123456789" [ref=f16e220]:
+                - link "Unnamed" [ref=f16e221] [cursor=pointer]:
+                  - /url: /opportunities/opp_1db66e4b2fb8447989fa772664b40cb9
+                - generic [ref=f16e222]: "08123456789"
+              - cell "New" [ref=f16e223]
+              - cell "—" [ref=f16e224]
+              - cell "Unsure" [ref=f16e225]
+              - cell "—" [ref=f16e226]
+              - cell "med" [ref=f16e227]
+              - cell "Follow-up Overdue" [ref=f16e228]
+            - row [ref=f16e229]:
+              - cell "Unnamed 08123456789" [ref=f16e230]:
+                - link "Unnamed" [ref=f16e231] [cursor=pointer]:
+                  - /url: /opportunities/opp_10db8acf6c2644e886f2a6d64069c2ce
+                - generic [ref=f16e232]: "08123456789"
+              - cell "New" [ref=f16e233]
+              - cell "—" [ref=f16e234]
+              - cell "Unsure" [ref=f16e235]
+              - cell "—" [ref=f16e236]
+              - cell "med" [ref=f16e237]
+              - cell "Follow-up Overdue" [ref=f16e238]
+            - row [ref=f16e239]:
+              - cell "umar 123" [ref=f16e240]:
+                - link "umar" [ref=f16e241] [cursor=pointer]:
+                  - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702
+                - generic [ref=f16e242]: "123"
+              - cell "Contracts" [ref=f16e243]
+              - cell "—" [ref=f16e244]
+              - cell "Unsure" [ref=f16e245]
+              - cell "—" [ref=f16e246]
+              - cell "med" [ref=f16e247]
+              - cell "Viewing Today" [ref=f16e248]
+            - row [ref=f16e249]:
+              - cell "M. Samo 0123456789" [ref=f16e250]:
+                - link "M. Samo" [ref=f16e251] [cursor=pointer]:
+                  - /url: /opportunities/opp_17c2a114b2b54e10b6f79333f7744339
+                - generic [ref=f16e252]: "0123456789"
+              - cell "Shortlist Active" [ref=f16e253]
+              - cell "—" [ref=f16e254]
+              - cell "Unsure" [ref=f16e255]
+              - cell "—" [ref=f16e256]
+              - cell "med" [ref=f16e257]
+              - cell "—" [ref=f16e258]
+            - row [ref=f16e259]:
+              - cell "client1 client1.test@personal.com" [ref=f16e260]:
+                - link "client1" [ref=f16e261] [cursor=pointer]:
+                  - /url: /opportunities/opp_e73a1082a3bb4ed6896c05e0c62046db
+                - generic [ref=f16e262]: client1.test@personal.com
+              - cell "New" [ref=f16e263]
+              - cell "—" [ref=f16e264]
+              - cell "Unsure" [ref=f16e265]
+              - cell "—" [ref=f16e266]
+              - cell "med" [ref=f16e267]
+              - cell "—" [ref=f16e268]
+            - row [ref=f16e269]:
+              - cell "client1 client1.test@personal.com" [ref=f16e270]:
+                - link "client1" [ref=f16e271] [cursor=pointer]:
+                  - /url: /opportunities/opp_9238160737334e61a3f6c96b310a8c59
+                - generic [ref=f16e272]: client1.test@personal.com
+              - cell "Viewing" [ref=f16e273]
+              - cell "—" [ref=f16e274]
+              - cell "Unsure" [ref=f16e275]
+              - cell "—" [ref=f16e276]
+              - cell "med" [ref=f16e277]
+              - cell "—" [ref=f16e278]
+            - row [ref=f16e279]:
+              - cell "client2 01234" [ref=f16e280]:
+                - link "client2" [ref=f16e281] [cursor=pointer]:
+                  - /url: /opportunities/opp_073df9c672214a65800f39cdfafd2167
+                - generic [ref=f16e282]: "01234"
+              - cell "New" [ref=f16e283]
+              - cell "—" [ref=f16e284]
+              - cell "Unsure" [ref=f16e285]
+              - cell "—" [ref=f16e286]
+              - cell "med" [ref=f16e287]
+              - cell "—" [ref=f16e288]
+            - row [ref=f16e289]:
+              - cell "client1 client1.test@personal.com" [ref=f16e290]:
+                - link "client1" [ref=f16e291] [cursor=pointer]:
+                  - /url: /opportunities/opp_e5f09315e0c04a46a1f6620c0c6e8444
+                - generic [ref=f16e292]: client1.test@personal.com
+              - cell "New" [ref=f16e293]
+              - cell "—" [ref=f16e294]
+              - cell "Unsure" [ref=f16e295]
+              - cell "—" [ref=f16e296]
+              - cell "med" [ref=f16e297]
+              - cell "—" [ref=f16e298]
+            - row [ref=f16e299]:
+              - cell "client2 01234" [ref=f16e300]:
+                - link "client2" [ref=f16e301] [cursor=pointer]:
+                  - /url: /opportunities/opp_039c842977e74ef2ab7f86a6ac33bf9f
+                - generic [ref=f16e302]: "01234"
+              - cell "New" [ref=f16e303]
+              - cell "—" [ref=f16e304]
+              - cell "Unsure" [ref=f16e305]
+              - cell "—" [ref=f16e306]
+              - cell "med" [ref=f16e307]
+              - cell "—" [ref=f16e308]
+            - row [ref=f16e309]:
+              - cell "client1 client1.test@test.com" [ref=f16e310]:
+                - link "client1" [ref=f16e311] [cursor=pointer]:
+                  - /url: /opportunities/opp_c4feb383c8a147fab00ec385a76239a9
+                - generic [ref=f16e312]: client1.test@test.com
+              - cell "New" [ref=f16e313]
+              - cell "—" [ref=f16e314]
+              - cell "Unsure" [ref=f16e315]
+              - cell "—" [ref=f16e316]
+              - cell "med" [ref=f16e317]
+              - cell "—" [ref=f16e318]
+            - row [ref=f16e319]:
+              - cell "client1 client1.test@test.com" [ref=f16e320]:
+                - link "client1" [ref=f16e321] [cursor=pointer]:
+                  - /url: /opportunities/opp_583f1c688ea140ea9f1b093c0af58054
+                - generic [ref=f16e322]: client1.test@test.com
+              - cell "New" [ref=f16e323]
+              - cell "—" [ref=f16e324]
+              - cell "Unsure" [ref=f16e325]
+              - cell "—" [ref=f16e326]
+              - cell "med" [ref=f16e327]
+              - cell "—" [ref=f16e328]
+            - row [ref=f16e329]:
+              - cell "client1 client1.test@personal.com" [ref=f16e330]:
+                - link "client1" [ref=f16e331] [cursor=pointer]:
+                  - /url: /opportunities/opp_6e612a5daade483b9b1e0e0eca2d193d
+                - generic [ref=f16e332]: client1.test@personal.com
+              - cell "Contracts" [ref=f16e333]
+              - cell "—" [ref=f16e334]
+              - cell "Unsure" [ref=f16e335]
+              - cell "—" [ref=f16e336]
+              - cell "med" [ref=f16e337]
+              - cell "—" [ref=f16e338]
+  - alert [ref=f16e339]

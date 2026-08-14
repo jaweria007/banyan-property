@@ -1,0 +1,288 @@
+- generic [active] [ref=f13e1]:
+  - alert [ref=f13e105]
+  - generic [ref=f13e116]:
+    - complementary [ref=f13e117]:
+      - generic [ref=f13e118]:
+        - text: 🌳 Banyan
+        - generic [ref=f13e119]: Listings Dashboard
+      - navigation [ref=f13e120]:
+        - link "🏠 Overview" [ref=f13e121] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f13e122]: 🏠
+          - generic [ref=f13e123]: Overview
+        - generic [ref=f13e124]:
+          - generic [ref=f13e125]: 🏠 Listings
+          - generic [ref=f13e126]:
+            - link "Overview" [ref=f13e127] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=f13e129] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=f13e131] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=f13e133]:
+          - generic [ref=f13e134]: 💼 Sales
+          - generic [ref=f13e135]:
+            - link "Client Inbox" [ref=f13e136] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=f13e138] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=f13e140] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=f13e141]: 🤝
+          - generic [ref=f13e142]: Relationships
+        - link "✅ My Work" [ref=f13e143] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=f13e144]: ✅
+          - generic [ref=f13e145]: My Work
+        - generic [ref=f13e146]:
+          - generic [ref=f13e147]: 📢 Marketing
+          - generic [ref=f13e148]:
+            - link "🖥️ Monitors 4" [ref=f13e149] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=f13e150]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=f13e151]: "4"
+            - link "🚀 Promotion" [ref=f13e152] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=f13e154] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=f13e156] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=f13e157]: 🧭
+          - generic [ref=f13e158]: Navigation
+        - link "⚙️ Site settings" [ref=f13e159] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=f13e160]: ⚙️
+          - generic [ref=f13e161]: Site settings
+      - generic [ref=f13e162]:
+        - button "Sign out" [ref=f13e163] [cursor=pointer]
+        - generic [ref=f13e164]: Staging DB copy — production data is untouched.
+    - main [ref=f13e165]:
+      - generic [ref=f13e166]:
+        - heading "Overview" [level=1] [ref=f13e167]
+        - paragraph [ref=f13e168]: Manage property listings, blog, navigation and site settings.
+        - generic [ref=f13e169]:
+          - generic [ref=f13e170]:
+            - generic [ref=f13e171]: "403"
+            - generic [ref=f13e172]: Total listings
+          - generic [ref=f13e173]:
+            - generic [ref=f13e174]: "207"
+            - generic [ref=f13e175]: For rent
+          - generic [ref=f13e176]:
+            - generic [ref=f13e177]: "153"
+            - generic [ref=f13e178]: For sale
+          - generic [ref=f13e179]:
+            - generic [ref=f13e180]: "33"
+            - generic [ref=f13e181]: Land
+          - generic [ref=f13e182]:
+            - generic [ref=f13e183]: "10"
+            - generic [ref=f13e184]: Commercial
+          - generic [ref=f13e185]:
+            - generic [ref=f13e186]: "18"
+            - generic [ref=f13e187]: Blog articles
+          - generic [ref=f13e188]:
+            - generic [ref=f13e189]: "299"
+            - generic [ref=f13e190]: Nav items
+        - link "Manage listings →" [ref=f13e191] [cursor=pointer]:
+          - /url: /master
+        - generic [ref=f13e192]:
+          - generic [ref=f13e193]:
+            - heading "This month" [level=2] [ref=f13e194]
+            - generic [ref=f13e196]:
+              - generic [ref=f13e197]:
+                - generic [ref=f13e198]:
+                  - generic [ref=f13e199]:
+                    - button "Previous month" [ref=f13e200] [cursor=pointer]:
+                      - img [ref=f13e201]: 
+                    - button "Next month" [ref=f13e202] [cursor=pointer]:
+                      - img [ref=f13e203]: 
+                  - button "today" [disabled] [ref=f13e204]
+                - heading "August 2026" [level=2] [ref=f13e206]
+                - generic [ref=f13e208]:
+                  - button "month" [pressed] [ref=f13e209] [cursor=pointer]
+                  - button "week" [ref=f13e210] [cursor=pointer]
+              - generic "August 2026" [ref=f13e211]:
+                - grid [ref=f13e213]:
+                  - rowgroup [ref=f13e214]:
+                    - row [ref=f13e218]:
+                      - columnheader "Sunday" [ref=f13e219]:
+                        - generic "Sunday" [ref=f13e221]: Sun
+                      - columnheader "Monday" [ref=f13e222]:
+                        - generic "Monday" [ref=f13e224]: Mon
+                      - columnheader "Tuesday" [ref=f13e225]:
+                        - generic "Tuesday" [ref=f13e227]: Tue
+                      - columnheader "Wednesday" [ref=f13e228]:
+                        - generic "Wednesday" [ref=f13e230]: Wed
+                      - columnheader "Thursday" [ref=f13e231]:
+                        - generic "Thursday" [ref=f13e233]: Thu
+                      - columnheader "Friday" [ref=f13e234]:
+                        - generic "Friday" [ref=f13e236]: Fri
+                      - columnheader "Saturday" [ref=f13e237]:
+                        - generic "Saturday" [ref=f13e239]: Sat
+                  - rowgroup [ref=f13e240]:
+                    - generic [ref=f13e243]:
+                      - row [ref=f13e245]:
+                        - gridcell "July 26, 2026" [ref=f13e246]:
+                          - generic "July 26, 2026" [ref=f13e249]: "26"
+                        - gridcell "July 27, 2026" [ref=f13e251]:
+                          - generic "July 27, 2026" [ref=f13e254]: "27"
+                        - gridcell "July 28, 2026" [ref=f13e256]:
+                          - generic "July 28, 2026" [ref=f13e259]: "28"
+                        - gridcell "July 29, 2026" [ref=f13e261]:
+                          - generic "July 29, 2026" [ref=f13e264]: "29"
+                        - gridcell "July 30, 2026" [ref=f13e266]:
+                          - generic "July 30, 2026" [ref=f13e269]: "30"
+                        - gridcell "July 31, 2026" [ref=f13e271]:
+                          - generic "July 31, 2026" [ref=f13e274]: "31"
+                        - gridcell "August 1, 2026" [ref=f13e276]:
+                          - generic "August 1, 2026" [ref=f13e279]: "1"
+                      - row [ref=f13e281]:
+                        - gridcell "August 2, 2026" [ref=f13e282]:
+                          - generic [ref=f13e283]:
+                            - generic "August 2, 2026" [ref=f13e285]: "2"
+                            - generic [ref=f13e288]:
+                              - generic [ref=f13e290]: 7:28a
+                              - generic [ref=f13e291]: "Viewing: umar"
+                        - gridcell "August 3, 2026" [ref=f13e292]:
+                          - generic "August 3, 2026" [ref=f13e295]: "3"
+                        - gridcell "August 4, 2026" [ref=f13e297]:
+                          - generic [ref=f13e298]:
+                            - generic "August 4, 2026" [ref=f13e300]: "4"
+                            - generic [ref=f13e303]:
+                              - generic [ref=f13e305]: 5:16a
+                              - generic [ref=f13e306]: "Viewing: view_e955eddf-fa60-46d3-95e8-09febd448147"
+                        - gridcell "August 5, 2026" [ref=f13e307]:
+                          - generic [ref=f13e308]:
+                            - generic "August 5, 2026" [ref=f13e310]: "5"
+                            - generic [ref=f13e313]:
+                              - generic [ref=f13e315]: 8:17p
+                              - generic [ref=f13e316]: "Viewing: client1"
+                        - gridcell "August 6, 2026" [ref=f13e317]:
+                          - generic "August 6, 2026" [ref=f13e320]: "6"
+                        - gridcell "August 7, 2026" [ref=f13e322]:
+                          - generic "August 7, 2026" [ref=f13e325]: "7"
+                        - gridcell "August 8, 2026" [ref=f13e327]:
+                          - generic [ref=f13e328]:
+                            - generic "August 8, 2026" [ref=f13e330]: "8"
+                            - generic [ref=f13e331]:
+                              - generic [ref=f13e333]:
+                                - generic [ref=f13e335]: 5a
+                                - generic [ref=f13e336]: "Check-in: test"
+                              - generic [ref=f13e338]:
+                                - generic [ref=f13e340]: 5a
+                                - generic [ref=f13e341]: "Check-in: test"
+                              - generic [ref=f13e343]:
+                                - generic [ref=f13e345]: 5a
+                                - generic [ref=f13e346]: "Check-in: test"
+                              - generic [ref=f13e348]:
+                                - generic [ref=f13e350]: 5a
+                                - generic [ref=f13e351]: "Check-in: test"
+                              - generic [ref=f13e353]:
+                                - generic [ref=f13e355]: 5a
+                                - generic [ref=f13e356]: "Check-in: test"
+                              - generic [ref=f13e358]:
+                                - generic [ref=f13e360]: 5a
+                                - generic [ref=f13e361]: "Check-in: Test"
+                              - generic [ref=f13e363]:
+                                - generic [ref=f13e365]: 5a
+                                - generic [ref=f13e366]: "Contract signed: test"
+                              - generic [ref=f13e368]:
+                                - generic [ref=f13e370]: 5a
+                                - generic [ref=f13e371]: "Contract signed: test"
+                              - generic [ref=f13e373]:
+                                - generic [ref=f13e375]: 5a
+                                - generic [ref=f13e376]: "Contract signed: test"
+                              - generic [ref=f13e378]:
+                                - generic [ref=f13e380]: 5a
+                                - generic [ref=f13e381]: "Contract signed: test"
+                              - generic [ref=f13e383]:
+                                - generic [ref=f13e385]: 5a
+                                - generic [ref=f13e386]: "Contract signed: test"
+                              - generic [ref=f13e388]:
+                                - generic [ref=f13e390]: 5a
+                                - generic [ref=f13e391]: "Contract signed: Test"
+                      - row [ref=f13e392]:
+                        - gridcell "August 9, 2026" [ref=f13e393]:
+                          - generic [ref=f13e394]:
+                            - generic "August 9, 2026" [ref=f13e396]: "9"
+                            - generic [ref=f13e397]:
+                              - generic [ref=f13e399]:
+                                - generic [ref=f13e401]: 5a
+                                - generic [ref=f13e402]: "Check-out: test"
+                              - generic [ref=f13e404]:
+                                - generic [ref=f13e406]: 5a
+                                - generic [ref=f13e407]: "Check-out: test"
+                              - generic [ref=f13e409]:
+                                - generic [ref=f13e411]: 5a
+                                - generic [ref=f13e412]: "Check-out: test"
+                              - generic [ref=f13e414]:
+                                - generic [ref=f13e416]: 5a
+                                - generic [ref=f13e417]: "Check-out: test"
+                              - generic [ref=f13e419]:
+                                - generic [ref=f13e421]: 5a
+                                - generic [ref=f13e422]: "Check-out: test"
+                              - generic [ref=f13e424]:
+                                - generic [ref=f13e426]: 5a
+                                - generic [ref=f13e427]: "Check-out: Test"
+                              - generic [ref=f13e429]:
+                                - generic [ref=f13e431]: 6:25p
+                                - generic [ref=f13e432]: "Viewing: umar"
+                        - gridcell "August 10, 2026" [ref=f13e433]:
+                          - generic "August 10, 2026" [ref=f13e436]: "10"
+                        - gridcell "August 11, 2026" [ref=f13e438]:
+                          - generic "August 11, 2026" [ref=f13e441]: "11"
+                        - gridcell "August 12, 2026" [ref=f13e443]:
+                          - generic "August 12, 2026" [ref=f13e446]: "12"
+                        - gridcell "August 13, 2026" [ref=f13e448]:
+                          - generic "August 13, 2026" [ref=f13e451]: "13"
+                        - gridcell "August 14, 2026" [ref=f13e453]:
+                          - generic "August 14, 2026" [ref=f13e456]: "14"
+                        - gridcell "August 15, 2026" [ref=f13e458]:
+                          - generic "August 15, 2026" [ref=f13e461]: "15"
+                      - row [ref=f13e463]:
+                        - gridcell "August 16, 2026" [ref=f13e464]:
+                          - generic "August 16, 2026" [ref=f13e467]: "16"
+                        - gridcell "August 17, 2026" [ref=f13e469]:
+                          - generic "August 17, 2026" [ref=f13e472]: "17"
+                        - gridcell "August 18, 2026" [ref=f13e474]:
+                          - generic "August 18, 2026" [ref=f13e477]: "18"
+                        - gridcell "August 19, 2026" [ref=f13e479]:
+                          - generic "August 19, 2026" [ref=f13e482]: "19"
+                        - gridcell "August 20, 2026" [ref=f13e484]:
+                          - generic "August 20, 2026" [ref=f13e487]: "20"
+                        - gridcell "August 21, 2026" [ref=f13e489]:
+                          - generic "August 21, 2026" [ref=f13e492]: "21"
+                        - gridcell "August 22, 2026" [ref=f13e494]:
+                          - generic "August 22, 2026" [ref=f13e497]: "22"
+                      - row [ref=f13e499]:
+                        - gridcell "August 23, 2026" [ref=f13e500]:
+                          - generic "August 23, 2026" [ref=f13e503]: "23"
+                        - gridcell "August 24, 2026" [ref=f13e505]:
+                          - generic "August 24, 2026" [ref=f13e508]: "24"
+                        - gridcell "August 25, 2026" [ref=f13e510]:
+                          - generic "August 25, 2026" [ref=f13e513]: "25"
+                        - gridcell "August 26, 2026" [ref=f13e515]:
+                          - generic "August 26, 2026" [ref=f13e518]: "26"
+                        - gridcell "August 27, 2026" [ref=f13e520]:
+                          - generic "August 27, 2026" [ref=f13e523]: "27"
+                        - gridcell "August 28, 2026" [ref=f13e525]:
+                          - generic "August 28, 2026" [ref=f13e528]: "28"
+                        - gridcell "August 29, 2026" [ref=f13e530]:
+                          - generic "August 29, 2026" [ref=f13e533]: "29"
+                      - row [ref=f13e535]:
+                        - gridcell "August 30, 2026" [ref=f13e536]:
+                          - generic "August 30, 2026" [ref=f13e539]: "30"
+                        - gridcell "August 31, 2026" [ref=f13e541]:
+                          - generic "August 31, 2026" [ref=f13e544]: "31"
+                        - gridcell "September 1, 2026" [ref=f13e546]:
+                          - generic "September 1, 2026" [ref=f13e549]: "1"
+                        - gridcell "September 2, 2026" [ref=f13e551]:
+                          - generic "September 2, 2026" [ref=f13e554]: "2"
+                        - gridcell "September 3, 2026" [ref=f13e556]:
+                          - generic "September 3, 2026" [ref=f13e559]: "3"
+                        - gridcell "September 4, 2026" [ref=f13e561]:
+                          - generic "September 4, 2026" [ref=f13e564]: "4"
+                        - gridcell "September 5, 2026" [ref=f13e566]:
+                          - generic "September 5, 2026" [ref=f13e569]: "5"
+          - generic [ref=f13e571]:
+            - heading "Upcoming" [level=2] [ref=f13e572]
+            - paragraph [ref=f13e573]: Nothing scheduled.

@@ -1,0 +1,173 @@
+- generic [active] [ref=f6e1]:
+  - generic [ref=f6e2]:
+    - complementary [ref=f6e3]:
+      - generic [ref=f6e4]:
+        - text: 🌳 Banyan
+        - generic [ref=f6e5]: Listings Dashboard
+      - navigation [ref=f6e6]:
+        - link "🏠 Overview" [ref=f6e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f6e8]: 🏠
+          - generic [ref=f6e9]: Overview
+        - generic [ref=f6e10]:
+          - generic [ref=f6e11]: 🏠 Listings
+          - generic [ref=f6e12]:
+            - link "Overview" [ref=f6e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=f6e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=f6e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=f6e19]:
+          - generic [ref=f6e20]: 💼 Sales
+          - generic [ref=f6e21]:
+            - link "Client Inbox" [ref=f6e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=f6e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=f6e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=f6e27]: 🤝
+          - generic [ref=f6e28]: Relationships
+        - link "✅ My Work" [ref=f6e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=f6e30]: ✅
+          - generic [ref=f6e31]: My Work
+        - generic [ref=f6e32]:
+          - generic [ref=f6e33]: 📢 Marketing
+          - generic [ref=f6e34]:
+            - link "🖥️ Monitors 4" [ref=f6e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=f6e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=f6e37]: "4"
+            - link "🚀 Promotion" [ref=f6e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=f6e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=f6e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=f6e43]: 🧭
+          - generic [ref=f6e44]: Navigation
+        - link "⚙️ Site settings" [ref=f6e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=f6e46]: ⚙️
+          - generic [ref=f6e47]: Site settings
+      - generic [ref=f6e48]:
+        - button "Sign out" [ref=f6e49] [cursor=pointer]
+        - generic [ref=f6e50]: Staging DB copy — production data is untouched.
+    - main [ref=f6e51]:
+      - generic [ref=f6e52]:
+        - heading "Relationships" [level=1] [ref=f6e53]
+        - paragraph [ref=f6e54]: Everyone Banyan deals with — one record per person or organisation, however many roles they play.
+        - generic [ref=f6e55]:
+          - textbox "Search name, company, email, phone, ID…" [ref=f6e56]
+          - combobox [ref=f6e57]:
+            - option "All relationship types" [selected]
+            - option "Owner"
+            - option "Buyer"
+            - option "Tenant"
+            - option "Supplier"
+            - option "Contractor"
+            - option "Broker"
+            - option "Developer"
+            - option "Partner"
+            - option "Service Provider"
+            - option "Other"
+          - generic [ref=f6e58]:
+            - checkbox "Include unverified" [ref=f6e59]
+            - text: Include unverified
+          - button "Search" [ref=f6e60] [cursor=pointer]
+        - generic [ref=f6e61]:
+          - generic [ref=f6e62]:
+            - strong [ref=f6e64]: client1
+            - generic [ref=f6e65]: Buyer
+            - generic [ref=f6e67]: — · client1.test@personal.com
+            - generic [ref=f6e68]: 4 enquiry(ies) · 3 contract(s)
+            - generic [ref=f6e69]: Last activity 08 Aug 2026 · 2 open tasks
+            - generic [ref=f6e70]:
+              - generic [ref=f6e71]: 🏠 1
+              - generic [ref=f6e72]: 📄 3
+              - generic [ref=f6e73]: 👤 4
+              - generic [ref=f6e74]: ✓ 2
+            - generic [ref=f6e75]:
+              - link "Open" [ref=f6e76] [cursor=pointer]:
+                - /url: /relationships/pty_0da7c5ba7426428891efa98753ef69e6
+              - link "Contact" [ref=f6e77] [cursor=pointer]:
+                - /url: mailto:client1.test@personal.com
+              - link "Create Task" [ref=f6e78] [cursor=pointer]:
+                - /url: /tasks
+          - generic [ref=f6e79]:
+            - strong [ref=f6e81]: client2
+            - generic [ref=f6e82]: Buyer
+            - generic [ref=f6e84]: 01234 · client2.test@personal.com
+            - generic [ref=f6e85]: 1 enquiry(ies) · 0 contract(s)
+            - generic [ref=f6e86]: Last activity 08 Aug 2026 · 0 open tasks
+            - generic [ref=f6e87]: 👤 1
+            - generic [ref=f6e89]:
+              - link "Open" [ref=f6e90] [cursor=pointer]:
+                - /url: /relationships/pty_0dc9bf5f4f944e128f2a751cbcb8aeb4
+              - link "Contact" [ref=f6e91] [cursor=pointer]:
+                - /url: mailto:client2.test@personal.com
+              - link "Create Task" [ref=f6e92] [cursor=pointer]:
+                - /url: /tasks
+          - generic [ref=f6e93]:
+            - strong [ref=f6e95]: umar
+            - generic [ref=f6e96]: Buyer
+            - generic [ref=f6e98]: 123 · 123@gmail.com
+            - generic [ref=f6e99]: 5 enquiry(ies) · 4 contract(s)
+            - generic [ref=f6e100]: Last activity 08 Aug 2026 · 2 open tasks
+            - generic [ref=f6e101]:
+              - generic [ref=f6e102]: 🏠 1
+              - generic [ref=f6e103]: 📄 4
+              - generic [ref=f6e104]: 👤 5
+              - generic [ref=f6e105]: ✓ 2
+            - generic [ref=f6e106]:
+              - link "Open" [ref=f6e107] [cursor=pointer]:
+                - /url: /relationships/pty_lead_90e621b792f24c50b2f1d4a7859e8b54
+              - link "Contact" [ref=f6e108] [cursor=pointer]:
+                - /url: mailto:123@gmail.com
+              - link "Create Task" [ref=f6e109] [cursor=pointer]:
+                - /url: /tasks
+          - generic [ref=f6e110]:
+            - strong [ref=f6e112]: M. Samo
+            - generic [ref=f6e113]: Buyer
+            - generic [ref=f6e115]: 0123456789 · —
+            - generic [ref=f6e116]: 1 enquiry(ies) · 0 contract(s)
+            - generic [ref=f6e117]: Last activity 08 Aug 2026 · 0 open tasks
+            - generic [ref=f6e118]: 👤 1
+            - generic [ref=f6e120]:
+              - link "Open" [ref=f6e121] [cursor=pointer]:
+                - /url: /relationships/pty_90acf792ba324a13a8535e765226cbab
+              - link "Contact" [ref=f6e122] [cursor=pointer]:
+                - /url: https://wa.me/0123456789
+              - link "Create Task" [ref=f6e123] [cursor=pointer]:
+                - /url: /tasks
+          - generic [ref=f6e124]:
+            - strong [ref=f6e126]: Unnamed
+            - generic [ref=f6e127]: Buyer
+            - generic [ref=f6e129]: 08123456789 · —
+            - generic [ref=f6e130]: 10 enquiry(ies) · 0 contract(s)
+            - generic [ref=f6e131]: Last activity 08 Aug 2026 · 0 open tasks
+            - generic [ref=f6e132]: 👤 10
+            - generic [ref=f6e134]:
+              - link "Open" [ref=f6e135] [cursor=pointer]:
+                - /url: /relationships/pty_lead_3d51783eb3854640b101b73e7f04f523
+              - link "Contact" [ref=f6e136] [cursor=pointer]:
+                - /url: https://wa.me/08123456789
+              - link "Create Task" [ref=f6e137] [cursor=pointer]:
+                - /url: /tasks
+          - generic [ref=f6e138]:
+            - strong [ref=f6e140]: Unnamed
+            - generic [ref=f6e141]: Buyer
+            - generic [ref=f6e143]: — · —
+            - generic [ref=f6e144]: 1 enquiry(ies) · 0 contract(s)
+            - generic [ref=f6e145]: Last activity 08 Jul 2026 · 0 open tasks
+            - generic [ref=f6e146]: 👤 1
+            - generic [ref=f6e148]:
+              - link "Open" [ref=f6e149] [cursor=pointer]:
+                - /url: /relationships/pty_lead_57a04097d7574cde82ba0bc2015657d5
+              - link "Contact" [ref=f6e150] [cursor=pointer]:
+                - /url: "#"
+              - link "Create Task" [ref=f6e151] [cursor=pointer]:
+                - /url: /tasks
+  - alert [ref=f6e152]

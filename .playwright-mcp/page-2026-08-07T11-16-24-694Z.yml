@@ -1,0 +1,418 @@
+- generic [active] [ref=f2e1]:
+  - generic [ref=f2e2]:
+    - complementary [ref=f2e3]:
+      - generic [ref=f2e4]:
+        - text: 🌳 Banyan
+        - generic [ref=f2e5]: Listings Dashboard
+      - navigation [ref=f2e6]:
+        - link "🏠 Overview" [ref=f2e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f2e8]: 🏠
+          - generic [ref=f2e9]: Overview
+        - generic [ref=f2e10]:
+          - generic [ref=f2e11]: 🏠 Listings
+          - generic [ref=f2e12]:
+            - link "Overview" [ref=f2e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=f2e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=f2e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=f2e19]:
+          - generic [ref=f2e20]: 💼 Sales
+          - generic [ref=f2e21]:
+            - link "Client Inbox" [ref=f2e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=f2e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=f2e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=f2e27]: 🤝
+          - generic [ref=f2e28]: Relationships
+        - link "✅ My Work" [ref=f2e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=f2e30]: ✅
+          - generic [ref=f2e31]: My Work
+        - generic [ref=f2e32]:
+          - generic [ref=f2e33]: 📢 Marketing
+          - generic [ref=f2e34]:
+            - link "🖥️ Monitors 4" [ref=f2e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=f2e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=f2e37]: "4"
+            - link "🚀 Promotion" [ref=f2e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=f2e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=f2e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=f2e43]: 🧭
+          - generic [ref=f2e44]: Navigation
+        - link "⚙️ Site settings" [ref=f2e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=f2e46]: ⚙️
+          - generic [ref=f2e47]: Site settings
+      - generic [ref=f2e48]:
+        - button "Sign out" [ref=f2e49] [cursor=pointer]
+        - generic [ref=f2e50]: Staging DB copy — production data is untouched.
+    - main [ref=f2e51]:
+      - generic [ref=f2e52]:
+        - generic [ref=f2e53]:
+          - heading "Listings (10)" [level=1] [ref=f2e54]:
+            - text: Listings
+            - generic [ref=f2e55]: (10)
+          - generic [ref=f2e56]:
+            - link "cards" [ref=f2e57] [cursor=pointer]:
+              - /url: /master?category=commercial&page=1
+            - link "table" [ref=f2e58] [cursor=pointer]:
+              - /url: /master?category=commercial&view=table&page=1
+        - paragraph [ref=f2e59]:
+          - text: Card view — thumbnails, action badges and live demand metrics.
+          - link "Show empty/reserved rows" [ref=f2e60] [cursor=pointer]:
+            - /url: /master?category=commercial&all=1&page=1
+        - generic [ref=f2e61]:
+          - link "All (403)" [ref=f2e62] [cursor=pointer]:
+            - /url: /master?
+            - text: All
+            - generic [ref=f2e63]: (403)
+          - link "Rent (207)" [ref=f2e64] [cursor=pointer]:
+            - /url: /master?category=rent
+            - text: Rent
+            - generic [ref=f2e65]: (207)
+          - link "Sale (153)" [ref=f2e66] [cursor=pointer]:
+            - /url: /master?category=sale
+            - text: Sale
+            - generic [ref=f2e67]: (153)
+          - link "Land (33)" [ref=f2e68] [cursor=pointer]:
+            - /url: /master?category=land
+            - text: Land
+            - generic [ref=f2e69]: (33)
+          - link "Commercial (10)" [ref=f2e70] [cursor=pointer]:
+            - /url: /master?category=commercial
+            - text: Commercial
+            - generic [ref=f2e71]: (10)
+        - generic [ref=f2e72]:
+          - link "All (10)" [ref=f2e73] [cursor=pointer]:
+            - /url: /master?category=commercial
+            - text: All
+            - generic [ref=f2e74]: (10)
+          - link "Inbox (0)" [ref=f2e75] [cursor=pointer]:
+            - /url: /master?category=commercial&stage=inbox
+            - text: Inbox
+            - generic [ref=f2e76]: (0)
+          - link "Enrich (10)" [ref=f2e77] [cursor=pointer]:
+            - /url: /master?category=commercial&stage=enrich
+            - text: Enrich
+            - generic [ref=f2e78]: (10)
+          - link "Review (0)" [ref=f2e79] [cursor=pointer]:
+            - /url: /master?category=commercial&stage=review
+            - text: Review
+            - generic [ref=f2e80]: (0)
+          - link "Live (0)" [ref=f2e81] [cursor=pointer]:
+            - /url: /master?category=commercial&stage=live
+            - text: Live
+            - generic [ref=f2e82]: (0)
+          - link "Closed (0)" [ref=f2e83] [cursor=pointer]:
+            - /url: /master?category=commercial&stage=closed
+            - text: Closed
+            - generic [ref=f2e84]: (0)
+        - group [ref=f2e85]:
+          - generic "Areas — 5 mapped · 7 unmapped listings" [ref=f2e86] [cursor=pointer]
+        - generic [ref=f2e87]:
+          - textbox "Search name, ID, location…" [ref=f2e88]
+          - combobox [ref=f2e89]:
+            - option "All marketing" [selected]
+            - option "Archived"
+            - option "Under Negotiation"
+            - option "Upon Request"
+            - option "🔴 Archived"
+            - option "🔵 Available"
+            - option "🔵Available"
+            - option "🟠 Upon Request"
+            - option "🟣 Rented"
+            - option "🟣 Sold"
+          - combobox [ref=f2e90]:
+            - 'option "Sort: name" [selected]'
+            - option "Price ↑"
+            - option "Price ↓"
+            - option "Recently updated"
+          - button "Filter" [ref=f2e91] [cursor=pointer]
+        - generic [ref=f2e92]:
+          - generic [ref=f2e93]:
+            - link [ref=f2e94] [cursor=pointer]:
+              - /url: /master/recAa1Ce7hxdnq0bx
+            - generic [ref=f2e96]:
+              - link "COMM-1353 12-Villa Leasehold Estate For Sale with Restaurant, Main Pool & Scenic Rice Field Views Ubud 🟡 Draft IDR 23,000,000,000 Updated 19 May 2026 🔵 Available" [ref=f2e97] [cursor=pointer]:
+                - /url: /master/recAa1Ce7hxdnq0bx
+                - generic [ref=f2e98]:
+                  - code [ref=f2e99]: COMM-1353
+                  - strong [ref=f2e100]: 12-Villa Leasehold Estate For Sale with Restaurant, Main Pool & Scenic Rice Field Views
+                  - generic [ref=f2e101]: Ubud
+                  - generic [ref=f2e102]: 🟡 Draft
+                - generic [ref=f2e103]:
+                  - generic [ref=f2e104]: IDR 23,000,000,000
+                  - generic [ref=f2e105]: Updated 19 May 2026
+                  - generic [ref=f2e106]: 🔵 Available
+              - link "★★★☆☆ 62%" [ref=f2e107] [cursor=pointer]:
+                - /url: /master/recAa1Ce7hxdnq0bx#health
+                - text: ★★★☆☆
+                - generic [ref=f2e108]: 62%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e110] [cursor=pointer]:
+                - /url: /master/recAa1Ce7hxdnq0bx
+              - generic [ref=f2e111]:
+                - generic [ref=f2e112]:
+                  - strong [ref=f2e113]: 100%
+                  - text: Complete
+                - generic [ref=f2e114]:
+                  - strong [ref=f2e115]: "0"
+                  - text: Tasks
+          - generic [ref=f2e116]:
+            - link [ref=f2e117] [cursor=pointer]:
+              - /url: /master/recYBMIuzEjnXfBNd
+            - generic [ref=f2e119]:
+              - link "COMM-1352 210m² Commercial Office Space in Campuhan Ubud 🟡 Draft IDR 5,000,000,000 Updated 19 May 2026 🔵 Available" [ref=f2e120] [cursor=pointer]:
+                - /url: /master/recYBMIuzEjnXfBNd
+                - generic [ref=f2e121]:
+                  - code [ref=f2e122]: COMM-1352
+                  - strong [ref=f2e123]: 210m² Commercial Office Space in Campuhan
+                  - generic [ref=f2e124]: Ubud
+                  - generic [ref=f2e125]: 🟡 Draft
+                - generic [ref=f2e126]:
+                  - generic [ref=f2e127]: IDR 5,000,000,000
+                  - generic [ref=f2e128]: Updated 19 May 2026
+                  - generic [ref=f2e129]: 🔵 Available
+              - link "★★★☆☆ 54%" [ref=f2e130] [cursor=pointer]:
+                - /url: /master/recYBMIuzEjnXfBNd#health
+                - text: ★★★☆☆
+                - generic [ref=f2e131]: 54%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e133] [cursor=pointer]:
+                - /url: /master/recYBMIuzEjnXfBNd
+              - generic [ref=f2e134]:
+                - generic [ref=f2e135]:
+                  - strong [ref=f2e136]: 100%
+                  - text: Complete
+                - generic [ref=f2e137]:
+                  - strong [ref=f2e138]: "0"
+                  - text: Tasks
+          - generic [ref=f2e139]:
+            - link [ref=f2e140] [cursor=pointer]:
+              - /url: /master/recTiyvD3U90p2nqZ
+            - generic [ref=f2e142]:
+              - link "COMM-1351 6 Bedroom Boutique Leasehold Hotel for Sale Ubud 🟡 Draft IDR 5,670,000,000 Updated 19 May 2026 🔵 Available" [ref=f2e143] [cursor=pointer]:
+                - /url: /master/recTiyvD3U90p2nqZ
+                - generic [ref=f2e144]:
+                  - code [ref=f2e145]: COMM-1351
+                  - strong [ref=f2e146]: 6 Bedroom Boutique Leasehold Hotel for Sale
+                  - generic [ref=f2e147]: Ubud
+                  - generic [ref=f2e148]: 🟡 Draft
+                - generic [ref=f2e149]:
+                  - generic [ref=f2e150]: IDR 5,670,000,000
+                  - generic [ref=f2e151]: Updated 19 May 2026
+                  - generic [ref=f2e152]: 🔵 Available
+              - link "★★★☆☆ 62%" [ref=f2e153] [cursor=pointer]:
+                - /url: /master/recTiyvD3U90p2nqZ#health
+                - text: ★★★☆☆
+                - generic [ref=f2e154]: 62%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e156] [cursor=pointer]:
+                - /url: /master/recTiyvD3U90p2nqZ
+              - generic [ref=f2e157]:
+                - generic [ref=f2e158]:
+                  - strong [ref=f2e159]: 100%
+                  - text: Complete
+                - generic [ref=f2e160]:
+                  - strong [ref=f2e161]: "0"
+                  - text: Tasks
+          - generic [ref=f2e162]:
+            - link "🏠" [ref=f2e163] [cursor=pointer]:
+              - /url: /master/rec0NoIQ7SbhH6BWh
+            - generic [ref=f2e166]:
+              - link "COMM-1362 Alam Ubud Estate - TBD 🟡 Draft IDR 77,173,835,885 Updated 08 Jun 2026 🔵 Available" [ref=f2e167] [cursor=pointer]:
+                - /url: /master/rec0NoIQ7SbhH6BWh
+                - generic [ref=f2e168]:
+                  - code [ref=f2e169]: COMM-1362
+                  - strong [ref=f2e170]: Alam Ubud Estate - TBD
+                  - generic [ref=f2e171]: 🟡 Draft
+                - generic [ref=f2e172]:
+                  - generic [ref=f2e173]: IDR 77,173,835,885
+                  - generic [ref=f2e174]: Updated 08 Jun 2026
+                  - generic [ref=f2e175]: 🔵 Available
+              - link "★☆☆☆☆ 23%" [ref=f2e176] [cursor=pointer]:
+                - /url: /master/rec0NoIQ7SbhH6BWh#health
+                - text: ★☆☆☆☆
+                - generic [ref=f2e177]: 23%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e179] [cursor=pointer]:
+                - /url: /master/rec0NoIQ7SbhH6BWh
+              - generic [ref=f2e180]:
+                - generic [ref=f2e181]:
+                  - strong [ref=f2e182]: 40%
+                  - text: Complete
+                - generic [ref=f2e183]:
+                  - strong [ref=f2e184]: "0"
+                  - text: Tasks
+          - generic [ref=f2e185]:
+            - link [ref=f2e186] [cursor=pointer]:
+              - /url: /master/recuIbWrbYZTi2AGf
+            - generic [ref=f2e188]:
+              - link "COMM-1361 Bali Moons Shop Ubud 🟡 Draft IDR 715,400,564 Updated 08 Jun 2026 🔵 Available" [ref=f2e189] [cursor=pointer]:
+                - /url: /master/recuIbWrbYZTi2AGf
+                - generic [ref=f2e190]:
+                  - code [ref=f2e191]: COMM-1361
+                  - strong [ref=f2e192]: Bali Moons Shop
+                  - generic [ref=f2e193]: Ubud
+                  - generic [ref=f2e194]: 🟡 Draft
+                - generic [ref=f2e195]:
+                  - generic [ref=f2e196]: IDR 715,400,564
+                  - generic [ref=f2e197]: Updated 08 Jun 2026
+                  - generic [ref=f2e198]: 🔵 Available
+              - link "★★★☆☆ 62%" [ref=f2e199] [cursor=pointer]:
+                - /url: /master/recuIbWrbYZTi2AGf#health
+                - text: ★★★☆☆
+                - generic [ref=f2e200]: 62%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e202] [cursor=pointer]:
+                - /url: /master/recuIbWrbYZTi2AGf
+              - generic [ref=f2e203]:
+                - generic [ref=f2e204]:
+                  - strong [ref=f2e205]: 100%
+                  - text: Complete
+                - generic [ref=f2e206]:
+                  - strong [ref=f2e207]: "0"
+                  - text: Tasks
+          - generic [ref=f2e208]:
+            - link [ref=f2e209] [cursor=pointer]:
+              - /url: /master/recAiGWbn73A3HOLu
+            - generic [ref=f2e211]:
+              - link "COMM-1354 Freehold Boutique Hotel for Sale — 16 Rooms, Pool, Spa & Rice Field Views in Ubud, Bali Ubud 🟡 Draft IDR 30,000,000,000 Updated 19 May 2026 🔵 Available" [ref=f2e212] [cursor=pointer]:
+                - /url: /master/recAiGWbn73A3HOLu
+                - generic [ref=f2e213]:
+                  - code [ref=f2e214]: COMM-1354
+                  - strong [ref=f2e215]: Freehold Boutique Hotel for Sale — 16 Rooms, Pool, Spa & Rice Field Views in Ubud, Bali
+                  - generic [ref=f2e216]: Ubud
+                  - generic [ref=f2e217]: 🟡 Draft
+                - generic [ref=f2e218]:
+                  - generic [ref=f2e219]: IDR 30,000,000,000
+                  - generic [ref=f2e220]: Updated 19 May 2026
+                  - generic [ref=f2e221]: 🔵 Available
+              - link "★★★☆☆ 54%" [ref=f2e222] [cursor=pointer]:
+                - /url: /master/recAiGWbn73A3HOLu#health
+                - text: ★★★☆☆
+                - generic [ref=f2e223]: 54%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e225] [cursor=pointer]:
+                - /url: /master/recAiGWbn73A3HOLu
+              - generic [ref=f2e226]:
+                - generic [ref=f2e227]:
+                  - strong [ref=f2e228]: 100%
+                  - text: Complete
+                - generic [ref=f2e229]:
+                  - strong [ref=f2e230]: "0"
+                  - text: Tasks
+          - generic [ref=f2e231]:
+            - link "🏠" [ref=f2e232] [cursor=pointer]:
+              - /url: /master/recpnzyYN8vPrz7ow
+            - generic [ref=f2e235]:
+              - link "COMM-1359 Kahayana Suites - to be changed 🟡 Draft — Updated 08 Jun 2026 🔵 Available" [ref=f2e236] [cursor=pointer]:
+                - /url: /master/recpnzyYN8vPrz7ow
+                - generic [ref=f2e237]:
+                  - code [ref=f2e238]: COMM-1359
+                  - strong [ref=f2e239]: Kahayana Suites - to be changed
+                  - generic [ref=f2e240]: 🟡 Draft
+                - generic [ref=f2e241]:
+                  - generic [ref=f2e242]: —
+                  - generic [ref=f2e243]: Updated 08 Jun 2026
+                  - generic [ref=f2e244]: 🔵 Available
+              - link "☆☆☆☆☆ 8%" [ref=f2e245] [cursor=pointer]:
+                - /url: /master/recpnzyYN8vPrz7ow#health
+                - text: ☆☆☆☆☆
+                - generic [ref=f2e246]: 8%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e248] [cursor=pointer]:
+                - /url: /master/recpnzyYN8vPrz7ow
+              - generic [ref=f2e249]:
+                - generic [ref=f2e250]:
+                  - strong [ref=f2e251]: 20%
+                  - text: Complete
+                - generic [ref=f2e252]:
+                  - strong [ref=f2e253]: "0"
+                  - text: Tasks
+          - generic [ref=f2e254]:
+            - link "🏠" [ref=f2e255] [cursor=pointer]:
+              - /url: /master/rec53U7tKagB1FiYK
+            - generic [ref=f2e258]:
+              - link "COMM-1360 Lodtunduh Hotel - TBD 🟡 Draft — Updated 08 Jun 2026 🔵 Available" [ref=f2e259] [cursor=pointer]:
+                - /url: /master/rec53U7tKagB1FiYK
+                - generic [ref=f2e260]:
+                  - code [ref=f2e261]: COMM-1360
+                  - strong [ref=f2e262]: Lodtunduh Hotel - TBD
+                  - generic [ref=f2e263]: 🟡 Draft
+                - generic [ref=f2e264]:
+                  - generic [ref=f2e265]: —
+                  - generic [ref=f2e266]: Updated 08 Jun 2026
+                  - generic [ref=f2e267]: 🔵 Available
+              - link "★☆☆☆☆ 23%" [ref=f2e268] [cursor=pointer]:
+                - /url: /master/rec53U7tKagB1FiYK#health
+                - text: ★☆☆☆☆
+                - generic [ref=f2e269]: 23%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e271] [cursor=pointer]:
+                - /url: /master/rec53U7tKagB1FiYK
+              - generic [ref=f2e272]:
+                - generic [ref=f2e273]:
+                  - strong [ref=f2e274]: 20%
+                  - text: Complete
+                - generic [ref=f2e275]:
+                  - strong [ref=f2e276]: "0"
+                  - text: Tasks
+          - generic [ref=f2e277]:
+            - link "🏠" [ref=f2e278] [cursor=pointer]:
+              - /url: /master/rec9NTuHlnf7adyuE
+            - generic [ref=f2e281]:
+              - link "COMM-1358 Max One Hotel - to be changed 🟡 Draft — Updated 08 Jun 2026 🔵 Available" [ref=f2e282] [cursor=pointer]:
+                - /url: /master/rec9NTuHlnf7adyuE
+                - generic [ref=f2e283]:
+                  - code [ref=f2e284]: COMM-1358
+                  - strong [ref=f2e285]: Max One Hotel - to be changed
+                  - generic [ref=f2e286]: 🟡 Draft
+                - generic [ref=f2e287]:
+                  - generic [ref=f2e288]: —
+                  - generic [ref=f2e289]: Updated 08 Jun 2026
+                  - generic [ref=f2e290]: 🔵 Available
+              - link "★☆☆☆☆ 15%" [ref=f2e291] [cursor=pointer]:
+                - /url: /master/rec9NTuHlnf7adyuE#health
+                - text: ★☆☆☆☆
+                - generic [ref=f2e292]: 15%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e294] [cursor=pointer]:
+                - /url: /master/rec9NTuHlnf7adyuE
+              - generic [ref=f2e295]:
+                - generic [ref=f2e296]:
+                  - strong [ref=f2e297]: 20%
+                  - text: Complete
+                - generic [ref=f2e298]:
+                  - strong [ref=f2e299]: "0"
+                  - text: Tasks
+          - generic [ref=f2e300]:
+            - link [ref=f2e301] [cursor=pointer]:
+              - /url: /master/recdthofNQIu25HJB
+            - generic [ref=f2e303]:
+              - link "COMM-1355 Rare 3-Storey Heritage Cottage for Sale with Jungle Views and Balinese Character Ubud 🟡 Draft IDR 2,400,000,000 Updated 19 May 2026 🔵 Available" [ref=f2e304] [cursor=pointer]:
+                - /url: /master/recdthofNQIu25HJB
+                - generic [ref=f2e305]:
+                  - code [ref=f2e306]: COMM-1355
+                  - strong [ref=f2e307]: Rare 3-Storey Heritage Cottage for Sale with Jungle Views and Balinese Character
+                  - generic [ref=f2e308]: Ubud
+                  - generic [ref=f2e309]: 🟡 Draft
+                - generic [ref=f2e310]:
+                  - generic [ref=f2e311]: IDR 2,400,000,000
+                  - generic [ref=f2e312]: Updated 19 May 2026
+                  - generic [ref=f2e313]: 🔵 Available
+              - link "★★★☆☆ 54%" [ref=f2e314] [cursor=pointer]:
+                - /url: /master/recdthofNQIu25HJB#health
+                - text: ★★★☆☆
+                - generic [ref=f2e315]: 54%
+              - link "⚠️ Stagnant >48h ↗" [ref=f2e317] [cursor=pointer]:
+                - /url: /master/recdthofNQIu25HJB
+              - generic [ref=f2e318]:
+                - generic [ref=f2e319]:
+                  - strong [ref=f2e320]: 100%
+                  - text: Complete
+                - generic [ref=f2e321]:
+                  - strong [ref=f2e322]: "0"
+                  - text: Tasks
+        - generic [ref=f2e323]: Page 1 of 1
+  - alert [ref=f2e325]

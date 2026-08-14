@@ -1,0 +1,205 @@
+- generic [ref=f2e2]:
+  - complementary [ref=f2e3]:
+    - generic [ref=f2e4]:
+      - link "Banyan home" [ref=f2e5] [cursor=pointer]:
+        - /url: "#"
+        - img "Banyan Properties" [ref=f2e6]
+      - button "Collapse or expand sidebar" [ref=f2e7] [cursor=pointer]
+    - navigation "Main navigation" [ref=f2e11]:
+      - link "Overview" [ref=f2e13] [cursor=pointer]:
+        - /url: index.html
+      - generic [ref=f2e21]:
+        - generic [ref=f2e22]:
+          - link "Listings" [ref=f2e23] [cursor=pointer]:
+            - /url: listings.html
+          - button "Listings submenu" [ref=f2e29] [cursor=pointer]
+        - button "Sales" [ref=f2e34] [cursor=pointer]
+        - link "Relationships" [ref=f2e43] [cursor=pointer]:
+          - /url: "#"
+        - link "My Work" [ref=f2e51] [cursor=pointer]:
+          - /url: "#"
+        - button "Marketing" [ref=f2e58] [cursor=pointer]
+        - link "Navigation" [ref=f2e67] [cursor=pointer]:
+          - /url: "#"
+        - link "Site settings" [ref=f2e73] [cursor=pointer]:
+          - /url: "#"
+    - generic [ref=f2e79]:
+      - generic [ref=f2e80]: Staging DB — production data untouched
+      - button "Sign out" [ref=f2e82] [cursor=pointer]
+  - generic [ref=f2e87]:
+    - banner [ref=f2e88]:
+      - generic [ref=f2e89]:
+        - generic [ref=f2e90]: Staging
+        - generic "umarbilalpersonal@gmail.com" [ref=f2e92]: UA
+    - main [ref=f2e93]:
+      - generic [ref=f2e94]:
+        - generic [ref=f2e95]:
+          - heading "Good morning, Banyan" [level=1] [ref=f2e96]:
+            - text: Good morning, Banyan
+            - generic [ref=f2e97]: 👋
+          - paragraph [ref=f2e98]: Here's what needs your attention today.
+        - generic [ref=f2e99]:
+          - generic [ref=f2e100]: Fri, Aug 7, 2026
+          - button "Jump to calendar" [ref=f2e101] [cursor=pointer]
+      - region [ref=f2e105]:
+        - heading "Needs attention" [level=2] [ref=f2e106]
+        - generic [ref=f2e107]:
+          - article [ref=f2e108]:
+            - paragraph [ref=f2e115]: "12"
+            - paragraph [ref=f2e116]: Candidates awaiting review
+            - link "Review" [ref=f2e117] [cursor=pointer]:
+              - /url: "#"
+          - article [ref=f2e120]:
+            - paragraph [ref=f2e125]: "7"
+            - paragraph [ref=f2e126]: Listings stagnant >48h
+            - link "Review" [ref=f2e127] [cursor=pointer]:
+              - /url: "#"
+          - article [ref=f2e130]:
+            - paragraph [ref=f2e135]: "5"
+            - paragraph [ref=f2e136]: Drafts almost ready
+            - link "Publish" [ref=f2e137] [cursor=pointer]:
+              - /url: "#"
+          - article [ref=f2e140]:
+            - paragraph [ref=f2e144]: "4"
+            - paragraph [ref=f2e145]: Monitors requiring action
+            - link "Check" [ref=f2e146] [cursor=pointer]:
+              - /url: "#"
+      - generic [ref=f2e149]:
+        - generic [ref=f2e150]:
+          - generic [ref=f2e151]:
+            - heading "Recent activity" [level=2] [ref=f2e152]
+            - link "View all" [ref=f2e153] [cursor=pointer]:
+              - /url: "#"
+          - generic [ref=f2e156]:
+            - generic [ref=f2e157]:
+              - paragraph [ref=f2e159]: New viewing scheduled for 456 Oak Ave
+              - generic [ref=f2e160]: 2h ago
+            - generic [ref=f2e161]:
+              - paragraph [ref=f2e163]: 5a Check-in completed at 123 Maple St
+              - generic [ref=f2e164]: 3h ago
+            - generic [ref=f2e165]:
+              - paragraph [ref=f2e167]: Draft listing updated for 789 Pine Rd
+              - generic [ref=f2e168]: 5h ago
+            - generic [ref=f2e169]:
+              - paragraph [ref=f2e171]: Contract sent for 234 Palm St
+              - generic [ref=f2e172]: Yesterday
+            - generic [ref=f2e173]:
+              - paragraph [ref=f2e175]: 5a Check-out completed at 321 Cedar Ln
+              - generic [ref=f2e176]: Yesterday
+        - generic [ref=f2e177]:
+          - heading "Upcoming" [level=2] [ref=f2e179]
+          - generic [ref=f2e180]:
+            - generic [ref=f2e183]:
+              - paragraph [ref=f2e184]: 5a Check-in
+              - paragraph [ref=f2e185]: 123 Maple St, Unit 5A
+              - paragraph [ref=f2e186]: Today · 9:00 AM
+            - generic [ref=f2e189]:
+              - paragraph [ref=f2e190]: Viewing
+              - paragraph [ref=f2e191]: 456 Oak Ave
+              - paragraph [ref=f2e192]: Today · 11:00 AM
+            - generic [ref=f2e195]:
+              - paragraph [ref=f2e196]: Contract signing
+              - paragraph [ref=f2e197]: 789 Pine Rd
+              - paragraph [ref=f2e198]: Tomorrow · 2:00 PM
+            - generic [ref=f2e201]:
+              - paragraph [ref=f2e202]: 5a Check-out
+              - paragraph [ref=f2e203]: 321 Cedar Ln
+              - paragraph [ref=f2e204]: Sat · 10:00 AM
+          - link "View full schedule" [ref=f2e205] [cursor=pointer]:
+            - /url: "#"
+      - generic [ref=f2e208]:
+        - generic [ref=f2e209]:
+          - heading "Calendar" [level=2] [ref=f2e210]
+          - generic [ref=f2e211]:
+            - button "Today" [ref=f2e212] [cursor=pointer]
+            - button "Previous" [ref=f2e213] [cursor=pointer]
+            - button "Change month or year" [ref=f2e216] [cursor=pointer]: August 2026
+            - button "Next" [ref=f2e217] [cursor=pointer]
+            - group "Calendar view" [ref=f2e220]:
+              - button "Week" [ref=f2e221] [cursor=pointer]
+              - button "Month" [ref=f2e222] [cursor=pointer]
+              - button "List" [ref=f2e223] [cursor=pointer]
+            - generic [ref=f2e224]:
+              - generic [ref=f2e225]: Event
+              - combobox "Filter calendar events" [ref=f2e226] [cursor=pointer]:
+                - option "All events" [selected]
+                - option "Viewing"
+                - option "Check-in"
+                - option "Check-out"
+                - option "Contract"
+                - option "Other"
+        - generic [ref=f2e228]:
+          - generic [ref=f2e230]:
+            - generic [ref=f2e231]: Sun
+            - generic [ref=f2e232]: "2"
+          - generic [ref=f2e233]:
+            - generic [ref=f2e234]: Mon
+            - generic [ref=f2e235]: "3"
+          - generic [ref=f2e236]:
+            - generic [ref=f2e237]: Tue
+            - generic [ref=f2e238]: "4"
+          - generic [ref=f2e239]:
+            - generic [ref=f2e240]: Wed
+            - generic [ref=f2e241]: "5"
+          - generic [ref=f2e242]:
+            - generic [ref=f2e243]: Thu
+            - generic [ref=f2e244]: "6"
+          - generic [ref=f2e245]:
+            - generic [ref=f2e246]: Fri
+            - generic [ref=f2e247]: "7"
+          - generic [ref=f2e248]:
+            - generic [ref=f2e249]: Sat
+            - generic [ref=f2e250]: "8"
+          - generic [ref=f2e251]: 8 AM
+          - button "9:00 AM 5a Check-in 123 Maple St" [ref=f2e264] [cursor=pointer]:
+            - generic [ref=f2e265]: 9:00 AM
+            - generic [ref=f2e266]: 5a Check-in
+            - generic [ref=f2e267]: 123 Maple St
+          - button "9:00 AM 5a Check-in 123 Maple St" [ref=f2e270] [cursor=pointer]:
+            - generic [ref=f2e271]: 9:00 AM
+            - generic [ref=f2e272]: 5a Check-in
+            - generic [ref=f2e273]: 123 Maple St
+          - button "9:00 AM 5a Check-in 123 Maple St" [ref=f2e276] [cursor=pointer]:
+            - generic [ref=f2e277]: 9:00 AM
+            - generic [ref=f2e278]: 5a Check-in
+            - generic [ref=f2e279]: 123 Maple St
+          - generic [ref=f2e280]: 10 AM
+          - button "10:00 AM Viewing 456 Oak Ave" [ref=f2e288] [cursor=pointer]:
+            - generic [ref=f2e289]: 10:00 AM
+            - generic [ref=f2e290]: Viewing
+            - generic [ref=f2e291]: 456 Oak Ave
+          - button "11:00 AM Viewing 456 Oak Ave" [ref=f2e298] [cursor=pointer]:
+            - generic [ref=f2e299]: 11:00 AM
+            - generic [ref=f2e300]: Viewing
+            - generic [ref=f2e301]: 456 Oak Ave
+          - button "11:00 AM 5a Check-out 321 Cedar Ln" [ref=f2e305] [cursor=pointer]:
+            - generic [ref=f2e306]: 11:00 AM
+            - generic [ref=f2e307]: 5a Check-out
+            - generic [ref=f2e308]: 321 Cedar Ln
+          - generic [ref=f2e309]: 12 PM
+          - generic [ref=f2e326]: 2 PM
+          - button "2:00 PM Contract signing 789 Pine Rd" [ref=f2e333] [cursor=pointer]:
+            - generic [ref=f2e334]: 2:00 PM
+            - generic [ref=f2e335]: Contract signing
+            - generic [ref=f2e336]: 789 Pine Rd
+          - button "2:00 PM Contract signing 789 Pine Rd" [ref=f2e338] [cursor=pointer]:
+            - generic [ref=f2e339]: 2:00 PM
+            - generic [ref=f2e340]: Contract signing
+            - generic [ref=f2e341]: 789 Pine Rd
+          - generic [ref=f2e351]: 4 PM
+          - button "4:00 PM Viewing 234 Palm St" [ref=f2e356] [cursor=pointer]:
+            - generic [ref=f2e357]: 4:00 PM
+            - generic [ref=f2e358]: Viewing
+            - generic [ref=f2e359]: 234 Palm St
+          - button "4:00 PM Listing photoshoot 555 Beach Rd" [ref=f2e364] [cursor=pointer]:
+            - generic [ref=f2e365]: 4:00 PM
+            - generic [ref=f2e366]: Listing photoshoot
+            - generic [ref=f2e367]: 555 Beach Rd
+          - generic [ref=f2e376]: 6 PM
+          - generic [ref=f2e393]: 8 PM
+        - generic [ref=f2e402]:
+          - generic [ref=f2e403]: Viewing
+          - generic [ref=f2e405]: Check-in
+          - generic [ref=f2e407]: Check-out
+          - generic [ref=f2e409]: Contract
+          - generic [ref=f2e411]: Other

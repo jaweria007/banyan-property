@@ -1,0 +1,131 @@
+- generic [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - link "Banyan home" [ref=e5] [cursor=pointer]:
+        - /url: "#"
+        - img "Banyan Properties" [ref=e6]
+      - button "Collapse or expand sidebar" [ref=e7] [cursor=pointer]
+    - navigation "Main navigation" [ref=e11]:
+      - link "Overview" [ref=e13] [cursor=pointer]:
+        - /url: "#"
+      - generic [ref=e21]:
+        - button "Listings" [ref=e23] [cursor=pointer]
+        - button "Sales" [ref=e33] [cursor=pointer]
+        - link "Relationships" [ref=e42] [cursor=pointer]:
+          - /url: "#"
+        - link "My Work" [ref=e50] [cursor=pointer]:
+          - /url: "#"
+        - button "Marketing" [ref=e57] [cursor=pointer]
+        - link "Navigation" [ref=e66] [cursor=pointer]:
+          - /url: "#"
+        - link "Site settings" [ref=e72] [cursor=pointer]:
+          - /url: "#"
+    - generic [ref=e78]:
+      - generic [ref=e79]: Staging DB — production data untouched
+      - button "Sign out" [ref=e81] [cursor=pointer]
+  - generic [ref=e86]:
+    - banner [ref=e87]:
+      - button "Open menu" [ref=e89] [cursor=pointer]
+      - generic [ref=e92]:
+        - generic [ref=e93]: Staging
+        - generic "umarbilalpersonal@gmail.com" [ref=e95]: UA
+    - main [ref=e96]:
+      - generic [ref=e97]:
+        - generic [ref=e98]:
+          - heading "Overview" [level=1] [ref=e99]
+          - paragraph [ref=e100]: Manage property listings, blog, navigation and site settings.
+        - link "Manage listings" [ref=e101] [cursor=pointer]:
+          - /url: "#"
+      - region "Key metrics" [ref=e104]:
+        - article [ref=e105]:
+          - paragraph [ref=e111]: "0"
+          - paragraph [ref=e112]: Total listings
+          - paragraph [ref=e113]: All property categories
+        - article [ref=e114]:
+          - paragraph [ref=e121]: "0"
+          - paragraph [ref=e122]: For rent
+          - paragraph [ref=e123]: Active rental units
+        - article [ref=e124]:
+          - paragraph [ref=e130]: "0"
+          - paragraph [ref=e131]: For sale
+          - paragraph [ref=e132]: Available for purchase
+        - article [ref=e133]:
+          - paragraph [ref=e138]: "0"
+          - paragraph [ref=e139]: Land
+          - paragraph [ref=e140]: Land parcels
+        - article [ref=e141]:
+          - paragraph [ref=e148]: "0"
+          - paragraph [ref=e149]: Commercial
+          - paragraph [ref=e150]: Commercial spaces
+        - article [ref=e151]:
+          - paragraph [ref=e158]: "0"
+          - paragraph [ref=e159]: Blog articles
+          - paragraph [ref=e160]: Published posts
+        - article [ref=e161]:
+          - paragraph [ref=e169]: "0"
+          - paragraph [ref=e170]: Nav items
+          - paragraph [ref=e171]: Menu entries
+      - generic [ref=e172]:
+        - generic [ref=e173]:
+          - generic [ref=e174]:
+            - generic [ref=e175]:
+              - button "Previous month" [ref=e176] [cursor=pointer]
+              - button "Next month" [ref=e179] [cursor=pointer]
+              - heading "August 2026" [level=2] [ref=e182]
+              - generic [ref=e183]: Today · Fri, Aug 7
+            - group "Calendar view" [ref=e184]:
+              - button "Month" [ref=e185] [cursor=pointer]
+              - button "Week" [ref=e186] [cursor=pointer]
+          - generic [ref=e188]:
+            - generic [ref=e189]: Sun
+            - generic [ref=e190]: Mon
+            - generic [ref=e191]: Tue
+            - generic [ref=e192]: Wed
+            - generic [ref=e193]: Thu
+            - generic [ref=e194]: Fri
+            - generic [ref=e195]: Sat
+            - generic [ref=e196] [cursor=pointer]: "26"
+            - generic [ref=e198] [cursor=pointer]: "27"
+            - generic [ref=e200] [cursor=pointer]: "28"
+            - generic [ref=e202] [cursor=pointer]: "29"
+            - generic [ref=e204] [cursor=pointer]: "30"
+            - generic [ref=e206] [cursor=pointer]: "31"
+            - generic [ref=e208] [cursor=pointer]: "1"
+            - generic [ref=e210] [cursor=pointer]: "2"
+            - generic [ref=e214] [cursor=pointer]: "3"
+            - generic [ref=e216] [cursor=pointer]: "4"
+            - generic [ref=e220] [cursor=pointer]: "5"
+            - generic [ref=e222] [cursor=pointer]: "6"
+            - generic [ref=e224] [cursor=pointer]: "7"
+            - generic [ref=e226] [cursor=pointer]: "8"
+            - generic [ref=e228] [cursor=pointer]: "9"
+            - generic [ref=e230] [cursor=pointer]: "10"
+            - generic [ref=e232] [cursor=pointer]: "11"
+            - generic [ref=e234] [cursor=pointer]: "12"
+            - generic [ref=e236] [cursor=pointer]: "13"
+            - generic [ref=e238] [cursor=pointer]: "14"
+            - generic [ref=e240] [cursor=pointer]: "15"
+            - generic [ref=e242] [cursor=pointer]: "16"
+            - generic [ref=e244] [cursor=pointer]: "17"
+            - generic [ref=e246] [cursor=pointer]: "18"
+            - generic [ref=e248] [cursor=pointer]: "19"
+            - generic [ref=e250] [cursor=pointer]: "20"
+            - generic [ref=e252] [cursor=pointer]: "21"
+            - generic [ref=e254] [cursor=pointer]: "22"
+            - generic [ref=e256] [cursor=pointer]: "23"
+            - generic [ref=e258] [cursor=pointer]: "24"
+            - generic [ref=e260] [cursor=pointer]: "25"
+            - generic [ref=e262] [cursor=pointer]: "26"
+            - generic [ref=e264] [cursor=pointer]: "27"
+            - generic [ref=e266] [cursor=pointer]: "28"
+            - generic [ref=e268] [cursor=pointer]: "29"
+            - generic [ref=e270] [cursor=pointer]: "30"
+            - generic [ref=e272] [cursor=pointer]: "31"
+            - generic [ref=e274] [cursor=pointer]: "1"
+            - generic [ref=e276] [cursor=pointer]: "2"
+            - generic [ref=e278] [cursor=pointer]: "3"
+            - generic [ref=e280] [cursor=pointer]: "4"
+            - generic [ref=e282] [cursor=pointer]: "5"
+        - complementary [ref=e284]:
+          - heading "Upcoming" [level=2] [ref=e290]
+          - paragraph [ref=e292]: Nothing scheduled.

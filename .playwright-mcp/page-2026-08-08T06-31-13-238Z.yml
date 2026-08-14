@@ -1,0 +1,13 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]: 🌳 Banyan Dashboard
+    - generic [ref=e5]: Sign in to manage listings
+    - alert [ref=e14]: Invalid email or password
+    - generic [ref=e6]:
+      - text: Email
+      - textbox "Email" [ref=e7]: umarbilalpersonal@gmail.com
+    - generic [ref=e9]:
+      - text: Password
+      - textbox "Password" [ref=e10]: "12345678"
+    - button "Sign in" [ref=e11] [cursor=pointer]
+  - alert [ref=e12]

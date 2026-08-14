@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banyan · Listings</title>
+  <meta name="description" content="Property listings management for Banyan Properties">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      if (localStorage.getItem('banyan_signed_in') !== '1') {
+        location.replace('login.html');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="listings">
+  <div class="app">
+
+    <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
+
+    <aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <a href="#" class="brand__link" aria-label="Banyan home">
+      <img class="brand__logo" src="public/banyan logo.png" alt="Banyan Properties">
+      <img class="brand__logo-half" src="public/banyan half logo when side bar shrinks.png" alt="Banyan Properties">
+    </a>
+    <button type="button" class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Collapse or expand sidebar">
+      <svg class="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M21 6l-6 6 6 6"/></svg>
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M3 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="side-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" placeholder="Search" aria-label="Search">
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-item " data-label="Overview">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </span>
+      <span class="nav-item__label">Overview</span>
+    </a>
+
+    <a href="#" class="nav-item" data-label="My Work">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span class="nav-item__label">My Work</span>
+    </a>
+
+    <a href="#" class="nav-item" data-label="Relationships">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <span class="nav-item__label">Relationships</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <a href="listings.html" class="nav-item nav-item--link is-active" data-label="Listings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </span>
+        <span class="nav-item__label">Listings</span>
+      </a>
+      <button type="button" class="nav-chev nav-toggle" aria-expanded="false" aria-label="Listings submenu">
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="availability.html" class="nav-sub__link "><span class="nav-dot"></span>Availability</a>
+          <a href="supply.html" class="nav-sub__link "><span class="nav-dot"></span>Supply Overview</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Sales">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </span>
+        <span class="nav-item__label">Sales</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="client-inbox.html" class="nav-sub__link "><span class="nav-dot"></span>Client Inbox</a>
+          <a href="opportunities.html" class="nav-sub__link "><span class="nav-dot"></span>Opportunities</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Marketing">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
+        <span class="nav-item__label">Marketing</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Monitors<span class="nav-badge">4</span></a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Promotion</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Blog &amp; SEO</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="nav-item" data-label="Navigation">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>
+      </span>
+      <span class="nav-item__label">Navigation</span>
+    </a>
+
+    <a href="#" class="nav-item" data-label="Site settings">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </span>
+      <span class="nav-item__label">Site settings</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="staging-badge">
+      <span class="staging-badge__dot"></span>
+      Staging DB — production data untouched
+    </div>
+    <div class="side-user">
+      <span class="side-user__avatar">A</span>
+      <div class="side-user__info">
+        <p class="side-user__name">Admin User</p>
+        <p class="side-user__email">admin@banyan.com</p>
+      </div>
+    </div>
+    <button type="button" class="signout" id="signOut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      <span class="signout__label">Sign out</span>
+    </button>
+  </div>
+</aside>
+
+
+
+
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+        <div class="topbar__right">
+          <div class="staging-badge staging-badge--light">
+            <span class="staging-badge__dot"></span>
+            Staging
+          </div>
+          <span class="user-chip" title="umarbilalpersonal@gmail.com">UA</span>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">Listings<span class="page-count" id="listingsCount">10</span></h1>
+            <p class="page-subtitle">
+              <span id="viewSubtitle">Manage your property listings. View performance, status and take action.</span>
+              <a href="#" class="subtle-link">Show empty/reserved rows</a>
+            </p>
+          </div>
+          <div class="view-toggle" role="group" aria-label="Listings view">
+            <button type="button" class="view-link is-active" data-view="cards" aria-pressed="true">Cards</button>
+            <button type="button" class="view-link" data-view="table" aria-pressed="false">Table</button>
+          </div>
+        </section>
+
+        <nav class="cat-tabs" id="catTabs" aria-label="Listing filters">
+          <button type="button" class="cat-tab is-active" data-category="all">All <span class="tab-count">10</span></button>
+          <button type="button" class="cat-tab" data-category="rent">Rent <span class="tab-count">0</span></button>
+          <button type="button" class="cat-tab" data-category="sale">Sale <span class="tab-count">1</span></button>
+          <button type="button" class="cat-tab" data-category="land">Land <span class="tab-count">0</span></button>
+          <button type="button" class="cat-tab" data-category="commercial">Commercial <span class="tab-count">10</span></button>
+          <button type="button" class="cat-tab" data-stage="inbox">Inbox <span class="tab-count">0</span></button>
+          <button type="button" class="cat-tab" data-stage="enrich">Enrich <span class="tab-count">10</span></button>
+          <button type="button" class="cat-tab" data-stage="review">Review <span class="tab-count">0</span></button>
+          <button type="button" class="cat-tab" data-stage="live">Live <span class="tab-count">0</span></button>
+          <button type="button" class="cat-tab" data-stage="closed">Closed <span class="tab-count">0</span></button>
+        </nav>
+
+        <div class="toolbar">
+          <label class="select-wrap">
+            <span class="sr-only">Filter by area</span>
+            <select class="select-field select-field--areas" id="areaSelect">
+              <option value="all">Areas — 5 mapped · 7 unmapped listings</option>
+              <option value="Ubud">Ubud</option>
+              <option value="unmapped">Unmapped</option>
+            </select>
+          </label>
+          <label class="search-field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="search" id="searchInput" placeholder="Search name, ID, location…" aria-label="Search listings">
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Marketing status</span>
+            <select class="select-field" id="marketingSelect">
+              <option value="all">Marketing: all</option>
+              <option value="promoted">Promoted</option>
+              <option value="none">Not promoted</option>
+            </select>
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Availability status</span>
+            <select class="select-field" id="statusSelect">
+              <option value="all">All statuses</option>
+              <option value="available">Available</option>
+              <option value="negotiation">Under Negotiation</option>
+              <option value="upon-request">Upon Request</option>
+              <option value="rented">Rented</option>
+              <option value="sold">Sold</option>
+              <option value="archived">Archived</option>
+            </select>
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Sort listings</span>
+            <select class="select-field" id="sortSelect">
+              <option value="recent" selected>Sort: recently updated</option>
+              <option value="name">Sort: name</option>
+              <option value="price-asc">Price ↑</option>
+              <option value="price-desc">Price ↓</option>
+            </select>
+          </label>
+          <button type="button" class="btn btn-primary btn-filter" id="filterBtn">Filter</button>
+          <button type="button" class="btn btn-ghost" id="resetBtn">Reset</button>
+        </div>
+
+        <section class="listings-grid" id="listingsGrid" aria-label="Property listings">
+
+          <article class="list-card list-card--link" data-category="sale" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="BUY-1301" data-name="Spacious Luxury Villa with Separate Guest House in Singakerta, Ubud"
+            data-location="Ubud" data-price="0" data-updated="2026-08-10" data-complete="64" data-tasks="0" data-health="64"
+            data-detail="listing-detail.html" role="link" tabindex="0" title="Open listing detail">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">BUY-1301</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 10 Aug 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">Spacious Luxury Villa with Separate Guest House in Singakerta, Ubud</h3>
+              <div class="list-card__meta">
+                <span class="list-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ubud</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price list-price--none">&mdash;</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>64%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">64% Complete</span>
+                <span class="list-card__bar"><i style="width:64%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+          <article class="list-card" data-category="commercial" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="COMM-1352" data-name="210m² Commercial Office Space in Campuhan"
+            data-location="Ubud" data-price="5000000000" data-updated="2026-05-19" data-complete="100" data-tasks="0" data-health="54">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">COMM-1352</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 19 May 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">210m² Commercial Office Space in Campuhan</h3>
+              <div class="list-card__meta">
+                <span class="list-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ubud</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price">IDR 5,000,000,000</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>54%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">100% Complete</span>
+                <span class="list-card__bar"><i style="width:100%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+          <article class="list-card" data-category="commercial" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="COMM-1351" data-name="6 Bedroom Boutique Leasehold Hotel for Sale"
+            data-location="Ubud" data-price="5670000000" data-updated="2026-05-19" data-complete="100" data-tasks="0" data-health="62">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">COMM-1351</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 19 May 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">6 Bedroom Boutique Leasehold Hotel for Sale</h3>
+              <div class="list-card__meta">
+                <span class="list-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ubud</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price">IDR 5,670,000,000</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>62%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">100% Complete</span>
+                <span class="list-card__bar"><i style="width:100%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+          <article class="list-card" data-category="commercial" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="COMM-1362" data-name="Alam Ubud Estate - TBD"
+            data-location="" data-price="77173835885" data-updated="2026-06-08" data-complete="40" data-tasks="0" data-health="23">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">COMM-1362</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 08 Jun 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">Alam Ubud Estate - TBD</h3>
+              <div class="list-card__meta">
+                <span class="list-location list-location--none">No area mapped</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price">IDR 77,173,835,885</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>23%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">40% Complete</span>
+                <span class="list-card__bar"><i style="width:40%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+          <article class="list-card" data-category="commercial" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="COMM-1361" data-name="Bali Moons Shop"
+            data-location="Ubud" data-price="715400564" data-updated="2026-06-08" data-complete="100" data-tasks="0" data-health="62">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">COMM-1361</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 08 Jun 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">Bali Moons Shop</h3>
+              <div class="list-card__meta">
+                <span class="list-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ubud</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price">IDR 715,400,564</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>62%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">100% Complete</span>
+                <span class="list-card__bar"><i style="width:100%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+          <article class="list-card" data-category="commercial" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="COMM-1354" data-name="Freehold Boutique Hotel for Sale — 16 Rooms, Pool, Spa &amp; Rice Field Views in Ubud, Bali"
+            data-location="Ubud" data-price="30000000000" data-updated="2026-05-19" data-complete="100" data-tasks="0" data-health="54">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">COMM-1354</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 19 May 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">Freehold Boutique Hotel for Sale — 16 Rooms, Pool, Spa &amp; Rice Field Views in Ubud, Bali</h3>
+              <div class="list-card__meta">
+                <span class="list-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ubud</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price">IDR 30,000,000,000</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>54%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">100% Complete</span>
+                <span class="list-card__bar"><i style="width:100%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+          <article class="list-card" data-category="commercial" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="COMM-1359" data-name="Kahayana Suites - to be changed"
+            data-location="" data-price="0" data-updated="2026-06-08" data-complete="20" data-tasks="0" data-health="8">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">COMM-1359</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 08 Jun 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">Kahayana Suites - to be changed</h3>
+              <div class="list-card__meta">
+                <span class="list-location list-location--none">No area mapped</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price list-price--none">&mdash;</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>8%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">20% Complete</span>
+                <span class="list-card__bar"><i style="width:20%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+          <article class="list-card" data-category="commercial" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="COMM-1360" data-name="Lodtunduh Hotel - TBD"
+            data-location="" data-price="0" data-updated="2026-06-08" data-complete="20" data-tasks="0" data-health="23">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">COMM-1360</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 08 Jun 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">Lodtunduh Hotel - TBD</h3>
+              <div class="list-card__meta">
+                <span class="list-location list-location--none">No area mapped</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price list-price--none">&mdash;</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>23%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">20% Complete</span>
+                <span class="list-card__bar"><i style="width:20%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+          <article class="list-card" data-category="commercial" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="COMM-1358" data-name="Max One Hotel - to be changed"
+            data-location="" data-price="0" data-updated="2026-06-08" data-complete="20" data-tasks="0" data-health="15">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">COMM-1358</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 08 Jun 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">Max One Hotel - to be changed</h3>
+              <div class="list-card__meta">
+                <span class="list-location list-location--none">No area mapped</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price list-price--none">&mdash;</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>15%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">20% Complete</span>
+                <span class="list-card__bar"><i style="width:20%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+          <article class="list-card" data-category="commercial" data-stage="enrich" data-status="available" data-marketing="none"
+            data-id="COMM-1355" data-name="Rare 3-Storey Heritage Cottage for Sale with Jungle Views and Balinese Character"
+            data-location="Ubud" data-price="2400000000" data-updated="2026-05-19" data-complete="100" data-tasks="0" data-health="54">
+            <div class="list-card__thumb" aria-hidden="true">
+              <div class="list-card__thumb-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                <span>No image</span>
+              </div>
+            </div>
+            <div class="list-card__body">
+              <div class="list-card__top">
+                <span class="list-id">COMM-1355</span>
+                <div class="list-card__actions">
+                  <span class="list-updated">Updated 19 May 2026</span>
+                  <span class="status-badge status-badge--draft">Draft</span>
+                  <div class="list-card__menu-wrap">
+                    <button type="button" class="list-card__menu" aria-label="Listing actions" aria-expanded="false">
+                      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+                    </button>
+                    <div class="list-card__dropdown">
+                      <button type="button">View listing</button>
+                      <button type="button">Edit</button>
+                      <button type="button">Duplicate</button>
+                      <button type="button" class="is-danger">Archive</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 class="list-card__title">Rare 3-Storey Heritage Cottage for Sale with Jungle Views and Balinese Character</h3>
+              <div class="list-card__meta">
+                <span class="list-location"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ubud</span>
+              </div>
+              <div class="list-card__price-row">
+                <p class="list-price">IDR 2,400,000,000</p>
+              </div>
+              <div class="list-card__status-row">
+                <span class="avail-pill">Available</span>
+                <span class="list-card__rating"><span class="list-stars"></span><b>54%</b></span>
+              </div>
+              <div class="list-card__progress">
+                <span class="list-card__progress-label">100% Complete</span>
+                <span class="list-card__bar"><i style="width:100%"></i></span>
+              </div>
+              <div class="list-card__pills">
+                <span class="info-pill info-pill--neutral">0 Tasks</span>
+                <span class="info-pill info-pill--neutral">0 Favourites</span>
+                <span class="info-pill info-pill--neutral">0 Shortlists</span>
+              </div>
+              <span class="info-pill info-pill--danger list-card__warn">⚠ Stagnant &gt;48h ↗</span>
+            </div>
+          </article>
+
+        </section>
+
+        <section class="listings-table" id="listingsTable" aria-label="Property listings table" hidden>
+          <table class="list-table">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Listing</th>
+                <th scope="col">Location</th>
+                <th scope="col">Stage</th>
+                <th scope="col">Status</th>
+                <th scope="col">Price</th>
+                <th scope="col">Health</th>
+                <th scope="col">Updated</th>
+              </tr>
+            </thead>
+            <tbody id="listTableBody"></tbody>
+          </table>
+        </section>
+
+        <nav class="list-pagination" aria-label="Listings pagination">
+          <p class="list-pagination__info">Showing 1 – 10 of 403 listings</p>
+          <div class="list-pagination__pages">
+            <button type="button" class="list-pagination__btn" disabled aria-label="Previous page">←</button>
+            <button type="button" class="list-pagination__btn is-active" aria-current="page">1</button>
+            <button type="button" class="list-pagination__btn">2</button>
+            <button type="button" class="list-pagination__btn">3</button>
+            <span class="list-pagination__dots">…</span>
+            <button type="button" class="list-pagination__btn">21</button>
+            <button type="button" class="list-pagination__btn" aria-label="Next page">→</button>
+          </div>
+          <label class="select-wrap">
+            <span class="sr-only">Rows per page</span>
+            <select class="select-field select-field--perpage" aria-label="Rows per page">
+              <option>20 per page</option>
+              <option>50 per page</option>
+              <option>100 per page</option>
+            </select>
+          </label>
+        </nav>
+
+        <p class="list-empty" id="listEmpty" hidden>No listings match your filters.</p>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

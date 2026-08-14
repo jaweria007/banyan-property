@@ -1,0 +1,12 @@
+- generic [active] [ref=f13e1]:
+  - alert [ref=f13e105]
+  - generic [ref=f13e107]:
+    - generic [ref=f13e108]: 🌳 Banyan Dashboard
+    - generic [ref=f13e109]: Sign in to manage listings
+    - generic [ref=f13e110]:
+      - text: Email
+      - textbox "Email" [ref=f13e111]
+    - generic [ref=f13e113]:
+      - text: Password
+      - textbox "Password" [ref=f13e114]
+    - button "Sign in" [ref=f13e115] [cursor=pointer]

@@ -1,0 +1,580 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - text: 🌳 Banyan
+        - generic [ref=e5]: Listings Dashboard
+      - navigation [ref=e6]:
+        - link "🏠 Overview" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: 🏠
+          - generic [ref=e9]: Overview
+        - generic [ref=e10]:
+          - generic [ref=e11]: 🏠 Listings
+          - generic [ref=e12]:
+            - link "Overview" [ref=e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=e19]:
+          - generic [ref=e20]: 💼 Sales
+          - generic [ref=e21]:
+            - link "Client Inbox" [ref=e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=e27]: 🤝
+          - generic [ref=e28]: Relationships
+        - link "✅ My Work" [ref=e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=e30]: ✅
+          - generic [ref=e31]: My Work
+        - generic [ref=e32]:
+          - generic [ref=e33]: 📢 Marketing
+          - generic [ref=e34]:
+            - link "🖥️ Monitors 4" [ref=e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=e37]: "4"
+            - link "🚀 Promotion" [ref=e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=e43]: 🧭
+          - generic [ref=e44]: Navigation
+        - link "⚙️ Site settings" [ref=e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=e46]: ⚙️
+          - generic [ref=e47]: Site settings
+      - generic [ref=e48]:
+        - button "Sign out" [ref=e49] [cursor=pointer]
+        - generic [ref=e50]: Staging DB copy — production data is untouched.
+    - main [ref=e51]:
+      - generic [ref=e52]:
+        - link "← Back to Opportunities" [ref=e53] [cursor=pointer]:
+          - /url: /opportunities
+        - generic [ref=e54]:
+          - generic [ref=e56]:
+            - heading "umar" [level=1] [ref=e57]
+            - generic [ref=e58]:
+              - generic [ref=e59]: Contracts
+              - generic [ref=e60]: 🟡 Med · manual
+              - generic [ref=e61]: 👤 umar
+              - generic [ref=e62]: Unsure
+              - generic [ref=e63]: ⚑ Needs more shortlists
+          - generic [ref=e64]:
+            - link "Build Shortlist" [ref=e65] [cursor=pointer]:
+              - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/shortlists
+            - link "Log Viewing" [ref=e66] [cursor=pointer]:
+              - /url: "#viewings"
+            - link "Record Offer" [ref=e67] [cursor=pointer]:
+              - /url: "#offers"
+            - link "Create Task" [ref=e68] [cursor=pointer]:
+              - /url: /tasks
+            - link "Generate Contract" [ref=e69] [cursor=pointer]:
+              - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/contract
+            - link "WhatsApp" [ref=e70] [cursor=pointer]:
+              - /url: https://wa.me/123
+            - link "Edit" [ref=e71] [cursor=pointer]:
+              - /url: "#edit"
+        - generic [ref=e72]:
+          - heading "Timeline" [level=2] [ref=e73]
+          - list [ref=e74]:
+            - listitem [ref=e75]:
+              - generic [ref=e76]: 08 Aug, 08:15
+              - generic [ref=e77]:
+                - strong [ref=e78]: System
+                - text: M. Samo (self-declared) asked about 2-Story Villa with Garden — Nyuh Kuning, Ubud — “Can we see this Monday?”
+            - listitem [ref=e79]:
+              - generic [ref=e80]: 08 Aug, 08:15
+              - generic [ref=e81]:
+                - strong [ref=e82]: System
+                - text: M. Samo (self-declared) asked to view 2-Story Villa with Garden — Nyuh Kuning, Ubud
+            - listitem [ref=e83]:
+              - generic [ref=e84]: 08 Aug, 11:41
+              - generic [ref=e85]:
+                - strong [ref=e86]: System
+                - text: "Offer made: IDR 500,000"
+            - listitem [ref=e87]:
+              - generic [ref=e88]: 08 Aug, 11:42
+              - generic [ref=e89]:
+                - strong [ref=e90]: System
+                - text: "Offer accepted: IDR 500,000"
+            - listitem [ref=e91]:
+              - generic [ref=e92]: 08 Aug, 11:45
+              - generic [ref=e93]:
+                - strong [ref=e94]: System
+                - text: "Status changed: draft → signed"
+            - listitem [ref=e95]:
+              - generic [ref=e96]: 08 Aug, 11:46
+              - generic [ref=e97]:
+                - strong [ref=e98]: System
+                - text: "Status changed: draft → signed"
+            - listitem [ref=e99]:
+              - generic [ref=e100]: 08 Aug, 11:46
+              - generic [ref=e101]:
+                - strong [ref=e102]: System
+                - text: "Status changed: draft → signed"
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - heading "Contact" [level=2] [ref=e105]
+            - generic [ref=e106]:
+              - generic [ref=e107]:
+                - generic [ref=e108]: Name
+                - textbox [ref=e109]: umar
+              - generic [ref=e110]:
+                - generic [ref=e111]: Assigned agent
+                - textbox [ref=e112]
+              - generic [ref=e113]:
+                - generic [ref=e114]: Phone
+                - textbox [ref=e115]: "123"
+              - generic [ref=e116]:
+                - generic [ref=e117]: WhatsApp
+                - textbox [ref=e118]: "123"
+              - generic [ref=e119]:
+                - generic [ref=e120]: Email
+                - textbox [ref=e121]: 123@gmail.com
+          - generic [ref=e122]:
+            - heading "Requirements" [level=2] [ref=e123]
+            - generic [ref=e124]:
+              - generic [ref=e125]:
+                - generic [ref=e126]: Category
+                - combobox [ref=e127]:
+                  - option "—"
+                  - option "Rent" [selected]
+                  - option "Sale (Buy)"
+                  - option "Land"
+                  - option "Commercial"
+              - generic [ref=e128]:
+                - generic [ref=e129]: Location
+                - textbox [ref=e130]: Canggu
+              - generic [ref=e131]:
+                - generic [ref=e132]: Price min (IDR)
+                - spinbutton [ref=e133]: "0"
+              - generic [ref=e134]:
+                - generic [ref=e135]: Price max (IDR)
+                - spinbutton [ref=e136]: "35000000"
+              - generic [ref=e137]:
+                - generic [ref=e138]: Bedrooms
+                - spinbutton [ref=e139]
+          - generic [ref=e140]:
+            - heading "Team notes" [level=2] [ref=e141]
+            - textbox [ref=e142]
+          - button "Save changes" [ref=e144] [cursor=pointer]
+        - generic [ref=e145]:
+          - heading "What this journey is for" [level=2] [ref=e146]
+          - generic [ref=e147]:
+            - generic [ref=e148]:
+              - generic [ref=e149]: Property Interest
+              - generic [ref=e150]:
+                - generic [ref=e151]:
+                  - checkbox "Rent" [ref=e152]
+                  - text: Rent
+                - generic [ref=e153]:
+                  - checkbox "Buy Villa" [ref=e154]
+                  - text: Buy Villa
+                - generic [ref=e155]:
+                  - checkbox "Buy Land" [ref=e156]
+                  - text: Buy Land
+                - generic [ref=e157]:
+                  - checkbox "Buy Commercial" [ref=e158]
+                  - text: Buy Commercial
+            - generic [ref=e159]:
+              - generic [ref=e160]: Client Objective
+              - combobox [ref=e161]:
+                - option "Find Long-Term Home"
+                - option "Find Short-Term Accommodation"
+                - option "Holiday Home"
+                - option "Investment"
+                - option "Development"
+                - option "Land Banking"
+                - option "Business Use"
+                - option "Unsure" [selected]
+          - button "Save" [ref=e162] [cursor=pointer]
+        - generic [ref=e163]:
+          - heading "📋 Banyan Live Shortlists" [level=2] [ref=e164]
+          - list [ref=e165]:
+            - listitem [ref=e166]:
+              - text: Untitled shortlist · 4 properties ·
+              - link "open link ↗" [ref=e167] [cursor=pointer]:
+                - /url: /shortlists/shr_491c1d9dd221d41b23627b57bd63cec7
+              - text: ·
+              - link "edit" [ref=e168] [cursor=pointer]:
+                - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/shortlists?s=shl_50c53071-18ea-4a8f-a38e-74a949ce0f82
+            - listitem [ref=e169]:
+              - text: Untitled shortlist · 14 properties ·
+              - link "open link ↗" [ref=e170] [cursor=pointer]:
+                - /url: /shortlists/shr_9516005c5b3549fdfa1dc2b9b8cfa30b
+              - text: ·
+              - link "edit" [ref=e171] [cursor=pointer]:
+                - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/shortlists?s=shl_0464325f-6f9b-414f-8ec1-8553f31bd522
+        - generic [ref=e172]:
+          - heading "✨ Recommended for this journey" [level=2] [ref=e173]
+          - paragraph [ref=e174]: Active listings matching this Opportunity's Requirements. Nothing here is visible to the client until you add it.
+          - list [ref=e175]:
+            - listitem [ref=e176]:
+              - generic [ref=e177]:
+                - link "Casa Yemi" [ref=e178] [cursor=pointer]:
+                  - /url: /master/rec2rnTts3aVeODXu
+                - generic [ref=e179]: IDR 33,000,000 · they liked a property in Ubud
+              - generic [ref=e180]:
+                - combobox [ref=e181]:
+                  - option "Untitled shortlist" [selected]
+                  - option "Untitled shortlist"
+                - button "Add to shortlist" [ref=e182] [cursor=pointer]
+              - button "Dismiss" [ref=e184] [cursor=pointer]
+            - listitem [ref=e185]:
+              - generic [ref=e186]:
+                - link "Rumah Tradisi" [ref=e187] [cursor=pointer]:
+                  - /url: /master/rec7CixfVrQlExUO6
+                - generic [ref=e188]: IDR 11,625,259 · they liked a property in Ubud
+              - generic [ref=e189]:
+                - combobox [ref=e190]:
+                  - option "Untitled shortlist" [selected]
+                  - option "Untitled shortlist"
+                - button "Add to shortlist" [ref=e191] [cursor=pointer]
+              - button "Dismiss" [ref=e193] [cursor=pointer]
+            - listitem [ref=e194]:
+              - generic [ref=e195]:
+                - link "Butterfly Bungalow" [ref=e196] [cursor=pointer]:
+                  - /url: /master/rec8p6Fk3J2S3i6V2
+                - generic [ref=e197]: IDR 15,000,000 · they liked a property in Ubud
+              - generic [ref=e198]:
+                - combobox [ref=e199]:
+                  - option "Untitled shortlist" [selected]
+                  - option "Untitled shortlist"
+                - button "Add to shortlist" [ref=e200] [cursor=pointer]
+              - button "Dismiss" [ref=e202] [cursor=pointer]
+            - listitem [ref=e203]:
+              - generic [ref=e204]:
+                - link "Rumah Gerbang Biru Upstairs" [ref=e205] [cursor=pointer]:
+                  - /url: /master/rec9CDUwvQ7E01EHx
+                - generic [ref=e206]: IDR 22,000,000 · they liked a property in Ubud
+              - generic [ref=e207]:
+                - combobox [ref=e208]:
+                  - option "Untitled shortlist" [selected]
+                  - option "Untitled shortlist"
+                - button "Add to shortlist" [ref=e209] [cursor=pointer]
+              - button "Dismiss" [ref=e211] [cursor=pointer]
+            - listitem [ref=e212]:
+              - generic [ref=e213]:
+                - link "Lamitampa 3" [ref=e214] [cursor=pointer]:
+                  - /url: /master/recCHOHx5hgXrT7zi
+                - generic [ref=e215]: IDR 18,600,000 · they liked a property in Ubud
+              - generic [ref=e216]:
+                - combobox [ref=e217]:
+                  - option "Untitled shortlist" [selected]
+                  - option "Untitled shortlist"
+                - button "Add to shortlist" [ref=e218] [cursor=pointer]
+              - button "Dismiss" [ref=e220] [cursor=pointer]
+            - listitem [ref=e221]:
+              - generic [ref=e222]:
+                - link "Betawi" [ref=e223] [cursor=pointer]:
+                  - /url: /master/recDhwbJaKq74MrQ8
+                - generic [ref=e224]: IDR 12,000,000 · they liked a property in Ubud
+              - generic [ref=e225]:
+                - combobox [ref=e226]:
+                  - option "Untitled shortlist" [selected]
+                  - option "Untitled shortlist"
+                - button "Add to shortlist" [ref=e227] [cursor=pointer]
+              - button "Dismiss" [ref=e229] [cursor=pointer]
+            - listitem [ref=e230]:
+              - generic [ref=e231]:
+                - link "Rejeki 3 – Full House" [ref=e232] [cursor=pointer]:
+                  - /url: /master/recdptQuviog7jhjx
+                - generic [ref=e233]: IDR 22,000,000 · they liked a property in Ubud
+              - generic [ref=e234]:
+                - combobox [ref=e235]:
+                  - option "Untitled shortlist" [selected]
+                  - option "Untitled shortlist"
+                - button "Add to shortlist" [ref=e236] [cursor=pointer]
+              - button "Dismiss" [ref=e238] [cursor=pointer]
+            - listitem [ref=e239]:
+              - generic [ref=e240]:
+                - link "Peaceful Villa Space with Garden Access in the Heart of Nyuh Kuning, Ubud" [ref=e241] [cursor=pointer]:
+                  - /url: /master/recE12YEmKvcmdbde
+                - generic [ref=e242]: IDR 29,000,000 · they liked a property in Ubud
+              - generic [ref=e243]:
+                - combobox [ref=e244]:
+                  - option "Untitled shortlist" [selected]
+                  - option "Untitled shortlist"
+                - button "Add to shortlist" [ref=e245] [cursor=pointer]
+              - button "Dismiss" [ref=e247] [cursor=pointer]
+        - generic [ref=e248]:
+          - heading "💰 Offers" [level=2] [ref=e249]
+          - list [ref=e250]:
+            - listitem [ref=e251]:
+              - generic [ref=e252]:
+                - strong [ref=e253]: IDR 500,000
+                - generic [ref=e254]: · ** 1 Bedroom exclusive Villa**
+                - generic [ref=e255]: Accepted
+                - generic [ref=e256]: 08 Aug 2026
+              - generic [ref=e257]: testing
+          - generic [ref=e258]:
+            - generic [ref=e259]:
+              - generic [ref=e260]: Listing
+              - combobox [ref=e261]:
+                - option "—" [selected]
+                - option "** 1 Bedroom exclusive Villa**"
+                - option "** 2 Bedroom Off Plan Boutique Villa in Sayan**"
+                - option "** 3-Bedroom Tropical Villa with Private Pool in Peliatan**"
+                - option "** Brand New 2 Bedroom Villa in Singakerta**"
+                - option "**1 Bedroom Modern Tropical Villa in Bingin**"
+                - option "**1 Bedroom Villa in Uluwatu Walking Distance to The Istana**"
+                - option "**1 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)**"
+                - option "**12.25 Are Freehold Land in Petulu – Rare Jungle & River View Pink-Zone Plot Near Central Ubud**"
+                - option "**12.3 are Keliki - 12.3 are Leasehold Land in Keliki with Beautiful Green Views**"
+                - option "**15 are Singakerta Warung Tipat - Flexible 15 Are Land for Leasehold in Singakerta**"
+                - option "**16 Are Freehold Sebatu - 16are Sebatu Freehold Land For Sale**"
+                - option "**18 are Nyuh Kuning - Prime Location Land Opportunity in Nyuh Kuning, Ubud**"
+                - option "**18 are Yellow Zone Land in Sayan**"
+                - option "**2 Are Freehold Commercial Zone Land Just 5 Mins from Central Ubud – Perfect for Villa or Guest House Development**"
+                - option "**2 Bedroom Eco-Retreat in Lodtunduh with Stunning Rice Field Views**"
+                - option "**2 Bedroom luxurious Modern Tropical Villa in Bingin (Ready May 2026)**"
+                - option "**2 Bedroom Modern Tropical Villa in Bingin (off plan) **"
+                - option "**2 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views**"
+                - option "**2 Bedroom Villa Next to Nyang Nyang Beach**"
+                - option "**2 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)**"
+                - option "**2 bedrooms sanctuary in Pejeng**"
+                - option "**2 Story Villa in Nyuh Kuning with 6 years Lease**"
+                - option "**2-Bedroom Pool Villa with Sunrise Yoga Shala — 48-Year Leasehold in Penestanan, Ubud **"
+                - option "**2-Bedroom Villa with Expansive Rice Field Views in Eco Community**"
+                - option "**2-Bedroom Villa with Sunrise Views and Open Living in Eco Community**"
+                - option "**20 are Singakerta (Uma’s Land) - Serene 20are Leasehold in Singakerta**"
+                - option "**24.5 Are Pink Zone Land in Sayan**"
+                - option "**3 Bedroom Ubud River Escape Near Nyuh Kuning **"
+                - option "**3 Bedroom Villa in Bingin area with a Modern Tropical Design**"
+                - option "**3-6 Are Tropical Land in Lodtunduh - 3-6 Are Tropical Leasehold Land in Lodtunduh – Jungle Vibes, Rice Field Views & Central Location**"
+                - option "**3-Bedroom Modern Traditional Villa with Private Pool**"
+                - option "**3-Bedroom Spacious Villa with Private Pool in Peliatan**"
+                - option "**3-Bedroom Traditional Tropical Villa with Private Pool**"
+                - option "**3-Bedroom Villa in Nyuh Kuning, Ubud — Rare Renovation Opportunity with Private Pool & Tropical Garden**"
+                - option "**3-Bedroom Villa in Prime Area of Penestanan - Perfect for Living or Investing **"
+                - option "**3-Bedroom Villa with Rice Field Views in an Eco Community**"
+                - option "**3.30 are Singakerta Cahaya/Ayu - 330m² Prime Tourism-Zoned Land in Serene Singakerta**"
+                - option "**3BR Family Home in Singakerta - 5 mins from Nyuh Kuning**"
+                - option "**4 Are Singakerta - 4 are Land in Central Singakerta**"
+                - option "**4 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views**"
+                - option "**6 are Sayan (back of water temple / Turner land) - 6 are in Sayan located near a Water Temple**"
+                - option "**6 are Tebongkang Singakerta Freehold - 6 Are Freehold Land in Singakerta – Prime Pink-Zone Plots Just South of Sayan**"
+                - option "**6-Bedroom Estate with 3 Self-Contained Villas in the Heart of Nyuh Kuning**"
+                - option "**7 Are Freehold Land in Petulu – Stunning Ricefield View Pink-Zone Plot Just 15 Mins from Central Ubud**"
+                - option "**7 are Singakerta Ayu Land - 7 are Leasehold Land in Singakerta – Scenic Rice Field Views**"
+                - option "**7 are Singakerta Warung Sate - 7 are Singakerta Along a Small River **"
+                - option "**7.28 are Land with Jungle & River view in Ubud Center Peliatan **"
+                - option "**7.7 Are Leasehold Commercial Mainroad Land in Pengosekan – Prime Business Plot Near Monkey Forest, Just 5 Mins from Central Ubud**"
+                - option "**8 Are Leasehold Pink-Zone Land in Singakerta – Rare Jungle, River & Ricefield View Plot, 25-Year Lease Near Nyuh Kuning & Sayan**"
+                - option "**9 are Singakerta - 9 Are Leasehold Land in Singakerta – Surrounded by Nature**"
+            - generic [ref=e262]:
+              - generic [ref=e263]: Amount
+              - spinbutton [ref=e264]
+            - generic [ref=e265]:
+              - generic [ref=e266]: Currency
+              - textbox [ref=e267]: IDR
+            - generic [ref=e268]:
+              - generic [ref=e269]: Date offered
+              - textbox [ref=e270]
+            - generic [ref=e271]:
+              - generic [ref=e272]: Key terms
+              - textbox [ref=e273]
+            - button "Record offer" [ref=e274] [cursor=pointer]
+        - generic [ref=e275]:
+          - heading "📄 Contracts" [level=2] [ref=e276]
+          - list [ref=e277]:
+            - listitem [ref=e278]: test · Signed
+            - listitem [ref=e279]: test · Signed
+            - listitem [ref=e280]: Test · Signed
+          - paragraph [ref=e281]:
+            - link "New / manage contracts →" [ref=e282] [cursor=pointer]:
+              - /url: /opportunities/opp_03aa78f3f5e64521a9f579de148d6702/contract
+        - generic [ref=e283]:
+          - heading "👁️ Viewings" [level=2] [ref=e284]
+          - list [ref=e285]:
+            - listitem [ref=e286]:
+              - generic [ref=e287]: 09 Aug 2026, 13:25
+              - paragraph [ref=e288]: test
+              - generic [ref=e289]:
+                - list [ref=e290]:
+                  - listitem [ref=e291]:
+                    - generic [ref=e292]: "** 2 Bedroom Off Plan Boutique Villa in Sayan**"
+                    - combobox "Feedback for ** 2 Bedroom Off Plan Boutique Villa in Sayan**" [ref=e293]:
+                      - option "—"
+                      - option "Good" [selected]
+                      - option "Bad"
+                      - option "Not Sure"
+                    - button "Move ** 2 Bedroom Off Plan Boutique Villa in Sayan** earlier" [disabled] [ref=e294] [cursor=pointer]: ↑
+                    - button "Move ** 2 Bedroom Off Plan Boutique Villa in Sayan** later" [ref=e295] [cursor=pointer]: ↓
+                    - button "Remove ** 2 Bedroom Off Plan Boutique Villa in Sayan** from this viewing" [ref=e296] [cursor=pointer]: Remove
+                  - listitem [ref=e297]:
+                    - generic [ref=e298]: "** 1 Bedroom exclusive Villa**"
+                    - combobox "Feedback for ** 1 Bedroom exclusive Villa**" [ref=e299]:
+                      - option "—"
+                      - option "Good"
+                      - option "Bad" [selected]
+                      - option "Not Sure"
+                    - button "Move ** 1 Bedroom exclusive Villa** earlier" [ref=e300] [cursor=pointer]: ↑
+                    - button "Move ** 1 Bedroom exclusive Villa** later" [ref=e301] [cursor=pointer]: ↓
+                    - button "Remove ** 1 Bedroom exclusive Villa** from this viewing" [ref=e302] [cursor=pointer]: Remove
+                  - listitem [ref=e303]:
+                    - generic [ref=e304]: "** 3-Bedroom Tropical Villa with Private Pool in Peliatan**"
+                    - combobox "Feedback for ** 3-Bedroom Tropical Villa with Private Pool in Peliatan**" [ref=e305]:
+                      - option "—" [selected]
+                      - option "Good"
+                      - option "Bad"
+                      - option "Not Sure"
+                    - button "Move ** 3-Bedroom Tropical Villa with Private Pool in Peliatan** earlier" [ref=e306] [cursor=pointer]: ↑
+                    - button "Move ** 3-Bedroom Tropical Villa with Private Pool in Peliatan** later" [disabled] [ref=e307] [cursor=pointer]: ↓
+                    - button "Remove ** 3-Bedroom Tropical Villa with Private Pool in Peliatan** from this viewing" [ref=e308] [cursor=pointer]: Remove
+                - combobox "Add a property to this viewing" [ref=e309]:
+                  - option "+ Add a property…" [selected]
+                  - option "** Brand New 2 Bedroom Villa in Singakerta**"
+                  - option "**1 Bedroom Modern Tropical Villa in Bingin**"
+                  - option "**1 Bedroom Villa in Uluwatu Walking Distance to The Istana**"
+                  - option "**1 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)**"
+                  - option "**12.25 Are Freehold Land in Petulu – Rare Jungle & River View Pink-Zone Plot Near Central Ubud**"
+                  - option "**12.3 are Keliki - 12.3 are Leasehold Land in Keliki with Beautiful Green Views**"
+                  - option "**15 are Singakerta Warung Tipat - Flexible 15 Are Land for Leasehold in Singakerta**"
+                  - option "**16 Are Freehold Sebatu - 16are Sebatu Freehold Land For Sale**"
+                  - option "**18 are Nyuh Kuning - Prime Location Land Opportunity in Nyuh Kuning, Ubud**"
+                  - option "**18 are Yellow Zone Land in Sayan**"
+                  - option "**2 Are Freehold Commercial Zone Land Just 5 Mins from Central Ubud – Perfect for Villa or Guest House Development**"
+                  - option "**2 Bedroom Eco-Retreat in Lodtunduh with Stunning Rice Field Views**"
+                  - option "**2 Bedroom luxurious Modern Tropical Villa in Bingin (Ready May 2026)**"
+                  - option "**2 Bedroom Modern Tropical Villa in Bingin (off plan) **"
+                  - option "**2 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views**"
+                  - option "**2 Bedroom Villa Next to Nyang Nyang Beach**"
+                  - option "**2 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)**"
+                  - option "**2 bedrooms sanctuary in Pejeng**"
+                  - option "**2 Story Villa in Nyuh Kuning with 6 years Lease**"
+                  - option "**2-Bedroom Pool Villa with Sunrise Yoga Shala — 48-Year Leasehold in Penestanan, Ubud **"
+                  - option "**2-Bedroom Villa with Expansive Rice Field Views in Eco Community**"
+                  - option "**2-Bedroom Villa with Sunrise Views and Open Living in Eco Community**"
+                  - option "**20 are Singakerta (Uma’s Land) - Serene 20are Leasehold in Singakerta**"
+                  - option "**24.5 Are Pink Zone Land in Sayan**"
+                  - option "**3 Bedroom Ubud River Escape Near Nyuh Kuning **"
+                  - option "**3 Bedroom Villa in Bingin area with a Modern Tropical Design**"
+                  - option "**3-6 Are Tropical Land in Lodtunduh - 3-6 Are Tropical Leasehold Land in Lodtunduh – Jungle Vibes, Rice Field Views & Central Location**"
+                  - option "**3-Bedroom Modern Traditional Villa with Private Pool**"
+                  - option "**3-Bedroom Spacious Villa with Private Pool in Peliatan**"
+                  - option "**3-Bedroom Traditional Tropical Villa with Private Pool**"
+                  - option "**3-Bedroom Villa in Nyuh Kuning, Ubud — Rare Renovation Opportunity with Private Pool & Tropical Garden**"
+                  - option "**3-Bedroom Villa in Prime Area of Penestanan - Perfect for Living or Investing **"
+                  - option "**3-Bedroom Villa with Rice Field Views in an Eco Community**"
+                  - option "**3.30 are Singakerta Cahaya/Ayu - 330m² Prime Tourism-Zoned Land in Serene Singakerta**"
+                  - option "**3BR Family Home in Singakerta - 5 mins from Nyuh Kuning**"
+                  - option "**4 Are Singakerta - 4 are Land in Central Singakerta**"
+                  - option "**4 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views**"
+                  - option "**6 are Sayan (back of water temple / Turner land) - 6 are in Sayan located near a Water Temple**"
+                  - option "**6 are Tebongkang Singakerta Freehold - 6 Are Freehold Land in Singakerta – Prime Pink-Zone Plots Just South of Sayan**"
+                  - option "**6-Bedroom Estate with 3 Self-Contained Villas in the Heart of Nyuh Kuning**"
+                  - option "**7 Are Freehold Land in Petulu – Stunning Ricefield View Pink-Zone Plot Just 15 Mins from Central Ubud**"
+                  - option "**7 are Singakerta Ayu Land - 7 are Leasehold Land in Singakerta – Scenic Rice Field Views**"
+                  - option "**7 are Singakerta Warung Sate - 7 are Singakerta Along a Small River **"
+                  - option "**7.28 are Land with Jungle & River view in Ubud Center Peliatan **"
+                  - option "**7.7 Are Leasehold Commercial Mainroad Land in Pengosekan – Prime Business Plot Near Monkey Forest, Just 5 Mins from Central Ubud**"
+                  - option "**8 Are Leasehold Pink-Zone Land in Singakerta – Rare Jungle, River & Ricefield View Plot, 25-Year Lease Near Nyuh Kuning & Sayan**"
+                  - option "**9 are Singakerta - 9 Are Leasehold Land in Singakerta – Surrounded by Nature**"
+          - generic [ref=e310]:
+            - generic [ref=e311]:
+              - generic [ref=e312]: Date & time
+              - textbox [ref=e313]
+            - generic [ref=e314]:
+              - generic [ref=e315]: Properties (optional, multi-select)
+              - listbox [ref=e316]:
+                - option "** 1 Bedroom exclusive Villa**" [ref=e317]
+                - option "** 2 Bedroom Off Plan Boutique Villa in Sayan**" [ref=e318]
+                - option "** 3-Bedroom Tropical Villa with Private Pool in Peliatan**" [ref=e319]
+                - option "** Brand New 2 Bedroom Villa in Singakerta**" [ref=e320]
+                - option "**1 Bedroom Modern Tropical Villa in Bingin**" [ref=e321]
+                - option "**1 Bedroom Villa in Uluwatu Walking Distance to The Istana**" [ref=e322]
+                - option "**1 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)**" [ref=e323]
+                - option "**12.25 Are Freehold Land in Petulu – Rare Jungle & River View Pink-Zone Plot Near Central Ubud**" [ref=e324]
+                - option "**12.3 are Keliki - 12.3 are Leasehold Land in Keliki with Beautiful Green Views**" [ref=e325]
+                - option "**15 are Singakerta Warung Tipat - Flexible 15 Are Land for Leasehold in Singakerta**" [ref=e326]
+                - option "**16 Are Freehold Sebatu - 16are Sebatu Freehold Land For Sale**" [ref=e327]
+                - option "**18 are Nyuh Kuning - Prime Location Land Opportunity in Nyuh Kuning, Ubud**" [ref=e328]
+                - option "**18 are Yellow Zone Land in Sayan**" [ref=e329]
+                - option "**2 Are Freehold Commercial Zone Land Just 5 Mins from Central Ubud – Perfect for Villa or Guest House Development**" [ref=e330]
+                - option "**2 Bedroom Eco-Retreat in Lodtunduh with Stunning Rice Field Views**" [ref=e331]
+                - option "**2 Bedroom luxurious Modern Tropical Villa in Bingin (Ready May 2026)**" [ref=e332]
+                - option "**2 Bedroom Modern Tropical Villa in Bingin (off plan) **" [ref=e333]
+                - option "**2 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views**" [ref=e334]
+                - option "**2 Bedroom Villa Next to Nyang Nyang Beach**" [ref=e335]
+                - option "**2 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)**" [ref=e336]
+                - option "**2 bedrooms sanctuary in Pejeng**" [ref=e337]
+                - option "**2 Story Villa in Nyuh Kuning with 6 years Lease**" [ref=e338]
+                - option "**2-Bedroom Pool Villa with Sunrise Yoga Shala — 48-Year Leasehold in Penestanan, Ubud **" [ref=e339]
+                - option "**2-Bedroom Villa with Expansive Rice Field Views in Eco Community**" [ref=e340]
+                - option "**2-Bedroom Villa with Sunrise Views and Open Living in Eco Community**" [ref=e341]
+                - option "**20 are Singakerta (Uma’s Land) - Serene 20are Leasehold in Singakerta**" [ref=e342]
+                - option "**24.5 Are Pink Zone Land in Sayan**" [ref=e343]
+                - option "**3 Bedroom Ubud River Escape Near Nyuh Kuning **" [ref=e344]
+                - option "**3 Bedroom Villa in Bingin area with a Modern Tropical Design**" [ref=e345]
+                - option "**3-6 Are Tropical Land in Lodtunduh - 3-6 Are Tropical Leasehold Land in Lodtunduh – Jungle Vibes, Rice Field Views & Central Location**" [ref=e346]
+                - option "**3-Bedroom Modern Traditional Villa with Private Pool**" [ref=e347]
+                - option "**3-Bedroom Spacious Villa with Private Pool in Peliatan**" [ref=e348]
+                - option "**3-Bedroom Traditional Tropical Villa with Private Pool**" [ref=e349]
+                - option "**3-Bedroom Villa in Nyuh Kuning, Ubud — Rare Renovation Opportunity with Private Pool & Tropical Garden**" [ref=e350]
+                - option "**3-Bedroom Villa in Prime Area of Penestanan - Perfect for Living or Investing **" [ref=e351]
+                - option "**3-Bedroom Villa with Rice Field Views in an Eco Community**" [ref=e352]
+                - option "**3.30 are Singakerta Cahaya/Ayu - 330m² Prime Tourism-Zoned Land in Serene Singakerta**" [ref=e353]
+                - option "**3BR Family Home in Singakerta - 5 mins from Nyuh Kuning**" [ref=e354]
+                - option "**4 Are Singakerta - 4 are Land in Central Singakerta**" [ref=e355]
+                - option "**4 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views**" [ref=e356]
+                - option "**6 are Sayan (back of water temple / Turner land) - 6 are in Sayan located near a Water Temple**" [ref=e357]
+                - option "**6 are Tebongkang Singakerta Freehold - 6 Are Freehold Land in Singakerta – Prime Pink-Zone Plots Just South of Sayan**" [ref=e358]
+                - option "**6-Bedroom Estate with 3 Self-Contained Villas in the Heart of Nyuh Kuning**" [ref=e359]
+                - option "**7 Are Freehold Land in Petulu – Stunning Ricefield View Pink-Zone Plot Just 15 Mins from Central Ubud**" [ref=e360]
+                - option "**7 are Singakerta Ayu Land - 7 are Leasehold Land in Singakerta – Scenic Rice Field Views**" [ref=e361]
+                - option "**7 are Singakerta Warung Sate - 7 are Singakerta Along a Small River **" [ref=e362]
+                - option "**7.28 are Land with Jungle & River view in Ubud Center Peliatan **" [ref=e363]
+                - option "**7.7 Are Leasehold Commercial Mainroad Land in Pengosekan – Prime Business Plot Near Monkey Forest, Just 5 Mins from Central Ubud**" [ref=e364]
+                - option "**8 Are Leasehold Pink-Zone Land in Singakerta – Rare Jungle, River & Ricefield View Plot, 25-Year Lease Near Nyuh Kuning & Sayan**" [ref=e365]
+                - option "**9 are Singakerta - 9 Are Leasehold Land in Singakerta – Surrounded by Nature**" [ref=e366]
+            - generic [ref=e367]:
+              - generic [ref=e368]: Notes
+              - textbox [ref=e369]
+            - button "Log a viewing" [ref=e370] [cursor=pointer]
+        - generic [ref=e371]:
+          - heading "❤️ Favorited by client" [level=2] [ref=e372]
+          - list [ref=e373]:
+            - listitem [ref=e374]:
+              - text: 2-Story Villa with Garden — Nyuh Kuning, Ubud
+              - generic [ref=e375]: — Someone (no name given) (self-declared)
+              - text: (Untitled shortlist)
+            - listitem [ref=e376]:
+              - text: 2-Story Villa with Garden — Nyuh Kuning, Ubud
+              - generic [ref=e377]: — Test Client (self-declared)
+              - text: (Untitled shortlist)
+            - listitem [ref=e378]:
+              - text: 2-Story Villa with Garden — Nyuh Kuning, Ubud
+              - generic [ref=e379]: — M. Samo (self-declared)
+              - text: (Untitled shortlist)
+            - listitem [ref=e380]:
+              - text: 2-Story Villa with Garden — Nyuh Kuning, Ubud
+              - generic [ref=e381]: — Someone (no name given) (self-declared)
+              - text: (Untitled shortlist)
+        - generic [ref=e382]:
+          - heading "Related tasks (2)" [level=2] [ref=e383]:
+            - text: Related tasks
+            - generic [ref=e384]: (2)
+          - generic [ref=e385]:
+            - generic [ref=e386]:
+              - generic [ref=e387]: Viewing enquiry from M. Samo — 2-Story Villa with Garden — Nyuh Kuning, Ubud
+              - generic [ref=e388]:
+                - generic [ref=e389]: Inbox
+                - generic [ref=e390]: Unassigned
+            - generic [ref=e391]:
+              - generic [ref=e392]: Shortlist comment from M. Samo — 2-Story Villa with Garden — Nyuh Kuning, Ubud
+              - generic [ref=e393]:
+                - generic [ref=e394]: Inbox
+                - generic [ref=e395]: Unassigned
+          - link "Open Tasks →" [ref=e397] [cursor=pointer]:
+            - /url: /tasks
+  - alert [ref=e398]

@@ -1,0 +1,764 @@
+- generic [ref=f10e2]:
+  - complementary [ref=f10e3]:
+    - generic [ref=f10e4]:
+      - text: 🌳 Banyan
+      - generic [ref=f10e5]: Listings Dashboard
+    - navigation [ref=f10e6]:
+      - link "🏠 Overview" [ref=f10e7] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f10e8]: 🏠
+        - generic [ref=f10e9]: Overview
+      - generic [ref=f10e10]:
+        - generic [ref=f10e11]: 🏠 Listings
+        - generic [ref=f10e12]:
+          - link "Overview" [ref=f10e13] [cursor=pointer]:
+            - /url: /master
+          - link "Availability" [ref=f10e15] [cursor=pointer]:
+            - /url: /master/availability
+          - link "Supply Overview" [ref=f10e17] [cursor=pointer]:
+            - /url: /master/supply
+      - generic [ref=f10e19]:
+        - generic [ref=f10e20]: 💼 Sales
+        - generic [ref=f10e21]:
+          - link "Client Inbox" [ref=f10e22] [cursor=pointer]:
+            - /url: /sales
+          - link "Opportunities" [ref=f10e24] [cursor=pointer]:
+            - /url: /opportunities
+      - link "🤝 Relationships" [ref=f10e26] [cursor=pointer]:
+        - /url: /relationships
+        - generic [ref=f10e27]: 🤝
+        - generic [ref=f10e28]: Relationships
+      - link "✅ My Work" [ref=f10e29] [cursor=pointer]:
+        - /url: /tasks
+        - generic [ref=f10e30]: ✅
+        - generic [ref=f10e31]: My Work
+      - generic [ref=f10e32]:
+        - generic [ref=f10e33]: 📢 Marketing
+        - generic [ref=f10e34]:
+          - link "🖥️ Monitors 4" [ref=f10e35] [cursor=pointer]:
+            - /url: /marketing?section=monitors
+            - generic [ref=f10e36]: 🖥️ Monitors
+            - generic "4 waiting for review" [ref=f10e37]: "4"
+          - link "🚀 Promotion" [ref=f10e38] [cursor=pointer]:
+            - /url: /marketing?section=promotion
+          - link "🔍 Blog & SEO" [ref=f10e40] [cursor=pointer]:
+            - /url: /marketing?section=blogseo
+      - link "🧭 Navigation" [ref=f10e42] [cursor=pointer]:
+        - /url: /nav
+        - generic [ref=f10e43]: 🧭
+        - generic [ref=f10e44]: Navigation
+      - link "⚙️ Site settings" [ref=f10e45] [cursor=pointer]:
+        - /url: /settings
+        - generic [ref=f10e46]: ⚙️
+        - generic [ref=f10e47]: Site settings
+    - generic [ref=f10e48]:
+      - button "Sign out" [ref=f10e49] [cursor=pointer]
+      - generic [ref=f10e50]: Staging DB copy — production data is untouched.
+  - main [ref=f10e51]:
+    - generic [ref=f10e52]:
+      - heading "Settings" [level=1] [ref=f10e53]
+      - paragraph [ref=f10e54]: Price sliders, homepage / site text, and image references.
+      - generic [ref=f10e55]:
+        - link "Site content" [ref=f10e56] [cursor=pointer]:
+          - /url: /settings
+        - link "System" [ref=f10e57] [cursor=pointer]:
+          - /url: /settings/system
+        - link "Sales configuration" [ref=f10e58] [cursor=pointer]:
+          - /url: /settings/configuration
+        - link "Sessions" [ref=f10e59] [cursor=pointer]:
+          - /url: /settings/sessions
+        - link "Users" [ref=f10e60] [cursor=pointer]:
+          - /url: /settings/users
+        - link "Backups" [ref=f10e61] [cursor=pointer]:
+          - /url: /settings/backups
+        - link "Logs" [ref=f10e62] [cursor=pointer]:
+          - /url: /settings/logs
+      - generic [ref=f10e63]:
+        - heading "Price sliders" [level=2] [ref=f10e64]
+        - paragraph [ref=f10e65]: Min / max range per property category and currency.
+        - generic [ref=f10e66]:
+          - generic [ref=f10e67]: commercial
+          - generic [ref=f10e68]:
+            - generic [ref=f10e69]: IDR
+            - generic [ref=f10e70]:
+              - text: Min
+              - textbox [ref=f10e71]: "50000000"
+            - generic [ref=f10e72]:
+              - text: Max
+              - textbox [ref=f10e73]: "15000000000"
+          - generic [ref=f10e74]:
+            - generic [ref=f10e75]: USD
+            - generic [ref=f10e76]:
+              - text: Min
+              - textbox [ref=f10e77]: "3000"
+            - generic [ref=f10e78]:
+              - text: Max
+              - textbox [ref=f10e79]: "1000000"
+        - generic [ref=f10e80]:
+          - generic [ref=f10e81]: buy
+          - generic [ref=f10e82]:
+            - generic [ref=f10e83]: IDR
+            - generic [ref=f10e84]:
+              - text: Min
+              - textbox [ref=f10e85]: "750000000"
+            - generic [ref=f10e86]:
+              - text: Max
+              - textbox [ref=f10e87]: "15000000000"
+          - generic [ref=f10e88]:
+            - generic [ref=f10e89]: USD
+            - generic [ref=f10e90]:
+              - text: Min
+              - textbox [ref=f10e91]: "50000"
+            - generic [ref=f10e92]:
+              - text: Max
+              - textbox [ref=f10e93]: "1000000"
+        - generic [ref=f10e94]:
+          - generic [ref=f10e95]: rent
+          - generic [ref=f10e96]:
+            - generic [ref=f10e97]: IDR
+            - generic [ref=f10e98]:
+              - text: Min
+              - textbox [ref=f10e99]: "10000000"
+            - generic [ref=f10e100]:
+              - text: Max
+              - textbox [ref=f10e101]: "150000000"
+          - generic [ref=f10e102]:
+            - generic [ref=f10e103]: USD
+            - generic [ref=f10e104]:
+              - text: Min
+              - textbox [ref=f10e105]: "700"
+            - generic [ref=f10e106]:
+              - text: Max
+              - textbox [ref=f10e107]: "10000"
+        - generic [ref=f10e108]:
+          - generic [ref=f10e109]: land
+          - generic [ref=f10e110]:
+            - generic [ref=f10e111]: IDR
+            - generic [ref=f10e112]:
+              - text: Min
+              - textbox [ref=f10e113]: "50000000"
+            - generic [ref=f10e114]:
+              - text: Max
+              - textbox [ref=f10e115]: "15000000000"
+          - generic [ref=f10e116]:
+            - generic [ref=f10e117]: USD
+            - generic [ref=f10e118]:
+              - text: Min
+              - textbox [ref=f10e119]: "3000"
+            - generic [ref=f10e120]:
+              - text: Max
+              - textbox [ref=f10e121]: "1000000"
+        - button "Save price sliders" [ref=f10e122] [cursor=pointer]
+      - generic [ref=f10e123]:
+        - heading "Site text (142)" [level=2] [ref=f10e124]:
+          - text: Site text
+          - generic [ref=f10e125]: (142)
+        - paragraph [ref=f10e126]: Editable text strings shown across the website.
+        - generic [ref=f10e127]:
+          - generic [ref=f10e128]:
+            - generic [ref=f10e129]: About Banyan
+            - textbox [ref=f10e130]: "**BANYAN PROPERTIES**"
+          - generic [ref=f10e131]:
+            - generic [ref=f10e132]: About Banyan | Description
+            - textbox [ref=f10e133]: "Based in **Ubud**, Banyan Properties is a premium, comprehensive real estate agency operating to **international standards**—our \"high touch, high tech\" model serves as a trusted anchor of clarity and certainty in an otherwise unpredictable market. While our roots are firmly planted in Ubud, the cultural center of Bali, our portfolio strategically extends across the true soul of the island: from the landscapes of **West, North, and East Bali** to the emerging **Nusa Islands**. We provide clear, trust-based solutions for clients looking to rent, invest, buy, sell, or manage high-end assets across three core pillars: Land, Villas, and Commercial Real Estate. Crucially, our operational framework is guided by a **profound reverence for the authentic cultural identity of Bali**. We believe that strategic asset management must coexist with mindful stewardship. By combining professionalism with a deep respect for the island's unique heritage, community structures, and people, we deliver real estate solutions that are sustainable, secure, and culturally grounded."
+          - generic [ref=f10e134]:
+            - generic [ref=f10e135]: About Banyan | Title
+            - textbox [ref=f10e136]: "**BANYAN PROPERTIES**"
+          - generic [ref=f10e137]:
+            - generic [ref=f10e138]: About Us | Body
+            - textbox [ref=f10e139]: "# # **About Us** Based in **Ubud**, Banyan Properties is a premium, comprehensive real estate agency operating to international standards—our \"**high touch, high tech**\" model serves as a trusted anchor of clarity and certainty in an otherwise unpredictable market While our roots are firmly planted in Ubud, the cultural center of Bali, our portfolio strategically extends across the true soul of the island: from the landscapes of **West, North, and East Bali** to the emerging **Nusa Islands**. We provide clear, trust-based solutions for clients looking to rent, invest, buy, sell, or manage high-end assets across three core pillars: Land, Villas, and Commercial Real Estate. Crucially, our operational framework is guided by a **profound reverence for the authentic cultural identity of Bali**. We believe that strategic asset management must coexist with mindful stewardship. By combining professionalism with a deep respect for the island's unique heritage, community structures, and people, we deliver real estate solutions that are sustainable, secure, and culturally grounded. ## ## **How We Work** ### **👁️ Transparency First** We believe in absolute clarity. From our real-time database tracking and tech-forward infrastructure to genuine boutique client relations and straightforward legal structures, you always know exactly where things stand. ### **🌐 Local Expertise, Global Standards** We combine deep, on-the-ground knowledge of the Bali market with professional standards and integrity to provide a seamless, reliable real estate experience. ### ### **🌴 Stewardship of Authentic Bali** True success on the island requires operating in genuine harmony with its soul. We act as conscious stewards, ensuring that our properties and tenancies actively respect local customs, align with local community rules and honor the land and culture. ### ### **f Dedicated Partner** We don’t just broker deals; we build long-term relationships rooted in boutique care. We act as an active, trusted extension of your team to safeguard your strategic assets, eliminate operational friction, and maximize your value. ### ### **🤝 Deep Roots** Over the years, we have built a trusted, comprehensive network of top-tier local lawyers, notaries, developers, architects, and community leaders. We bring deep expertise and professionalism to every transaction, handling the underlying complexities so you don't have to. The Bali real estate market moves fast, and navigating it successfully requires more than just a standard broker. It requires a dedicated partner with deep roots and a genuine connection to the island. We established Banyan Properties to bridge the gap between sophisticated international clients and quality local real estate opportunities—rooted firmly in trust, professionalism, and cultural respect."
+          - generic [ref=f10e140]:
+            - generic [ref=f10e141]: About Us | Body | Long text with paragraphs
+            - textbox [ref=f10e142]: "# # **About Us** Based in **Ubud**, Banyan Properties is a premium, comprehensive real estate agency operating to international standards—our \"**high touch, high tech**\" model serves as a trusted anchor of clarity and certainty in an otherwise unpredictable market While our roots are firmly planted in Ubud, the cultural center of Bali, our portfolio strategically extends across the true soul of the island: from the landscapes of **West, North, and East Bali** to the emerging **Nusa Islands**. We provide clear, trust-based solutions for clients looking to rent, invest, buy, sell, or manage high-end assets across three core pillars: Land, Villas, and Commercial Real Estate. Crucially, our operational framework is guided by a **profound reverence for the authentic cultural identity of Bali**. We believe that strategic asset management must coexist with mindful stewardship. By combining professionalism with a deep respect for the island's unique heritage, community structures, and people, we deliver real estate solutions that are sustainable, secure, and culturally grounded. ## ## **How We Work** ### **👁️ Transparency First** We believe in absolute clarity. From our real-time database tracking and tech-forward infrastructure to genuine boutique client relations and straightforward legal structures, you always know exactly where things stand. ### **🌐 Local Expertise, Global Standards** We combine deep, on-the-ground knowledge of the Bali market with professional standards and integrity to provide a seamless, reliable real estate experience. ### ### **🌴 Stewardship of Authentic Bali** True success on the island requires operating in genuine harmony with its soul. We act as conscious stewards, ensuring that our properties and tenancies actively respect local customs, align with local community rules and honor the land and culture. ### ### **f Dedicated Partner** We don’t just broker deals; we build long-term relationships rooted in boutique care. We act as an active, trusted extension of your team to safeguard your strategic assets, eliminate operational friction, and maximize your value. ### ### **🤝 Deep Roots** Over the years, we have built a trusted, comprehensive network of top-tier local lawyers, notaries, developers, architects, and community leaders. We bring deep expertise and professionalism to every transaction, handling the underlying complexities so you don't have to. The Bali real estate market moves fast, and navigating it successfully requires more than just a standard broker. It requires a dedicated partner with deep roots and a genuine connection to the island. We established Banyan Properties to bridge the gap between sophisticated international clients and quality local real estate opportunities—rooted firmly in trust, professionalism, and cultural respect."
+          - generic [ref=f10e143]:
+            - generic [ref=f10e144]: About Us | Contact us
+            - textbox [ref=f10e145]: "**Call us at +6285190241416 or email admin@banyanproperties.co**"
+          - generic [ref=f10e146]:
+            - generic [ref=f10e147]: About Us | Contact us | Long text with paragraphs
+            - textbox [ref=f10e148]: "**Call us at +6285190241416 or email admin@banyanproperties.co**"
+          - generic [ref=f10e149]:
+            - generic [ref=f10e150]: About Us | Top section
+            - textbox [ref=f10e151]: "**TRANSPARENCY FIRST • INTEGRITY • DEEP EXPERTISE • BOUTIQUE CLIENT SUCCESS • PROFESSIONALISM • STEWARDSHIP OF AUTHENTIC BALI • STRATEGIC ASSET MANAGEMENT • TECH FORWARD**"
+          - generic [ref=f10e152]:
+            - generic [ref=f10e153]: About Us | Top section | Small cap description
+            - textbox [ref=f10e154]: "**TRANSPARENCY FIRST • INTEGRITY • DEEP EXPERTISE • BOUTIQUE CLIENT SUCCESS • PROFESSIONALISM • STEWARDSHIP OF AUTHENTIC BALI • STRATEGIC ASSET MANAGEMENT • TECH FORWARD**"
+          - generic [ref=f10e155]:
+            - generic [ref=f10e156]: Body
+            - textbox [ref=f10e157]: "# # **About Us** Based in **Ubud**, Banyan Properties is a premium, comprehensive real estate agency operating to international standards—our \"**high touch, high tech**\" model serves as a trusted anchor of clarity and certainty in an otherwise unpredictable market While our roots are firmly planted in Ubud, the cultural center of Bali, our portfolio strategically extends across the true soul of the island: from the landscapes of **West, North, and East Bali** to the emerging **Nusa Islands**. We provide clear, trust-based solutions for clients looking to rent, invest, buy, sell, or manage high-end assets across three core pillars: Land, Villas, and Commercial Real Estate. Crucially, our operational framework is guided by a **profound reverence for the authentic cultural identity of Bali**. We believe that strategic asset management must coexist with mindful stewardship. By combining professionalism with a deep respect for the island's unique heritage, community structures, and people, we deliver real estate solutions that are sustainable, secure, and culturally grounded. ## ## **How We Work** ### **👁️ Transparency First** We believe in absolute clarity. From our real-time database tracking and tech-forward infrastructure to genuine boutique client relations and straightforward legal structures, you always know exactly where things stand. ### **🌐 Local Expertise, Global Standards** We combine deep, on-the-ground knowledge of the Bali market with professional standards and integrity to provide a seamless, reliable real estate experience. ### ### **🌴 Stewardship of Authentic Bali** True success on the island requires operating in genuine harmony with its soul. We act as conscious stewards, ensuring that our properties and tenancies actively respect local customs, align with local community rules and honor the land and culture. ### ### **f Dedicated Partner** We don’t just broker deals; we build long-term relationships rooted in boutique care. We act as an active, trusted extension of your team to safeguard your strategic assets, eliminate operational friction, and maximize your value. ### ### **🤝 Deep Roots** Over the years, we have built a trusted, comprehensive network of top-tier local lawyers, notaries, developers, architects, and community leaders. We bring deep expertise and professionalism to every transaction, handling the underlying complexities so you don't have to. The Bali real estate market moves fast, and navigating it successfully requires more than just a standard broker. It requires a dedicated partner with deep roots and a genuine connection to the island. We established Banyan Properties to bridge the gap between sophisticated international clients and quality local real estate opportunities—rooted firmly in trust, professionalism, and cultural respect."
+          - generic [ref=f10e158]:
+            - generic [ref=f10e159]: Body | Long text with paragraphs
+            - textbox [ref=f10e160]: "# # **About Us** Based in **Ubud**, Banyan Properties is a premium, comprehensive real estate agency operating to international standards—our \"**high touch, high tech**\" model serves as a trusted anchor of clarity and certainty in an otherwise unpredictable market While our roots are firmly planted in Ubud, the cultural center of Bali, our portfolio strategically extends across the true soul of the island: from the landscapes of **West, North, and East Bali** to the emerging **Nusa Islands**. We provide clear, trust-based solutions for clients looking to rent, invest, buy, sell, or manage high-end assets across three core pillars: Land, Villas, and Commercial Real Estate. Crucially, our operational framework is guided by a **profound reverence for the authentic cultural identity of Bali**. We believe that strategic asset management must coexist with mindful stewardship. By combining professionalism with a deep respect for the island's unique heritage, community structures, and people, we deliver real estate solutions that are sustainable, secure, and culturally grounded. ## ## **How We Work** ### **👁️ Transparency First** We believe in absolute clarity. From our real-time database tracking and tech-forward infrastructure to genuine boutique client relations and straightforward legal structures, you always know exactly where things stand. ### **🌐 Local Expertise, Global Standards** We combine deep, on-the-ground knowledge of the Bali market with professional standards and integrity to provide a seamless, reliable real estate experience. ### ### **🌴 Stewardship of Authentic Bali** True success on the island requires operating in genuine harmony with its soul. We act as conscious stewards, ensuring that our properties and tenancies actively respect local customs, align with local community rules and honor the land and culture. ### ### **f Dedicated Partner** We don’t just broker deals; we build long-term relationships rooted in boutique care. We act as an active, trusted extension of your team to safeguard your strategic assets, eliminate operational friction, and maximize your value. ### ### **🤝 Deep Roots** Over the years, we have built a trusted, comprehensive network of top-tier local lawyers, notaries, developers, architects, and community leaders. We bring deep expertise and professionalism to every transaction, handling the underlying complexities so you don't have to. The Bali real estate market moves fast, and navigating it successfully requires more than just a standard broker. It requires a dedicated partner with deep roots and a genuine connection to the island. We established Banyan Properties to bridge the gap between sophisticated international clients and quality local real estate opportunities—rooted firmly in trust, professionalism, and cultural respect."
+          - generic [ref=f10e161]:
+            - generic [ref=f10e162]: Contact Us Button
+            - textbox [ref=f10e163]: Contact Us
+          - generic [ref=f10e164]:
+            - generic [ref=f10e165]: Contact Us Button | Button
+            - textbox [ref=f10e166]: Contact Us
+          - generic [ref=f10e167]:
+            - generic [ref=f10e168]: Contact us
+            - textbox [ref=f10e169]: "**Call us at +6285190241416 or email admin@banyanproperties.co**"
+          - generic [ref=f10e170]:
+            - generic [ref=f10e171]: Contact us | Long text with paragraphs
+            - textbox [ref=f10e172]: "**Call us at +6285190241416 or email admin@banyanproperties.co**"
+          - generic [ref=f10e173]:
+            - generic [ref=f10e174]: Explore other articles
+            - textbox [ref=f10e175]: Explore other articles
+          - generic [ref=f10e176]:
+            - generic [ref=f10e177]: Explore other articles | Button
+            - textbox [ref=f10e178]: Explore other articles
+          - generic [ref=f10e179]:
+            - generic [ref=f10e180]: Footer | About Banyan
+            - textbox [ref=f10e181]: "**BANYAN PROPERTIES**"
+          - generic [ref=f10e182]:
+            - generic [ref=f10e183]: Footer | About Banyan | Description
+            - textbox [ref=f10e184]: "Based in **Ubud**, Banyan Properties is a premium, comprehensive real estate agency operating to **international standards**—our \"high touch, high tech\" model serves as a trusted anchor of clarity and certainty in an otherwise unpredictable market. While our roots are firmly planted in Ubud, the cultural center of Bali, our portfolio strategically extends across the true soul of the island: from the landscapes of **West, North, and East Bali** to the emerging **Nusa Islands**. We provide clear, trust-based solutions for clients looking to rent, invest, buy, sell, or manage high-end assets across three core pillars: Land, Villas, and Commercial Real Estate. Crucially, our operational framework is guided by a **profound reverence for the authentic cultural identity of Bali**. We believe that strategic asset management must coexist with mindful stewardship. By combining professionalism with a deep respect for the island's unique heritage, community structures, and people, we deliver real estate solutions that are sustainable, secure, and culturally grounded."
+          - generic [ref=f10e185]:
+            - generic [ref=f10e186]: Footer | About Banyan | Title
+            - textbox [ref=f10e187]: "**BANYAN PROPERTIES**"
+          - generic [ref=f10e188]:
+            - generic [ref=f10e189]: Happy Clients
+            - textbox [ref=f10e190]: 500+
+          - generic [ref=f10e191]:
+            - generic [ref=f10e192]: Happy Clients | Small cap description
+            - textbox [ref=f10e193]: 500+
+          - generic [ref=f10e194]:
+            - generic [ref=f10e195]: Homepage Section 2 | Contact Us Button
+            - textbox [ref=f10e196]: Contact Us
+          - generic [ref=f10e197]:
+            - generic [ref=f10e198]: Homepage Section 2 | Contact Us Button | Button
+            - textbox [ref=f10e199]: Contact Us
+          - generic [ref=f10e200]:
+            - generic [ref=f10e201]: Homepage Section 2 | Happy Clients
+            - textbox [ref=f10e202]: 500+
+          - generic [ref=f10e203]:
+            - generic [ref=f10e204]: Homepage Section 2 | Happy Clients | Small cap description
+            - textbox [ref=f10e205]: 500+
+          - generic [ref=f10e206]:
+            - generic [ref=f10e207]: Homepage Section 2 | Languages Spoken
+            - textbox [ref=f10e208]: "10"
+          - generic [ref=f10e209]:
+            - generic [ref=f10e210]: Homepage Section 2 | Languages Spoken | Small cap description
+            - textbox [ref=f10e211]: "10"
+          - generic [ref=f10e212]:
+            - generic [ref=f10e213]: Homepage Section 2 | Link to Marketplace Button
+            - textbox [ref=f10e214]: Go to marketplace
+          - generic [ref=f10e215]:
+            - generic [ref=f10e216]: Homepage Section 2 | Link to Marketplace Button | Button
+            - textbox [ref=f10e217]: Go to marketplace
+          - generic [ref=f10e218]:
+            - generic [ref=f10e219]: Homepage Section 2 | Properties Listed
+            - textbox [ref=f10e220]: 400+
+          - generic [ref=f10e221]:
+            - generic [ref=f10e222]: Homepage Section 2 | Properties Listed | Small cap description
+            - textbox [ref=f10e223]: 400+
+          - generic [ref=f10e224]:
+            - generic [ref=f10e225]: Homepage Section 2 | Years in Bali
+            - textbox [ref=f10e226]: 5+
+          - generic [ref=f10e227]:
+            - generic [ref=f10e228]: Homepage Section 2 | Years in Bali | Small cap description
+            - textbox [ref=f10e229]: 5+
+          - generic [ref=f10e230]:
+            - generic [ref=f10e231]: Homepage Section 3 | Our Services Commercial for Sale Description
+            - textbox [ref=f10e232]: We are in touch with many off-market commercial assets, special situation deals and real estate business for sale. We can advise you how to structure the acquisition.
+          - generic [ref=f10e233]:
+            - generic [ref=f10e234]: Homepage Section 3 | Our Services Commercial for Sale Description | Description
+            - textbox [ref=f10e235]: We are in touch with many off-market commercial assets, special situation deals and real estate business for sale. We can advise you how to structure the acquisition.
+          - generic [ref=f10e236]:
+            - generic [ref=f10e237]: Homepage Section 3 | Our Services Commercial for Sale Title
+            - textbox [ref=f10e238]: COMMERCIAL ASSETS FOR SALE
+          - generic [ref=f10e239]:
+            - generic [ref=f10e240]: Homepage Section 3 | Our Services Commercial for Sale Title | Title
+            - textbox [ref=f10e241]: COMMERCIAL ASSETS FOR SALE
+          - generic [ref=f10e242]:
+            - generic [ref=f10e243]: Homepage Section 3 | Our Services Lands for Sale Description
+            - textbox [ref=f10e244]: Our deep network of local community leaders gives us unprecedented access to off-market land opportunities.
+          - generic [ref=f10e245]:
+            - generic [ref=f10e246]: Homepage Section 3 | Our Services Lands for Sale Description | Description
+            - textbox [ref=f10e247]: Our deep network of local community leaders gives us unprecedented access to off-market land opportunities.
+          - generic [ref=f10e248]:
+            - generic [ref=f10e249]: Homepage Section 3 | Our Services Lands for Sale Title
+            - textbox [ref=f10e250]: LANDS FOR SALE
+          - generic [ref=f10e251]:
+            - generic [ref=f10e252]: Homepage Section 3 | Our Services Lands for Sale Title | Title
+            - textbox [ref=f10e253]: LANDS FOR SALE
+          - generic [ref=f10e254]:
+            - generic [ref=f10e255]: Homepage Section 3 | Our Services Management Description
+            - textbox [ref=f10e256]: We selectively manage villas, guest houses and complexes, in close collaboration with owners.
+          - generic [ref=f10e257]:
+            - generic [ref=f10e258]: Homepage Section 3 | Our Services Management Description | Description
+            - textbox [ref=f10e259]: We selectively manage villas, guest houses and complexes, in close collaboration with owners.
+          - generic [ref=f10e260]:
+            - generic [ref=f10e261]: Homepage Section 3 | Our Services Management Title
+            - textbox [ref=f10e262]: PROPERTY MANAGEMENT
+          - generic [ref=f10e263]:
+            - generic [ref=f10e264]: Homepage Section 3 | Our Services Management Title | Title
+            - textbox [ref=f10e265]: PROPERTY MANAGEMENT
+          - generic [ref=f10e266]:
+            - generic [ref=f10e267]: Homepage Section 3 | Our Services Real Estate Advisory Description
+            - textbox [ref=f10e268]: We advise family offices, private equity investors and property development groups on institutional-grade deals in Bali.
+          - generic [ref=f10e269]:
+            - generic [ref=f10e270]: Homepage Section 3 | Our Services Real Estate Advisory Description | Description
+            - textbox [ref=f10e271]: We advise family offices, private equity investors and property development groups on institutional-grade deals in Bali.
+          - generic [ref=f10e272]:
+            - generic [ref=f10e273]: Homepage Section 3 | Our Services Real Estate Advisory Title
+            - textbox [ref=f10e274]: REAL ESTATE ADVISORY
+          - generic [ref=f10e275]:
+            - generic [ref=f10e276]: Homepage Section 3 | Our Services Real Estate Advisory Title | Title
+            - textbox [ref=f10e277]: REAL ESTATE ADVISORY
+          - generic [ref=f10e278]:
+            - generic [ref=f10e279]: Homepage Section 3 | Our Services Villas for Rent Description
+            - textbox [ref=f10e280]: We have curated a wide selection of villas for yearly and monthly rental.
+          - generic [ref=f10e281]:
+            - generic [ref=f10e282]: Homepage Section 3 | Our Services Villas for Rent Description | Description
+            - textbox [ref=f10e283]: We have curated a wide selection of villas for yearly and monthly rental.
+          - generic [ref=f10e284]:
+            - generic [ref=f10e285]: Homepage Section 3 | Our Services Villas for Rent Title
+            - textbox [ref=f10e286]: LONG TERM RENTALS
+          - generic [ref=f10e287]:
+            - generic [ref=f10e288]: Homepage Section 3 | Our Services Villas for Rent Title | Title
+            - textbox [ref=f10e289]: LONG TERM RENTALS
+          - generic [ref=f10e290]:
+            - generic [ref=f10e291]: Homepage Section 3 | Our Services Villas for Sale Description
+            - textbox [ref=f10e292]: We provide a wide range of leasehold and freehold villas for sale, and can advise you on how to minimize risk with legal support.
+          - generic [ref=f10e293]:
+            - generic [ref=f10e294]: Homepage Section 3 | Our Services Villas for Sale Description | Description
+            - textbox [ref=f10e295]: We provide a wide range of leasehold and freehold villas for sale, and can advise you on how to minimize risk with legal support.
+          - generic [ref=f10e296]:
+            - generic [ref=f10e297]: Homepage Section 3 | Our Services Villas for Sale Title
+            - textbox [ref=f10e298]: VILLAS FOR SALE
+          - generic [ref=f10e299]:
+            - generic [ref=f10e300]: Homepage Section 3 | Our Services Villas for Sale Title | Title
+            - textbox [ref=f10e301]: VILLAS FOR SALE
+          - generic [ref=f10e302]:
+            - generic [ref=f10e303]: Homepage Section 4 | Explore other articles
+            - textbox [ref=f10e304]: Explore other articles
+          - generic [ref=f10e305]:
+            - generic [ref=f10e306]: Homepage Section 4 | Explore other articles | Button
+            - textbox [ref=f10e307]: Explore other articles
+          - generic [ref=f10e308]:
+            - generic [ref=f10e309]: Homepage Section 4 | Latest Blogs Description
+            - textbox [ref=f10e310]: Insights, housing guides and news from Bali's real estate market
+          - generic [ref=f10e311]:
+            - generic [ref=f10e312]: Homepage Section 4 | Latest Blogs Description | Description
+            - textbox [ref=f10e313]: Insights, housing guides and news from Bali's real estate market
+          - generic [ref=f10e314]:
+            - generic [ref=f10e315]: Homepage Section 4 | Latest Blogs Title
+            - textbox [ref=f10e316]: Latest Blogs & Articles
+          - generic [ref=f10e317]:
+            - generic [ref=f10e318]: Homepage Section 4 | Latest Blogs Title | Title
+            - textbox [ref=f10e319]: Latest Blogs & Articles
+          - generic [ref=f10e320]:
+            - generic [ref=f10e321]: Languages Spoken
+            - textbox [ref=f10e322]: "10"
+          - generic [ref=f10e323]:
+            - generic [ref=f10e324]: Languages Spoken | Small cap description
+            - textbox [ref=f10e325]: "10"
+          - generic [ref=f10e326]:
+            - generic [ref=f10e327]: Latest Blogs Description
+            - textbox [ref=f10e328]: Insights, housing guides and news from Bali's real estate market
+          - generic [ref=f10e329]:
+            - generic [ref=f10e330]: Latest Blogs Description | Description
+            - textbox [ref=f10e331]: Insights, housing guides and news from Bali's real estate market
+          - generic [ref=f10e332]:
+            - generic [ref=f10e333]: Latest Blogs Title
+            - textbox [ref=f10e334]: Latest Blogs & Articles
+          - generic [ref=f10e335]:
+            - generic [ref=f10e336]: Latest Blogs Title | Title
+            - textbox [ref=f10e337]: Latest Blogs & Articles
+          - generic [ref=f10e338]:
+            - generic [ref=f10e339]: Link to Marketplace Button
+            - textbox [ref=f10e340]: Go to marketplace
+          - generic [ref=f10e341]:
+            - generic [ref=f10e342]: Link to Marketplace Button | Button
+            - textbox [ref=f10e343]: Go to marketplace
+          - generic [ref=f10e344]:
+            - generic [ref=f10e345]: Marketplace | Why choose Central Bali (Kintamani, Bedugul, Munduk, Jatiluwih)?
+            - textbox [ref=f10e346]: "**Volcanic Vistas, Agri-Tourism & Scenic Mountain Retreats.** Central Bali is characterized by its dramatic volcanic peaks, cooler climate highlands, and breathtaking, mist-shrouded lake valleys. Market demand is rising rapidly for unique architectural concepts, off-grid glamping developments, and scenic wellness escapes. Investing here lets you tap into a highly specific, high-intent niche tourism market that deeply values eco-luxury, privacy, and mountain serenity."
+          - generic [ref=f10e347]:
+            - generic [ref=f10e348]: Marketplace | Why choose Central Bali (Kintamani, Bedugul, Munduk, Jatiluwih)? | Description
+            - textbox [ref=f10e349]: "**Volcanic Vistas, Agri-Tourism & Scenic Mountain Retreats.** Central Bali is characterized by its dramatic volcanic peaks, cooler climate highlands, and breathtaking, mist-shrouded lake valleys. Market demand is rising rapidly for unique architectural concepts, off-grid glamping developments, and scenic wellness escapes. Investing here lets you tap into a highly specific, high-intent niche tourism market that deeply values eco-luxury, privacy, and mountain serenity."
+          - generic [ref=f10e350]:
+            - generic [ref=f10e351]: Marketplace | Why choose Denpasar & Reno?
+            - textbox [ref=f10e352]: "**Commercial Power, Administration & Stable Local Leasing.** As Bali’s administrative and commercial hub, the Renon district boasts a highly organized urban grid favored by upscale local families and professionals. The area features incredibly consistent, year-round rental demand completely decoupled from tourism volatility, fueled by corporate offices, government institutions, and top-tier international schools. This represents the ideal zone for strategic investors prioritizing predictable, long-term residential yields over holiday-rental fluctuations."
+          - generic [ref=f10e353]:
+            - generic [ref=f10e354]: Marketplace | Why choose Denpasar & Reno? | Description
+            - textbox [ref=f10e355]: "**Commercial Power, Administration & Stable Local Leasing.** As Bali’s administrative and commercial hub, the Renon district boasts a highly organized urban grid favored by upscale local families and professionals. The area features incredibly consistent, year-round rental demand completely decoupled from tourism volatility, fueled by corporate offices, government institutions, and top-tier international schools. This represents the ideal zone for strategic investors prioritizing predictable, long-term residential yields over holiday-rental fluctuations."
+          - generic [ref=f10e356]:
+            - generic [ref=f10e357]: Marketplace | Why choose East Bali (Amed, Candidasa, Sidemen)?
+            - textbox [ref=f10e358]: "**Rich Heritage, World-Class Diving & Serene Coastal Growth.** Framed by the majestic Mount Agung, East Bali offers an authentic slice of traditional island heritage alongside world-renowned marine hotspots like Amed. Investors are increasingly drawn to its peaceful coastal pockets for boutique wellness retreats, dive lodges, and ocean-view vacation properties. Steady, sustainable development makes this region perfect for capturing reliable long-term growth away from the bustling tourist corridors."
+          - generic [ref=f10e359]:
+            - generic [ref=f10e360]: Marketplace | Why choose East Bali (Amed, Candidasa, Sidemen)? | Description
+            - textbox [ref=f10e361]: "**Rich Heritage, World-Class Diving & Serene Coastal Growth.** Framed by the majestic Mount Agung, East Bali offers an authentic slice of traditional island heritage alongside world-renowned marine hotspots like Amed. Investors are increasingly drawn to its peaceful coastal pockets for boutique wellness retreats, dive lodges, and ocean-view vacation properties. Steady, sustainable development makes this region perfect for capturing reliable long-term growth away from the bustling tourist corridors."
+          - generic [ref=f10e362]:
+            - generic [ref=f10e363]: Marketplace | Why choose North Bali (Lovina, Pemuteran, Singaraja)?
+            - textbox [ref=f10e364]: "**Tranquility, Coastal Serenity & Affordable Land Banking.** North Bali provides a dramatically peaceful, slow-paced alternative to the southern hubs, famous for its calm waters, dolphin watching, and scenic mountain backdrops. The region offers exceptionally affordable land and property entry points paired with massive long-term expansion potential. For strategic buyers, the North presents an excellent opportunity to construct high-margin retirement villas or secluded luxury holiday rentals."
+          - generic [ref=f10e365]:
+            - generic [ref=f10e366]: Marketplace | Why choose North Bali (Lovina, Pemuteran, Singaraja)? | Description
+            - textbox [ref=f10e367]: "**Tranquility, Coastal Serenity & Affordable Land Banking.** North Bali provides a dramatically peaceful, slow-paced alternative to the southern hubs, famous for its calm waters, dolphin watching, and scenic mountain backdrops. The region offers exceptionally affordable land and property entry points paired with massive long-term expansion potential. For strategic buyers, the North presents an excellent opportunity to construct high-margin retirement villas or secluded luxury holiday rentals."
+          - generic [ref=f10e368]:
+            - generic [ref=f10e369]: Marketplace | Why choose Sanur?
+            - textbox [ref=f10e370]: "**Coastal Charm, Family Living & Capital Appreciation.** Sanur offers a relaxed, sophisticated seaside lifestyle that appeals directly to long-term expats, families, and high-net-worth retirees. With massive ongoing infrastructure upgrades like the new international hospital and premium marinas, real estate demand in the area is climbing at an impressive rate. Securing property in Sanur provides excellent capital growth potential combined with one of the most stable, secure rental communities on the island."
+          - generic [ref=f10e371]:
+            - generic [ref=f10e372]: Marketplace | Why choose Sanur? | Description
+            - textbox [ref=f10e373]: "**Coastal Charm, Family Living & Capital Appreciation.** Sanur offers a relaxed, sophisticated seaside lifestyle that appeals directly to long-term expats, families, and high-net-worth retirees. With massive ongoing infrastructure upgrades like the new international hospital and premium marinas, real estate demand in the area is climbing at an impressive rate. Securing property in Sanur provides excellent capital growth potential combined with one of the most stable, secure rental communities on the island."
+          - generic [ref=f10e374]:
+            - generic [ref=f10e375]: Marketplace | Why choose Ubud?
+            - textbox [ref=f10e376]: "**Culture, Wellness & Premium Villa Demand.** Ubud is Bali’s cultural and spiritual heartland, endlessly drawing a global community seeking wellness, fine arts, and pristine jungle landscapes. The local property market is seeing a major surge in demand for eco-conscious luxury estates and high-yielding boutique holiday rentals. Investing here offers a unique blend of stable, non-seasonal occupancy and premium lifestyle value in an evergreen destination."
+          - generic [ref=f10e377]:
+            - generic [ref=f10e378]: Marketplace | Why choose Ubud? | Description
+            - textbox [ref=f10e379]: "**Culture, Wellness & Premium Villa Demand.** Ubud is Bali’s cultural and spiritual heartland, endlessly drawing a global community seeking wellness, fine arts, and pristine jungle landscapes. The local property market is seeing a major surge in demand for eco-conscious luxury estates and high-yielding boutique holiday rentals. Investing here offers a unique blend of stable, non-seasonal occupancy and premium lifestyle value in an evergreen destination."
+          - generic [ref=f10e380]:
+            - generic [ref=f10e381]: Marketplace | Why choose West Bali (Medewi, Balian, Pekutatan)?
+            - textbox [ref=f10e382]: "**Untamed Nature, Surf Secrets & Ground-Floor Opportunity.** West Bali is an expansive frontier of pristine national parks, empty black-sand beaches, and legendary, uncrowded surf breaks like Medewi. As developmental interest naturally expands outward from the crowded south, this region represents a highly lucrative opportunity for low-entry land banking and eco-resort development. Buying early in West Bali guarantees maximum capital upside as the island's next major eco-tourism wave takes shape."
+          - generic [ref=f10e383]:
+            - generic [ref=f10e384]: Marketplace | Why choose West Bali (Medewi, Balian, Pekutatan)? | Description
+            - textbox [ref=f10e385]: "**Untamed Nature, Surf Secrets & Ground-Floor Opportunity.** West Bali is an expansive frontier of pristine national parks, empty black-sand beaches, and legendary, uncrowded surf breaks like Medewi. As developmental interest naturally expands outward from the crowded south, this region represents a highly lucrative opportunity for low-entry land banking and eco-resort development. Buying early in West Bali guarantees maximum capital upside as the island's next major eco-tourism wave takes shape."
+          - generic [ref=f10e386]:
+            - generic [ref=f10e387]: Marketplace | Why choose the Bukit area (Uluwatu, Nusa Dua, Jimbaran)?
+            - textbox [ref=f10e388]: "**Clifftop Luxury, World-Class Surfing & High-End Yields.** The Bukit Peninsula is world-famous for its dramatic limestone cliffs, ultra-luxury five-star resorts, and legendary surf breaks. High-income tourists and affluent expats keep the premium cliffside villa market booming, driving some of the highest average daily rates on the island. Capitalizing on Bukit real estate positions your investment portfolio at the absolute apex of Bali's high-end luxury hospitality sector."
+          - generic [ref=f10e389]:
+            - generic [ref=f10e390]: Marketplace | Why choose the Bukit area (Uluwatu, Nusa Dua, Jimbaran)? | Description
+            - textbox [ref=f10e391]: "**Clifftop Luxury, World-Class Surfing & High-End Yields.** The Bukit Peninsula is world-famous for its dramatic limestone cliffs, ultra-luxury five-star resorts, and legendary surf breaks. High-income tourists and affluent expats keep the premium cliffside villa market booming, driving some of the highest average daily rates on the island. Capitalizing on Bukit real estate positions your investment portfolio at the absolute apex of Bali's high-end luxury hospitality sector."
+          - generic [ref=f10e392]:
+            - generic [ref=f10e393]: Marketplace | Why choose the Canggu, Kuta, Tanah Lot corridor?
+            - textbox [ref=f10e394]: "**Surf, Lifestyle & Strong Rental Yields Await.** **Canggu area** is a vibrant **coastal village** with booming real estate, drawing expats, surfers, and digital nomads. Demand is rising for **quality villas** and **long-term rentals**. With increasing supply and **stable prices**, now is the ideal time to invest in **Canggu** property."
+          - generic [ref=f10e395]:
+            - generic [ref=f10e396]: Marketplace | Why choose the Canggu, Kuta, Tanah Lot corridor? | Description
+            - textbox [ref=f10e397]: "**Surf, Lifestyle & Strong Rental Yields Await.** **Canggu area** is a vibrant **coastal village** with booming real estate, drawing expats, surfers, and digital nomads. Demand is rising for **quality villas** and **long-term rentals**. With increasing supply and **stable prices**, now is the ideal time to invest in **Canggu** property."
+          - generic [ref=f10e398]:
+            - generic [ref=f10e399]: Marketplace | Why choose the Nusa Islands (Lembongan, Ceningan, Penida)?
+            - textbox [ref=f10e400]: "**Island Escapism, Crystal Waters & Explosive Tourism ROI.** Just a short speed-boat ride from the mainland, the Nusa Islands offer unparalleled marine life, dramatic coastal topography, and an idyllic island lifestyle. Rapidly developing infrastructure is driving a massive influx of international travelers, causing vacation rental demand to heavily outpace local inventory. This unique supply deficit makes the islands a goldmine for premium beachfront villas and boutique hospitality investments."
+          - generic [ref=f10e401]:
+            - generic [ref=f10e402]: Marketplace | Why choose the Nusa Islands (Lembongan, Ceningan, Penida)? | Description
+            - textbox [ref=f10e403]: "**Island Escapism, Crystal Waters & Explosive Tourism ROI.** Just a short speed-boat ride from the mainland, the Nusa Islands offer unparalleled marine life, dramatic coastal topography, and an idyllic island lifestyle. Rapidly developing infrastructure is driving a massive influx of international travelers, causing vacation rental demand to heavily outpace local inventory. This unique supply deficit makes the islands a goldmine for premium beachfront villas and boutique hospitality investments."
+          - generic [ref=f10e404]:
+            - generic [ref=f10e405]: Our Services Commercial for Sale Description
+            - textbox [ref=f10e406]: We are in touch with many off-market commercial assets, special situation deals and real estate business for sale. We can advise you how to structure the acquisition.
+          - generic [ref=f10e407]:
+            - generic [ref=f10e408]: Our Services Commercial for Sale Description | Description
+            - textbox [ref=f10e409]: We are in touch with many off-market commercial assets, special situation deals and real estate business for sale. We can advise you how to structure the acquisition.
+          - generic [ref=f10e410]:
+            - generic [ref=f10e411]: Our Services Commercial for Sale Title
+            - textbox [ref=f10e412]: COMMERCIAL ASSETS FOR SALE
+          - generic [ref=f10e413]:
+            - generic [ref=f10e414]: Our Services Commercial for Sale Title | Title
+            - textbox [ref=f10e415]: COMMERCIAL ASSETS FOR SALE
+          - generic [ref=f10e416]:
+            - generic [ref=f10e417]: Our Services Lands for Sale Description
+            - textbox [ref=f10e418]: Our deep network of local community leaders gives us unprecedented access to off-market land opportunities.
+          - generic [ref=f10e419]:
+            - generic [ref=f10e420]: Our Services Lands for Sale Description | Description
+            - textbox [ref=f10e421]: Our deep network of local community leaders gives us unprecedented access to off-market land opportunities.
+          - generic [ref=f10e422]:
+            - generic [ref=f10e423]: Our Services Lands for Sale Title
+            - textbox [ref=f10e424]: LANDS FOR SALE
+          - generic [ref=f10e425]:
+            - generic [ref=f10e426]: Our Services Lands for Sale Title | Title
+            - textbox [ref=f10e427]: LANDS FOR SALE
+          - generic [ref=f10e428]:
+            - generic [ref=f10e429]: Our Services Management Description
+            - textbox [ref=f10e430]: We selectively manage villas, guest houses and complexes, in close collaboration with owners.
+          - generic [ref=f10e431]:
+            - generic [ref=f10e432]: Our Services Management Description | Description
+            - textbox [ref=f10e433]: We selectively manage villas, guest houses and complexes, in close collaboration with owners.
+          - generic [ref=f10e434]:
+            - generic [ref=f10e435]: Our Services Management Title
+            - textbox [ref=f10e436]: PROPERTY MANAGEMENT
+          - generic [ref=f10e437]:
+            - generic [ref=f10e438]: Our Services Management Title | Title
+            - textbox [ref=f10e439]: PROPERTY MANAGEMENT
+          - generic [ref=f10e440]:
+            - generic [ref=f10e441]: Our Services Real Estate Advisory Description
+            - textbox [ref=f10e442]: We advise family offices, private equity investors and property development groups on institutional-grade deals in Bali.
+          - generic [ref=f10e443]:
+            - generic [ref=f10e444]: Our Services Real Estate Advisory Description | Description
+            - textbox [ref=f10e445]: We advise family offices, private equity investors and property development groups on institutional-grade deals in Bali.
+          - generic [ref=f10e446]:
+            - generic [ref=f10e447]: Our Services Real Estate Advisory Title
+            - textbox [ref=f10e448]: REAL ESTATE ADVISORY
+          - generic [ref=f10e449]:
+            - generic [ref=f10e450]: Our Services Real Estate Advisory Title | Title
+            - textbox [ref=f10e451]: REAL ESTATE ADVISORY
+          - generic [ref=f10e452]:
+            - generic [ref=f10e453]: Our Services Villas for Rent Description
+            - textbox [ref=f10e454]: We have curated a wide selection of villas for yearly and monthly rental.
+          - generic [ref=f10e455]:
+            - generic [ref=f10e456]: Our Services Villas for Rent Description | Description
+            - textbox [ref=f10e457]: We have curated a wide selection of villas for yearly and monthly rental.
+          - generic [ref=f10e458]:
+            - generic [ref=f10e459]: Our Services Villas for Rent Title
+            - textbox [ref=f10e460]: LONG TERM RENTALS
+          - generic [ref=f10e461]:
+            - generic [ref=f10e462]: Our Services Villas for Rent Title | Title
+            - textbox [ref=f10e463]: LONG TERM RENTALS
+          - generic [ref=f10e464]:
+            - generic [ref=f10e465]: Our Services Villas for Sale Description
+            - textbox [ref=f10e466]: We provide a wide range of leasehold and freehold villas for sale, and can advise you on how to minimize risk with legal support.
+          - generic [ref=f10e467]:
+            - generic [ref=f10e468]: Our Services Villas for Sale Description | Description
+            - textbox [ref=f10e469]: We provide a wide range of leasehold and freehold villas for sale, and can advise you on how to minimize risk with legal support.
+          - generic [ref=f10e470]:
+            - generic [ref=f10e471]: Our Services Villas for Sale Title
+            - textbox [ref=f10e472]: VILLAS FOR SALE
+          - generic [ref=f10e473]:
+            - generic [ref=f10e474]: Our Services Villas for Sale Title | Title
+            - textbox [ref=f10e475]: VILLAS FOR SALE
+          - generic [ref=f10e476]:
+            - generic [ref=f10e477]: Properties Listed
+            - textbox [ref=f10e478]: 400+
+          - generic [ref=f10e479]:
+            - generic [ref=f10e480]: Properties Listed | Small cap description
+            - textbox [ref=f10e481]: 400+
+          - generic [ref=f10e482]:
+            - generic [ref=f10e483]: Top section
+            - textbox [ref=f10e484]: "**TRANSPARENCY FIRST • INTEGRITY • DEEP EXPERTISE • BOUTIQUE CLIENT SUCCESS • PROFESSIONALISM • STEWARDSHIP OF AUTHENTIC BALI • STRATEGIC ASSET MANAGEMENT • TECH FORWARD**"
+          - generic [ref=f10e485]:
+            - generic [ref=f10e486]: Top section | Small cap description
+            - textbox [ref=f10e487]: "**TRANSPARENCY FIRST • INTEGRITY • DEEP EXPERTISE • BOUTIQUE CLIENT SUCCESS • PROFESSIONALISM • STEWARDSHIP OF AUTHENTIC BALI • STRATEGIC ASSET MANAGEMENT • TECH FORWARD**"
+          - generic [ref=f10e488]:
+            - generic [ref=f10e489]: Why choose Central Bali (Kintamani, Bedugul, Munduk, Jatiluwih)?
+            - textbox [ref=f10e490]: "**Volcanic Vistas, Agri-Tourism & Scenic Mountain Retreats.** Central Bali is characterized by its dramatic volcanic peaks, cooler climate highlands, and breathtaking, mist-shrouded lake valleys. Market demand is rising rapidly for unique architectural concepts, off-grid glamping developments, and scenic wellness escapes. Investing here lets you tap into a highly specific, high-intent niche tourism market that deeply values eco-luxury, privacy, and mountain serenity."
+          - generic [ref=f10e491]:
+            - generic [ref=f10e492]: Why choose Central Bali (Kintamani, Bedugul, Munduk, Jatiluwih)? | Description
+            - textbox [ref=f10e493]: "**Volcanic Vistas, Agri-Tourism & Scenic Mountain Retreats.** Central Bali is characterized by its dramatic volcanic peaks, cooler climate highlands, and breathtaking, mist-shrouded lake valleys. Market demand is rising rapidly for unique architectural concepts, off-grid glamping developments, and scenic wellness escapes. Investing here lets you tap into a highly specific, high-intent niche tourism market that deeply values eco-luxury, privacy, and mountain serenity."
+          - generic [ref=f10e494]:
+            - generic [ref=f10e495]: Why choose Denpasar & Reno?
+            - textbox [ref=f10e496]: "**Commercial Power, Administration & Stable Local Leasing.** As Bali’s administrative and commercial hub, the Renon district boasts a highly organized urban grid favored by upscale local families and professionals. The area features incredibly consistent, year-round rental demand completely decoupled from tourism volatility, fueled by corporate offices, government institutions, and top-tier international schools. This represents the ideal zone for strategic investors prioritizing predictable, long-term residential yields over holiday-rental fluctuations."
+          - generic [ref=f10e497]:
+            - generic [ref=f10e498]: Why choose Denpasar & Reno? | Description
+            - textbox [ref=f10e499]: "**Commercial Power, Administration & Stable Local Leasing.** As Bali’s administrative and commercial hub, the Renon district boasts a highly organized urban grid favored by upscale local families and professionals. The area features incredibly consistent, year-round rental demand completely decoupled from tourism volatility, fueled by corporate offices, government institutions, and top-tier international schools. This represents the ideal zone for strategic investors prioritizing predictable, long-term residential yields over holiday-rental fluctuations."
+          - generic [ref=f10e500]:
+            - generic [ref=f10e501]: Why choose East Bali (Amed, Candidasa, Sidemen)?
+            - textbox [ref=f10e502]: "**Rich Heritage, World-Class Diving & Serene Coastal Growth.** Framed by the majestic Mount Agung, East Bali offers an authentic slice of traditional island heritage alongside world-renowned marine hotspots like Amed. Investors are increasingly drawn to its peaceful coastal pockets for boutique wellness retreats, dive lodges, and ocean-view vacation properties. Steady, sustainable development makes this region perfect for capturing reliable long-term growth away from the bustling tourist corridors."
+          - generic [ref=f10e503]:
+            - generic [ref=f10e504]: Why choose East Bali (Amed, Candidasa, Sidemen)? | Description
+            - textbox [ref=f10e505]: "**Rich Heritage, World-Class Diving & Serene Coastal Growth.** Framed by the majestic Mount Agung, East Bali offers an authentic slice of traditional island heritage alongside world-renowned marine hotspots like Amed. Investors are increasingly drawn to its peaceful coastal pockets for boutique wellness retreats, dive lodges, and ocean-view vacation properties. Steady, sustainable development makes this region perfect for capturing reliable long-term growth away from the bustling tourist corridors."
+          - generic [ref=f10e506]:
+            - generic [ref=f10e507]: Why choose North Bali (Lovina, Pemuteran, Singaraja)?
+            - textbox [ref=f10e508]: "**Tranquility, Coastal Serenity & Affordable Land Banking.** North Bali provides a dramatically peaceful, slow-paced alternative to the southern hubs, famous for its calm waters, dolphin watching, and scenic mountain backdrops. The region offers exceptionally affordable land and property entry points paired with massive long-term expansion potential. For strategic buyers, the North presents an excellent opportunity to construct high-margin retirement villas or secluded luxury holiday rentals."
+          - generic [ref=f10e509]:
+            - generic [ref=f10e510]: Why choose North Bali (Lovina, Pemuteran, Singaraja)? | Description
+            - textbox [ref=f10e511]: "**Tranquility, Coastal Serenity & Affordable Land Banking.** North Bali provides a dramatically peaceful, slow-paced alternative to the southern hubs, famous for its calm waters, dolphin watching, and scenic mountain backdrops. The region offers exceptionally affordable land and property entry points paired with massive long-term expansion potential. For strategic buyers, the North presents an excellent opportunity to construct high-margin retirement villas or secluded luxury holiday rentals."
+          - generic [ref=f10e512]:
+            - generic [ref=f10e513]: Why choose Sanur?
+            - textbox [ref=f10e514]: "**Coastal Charm, Family Living & Capital Appreciation.** Sanur offers a relaxed, sophisticated seaside lifestyle that appeals directly to long-term expats, families, and high-net-worth retirees. With massive ongoing infrastructure upgrades like the new international hospital and premium marinas, real estate demand in the area is climbing at an impressive rate. Securing property in Sanur provides excellent capital growth potential combined with one of the most stable, secure rental communities on the island."
+          - generic [ref=f10e515]:
+            - generic [ref=f10e516]: Why choose Sanur? | Description
+            - textbox [ref=f10e517]: "**Coastal Charm, Family Living & Capital Appreciation.** Sanur offers a relaxed, sophisticated seaside lifestyle that appeals directly to long-term expats, families, and high-net-worth retirees. With massive ongoing infrastructure upgrades like the new international hospital and premium marinas, real estate demand in the area is climbing at an impressive rate. Securing property in Sanur provides excellent capital growth potential combined with one of the most stable, secure rental communities on the island."
+          - generic [ref=f10e518]:
+            - generic [ref=f10e519]: Why choose Ubud?
+            - textbox [ref=f10e520]: "**Culture, Wellness & Premium Villa Demand.** Ubud is Bali’s cultural and spiritual heartland, endlessly drawing a global community seeking wellness, fine arts, and pristine jungle landscapes. The local property market is seeing a major surge in demand for eco-conscious luxury estates and high-yielding boutique holiday rentals. Investing here offers a unique blend of stable, non-seasonal occupancy and premium lifestyle value in an evergreen destination."
+          - generic [ref=f10e521]:
+            - generic [ref=f10e522]: Why choose Ubud? | Description
+            - textbox [ref=f10e523]: "**Culture, Wellness & Premium Villa Demand.** Ubud is Bali’s cultural and spiritual heartland, endlessly drawing a global community seeking wellness, fine arts, and pristine jungle landscapes. The local property market is seeing a major surge in demand for eco-conscious luxury estates and high-yielding boutique holiday rentals. Investing here offers a unique blend of stable, non-seasonal occupancy and premium lifestyle value in an evergreen destination."
+          - generic [ref=f10e524]:
+            - generic [ref=f10e525]: Why choose West Bali (Medewi, Balian, Pekutatan)?
+            - textbox [ref=f10e526]: "**Untamed Nature, Surf Secrets & Ground-Floor Opportunity.** West Bali is an expansive frontier of pristine national parks, empty black-sand beaches, and legendary, uncrowded surf breaks like Medewi. As developmental interest naturally expands outward from the crowded south, this region represents a highly lucrative opportunity for low-entry land banking and eco-resort development. Buying early in West Bali guarantees maximum capital upside as the island's next major eco-tourism wave takes shape."
+          - generic [ref=f10e527]:
+            - generic [ref=f10e528]: Why choose West Bali (Medewi, Balian, Pekutatan)? | Description
+            - textbox [ref=f10e529]: "**Untamed Nature, Surf Secrets & Ground-Floor Opportunity.** West Bali is an expansive frontier of pristine national parks, empty black-sand beaches, and legendary, uncrowded surf breaks like Medewi. As developmental interest naturally expands outward from the crowded south, this region represents a highly lucrative opportunity for low-entry land banking and eco-resort development. Buying early in West Bali guarantees maximum capital upside as the island's next major eco-tourism wave takes shape."
+          - generic [ref=f10e530]:
+            - generic [ref=f10e531]: Why choose the Bukit area (Uluwatu, Nusa Dua, Jimbaran)?
+            - textbox [ref=f10e532]: "**Clifftop Luxury, World-Class Surfing & High-End Yields.** The Bukit Peninsula is world-famous for its dramatic limestone cliffs, ultra-luxury five-star resorts, and legendary surf breaks. High-income tourists and affluent expats keep the premium cliffside villa market booming, driving some of the highest average daily rates on the island. Capitalizing on Bukit real estate positions your investment portfolio at the absolute apex of Bali's high-end luxury hospitality sector."
+          - generic [ref=f10e533]:
+            - generic [ref=f10e534]: Why choose the Bukit area (Uluwatu, Nusa Dua, Jimbaran)? | Description
+            - textbox [ref=f10e535]: "**Clifftop Luxury, World-Class Surfing & High-End Yields.** The Bukit Peninsula is world-famous for its dramatic limestone cliffs, ultra-luxury five-star resorts, and legendary surf breaks. High-income tourists and affluent expats keep the premium cliffside villa market booming, driving some of the highest average daily rates on the island. Capitalizing on Bukit real estate positions your investment portfolio at the absolute apex of Bali's high-end luxury hospitality sector."
+          - generic [ref=f10e536]:
+            - generic [ref=f10e537]: Why choose the Canggu, Kuta, Tanah Lot corridor?
+            - textbox [ref=f10e538]: "**Surf, Lifestyle & Strong Rental Yields Await.** **Canggu area** is a vibrant **coastal village** with booming real estate, drawing expats, surfers, and digital nomads. Demand is rising for **quality villas** and **long-term rentals**. With increasing supply and **stable prices**, now is the ideal time to invest in **Canggu** property."
+          - generic [ref=f10e539]:
+            - generic [ref=f10e540]: Why choose the Canggu, Kuta, Tanah Lot corridor? | Description
+            - textbox [ref=f10e541]: "**Surf, Lifestyle & Strong Rental Yields Await.** **Canggu area** is a vibrant **coastal village** with booming real estate, drawing expats, surfers, and digital nomads. Demand is rising for **quality villas** and **long-term rentals**. With increasing supply and **stable prices**, now is the ideal time to invest in **Canggu** property."
+          - generic [ref=f10e542]:
+            - generic [ref=f10e543]: Why choose the Nusa Islands (Lembongan, Ceningan, Penida)?
+            - textbox [ref=f10e544]: "**Island Escapism, Crystal Waters & Explosive Tourism ROI.** Just a short speed-boat ride from the mainland, the Nusa Islands offer unparalleled marine life, dramatic coastal topography, and an idyllic island lifestyle. Rapidly developing infrastructure is driving a massive influx of international travelers, causing vacation rental demand to heavily outpace local inventory. This unique supply deficit makes the islands a goldmine for premium beachfront villas and boutique hospitality investments."
+          - generic [ref=f10e545]:
+            - generic [ref=f10e546]: Why choose the Nusa Islands (Lembongan, Ceningan, Penida)? | Description
+            - textbox [ref=f10e547]: "**Island Escapism, Crystal Waters & Explosive Tourism ROI.** Just a short speed-boat ride from the mainland, the Nusa Islands offer unparalleled marine life, dramatic coastal topography, and an idyllic island lifestyle. Rapidly developing infrastructure is driving a massive influx of international travelers, causing vacation rental demand to heavily outpace local inventory. This unique supply deficit makes the islands a goldmine for premium beachfront villas and boutique hospitality investments."
+          - generic [ref=f10e548]:
+            - generic [ref=f10e549]: Years in Bali
+            - textbox [ref=f10e550]: 5+
+          - generic [ref=f10e551]:
+            - generic [ref=f10e552]: Years in Bali | Small cap description
+            - textbox [ref=f10e553]: 5+
+        - button "Save site text" [ref=f10e554] [cursor=pointer]
+      - generic [ref=f10e555]:
+        - heading "Website images (28)" [level=2] [ref=f10e556]:
+          - text: Website images
+          - generic [ref=f10e557]: (28)
+        - paragraph [ref=f10e558]: Reference list (read-only for now).
+        - table [ref=f10e560]:
+          - rowgroup [ref=f10e561]:
+            - row [ref=f10e562]:
+              - columnheader "Section" [ref=f10e563]
+              - columnheader "Label" [ref=f10e564]
+              - columnheader "URL" [ref=f10e565]
+          - rowgroup [ref=f10e566]:
+            - row [ref=f10e567]:
+              - cell "All Listing Images" [ref=f10e568]
+              - cell "Banyan image watermark" [ref=f10e569]
+              - cell [ref=f10e570]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1qex9xSpyVYK629fiskPFGSNCvIcS7kH9?sz=w1200" [ref=f10e571] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1qex9xSpyVYK629fiskPFGSNCvIcS7kH9?sz=w1200
+            - row [ref=f10e572]:
+              - cell "Header/Footer" [ref=f10e573]
+              - cell "Banyan Properties logo" [ref=f10e574]
+              - cell [ref=f10e575]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1jOc7Sqn6IZP7U-OTeqL4dEVxZRkZxANB?sz=w1200" [ref=f10e576] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1jOc7Sqn6IZP7U-OTeqL4dEVxZRkZxANB?sz=w1200
+            - row [ref=f10e577]:
+              - cell "Homepage" [ref=f10e578]
+              - cell "Main cover video 1 - Balinese farmer walking in rice field" [ref=f10e579]
+              - cell [ref=f10e580]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1OepxWoRccWKB-I72cASAhmBAHAR0UrpV.mp4" [ref=f10e581] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1OepxWoRccWKB-I72cASAhmBAHAR0UrpV.mp4
+            - row [ref=f10e582]:
+              - cell "Homepage" [ref=f10e583]
+              - cell "Main cover video 2 - couple looking out from room" [ref=f10e584]
+              - cell [ref=f10e585]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/static/videos/103hr-73ucXZsFw8lWZdB49dFuW5imb4_.mp4" [ref=f10e586] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/static/videos/103hr-73ucXZsFw8lWZdB49dFuW5imb4_.mp4
+            - row [ref=f10e587]:
+              - cell "Homepage" [ref=f10e588]
+              - cell "Main cover video 3 - fly through Ubud river with Canyon view" [ref=f10e589]
+              - cell [ref=f10e590]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1k41nclQySHekfu13h5m9yGwiZTMBVKRk.mp4" [ref=f10e591] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1k41nclQySHekfu13h5m9yGwiZTMBVKRk.mp4
+            - row [ref=f10e592]:
+              - cell "Homepage" [ref=f10e593]
+              - cell "Main cover video 4 - dive into pool" [ref=f10e594]
+              - cell [ref=f10e595]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1quZySgJCvNIExv-y7vldldvqQ5BNtS9b.mp4" [ref=f10e596] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1quZySgJCvNIExv-y7vldldvqQ5BNtS9b.mp4
+            - row [ref=f10e597]:
+              - cell "Homepage" [ref=f10e598]
+              - cell "Main cover video 5 - Balinese walking in rice field path" [ref=f10e599]
+              - cell [ref=f10e600]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/static/videos/199iYF6MyReoYpymP327poX2StIwjdPkr.mp4" [ref=f10e601] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/static/videos/199iYF6MyReoYpymP327poX2StIwjdPkr.mp4
+            - row [ref=f10e602]:
+              - cell "Homepage" [ref=f10e603]
+              - cell "Main cover video 6 - kids play at pool" [ref=f10e604]
+              - cell [ref=f10e605]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/static/videos/18LPt6U59y5IIurWiy3CFUyJEWqjdgxdt.mp4" [ref=f10e606] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/static/videos/18LPt6U59y5IIurWiy3CFUyJEWqjdgxdt.mp4
+            - row [ref=f10e607]:
+              - cell "Homepage" [ref=f10e608]
+              - cell "Main cover video 7 - estate with ricefield views" [ref=f10e609]
+              - cell [ref=f10e610]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1hzGeBVw1N_FLvRa4Eoxv9NBOaDyN4Rdh.mp4" [ref=f10e611] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1hzGeBVw1N_FLvRa4Eoxv9NBOaDyN4Rdh.mp4
+            - row [ref=f10e612]:
+              - cell "Homepage" [ref=f10e613]
+              - cell "Main cover video 8 - temple" [ref=f10e614]
+              - cell [ref=f10e615]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1ragnSVOJT_Qo9dbT4LGNgfOj-_xTyXNy.mp4" [ref=f10e616] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/static/videos/1ragnSVOJT_Qo9dbT4LGNgfOj-_xTyXNy.mp4
+            - row [ref=f10e617]:
+              - cell "Homepage" [ref=f10e618]
+              - cell "Partner & Friends Images - Alien Cowboy Club" [ref=f10e619]
+              - cell [ref=f10e620]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1FjVWjsplPM0QCwAfdlU5qOA52CFnBN7z?sz=w1200" [ref=f10e621] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1FjVWjsplPM0QCwAfdlU5qOA52CFnBN7z?sz=w1200
+            - row [ref=f10e622]:
+              - cell "Homepage" [ref=f10e623]
+              - cell "Partner & Friends Images - Bodega" [ref=f10e624]
+              - cell [ref=f10e625]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1QQzT6IhUiZEkQBOAeZsbDpB0OojVzEj6?sz=w1200" [ref=f10e626] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1QQzT6IhUiZEkQBOAeZsbDpB0OojVzEj6?sz=w1200
+            - row [ref=f10e627]:
+              - cell "Homepage" [ref=f10e628]
+              - cell "Partner & Friends Images - Cheeky Monkey" [ref=f10e629]
+              - cell [ref=f10e630]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1nKGF6ZFJJe0FJcAcRj-o4h0lvEb_rlNO?sz=w1200" [ref=f10e631] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1nKGF6ZFJJe0FJcAcRj-o4h0lvEb_rlNO?sz=w1200
+            - row [ref=f10e632]:
+              - cell "Homepage" [ref=f10e633]
+              - cell "Partner & Friends Images - Circus Castle" [ref=f10e634]
+              - cell [ref=f10e635]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1IRj9eFYy9qI-xEnRe03W3-6UYFtiKdrj?sz=w1200" [ref=f10e636] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1IRj9eFYy9qI-xEnRe03W3-6UYFtiKdrj?sz=w1200
+            - row [ref=f10e637]:
+              - cell "Homepage" [ref=f10e638]
+              - cell "Partner & Friends Images - Future Human School" [ref=f10e639]
+              - cell [ref=f10e640]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1belcW95dqEIrNCBHhCgzEStrMN3wA1lG?sz=w1200" [ref=f10e641] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1belcW95dqEIrNCBHhCgzEStrMN3wA1lG?sz=w1200
+            - row [ref=f10e642]:
+              - cell "Homepage" [ref=f10e643]
+              - cell "Partner & Friends Images - Green School Bali" [ref=f10e644]
+              - cell [ref=f10e645]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1CVvyVV6K_9BuqAG9-E-SsLrM0FzjZFeh?sz=w1200" [ref=f10e646] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1CVvyVV6K_9BuqAG9-E-SsLrM0FzjZFeh?sz=w1200
+            - row [ref=f10e647]:
+              - cell "Homepage" [ref=f10e648]
+              - cell "Partner & Friends Images - Kopitoko" [ref=f10e649]
+              - cell [ref=f10e650]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/14qtc1VR2BxICz-m_d56lk7RnWlP9jXSS?sz=w1200" [ref=f10e651] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/14qtc1VR2BxICz-m_d56lk7RnWlP9jXSS?sz=w1200
+            - row [ref=f10e652]:
+              - cell "Homepage" [ref=f10e653]
+              - cell "Partner & Friends Images - La Cantine" [ref=f10e654]
+              - cell [ref=f10e655]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1T6kQOj-vrwSx-WpdybMvV-PpScSp92WL?sz=w1200" [ref=f10e656] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1T6kQOj-vrwSx-WpdybMvV-PpScSp92WL?sz=w1200
+            - row [ref=f10e657]:
+              - cell "Homepage" [ref=f10e658]
+              - cell "Partner & Friends Images - Liga Tennis" [ref=f10e659]
+              - cell [ref=f10e660]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1-ZZ96ED9tk7tRJFusgPjHBDLQLHfXB1J?sz=w1200" [ref=f10e661] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1-ZZ96ED9tk7tRJFusgPjHBDLQLHfXB1J?sz=w1200
+            - row [ref=f10e662]:
+              - cell "Homepage" [ref=f10e663]
+              - cell "Partner & Friends Images - Mahima" [ref=f10e664]
+              - cell [ref=f10e665]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1QqxZLxojhQ6TgFuBsv1CM-dA358xkQCh?sz=w1200" [ref=f10e666] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1QqxZLxojhQ6TgFuBsv1CM-dA358xkQCh?sz=w1200
+            - row [ref=f10e667]:
+              - cell "Homepage" [ref=f10e668]
+              - cell "Partner & Friends Images - Nino Nana" [ref=f10e669]
+              - cell [ref=f10e670]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1wj-f3G0Fy_Hssb3hXlJZj6H904Jnb-Y_?sz=w1200" [ref=f10e671] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1wj-f3G0Fy_Hssb3hXlJZj6H904Jnb-Y_?sz=w1200
+            - row [ref=f10e672]:
+              - cell "Homepage" [ref=f10e673]
+              - cell "Partner & Friends Images - Our Year in Bali" [ref=f10e674]
+              - cell [ref=f10e675]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1wtqKVnhN0skl7iq_yZddsFsne7LrsJ_G?sz=w1200" [ref=f10e676] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1wtqKVnhN0skl7iq_yZddsFsne7LrsJ_G?sz=w1200
+            - row [ref=f10e677]:
+              - cell "Homepage" [ref=f10e678]
+              - cell "Partner & Friends Images - Outpost" [ref=f10e679]
+              - cell [ref=f10e680]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1tiLXjpLqAxjINrAohtlVqYyZim-Fd_38?sz=w1200" [ref=f10e681] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1tiLXjpLqAxjINrAohtlVqYyZim-Fd_38?sz=w1200
+            - row [ref=f10e682]:
+              - cell "Homepage" [ref=f10e683]
+              - cell "Partner & Friends Images - Radiantly Alive" [ref=f10e684]
+              - cell [ref=f10e685]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1XnBldmh65RuuVpHIM7zbajU902nxhfT-?sz=w1200" [ref=f10e686] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1XnBldmh65RuuVpHIM7zbajU902nxhfT-?sz=w1200
+            - row [ref=f10e687]:
+              - cell "Homepage" [ref=f10e688]
+              - cell "Partner & Friends Images - Simond Boulangerie" [ref=f10e689]
+              - cell [ref=f10e690]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1EtS0KoMf2g7DYxF_0jcMi6vfHttw587m?sz=w1200" [ref=f10e691] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1EtS0KoMf2g7DYxF_0jcMi6vfHttw587m?sz=w1200
+            - row [ref=f10e692]:
+              - cell "Homepage" [ref=f10e693]
+              - cell "Partner & Friends Images - Slash" [ref=f10e694]
+              - cell [ref=f10e695]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1QQzT6IhUiZEkQBOAeZsbDpB0OojVzEj6?sz=w1200" [ref=f10e696] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1QQzT6IhUiZEkQBOAeZsbDpB0OojVzEj6?sz=w1200
+            - row [ref=f10e697]:
+              - cell "Homepage" [ref=f10e698]
+              - cell "Partner & Friends Images - Studio K" [ref=f10e699]
+              - cell [ref=f10e700]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1eNb6Sn6BSIZaBdKa0PRQhuK6UhTal6_4?sz=w1200" [ref=f10e701] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1eNb6Sn6BSIZaBdKa0PRQhuK6UhTal6_4?sz=w1200
+            - row [ref=f10e702]:
+              - cell "Homepage" [ref=f10e703]
+              - cell "Partner & Friends Images - The In Movement" [ref=f10e704]
+              - cell [ref=f10e705]:
+                - link "https://banyan-images.morning-truth-a68a.workers.dev/drive/1tkDUjDN4aDMfVZmYItOd3keqbkYwAJbr?sz=w1200" [ref=f10e706] [cursor=pointer]:
+                  - /url: https://banyan-images.morning-truth-a68a.workers.dev/drive/1tkDUjDN4aDMfVZmYItOd3keqbkYwAJbr?sz=w1200

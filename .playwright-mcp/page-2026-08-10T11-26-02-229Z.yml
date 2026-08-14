@@ -1,0 +1,273 @@
+- generic [active] [ref=f17e1]:
+  - generic [ref=f17e2]:
+    - complementary [ref=f17e3]:
+      - generic [ref=f17e4]:
+        - text: 🌳 Banyan
+        - generic [ref=f17e5]: Listings Dashboard
+      - navigation [ref=f17e6]:
+        - link "🏠 Overview" [ref=f17e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f17e8]: 🏠
+          - generic [ref=f17e9]: Overview
+        - generic [ref=f17e10]:
+          - generic [ref=f17e11]: 🏠 Listings
+          - generic [ref=f17e12]:
+            - link "Overview" [ref=f17e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=f17e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=f17e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=f17e19]:
+          - generic [ref=f17e20]: 💼 Sales
+          - generic [ref=f17e21]:
+            - link "Client Inbox" [ref=f17e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=f17e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=f17e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=f17e27]: 🤝
+          - generic [ref=f17e28]: Relationships
+        - link "✅ My Work" [ref=f17e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=f17e30]: ✅
+          - generic [ref=f17e31]: My Work
+        - generic [ref=f17e32]:
+          - generic [ref=f17e33]: 📢 Marketing
+          - generic [ref=f17e34]:
+            - link "🖥️ Monitors 4" [ref=f17e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=f17e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=f17e37]: "4"
+            - link "🚀 Promotion" [ref=f17e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=f17e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=f17e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=f17e43]: 🧭
+          - generic [ref=f17e44]: Navigation
+        - link "⚙️ Site settings" [ref=f17e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=f17e46]: ⚙️
+          - generic [ref=f17e47]: Site settings
+      - generic [ref=f17e48]:
+        - button "Sign out" [ref=f17e49] [cursor=pointer]
+        - generic [ref=f17e50]: Staging DB copy — production data is untouched.
+    - main [ref=f17e51]:
+      - generic [ref=f17e52]:
+        - heading "Marketing · Blog & SEO" [level=1] [ref=f17e53]:
+          - text: Marketing
+          - generic [ref=f17e54]: · Blog & SEO
+        - paragraph [ref=f17e55]: Content pipeline — article management, robots.txt / llms.txt schemas, and PostHog insights.
+        - generic [ref=f17e56]:
+          - link "🖥️ Monitors" [ref=f17e57] [cursor=pointer]:
+            - /url: /marketing?section=monitors
+          - link "🚀 Promotion" [ref=f17e58] [cursor=pointer]:
+            - /url: /marketing?section=promotion
+          - link "🔍 Blog & SEO" [ref=f17e59] [cursor=pointer]:
+            - /url: /marketing?section=blogseo
+        - generic [ref=f17e60]:
+          - link "Blog" [ref=f17e61] [cursor=pointer]:
+            - /url: /marketing?section=blogseo&tab=blog
+          - link "SEO" [ref=f17e62] [cursor=pointer]:
+            - /url: /marketing?section=blogseo&tab=seo
+          - link "PostHog" [ref=f17e63] [cursor=pointer]:
+            - /url: /marketing?section=blogseo&tab=insights
+        - generic [ref=f17e64]:
+          - generic [ref=f17e65]:
+            - generic [ref=f17e66]: 18 articles
+            - link "+ Add article" [ref=f17e67] [cursor=pointer]:
+              - /url: /blog/new
+          - table [ref=f17e69]:
+            - rowgroup [ref=f17e70]:
+              - row [ref=f17e71]:
+                - columnheader "ID" [ref=f17e72]
+                - columnheader "Title" [ref=f17e73]
+                - columnheader "Date" [ref=f17e74]
+                - columnheader "Featured" [ref=f17e75]
+                - columnheader "Status" [ref=f17e76]
+                - columnheader [ref=f17e77]
+            - rowgroup [ref=f17e78]:
+              - row [ref=f17e79]:
+                - cell [ref=f17e80]:
+                  - code [ref=f17e81]: BLOG-12
+                - cell "Most Popular Groups" [ref=f17e82]
+                - cell [ref=f17e83]
+                - cell [ref=f17e84]
+                - cell "Draft" [ref=f17e85]
+                - cell [ref=f17e86]:
+                  - link "Edit" [ref=f17e87] [cursor=pointer]:
+                    - /url: /blog/recwpMhOUUZ8hAjnl
+              - row [ref=f17e88]:
+                - cell [ref=f17e89]:
+                  - code [ref=f17e90]: BLOG-14
+                - cell "Understanding zoning" [ref=f17e91]
+                - cell [ref=f17e92]
+                - cell [ref=f17e93]
+                - cell "Draft" [ref=f17e94]
+                - cell [ref=f17e95]:
+                  - link "Edit" [ref=f17e96] [cursor=pointer]:
+                    - /url: /blog/recsJOaCQonDm8Rsj
+              - row [ref=f17e97]:
+                - cell [ref=f17e98]:
+                  - code [ref=f17e99]: BLOG-8
+                - 'cell "Navigating Villa Staff in Ubud: A Guide to Fair Pay, Holiday Bonuses & Professional Relationships" [ref=f17e100]'
+                - cell "1 Dec 2025" [ref=f17e101]
+                - cell [ref=f17e102]
+                - cell "Published" [ref=f17e103]
+                - cell [ref=f17e104]:
+                  - link "Edit" [ref=f17e105] [cursor=pointer]:
+                    - /url: /blog/reckvPf2DSrri2QYq
+              - row [ref=f17e106]:
+                - cell [ref=f17e107]:
+                  - code [ref=f17e108]: BLOG-18
+                - 'cell "The Grounded Approach to Bali Real Estate: Why Sophisticated Buyers Partner with an Independent Advisor" [ref=f17e109]'
+                - cell "15 April 2026" [ref=f17e110]
+                - cell [ref=f17e111]
+                - cell "Published" [ref=f17e112]
+                - cell [ref=f17e113]:
+                  - link "Edit" [ref=f17e114] [cursor=pointer]:
+                    - /url: /blog/reckOVd9fBHGjRF82
+              - row [ref=f17e115]:
+                - cell [ref=f17e116]:
+                  - code [ref=f17e117]: BLOG-17
+                - 'cell "Finding Your Home in Ubud: A Personal Approach to Long-Term Rentals" [ref=f17e118]'
+                - cell "2 April 2026" [ref=f17e119]
+                - cell [ref=f17e120]
+                - cell "Published" [ref=f17e121]
+                - cell [ref=f17e122]:
+                  - link "Edit" [ref=f17e123] [cursor=pointer]:
+                    - /url: /blog/reck7mu7yvkbLkxxN
+              - row [ref=f17e124]:
+                - cell [ref=f17e125]:
+                  - code [ref=f17e126]: BLOG-16
+                - cell "What to look out for in a good property advisor" [ref=f17e127]
+                - cell [ref=f17e128]
+                - cell [ref=f17e129]
+                - cell "Draft" [ref=f17e130]
+                - cell [ref=f17e131]:
+                  - link "Edit" [ref=f17e132] [cursor=pointer]:
+                    - /url: /blog/rechGRAWqrUn68AS3
+              - row [ref=f17e133]:
+                - cell [ref=f17e134]:
+                  - code [ref=f17e135]: BLOG-11
+                - cell "House Inspection" [ref=f17e136]
+                - cell [ref=f17e137]
+                - cell [ref=f17e138]
+                - cell "Draft" [ref=f17e139]
+                - cell [ref=f17e140]:
+                  - link "Edit" [ref=f17e141] [cursor=pointer]:
+                    - /url: /blog/recfJv54Yg3lpVHEU
+              - row [ref=f17e142]:
+                - cell [ref=f17e143]:
+                  - code [ref=f17e144]: BLOG-7
+                - 'cell "The Family Calendar: Navigating Seasons, Holidays & Costs in Ubud" [ref=f17e145]'
+                - cell "1 Nov 2025" [ref=f17e146]
+                - cell [ref=f17e147]
+                - cell "Published" [ref=f17e148]
+                - cell [ref=f17e149]:
+                  - link "Edit" [ref=f17e150] [cursor=pointer]:
+                    - /url: /blog/recfBd6qF1mPLgOaA
+              - row [ref=f17e151]:
+                - cell [ref=f17e152]:
+                  - code [ref=f17e153]: BLOG-6
+                - 'cell "Setting Up Your New Ubud Home: A Practical Guide to Utilities, Internet & Daily Life" [ref=f17e154]'
+                - cell "1 Oct 2025" [ref=f17e155]
+                - cell [ref=f17e156]
+                - cell "Published" [ref=f17e157]
+                - cell [ref=f17e158]:
+                  - link "Edit" [ref=f17e159] [cursor=pointer]:
+                    - /url: /blog/recc1fWrkJoeDi7Dr
+              - row [ref=f17e160]:
+                - cell [ref=f17e161]:
+                  - code [ref=f17e162]: BLOG-4
+                - 'cell "The 2026 Guide to Ubud''s Schools: From Green School to Boutique Learning Communities" [ref=f17e163]'
+                - cell "15 Jan 2026" [ref=f17e164]
+                - cell "★" [ref=f17e165]
+                - cell "Published" [ref=f17e166]
+                - cell [ref=f17e167]:
+                  - link "Edit" [ref=f17e168] [cursor=pointer]:
+                    - /url: /blog/recbf66QJqw3jGb27
+              - row [ref=f17e169]:
+                - cell [ref=f17e170]:
+                  - code [ref=f17e171]: BLOG-13
+                - cell "Government enforcement for short term rentals" [ref=f17e172]
+                - cell [ref=f17e173]
+                - cell [ref=f17e174]
+                - cell "Draft" [ref=f17e175]
+                - cell [ref=f17e176]:
+                  - link "Edit" [ref=f17e177] [cursor=pointer]:
+                    - /url: /blog/recWYaqAFPAFWkEF0
+              - row [ref=f17e178]:
+                - cell [ref=f17e179]:
+                  - code [ref=f17e180]: BLOG-9
+                - 'cell "Your Phone in Bali: A Complete Guide to IMEI Registration" [ref=f17e181]'
+                - cell "3 Jan 2026" [ref=f17e182]
+                - cell "★" [ref=f17e183]
+                - cell "Published" [ref=f17e184]
+                - cell [ref=f17e185]:
+                  - link "Edit" [ref=f17e186] [cursor=pointer]:
+                    - /url: /blog/recTU3gs3eYlMSgjd
+              - row [ref=f17e187]:
+                - cell [ref=f17e188]:
+                  - code [ref=f17e189]: BLOG-15
+                - cell "Pitfalls when buying direct" [ref=f17e190]
+                - cell [ref=f17e191]
+                - cell [ref=f17e192]
+                - cell "Draft" [ref=f17e193]
+                - cell [ref=f17e194]:
+                  - link "Edit" [ref=f17e195] [cursor=pointer]:
+                    - /url: /blog/recNQj6l4Mk8UgGYv
+              - row [ref=f17e196]:
+                - cell [ref=f17e197]:
+                  - code [ref=f17e198]: BLOG-5
+                - 'cell "Building Community in Ubud: A Family''s Guide to Connecting & Thriving" [ref=f17e199]'
+                - cell "1 Sep 2025" [ref=f17e200]
+                - cell [ref=f17e201]
+                - cell "Published" [ref=f17e202]
+                - cell [ref=f17e203]:
+                  - link "Edit" [ref=f17e204] [cursor=pointer]:
+                    - /url: /blog/recLtAdSGX9PZGcka
+              - row [ref=f17e205]:
+                - cell [ref=f17e206]:
+                  - code [ref=f17e207]: BLOG-10
+                - 'cell "Mold in Bali: A Homeowner''s Guide to Detection, Eradication, and Prevention" [ref=f17e208]'
+                - cell "1 Feb 2026" [ref=f17e209]
+                - cell [ref=f17e210]
+                - cell "Published" [ref=f17e211]
+                - cell [ref=f17e212]:
+                  - link "Edit" [ref=f17e213] [cursor=pointer]:
+                    - /url: /blog/recKggvBNilY07n4D
+              - row [ref=f17e214]:
+                - cell [ref=f17e215]:
+                  - code [ref=f17e216]: BLOG-3
+                - 'cell "A Family’s guide to Ubud Neighborhoods: from Bustling Penestanan to Serene Lungsiakan" [ref=f17e217]'
+                - cell "1 July 2025" [ref=f17e218]
+                - cell "★" [ref=f17e219]
+                - cell "Published" [ref=f17e220]
+                - cell [ref=f17e221]:
+                  - link "Edit" [ref=f17e222] [cursor=pointer]:
+                    - /url: /blog/recFrFDcOtEPojHVC
+              - row [ref=f17e223]:
+                - cell [ref=f17e224]:
+                  - code [ref=f17e225]: BLOG-2
+                - 'cell "The Essential Long-Term Rental Checklist for Families in Ubud: From Leaks to Livestock" [ref=f17e226]'
+                - cell "1 June 2025" [ref=f17e227]
+                - cell [ref=f17e228]
+                - cell "Published" [ref=f17e229]
+                - cell [ref=f17e230]:
+                  - link "Edit" [ref=f17e231] [cursor=pointer]:
+                    - /url: /blog/recBzGBLlduq13XxU
+              - row [ref=f17e232]:
+                - cell [ref=f17e233]:
+                  - code [ref=f17e234]: BLOG-1
+                - 'cell "2026 Family''s Guide to Moving to Bali: Housing Strategies & Location Insights" [ref=f17e235]'
+                - cell "1 May 2026" [ref=f17e236]
+                - cell "★" [ref=f17e237]
+                - cell "Published" [ref=f17e238]
+                - cell [ref=f17e239]:
+                  - link "Edit" [ref=f17e240] [cursor=pointer]:
+                    - /url: /blog/rec59ksLpdSwwO244
+  - alert [ref=f17e241]

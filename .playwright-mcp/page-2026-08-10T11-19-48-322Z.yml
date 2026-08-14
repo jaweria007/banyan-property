@@ -1,0 +1,120 @@
+- generic [active] [ref=f12e1]:
+  - generic [ref=f12e2]:
+    - complementary [ref=f12e3]:
+      - generic [ref=f12e4]:
+        - text: 🌳 Banyan
+        - generic [ref=f12e5]: Listings Dashboard
+      - navigation [ref=f12e6]:
+        - link "🏠 Overview" [ref=f12e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f12e8]: 🏠
+          - generic [ref=f12e9]: Overview
+        - generic [ref=f12e10]:
+          - generic [ref=f12e11]: 🏠 Listings
+          - generic [ref=f12e12]:
+            - link "Overview" [ref=f12e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=f12e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=f12e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=f12e19]:
+          - generic [ref=f12e20]: 💼 Sales
+          - generic [ref=f12e21]:
+            - link "Client Inbox" [ref=f12e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=f12e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=f12e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=f12e27]: 🤝
+          - generic [ref=f12e28]: Relationships
+        - link "✅ My Work" [ref=f12e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=f12e30]: ✅
+          - generic [ref=f12e31]: My Work
+        - generic [ref=f12e32]:
+          - generic [ref=f12e33]: 📢 Marketing
+          - generic [ref=f12e34]:
+            - link "🖥️ Monitors 4" [ref=f12e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=f12e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=f12e37]: "4"
+            - link "🚀 Promotion" [ref=f12e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=f12e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=f12e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=f12e43]: 🧭
+          - generic [ref=f12e44]: Navigation
+        - link "⚙️ Site settings" [ref=f12e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=f12e46]: ⚙️
+          - generic [ref=f12e47]: Site settings
+      - generic [ref=f12e48]:
+        - button "Sign out" [ref=f12e49] [cursor=pointer]
+        - generic [ref=f12e50]: Staging DB copy — production data is untouched.
+    - main [ref=f12e51]:
+      - generic [ref=f12e52]:
+        - link "← Back to Opportunities" [ref=f12e53] [cursor=pointer]:
+          - /url: /opportunities
+        - heading "New Opportunity" [level=1] [ref=f12e54]
+        - paragraph [ref=f12e55]: Only name + phone are needed — spin up a minimal Opportunity fast if you just need to attach a proposal.
+        - generic [ref=f12e56]:
+          - generic [ref=f12e57]:
+            - generic [ref=f12e58]: Name
+            - textbox [ref=f12e59]
+          - generic [ref=f12e60]:
+            - generic [ref=f12e61]: Phone
+            - textbox [ref=f12e62]
+          - generic [ref=f12e63]:
+            - generic [ref=f12e64]: WhatsApp
+            - textbox [ref=f12e65]
+          - generic [ref=f12e66]:
+            - generic [ref=f12e67]: Email
+            - textbox [ref=f12e68]
+          - generic [ref=f12e69]:
+            - generic [ref=f12e70]: Source
+            - combobox [ref=f12e71]:
+              - option "Manual" [selected]
+              - option "Web form"
+              - option "Scraper"
+          - generic [ref=f12e72]:
+            - generic [ref=f12e73]: Priority
+            - combobox [ref=f12e74]:
+              - option "🔴 High"
+              - option "🟡 Med" [selected]
+              - option "🟢 Low"
+              - option "⏸️ On Hold"
+          - generic [ref=f12e75]:
+            - generic [ref=f12e76]: Assigned agent
+            - textbox [ref=f12e77]
+          - generic [ref=f12e78]:
+            - generic [ref=f12e79]: Property Interest
+            - generic [ref=f12e80]:
+              - generic [ref=f12e81]:
+                - checkbox "Rent" [ref=f12e82]
+                - text: Rent
+              - generic [ref=f12e83]:
+                - checkbox "Buy Villa" [ref=f12e84]
+                - text: Buy Villa
+              - generic [ref=f12e85]:
+                - checkbox "Buy Land" [ref=f12e86]
+                - text: Buy Land
+              - generic [ref=f12e87]:
+                - checkbox "Buy Commercial" [ref=f12e88]
+                - text: Buy Commercial
+          - generic [ref=f12e89]:
+            - generic [ref=f12e90]: Client Objective
+            - combobox [ref=f12e91]:
+              - option "Find Long-Term Home"
+              - option "Find Short-Term Accommodation"
+              - option "Holiday Home"
+              - option "Investment"
+              - option "Development"
+              - option "Land Banking"
+              - option "Business Use"
+              - option "Unsure" [selected]
+          - button "Create Opportunity" [ref=f12e92] [cursor=pointer]
+  - alert [ref=f12e93]

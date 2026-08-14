@@ -1,0 +1,2204 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]:
+        - text: 🌳 Banyan
+        - generic [ref=e5]: Listings Dashboard
+      - navigation [ref=e6]:
+        - link "🏠 Overview" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: 🏠
+          - generic [ref=e9]: Overview
+        - generic [ref=e10]:
+          - generic [ref=e11]: 🏠 Listings
+          - generic [ref=e12]:
+            - link "Overview" [ref=e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=e19]:
+          - generic [ref=e20]: 💼 Sales
+          - generic [ref=e21]:
+            - link "Client Inbox" [ref=e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=e27]: 🤝
+          - generic [ref=e28]: Relationships
+        - link "✅ My Work" [ref=e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=e30]: ✅
+          - generic [ref=e31]: My Work
+        - generic [ref=e32]:
+          - generic [ref=e33]: 📢 Marketing
+          - generic [ref=e34]:
+            - link "🖥️ Monitors 4" [ref=e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=e37]: "4"
+            - link "🚀 Promotion" [ref=e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=e43]: 🧭
+          - generic [ref=e44]: Navigation
+        - link "⚙️ Site settings" [ref=e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=e46]: ⚙️
+          - generic [ref=e47]: Site settings
+      - generic [ref=e48]:
+        - button "Sign out" [ref=e49] [cursor=pointer]
+        - generic [ref=e50]: Staging DB copy — production data is untouched.
+    - main [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]:
+          - heading "Listings (403)" [level=1] [ref=e54]:
+            - text: Listings
+            - generic [ref=e55]: (403)
+          - generic [ref=e56]:
+            - link "cards" [ref=e57] [cursor=pointer]:
+              - /url: /master?page=1
+            - link "table" [ref=e58] [cursor=pointer]:
+              - /url: /master?view=table&page=1
+        - paragraph [ref=e59]:
+          - text: Card view — thumbnails, action badges and live demand metrics.
+          - link "Show empty/reserved rows" [ref=e60] [cursor=pointer]:
+            - /url: /master?all=1&page=1
+        - generic [ref=e61]:
+          - link "All (403)" [ref=e62] [cursor=pointer]:
+            - /url: /master?
+            - text: All
+            - generic [ref=e63]: (403)
+          - link "Rent (207)" [ref=e64] [cursor=pointer]:
+            - /url: /master?category=rent
+            - text: Rent
+            - generic [ref=e65]: (207)
+          - link "Sale (153)" [ref=e66] [cursor=pointer]:
+            - /url: /master?category=sale
+            - text: Sale
+            - generic [ref=e67]: (153)
+          - link "Land (33)" [ref=e68] [cursor=pointer]:
+            - /url: /master?category=land
+            - text: Land
+            - generic [ref=e69]: (33)
+          - link "Commercial (10)" [ref=e70] [cursor=pointer]:
+            - /url: /master?category=commercial
+            - text: Commercial
+            - generic [ref=e71]: (10)
+        - generic [ref=e72]:
+          - link "All (403)" [ref=e73] [cursor=pointer]:
+            - /url: /master?
+            - text: All
+            - generic [ref=e74]: (403)
+          - link "Inbox (3)" [ref=e75] [cursor=pointer]:
+            - /url: /master?stage=inbox
+            - text: Inbox
+            - generic [ref=e76]: (3)
+          - link "Enrich (33)" [ref=e77] [cursor=pointer]:
+            - /url: /master?stage=enrich
+            - text: Enrich
+            - generic [ref=e78]: (33)
+          - link "Review (0)" [ref=e79] [cursor=pointer]:
+            - /url: /master?stage=review
+            - text: Review
+            - generic [ref=e80]: (0)
+          - link "Live (222)" [ref=e81] [cursor=pointer]:
+            - /url: /master?stage=live
+            - text: Live
+            - generic [ref=e82]: (222)
+          - link "Closed (145)" [ref=e83] [cursor=pointer]:
+            - /url: /master?stage=closed
+            - text: Closed
+            - generic [ref=e84]: (145)
+        - group [ref=e85]:
+          - generic "Areas — 5 mapped · 7 unmapped listings" [ref=e86] [cursor=pointer]
+        - generic [ref=e87]:
+          - textbox "Search name, ID, location…" [ref=e88]
+          - combobox [ref=e89]:
+            - option "All marketing" [selected]
+            - option "Archived"
+            - option "Under Negotiation"
+            - option "Upon Request"
+            - option "🔴 Archived"
+            - option "🔵 Available"
+            - option "🔵Available"
+            - option "🟠 Upon Request"
+            - option "🟣 Rented"
+            - option "🟣 Sold"
+          - combobox [ref=e90]:
+            - 'option "Sort: name" [selected]'
+            - option "Price ↑"
+            - option "Price ↓"
+            - option "Recently updated"
+          - button "Filter" [ref=e91] [cursor=pointer]
+        - generic [ref=e92]:
+          - generic [ref=e93]:
+            - link [ref=e94] [cursor=pointer]:
+              - /url: /master/recJIFMyxD9oYtcQZ
+            - generic [ref=e96]:
+              - link "BUY-1301 Spacious Luxury Villa with Separate Guest House in Singakerta, Ubud Ubud 🟡 Draft — Updated 08 Jul 2026 🔵Available" [ref=e97] [cursor=pointer]:
+                - /url: /master/recJIFMyxD9oYtcQZ
+                - generic [ref=e98]:
+                  - code [ref=e99]: BUY-1301
+                  - strong [ref=e100]: Spacious Luxury Villa with Separate Guest House in Singakerta, Ubud
+                  - generic [ref=e101]: Ubud
+                  - generic [ref=e102]: 🟡 Draft
+                - generic [ref=e103]:
+                  - generic [ref=e104]: —
+                  - generic [ref=e105]: Updated 08 Jul 2026
+                  - generic [ref=e106]: 🔵Available
+              - link "★★★☆☆ 57%" [ref=e107] [cursor=pointer]:
+                - /url: /master/recJIFMyxD9oYtcQZ#health
+                - text: ★★★☆☆
+                - generic [ref=e108]: 57%
+              - link "⚠️ Stagnant >48h ↗" [ref=e110] [cursor=pointer]:
+                - /url: /master/recJIFMyxD9oYtcQZ
+              - generic [ref=e111]:
+                - generic [ref=e112]:
+                  - strong [ref=e113]: 80%
+                  - text: Complete
+                - generic [ref=e114]:
+                  - strong [ref=e115]: "0"
+                  - text: Tasks
+          - generic [ref=e116]:
+            - link "🏠" [ref=e117] [cursor=pointer]:
+              - /url: /master/reczKZwrNK4RIsa4e
+            - generic [ref=e120]:
+              - link "★ 1 BUY-1241 1 Bedroom exclusive Villa Ubud 🟢 Published IDR 3,487,577,751 Updated 10 Jul 2026 Under Negotiation" [ref=e121] [cursor=pointer]:
+                - /url: /master/reczKZwrNK4RIsa4e
+                - generic [ref=e122]:
+                  - generic [ref=e123]: ★ 1
+                  - code [ref=e124]: BUY-1241
+                  - strong [ref=e125]: 1 Bedroom exclusive Villa
+                  - generic [ref=e126]: Ubud
+                  - generic [ref=e127]: 🟢 Published
+                - generic [ref=e128]:
+                  - generic [ref=e129]: IDR 3,487,577,751
+                  - generic [ref=e130]: Updated 10 Jul 2026
+                  - generic [ref=e131]: Under Negotiation
+              - link "★★☆☆☆ 34%" [ref=e132] [cursor=pointer]:
+                - /url: /master/reczKZwrNK4RIsa4e#health
+                - text: ★★☆☆☆
+                - generic [ref=e133]: 34%
+              - link "1 contract to sign ↗" [ref=e135] [cursor=pointer]:
+                - /url: /master/reczKZwrNK4RIsa4e#related-tasks
+              - generic [ref=e136]:
+                - generic [ref=e137]:
+                  - strong [ref=e138]: "1"
+                  - text: Favourites
+                - generic [ref=e139]:
+                  - strong [ref=e140]: "2"
+                  - text: Shortlists
+                - generic [ref=e141]:
+                  - emphasis [ref=e142]: not tracked
+                  - text: Available from
+                - generic [ref=e143]:
+                  - emphasis [ref=e144]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e145]:
+                  - emphasis [ref=e146]: not tracked
+                  - text: Last promo
+                - generic [ref=e147]:
+                  - emphasis [ref=e148]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e149]:
+                  - strong [ref=e150]: 28d ago
+                  - text: Edited
+                - generic [ref=e151]:
+                  - strong [ref=e152]: "0"
+                  - text: Tasks
+          - generic [ref=e153]:
+            - link [ref=e154] [cursor=pointer]:
+              - /url: /master/recIZwFzaSGiY6bSP
+            - generic [ref=e156]:
+              - link "BUY-1212 2 Bedroom Off Plan Boutique Villa in Sayan Ubud 🟢 Published IDR 3,550,000,000 Updated 15 Apr 2026 🔵Available" [ref=e157] [cursor=pointer]:
+                - /url: /master/recIZwFzaSGiY6bSP
+                - generic [ref=e158]:
+                  - code [ref=e159]: BUY-1212
+                  - strong [ref=e160]: 2 Bedroom Off Plan Boutique Villa in Sayan
+                  - generic [ref=e161]: Ubud
+                  - generic [ref=e162]: 🟢 Published
+                - generic [ref=e163]:
+                  - generic [ref=e164]: IDR 3,550,000,000
+                  - generic [ref=e165]: Updated 15 Apr 2026
+                  - generic [ref=e166]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e167] [cursor=pointer]:
+                - /url: /master/recIZwFzaSGiY6bSP#health
+                - text: ★★★☆☆
+                - generic [ref=e168]: 62%
+              - generic [ref=e169]:
+                - generic [ref=e170]:
+                  - strong [ref=e171]: "0"
+                  - text: Favourites
+                - generic [ref=e172]:
+                  - strong [ref=e173]: "1"
+                  - text: Shortlists
+                - generic [ref=e174]:
+                  - emphasis [ref=e175]: not tracked
+                  - text: Available from
+                - generic [ref=e176]:
+                  - emphasis [ref=e177]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e178]:
+                  - emphasis [ref=e179]: not tracked
+                  - text: Last promo
+                - generic [ref=e180]:
+                  - emphasis [ref=e181]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e182]:
+                  - strong [ref=e183]: 114d ago
+                  - text: Edited
+                - generic [ref=e184]:
+                  - strong [ref=e185]: "0"
+                  - text: Tasks
+          - generic [ref=e186]:
+            - link [ref=e187] [cursor=pointer]:
+              - /url: /master/recEd1pkxabEbKOqu
+            - generic [ref=e189]:
+              - link "BUY-1177 3-Bedroom Tropical Villa with Private Pool in Peliatan Ubud 🟢 Published IDR 2,800,000,000 Updated 15 Apr 2026 🔵Available" [ref=e190] [cursor=pointer]:
+                - /url: /master/recEd1pkxabEbKOqu
+                - generic [ref=e191]:
+                  - code [ref=e192]: BUY-1177
+                  - strong [ref=e193]: 3-Bedroom Tropical Villa with Private Pool in Peliatan
+                  - generic [ref=e194]: Ubud
+                  - generic [ref=e195]: 🟢 Published
+                - generic [ref=e196]:
+                  - generic [ref=e197]: IDR 2,800,000,000
+                  - generic [ref=e198]: Updated 15 Apr 2026
+                  - generic [ref=e199]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e200] [cursor=pointer]:
+                - /url: /master/recEd1pkxabEbKOqu#health
+                - text: ★★★☆☆
+                - generic [ref=e201]: 62%
+              - generic [ref=e202]:
+                - generic [ref=e203]:
+                  - strong [ref=e204]: "0"
+                  - text: Favourites
+                - generic [ref=e205]:
+                  - strong [ref=e206]: "1"
+                  - text: Shortlists
+                - generic [ref=e207]:
+                  - emphasis [ref=e208]: not tracked
+                  - text: Available from
+                - generic [ref=e209]:
+                  - emphasis [ref=e210]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e211]:
+                  - emphasis [ref=e212]: not tracked
+                  - text: Last promo
+                - generic [ref=e213]:
+                  - emphasis [ref=e214]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e215]:
+                  - strong [ref=e216]: 114d ago
+                  - text: Edited
+                - generic [ref=e217]:
+                  - strong [ref=e218]: "0"
+                  - text: Tasks
+          - generic [ref=e219]:
+            - link [ref=e220] [cursor=pointer]:
+              - /url: /master/recR2TcNm99uu8RsM
+            - generic [ref=e222]:
+              - link "BUY-1186 Brand New 2 Bedroom Villa in Singakerta Ubud 🟢 Published IDR 4,749,500,000 Updated 15 Apr 2026 🔵Available" [ref=e223] [cursor=pointer]:
+                - /url: /master/recR2TcNm99uu8RsM
+                - generic [ref=e224]:
+                  - code [ref=e225]: BUY-1186
+                  - strong [ref=e226]: Brand New 2 Bedroom Villa in Singakerta
+                  - generic [ref=e227]: Ubud
+                  - generic [ref=e228]: 🟢 Published
+                - generic [ref=e229]:
+                  - generic [ref=e230]: IDR 4,749,500,000
+                  - generic [ref=e231]: Updated 15 Apr 2026
+                  - generic [ref=e232]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e233] [cursor=pointer]:
+                - /url: /master/recR2TcNm99uu8RsM#health
+                - text: ★★★☆☆
+                - generic [ref=e234]: 62%
+              - generic [ref=e235]:
+                - generic [ref=e236]:
+                  - strong [ref=e237]: "0"
+                  - text: Favourites
+                - generic [ref=e238]:
+                  - strong [ref=e239]: "1"
+                  - text: Shortlists
+                - generic [ref=e240]:
+                  - emphasis [ref=e241]: not tracked
+                  - text: Available from
+                - generic [ref=e242]:
+                  - emphasis [ref=e243]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e244]:
+                  - emphasis [ref=e245]: not tracked
+                  - text: Last promo
+                - generic [ref=e246]:
+                  - emphasis [ref=e247]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e248]:
+                  - strong [ref=e249]: 114d ago
+                  - text: Edited
+                - generic [ref=e250]:
+                  - strong [ref=e251]: "0"
+                  - text: Tasks
+          - generic [ref=e252]:
+            - link [ref=e253] [cursor=pointer]:
+              - /url: /master/recT7xrfLo0GRsmiI
+            - generic [ref=e255]:
+              - link "BUY-1192 1 Bedroom Modern Tropical Villa in Bingin Bukit 🟢 Published IDR 4,024,128,175 Updated 15 Apr 2026 🔵Available" [ref=e256] [cursor=pointer]:
+                - /url: /master/recT7xrfLo0GRsmiI
+                - generic [ref=e257]:
+                  - code [ref=e258]: BUY-1192
+                  - strong [ref=e259]: 1 Bedroom Modern Tropical Villa in Bingin
+                  - generic [ref=e260]: Bukit
+                  - generic [ref=e261]: 🟢 Published
+                - generic [ref=e262]:
+                  - generic [ref=e263]: IDR 4,024,128,175
+                  - generic [ref=e264]: Updated 15 Apr 2026
+                  - generic [ref=e265]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e266] [cursor=pointer]:
+                - /url: /master/recT7xrfLo0GRsmiI#health
+                - text: ★★★☆☆
+                - generic [ref=e267]: 62%
+              - generic [ref=e268]:
+                - generic [ref=e269]:
+                  - strong [ref=e270]: "0"
+                  - text: Favourites
+                - generic [ref=e271]:
+                  - strong [ref=e272]: "1"
+                  - text: Shortlists
+                - generic [ref=e273]:
+                  - emphasis [ref=e274]: not tracked
+                  - text: Available from
+                - generic [ref=e275]:
+                  - emphasis [ref=e276]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e277]:
+                  - emphasis [ref=e278]: not tracked
+                  - text: Last promo
+                - generic [ref=e279]:
+                  - emphasis [ref=e280]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e281]:
+                  - strong [ref=e282]: 114d ago
+                  - text: Edited
+                - generic [ref=e283]:
+                  - strong [ref=e284]: "0"
+                  - text: Tasks
+          - generic [ref=e285]:
+            - link [ref=e286] [cursor=pointer]:
+              - /url: /master/rec0VM37oLK8nEu5a
+            - generic [ref=e288]:
+              - link "BUY-1201 1 Bedroom Villa in Uluwatu Walking Distance to The Istana Bukit 🟢 Published IDR 3,450,000,000 Updated 15 Apr 2026 🔵Available" [ref=e289] [cursor=pointer]:
+                - /url: /master/rec0VM37oLK8nEu5a
+                - generic [ref=e290]:
+                  - code [ref=e291]: BUY-1201
+                  - strong [ref=e292]: 1 Bedroom Villa in Uluwatu Walking Distance to The Istana
+                  - generic [ref=e293]: Bukit
+                  - generic [ref=e294]: 🟢 Published
+                - generic [ref=e295]:
+                  - generic [ref=e296]: IDR 3,450,000,000
+                  - generic [ref=e297]: Updated 15 Apr 2026
+                  - generic [ref=e298]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e299] [cursor=pointer]:
+                - /url: /master/rec0VM37oLK8nEu5a#health
+                - text: ★★★☆☆
+                - generic [ref=e300]: 62%
+              - generic [ref=e301]:
+                - generic [ref=e302]:
+                  - strong [ref=e303]: "0"
+                  - text: Favourites
+                - generic [ref=e304]:
+                  - strong [ref=e305]: "1"
+                  - text: Shortlists
+                - generic [ref=e306]:
+                  - emphasis [ref=e307]: not tracked
+                  - text: Available from
+                - generic [ref=e308]:
+                  - emphasis [ref=e309]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e310]:
+                  - emphasis [ref=e311]: not tracked
+                  - text: Last promo
+                - generic [ref=e312]:
+                  - emphasis [ref=e313]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e314]:
+                  - strong [ref=e315]: 114d ago
+                  - text: Edited
+                - generic [ref=e316]:
+                  - strong [ref=e317]: "0"
+                  - text: Tasks
+          - generic [ref=e318]:
+            - link [ref=e319] [cursor=pointer]:
+              - /url: /master/reca7p9xGgeoyPWKz
+            - generic [ref=e321]:
+              - link "BUY-1195 1 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan) Bukit 🟢 Published IDR 3,831,000,000 Updated 15 Apr 2026 🔵Available" [ref=e322] [cursor=pointer]:
+                - /url: /master/reca7p9xGgeoyPWKz
+                - generic [ref=e323]:
+                  - code [ref=e324]: BUY-1195
+                  - strong [ref=e325]: 1 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)
+                  - generic [ref=e326]: Bukit
+                  - generic [ref=e327]: 🟢 Published
+                - generic [ref=e328]:
+                  - generic [ref=e329]: IDR 3,831,000,000
+                  - generic [ref=e330]: Updated 15 Apr 2026
+                  - generic [ref=e331]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e332] [cursor=pointer]:
+                - /url: /master/reca7p9xGgeoyPWKz#health
+                - text: ★★★☆☆
+                - generic [ref=e333]: 62%
+              - generic [ref=e334]:
+                - generic [ref=e335]:
+                  - strong [ref=e336]: "0"
+                  - text: Favourites
+                - generic [ref=e337]:
+                  - strong [ref=e338]: "1"
+                  - text: Shortlists
+                - generic [ref=e339]:
+                  - emphasis [ref=e340]: not tracked
+                  - text: Available from
+                - generic [ref=e341]:
+                  - emphasis [ref=e342]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e343]:
+                  - emphasis [ref=e344]: not tracked
+                  - text: Last promo
+                - generic [ref=e345]:
+                  - emphasis [ref=e346]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e347]:
+                  - strong [ref=e348]: 114d ago
+                  - text: Edited
+                - generic [ref=e349]:
+                  - strong [ref=e350]: "0"
+                  - text: Tasks
+          - generic [ref=e351]:
+            - link "🏠" [ref=e352] [cursor=pointer]:
+              - /url: /master/recEVFTvWnvwFuJEg
+            - generic [ref=e355]:
+              - link "BUY-1249 10-Bedroom Freehold Luxury Villa for Sale in Bali — 1,700 m² Land, 1,000 m² Build Ubud 🟡 Draft IDR 53,655,042,330 Updated 05 May 2026 🔵Available" [ref=e356] [cursor=pointer]:
+                - /url: /master/recEVFTvWnvwFuJEg
+                - generic [ref=e357]:
+                  - code [ref=e358]: BUY-1249
+                  - strong [ref=e359]: 10-Bedroom Freehold Luxury Villa for Sale in Bali — 1,700 m² Land, 1,000 m² Build
+                  - generic [ref=e360]: Ubud
+                  - generic [ref=e361]: 🟡 Draft
+                - generic [ref=e362]:
+                  - generic [ref=e363]: IDR 53,655,042,330
+                  - generic [ref=e364]: Updated 05 May 2026
+                  - generic [ref=e365]: 🔵Available
+              - link "★★★☆☆ 54%" [ref=e366] [cursor=pointer]:
+                - /url: /master/recEVFTvWnvwFuJEg#health
+                - text: ★★★☆☆
+                - generic [ref=e367]: 54%
+              - link "⚠️ Stagnant >48h ↗" [ref=e369] [cursor=pointer]:
+                - /url: /master/recEVFTvWnvwFuJEg
+              - generic [ref=e370]:
+                - generic [ref=e371]:
+                  - strong [ref=e372]: 80%
+                  - text: Complete
+                - generic [ref=e373]:
+                  - strong [ref=e374]: "0"
+                  - text: Tasks
+          - generic [ref=e375]:
+            - link "🏠" [ref=e376] [cursor=pointer]:
+              - /url: /master/recgEYjoYsKw0mWFg
+            - generic [ref=e379]:
+              - link "LAND-1264 100Are Pink zone Freehold Sebatu - 100Are Ricefield View Freehold Land in Sebatu Ubud 🟡 Draft IDR 30,000,000,000 Updated 15 Apr 2026 🔵 Available" [ref=e380] [cursor=pointer]:
+                - /url: /master/recgEYjoYsKw0mWFg
+                - generic [ref=e381]:
+                  - code [ref=e382]: LAND-1264
+                  - strong [ref=e383]: 100Are Pink zone Freehold Sebatu - 100Are Ricefield View Freehold Land in Sebatu
+                  - generic [ref=e384]: Ubud
+                  - generic [ref=e385]: 🟡 Draft
+                - generic [ref=e386]:
+                  - generic [ref=e387]: IDR 30,000,000,000
+                  - generic [ref=e388]: Updated 15 Apr 2026
+                  - generic [ref=e389]: 🔵 Available
+              - link "★★☆☆☆ 37%" [ref=e390] [cursor=pointer]:
+                - /url: /master/recgEYjoYsKw0mWFg#health
+                - text: ★★☆☆☆
+                - generic [ref=e391]: 37%
+              - link "⚠️ Stagnant >48h ↗" [ref=e393] [cursor=pointer]:
+                - /url: /master/recgEYjoYsKw0mWFg
+              - generic [ref=e394]:
+                - generic [ref=e395]:
+                  - strong [ref=e396]: 60%
+                  - text: Complete
+                - generic [ref=e397]:
+                  - strong [ref=e398]: "0"
+                  - text: Tasks
+          - generic [ref=e399]:
+            - link [ref=e400] [cursor=pointer]:
+              - /url: /master/recCb1X8IqaMRCXiX
+            - generic [ref=e402]:
+              - link "LAND-1280 12.25 Are Freehold Land in Petulu – Rare Jungle & River View Pink-Zone Plot Near Central Ubud Ubud 🟢 Published IDR 7,064,580,573 Updated 23 Jun 2026 🔵 Available" [ref=e403] [cursor=pointer]:
+                - /url: /master/recCb1X8IqaMRCXiX
+                - generic [ref=e404]:
+                  - code [ref=e405]: LAND-1280
+                  - strong [ref=e406]: 12.25 Are Freehold Land in Petulu – Rare Jungle & River View Pink-Zone Plot Near Central Ubud
+                  - generic [ref=e407]: Ubud
+                  - generic [ref=e408]: 🟢 Published
+                - generic [ref=e409]:
+                  - generic [ref=e410]: IDR 7,064,580,573
+                  - generic [ref=e411]: Updated 23 Jun 2026
+                  - generic [ref=e412]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e413] [cursor=pointer]:
+                - /url: /master/recCb1X8IqaMRCXiX#health
+                - text: ★★★☆☆
+                - generic [ref=e414]: 66%
+              - generic [ref=e415]:
+                - generic [ref=e416]:
+                  - strong [ref=e417]: "0"
+                  - text: Favourites
+                - generic [ref=e418]:
+                  - strong [ref=e419]: "1"
+                  - text: Shortlists
+                - generic [ref=e420]:
+                  - emphasis [ref=e421]: not tracked
+                  - text: Available from
+                - generic [ref=e422]:
+                  - emphasis [ref=e423]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e424]:
+                  - emphasis [ref=e425]: not tracked
+                  - text: Last promo
+                - generic [ref=e426]:
+                  - emphasis [ref=e427]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e428]:
+                  - strong [ref=e429]: 45d ago
+                  - text: Edited
+                - generic [ref=e430]:
+                  - strong [ref=e431]: "0"
+                  - text: Tasks
+          - generic [ref=e432]:
+            - link [ref=e433] [cursor=pointer]:
+              - /url: /master/recOcIGRtug3GhmcG
+            - generic [ref=e435]:
+              - link "LAND-1257 12.3 are Keliki - 12.3 are Leasehold Land in Keliki with Beautiful Green Views Ubud 🟢 Published IDR 1,488,300,000 Updated 15 Apr 2026 🔵 Available" [ref=e436] [cursor=pointer]:
+                - /url: /master/recOcIGRtug3GhmcG
+                - generic [ref=e437]:
+                  - code [ref=e438]: LAND-1257
+                  - strong [ref=e439]: 12.3 are Keliki - 12.3 are Leasehold Land in Keliki with Beautiful Green Views
+                  - generic [ref=e440]: Ubud
+                  - generic [ref=e441]: 🟢 Published
+                - generic [ref=e442]:
+                  - generic [ref=e443]: IDR 1,488,300,000
+                  - generic [ref=e444]: Updated 15 Apr 2026
+                  - generic [ref=e445]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e446] [cursor=pointer]:
+                - /url: /master/recOcIGRtug3GhmcG#health
+                - text: ★★★☆☆
+                - generic [ref=e447]: 66%
+              - generic [ref=e448]:
+                - generic [ref=e449]:
+                  - strong [ref=e450]: "0"
+                  - text: Favourites
+                - generic [ref=e451]:
+                  - strong [ref=e452]: "1"
+                  - text: Shortlists
+                - generic [ref=e453]:
+                  - emphasis [ref=e454]: not tracked
+                  - text: Available from
+                - generic [ref=e455]:
+                  - emphasis [ref=e456]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e457]:
+                  - emphasis [ref=e458]: not tracked
+                  - text: Last promo
+                - generic [ref=e459]:
+                  - emphasis [ref=e460]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e461]:
+                  - strong [ref=e462]: 114d ago
+                  - text: Edited
+                - generic [ref=e463]:
+                  - strong [ref=e464]: "0"
+                  - text: Tasks
+          - generic [ref=e465]:
+            - link "🏠" [ref=e466] [cursor=pointer]:
+              - /url: /master/recIoel2maIWEQ64r
+            - generic [ref=e469]:
+              - link "LAND-1255 15 Are land in Berawa-Canggu Tanah Lot - Canggu - Kuta 🟡 Draft IDR 450,000,000 Updated 15 Apr 2026 🔵 Available" [ref=e470] [cursor=pointer]:
+                - /url: /master/recIoel2maIWEQ64r
+                - generic [ref=e471]:
+                  - code [ref=e472]: LAND-1255
+                  - strong [ref=e473]: 15 Are land in Berawa-Canggu
+                  - generic [ref=e474]: Tanah Lot - Canggu - Kuta
+                  - generic [ref=e475]: 🟡 Draft
+                - generic [ref=e476]:
+                  - generic [ref=e477]: IDR 450,000,000
+                  - generic [ref=e478]: Updated 15 Apr 2026
+                  - generic [ref=e479]: 🔵 Available
+              - link "★★☆☆☆ 48%" [ref=e480] [cursor=pointer]:
+                - /url: /master/recIoel2maIWEQ64r#health
+                - text: ★★☆☆☆
+                - generic [ref=e481]: 48%
+              - link "⚠️ Stagnant >48h ↗" [ref=e483] [cursor=pointer]:
+                - /url: /master/recIoel2maIWEQ64r
+              - generic [ref=e484]:
+                - generic [ref=e485]:
+                  - strong [ref=e486]: 60%
+                  - text: Complete
+                - generic [ref=e487]:
+                  - strong [ref=e488]: "0"
+                  - text: Tasks
+          - generic [ref=e489]:
+            - link [ref=e490] [cursor=pointer]:
+              - /url: /master/recxYCFzNz9n2kdUS
+            - generic [ref=e492]:
+              - link "LAND-1272 15 are Singakerta Warung Tipat - Flexible 15 Are Land for Leasehold in Singakerta Ubud 🟢 Published IDR 2,437,500,000 Updated 15 Apr 2026 🟣 Sold" [ref=e493] [cursor=pointer]:
+                - /url: /master/recxYCFzNz9n2kdUS
+                - generic [ref=e494]:
+                  - code [ref=e495]: LAND-1272
+                  - strong [ref=e496]: 15 are Singakerta Warung Tipat - Flexible 15 Are Land for Leasehold in Singakerta
+                  - generic [ref=e497]: Ubud
+                  - generic [ref=e498]: 🟢 Published
+                - generic [ref=e499]:
+                  - generic [ref=e500]: IDR 2,437,500,000
+                  - generic [ref=e501]: Updated 15 Apr 2026
+                  - generic [ref=e502]: 🟣 Sold
+              - link "★★★☆☆ 66%" [ref=e503] [cursor=pointer]:
+                - /url: /master/recxYCFzNz9n2kdUS#health
+                - text: ★★★☆☆
+                - generic [ref=e504]: 66%
+              - generic [ref=e505]:
+                - generic [ref=e506]:
+                  - strong [ref=e507]: "0"
+                  - text: Favourites
+                - generic [ref=e508]:
+                  - strong [ref=e509]: "1"
+                  - text: Shortlists
+                - generic [ref=e510]:
+                  - emphasis [ref=e511]: not tracked
+                  - text: Available from
+                - generic [ref=e512]:
+                  - emphasis [ref=e513]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e514]:
+                  - emphasis [ref=e515]: not tracked
+                  - text: Last promo
+                - generic [ref=e516]:
+                  - emphasis [ref=e517]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e518]:
+                  - strong [ref=e519]: 114d ago
+                  - text: Edited
+                - generic [ref=e520]:
+                  - strong [ref=e521]: "0"
+                  - text: Tasks
+          - generic [ref=e522]:
+            - link [ref=e523] [cursor=pointer]:
+              - /url: /master/recjwyNftgEgztC88
+            - generic [ref=e525]:
+              - link "LAND-1267 16 Are Freehold Sebatu - 16are Sebatu Freehold Land For Sale Ubud 🟢 Published IDR 3,776,600,000 Updated 15 Apr 2026 🔵 Available" [ref=e526] [cursor=pointer]:
+                - /url: /master/recjwyNftgEgztC88
+                - generic [ref=e527]:
+                  - code [ref=e528]: LAND-1267
+                  - strong [ref=e529]: 16 Are Freehold Sebatu - 16are Sebatu Freehold Land For Sale
+                  - generic [ref=e530]: Ubud
+                  - generic [ref=e531]: 🟢 Published
+                - generic [ref=e532]:
+                  - generic [ref=e533]: IDR 3,776,600,000
+                  - generic [ref=e534]: Updated 15 Apr 2026
+                  - generic [ref=e535]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e536] [cursor=pointer]:
+                - /url: /master/recjwyNftgEgztC88#health
+                - text: ★★★☆☆
+                - generic [ref=e537]: 66%
+              - generic [ref=e538]:
+                - generic [ref=e539]:
+                  - strong [ref=e540]: "0"
+                  - text: Favourites
+                - generic [ref=e541]:
+                  - strong [ref=e542]: "0"
+                  - text: Shortlists
+                - generic [ref=e543]:
+                  - emphasis [ref=e544]: not tracked
+                  - text: Available from
+                - generic [ref=e545]:
+                  - emphasis [ref=e546]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e547]:
+                  - emphasis [ref=e548]: not tracked
+                  - text: Last promo
+                - generic [ref=e549]:
+                  - emphasis [ref=e550]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e551]:
+                  - strong [ref=e552]: 114d ago
+                  - text: Edited
+                - generic [ref=e553]:
+                  - strong [ref=e554]: "0"
+                  - text: Tasks
+          - generic [ref=e555]:
+            - link [ref=e556] [cursor=pointer]:
+              - /url: /master/recp2qN3JRmcRleTS
+            - generic [ref=e558]:
+              - link "LAND-1269 18 are Nyuh Kuning - Prime Location Land Opportunity in Nyuh Kuning, Ubud Ubud 🟢 Published IDR 10,450,000,000 Updated 15 Apr 2026 🔵 Available" [ref=e559] [cursor=pointer]:
+                - /url: /master/recp2qN3JRmcRleTS
+                - generic [ref=e560]:
+                  - code [ref=e561]: LAND-1269
+                  - strong [ref=e562]: 18 are Nyuh Kuning - Prime Location Land Opportunity in Nyuh Kuning, Ubud
+                  - generic [ref=e563]: Ubud
+                  - generic [ref=e564]: 🟢 Published
+                - generic [ref=e565]:
+                  - generic [ref=e566]: IDR 10,450,000,000
+                  - generic [ref=e567]: Updated 15 Apr 2026
+                  - generic [ref=e568]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e569] [cursor=pointer]:
+                - /url: /master/recp2qN3JRmcRleTS#health
+                - text: ★★★☆☆
+                - generic [ref=e570]: 66%
+              - generic [ref=e571]:
+                - generic [ref=e572]:
+                  - strong [ref=e573]: "0"
+                  - text: Favourites
+                - generic [ref=e574]:
+                  - strong [ref=e575]: "0"
+                  - text: Shortlists
+                - generic [ref=e576]:
+                  - emphasis [ref=e577]: not tracked
+                  - text: Available from
+                - generic [ref=e578]:
+                  - emphasis [ref=e579]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e580]:
+                  - emphasis [ref=e581]: not tracked
+                  - text: Last promo
+                - generic [ref=e582]:
+                  - emphasis [ref=e583]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e584]:
+                  - strong [ref=e585]: 114d ago
+                  - text: Edited
+                - generic [ref=e586]:
+                  - strong [ref=e587]: "0"
+                  - text: Tasks
+          - generic [ref=e588]:
+            - link [ref=e589] [cursor=pointer]:
+              - /url: /master/recTTYuM3OqW0zECJ
+            - generic [ref=e591]:
+              - link "LAND-1259 18 are Yellow Zone Land in Sayan Ubud 🟢 Published IDR 3,312,000,000 Updated 15 Apr 2026 🔵 Available" [ref=e592] [cursor=pointer]:
+                - /url: /master/recTTYuM3OqW0zECJ
+                - generic [ref=e593]:
+                  - code [ref=e594]: LAND-1259
+                  - strong [ref=e595]: 18 are Yellow Zone Land in Sayan
+                  - generic [ref=e596]: Ubud
+                  - generic [ref=e597]: 🟢 Published
+                - generic [ref=e598]:
+                  - generic [ref=e599]: IDR 3,312,000,000
+                  - generic [ref=e600]: Updated 15 Apr 2026
+                  - generic [ref=e601]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e602] [cursor=pointer]:
+                - /url: /master/recTTYuM3OqW0zECJ#health
+                - text: ★★★☆☆
+                - generic [ref=e603]: 66%
+              - generic [ref=e604]:
+                - generic [ref=e605]:
+                  - strong [ref=e606]: "0"
+                  - text: Favourites
+                - generic [ref=e607]:
+                  - strong [ref=e608]: "0"
+                  - text: Shortlists
+                - generic [ref=e609]:
+                  - emphasis [ref=e610]: not tracked
+                  - text: Available from
+                - generic [ref=e611]:
+                  - emphasis [ref=e612]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e613]:
+                  - emphasis [ref=e614]: not tracked
+                  - text: Last promo
+                - generic [ref=e615]:
+                  - emphasis [ref=e616]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e617]:
+                  - strong [ref=e618]: 114d ago
+                  - text: Edited
+                - generic [ref=e619]:
+                  - strong [ref=e620]: "0"
+                  - text: Tasks
+          - generic [ref=e621]:
+            - link [ref=e622] [cursor=pointer]:
+              - /url: /master/recKRXYmbBxuaZlnr
+            - generic [ref=e624]:
+              - link "LAND-1277 2 Are Freehold Commercial Zone Land Just 5 Mins from Central Ubud – Perfect for Villa or Guest House Development Ubud 🟢 Published IDR 3,612,772,850 Updated 23 Jun 2026 🔵 Available" [ref=e625] [cursor=pointer]:
+                - /url: /master/recKRXYmbBxuaZlnr
+                - generic [ref=e626]:
+                  - code [ref=e627]: LAND-1277
+                  - strong [ref=e628]: 2 Are Freehold Commercial Zone Land Just 5 Mins from Central Ubud – Perfect for Villa or Guest House Development
+                  - generic [ref=e629]: Ubud
+                  - generic [ref=e630]: 🟢 Published
+                - generic [ref=e631]:
+                  - generic [ref=e632]: IDR 3,612,772,850
+                  - generic [ref=e633]: Updated 23 Jun 2026
+                  - generic [ref=e634]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e635] [cursor=pointer]:
+                - /url: /master/recKRXYmbBxuaZlnr#health
+                - text: ★★★☆☆
+                - generic [ref=e636]: 66%
+              - generic [ref=e637]:
+                - generic [ref=e638]:
+                  - strong [ref=e639]: "0"
+                  - text: Favourites
+                - generic [ref=e640]:
+                  - strong [ref=e641]: "0"
+                  - text: Shortlists
+                - generic [ref=e642]:
+                  - emphasis [ref=e643]: not tracked
+                  - text: Available from
+                - generic [ref=e644]:
+                  - emphasis [ref=e645]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e646]:
+                  - emphasis [ref=e647]: not tracked
+                  - text: Last promo
+                - generic [ref=e648]:
+                  - emphasis [ref=e649]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e650]:
+                  - strong [ref=e651]: 45d ago
+                  - text: Edited
+                - generic [ref=e652]:
+                  - strong [ref=e653]: "0"
+                  - text: Tasks
+          - generic [ref=e654]:
+            - link [ref=e655] [cursor=pointer]:
+              - /url: /master/rec4Wisk5OWS8nbK5
+            - generic [ref=e657]:
+              - link "BUY-1166 2 Bedroom Eco-Retreat in Lodtunduh with Stunning Rice Field Views Ubud 🟢 Published IDR 1,100,000,000 Updated 15 Apr 2026 🔵Available" [ref=e658] [cursor=pointer]:
+                - /url: /master/rec4Wisk5OWS8nbK5
+                - generic [ref=e659]:
+                  - code [ref=e660]: BUY-1166
+                  - strong [ref=e661]: 2 Bedroom Eco-Retreat in Lodtunduh with Stunning Rice Field Views
+                  - generic [ref=e662]: Ubud
+                  - generic [ref=e663]: 🟢 Published
+                - generic [ref=e664]:
+                  - generic [ref=e665]: IDR 1,100,000,000
+                  - generic [ref=e666]: Updated 15 Apr 2026
+                  - generic [ref=e667]: 🔵Available
+              - link "★★★☆☆ 54%" [ref=e668] [cursor=pointer]:
+                - /url: /master/rec4Wisk5OWS8nbK5#health
+                - text: ★★★☆☆
+                - generic [ref=e669]: 54%
+              - generic [ref=e670]:
+                - generic [ref=e671]:
+                  - strong [ref=e672]: "0"
+                  - text: Favourites
+                - generic [ref=e673]:
+                  - strong [ref=e674]: "0"
+                  - text: Shortlists
+                - generic [ref=e675]:
+                  - emphasis [ref=e676]: not tracked
+                  - text: Available from
+                - generic [ref=e677]:
+                  - emphasis [ref=e678]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e679]:
+                  - emphasis [ref=e680]: not tracked
+                  - text: Last promo
+                - generic [ref=e681]:
+                  - emphasis [ref=e682]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e683]:
+                  - strong [ref=e684]: 114d ago
+                  - text: Edited
+                - generic [ref=e685]:
+                  - strong [ref=e686]: "0"
+                  - text: Tasks
+          - generic [ref=e687]:
+            - link [ref=e688] [cursor=pointer]:
+              - /url: /master/recNs8Fna9c8VHBT1
+            - generic [ref=e690]:
+              - link "BUY-1191 2 Bedroom luxurious Modern Tropical Villa in Bingin (Ready May 2026) Bukit 🟢 Published IDR 4,918,378,880 Updated 15 Apr 2026 🔵Available" [ref=e691] [cursor=pointer]:
+                - /url: /master/recNs8Fna9c8VHBT1
+                - generic [ref=e692]:
+                  - code [ref=e693]: BUY-1191
+                  - strong [ref=e694]: 2 Bedroom luxurious Modern Tropical Villa in Bingin (Ready May 2026)
+                  - generic [ref=e695]: Bukit
+                  - generic [ref=e696]: 🟢 Published
+                - generic [ref=e697]:
+                  - generic [ref=e698]: IDR 4,918,378,880
+                  - generic [ref=e699]: Updated 15 Apr 2026
+                  - generic [ref=e700]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e701] [cursor=pointer]:
+                - /url: /master/recNs8Fna9c8VHBT1#health
+                - text: ★★★☆☆
+                - generic [ref=e702]: 62%
+              - generic [ref=e703]:
+                - generic [ref=e704]:
+                  - strong [ref=e705]: "0"
+                  - text: Favourites
+                - generic [ref=e706]:
+                  - strong [ref=e707]: "0"
+                  - text: Shortlists
+                - generic [ref=e708]:
+                  - emphasis [ref=e709]: not tracked
+                  - text: Available from
+                - generic [ref=e710]:
+                  - emphasis [ref=e711]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e712]:
+                  - emphasis [ref=e713]: not tracked
+                  - text: Last promo
+                - generic [ref=e714]:
+                  - emphasis [ref=e715]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e716]:
+                  - strong [ref=e717]: 114d ago
+                  - text: Edited
+                - generic [ref=e718]:
+                  - strong [ref=e719]: "0"
+                  - text: Tasks
+          - generic [ref=e720]:
+            - link "🏠" [ref=e721] [cursor=pointer]:
+              - /url: /master/rec40u1weMHC76CDe
+            - generic [ref=e724]:
+              - link "BUY-1203 2 Bedroom Mediterranean Style Villa in Bingin Bukit 🟠 On Hold IDR 8,235,000,000 Updated 15 Apr 2026 🔵Available" [ref=e725] [cursor=pointer]:
+                - /url: /master/rec40u1weMHC76CDe
+                - generic [ref=e726]:
+                  - code [ref=e727]: BUY-1203
+                  - strong [ref=e728]: 2 Bedroom Mediterranean Style Villa in Bingin
+                  - generic [ref=e729]: Bukit
+                  - generic [ref=e730]: 🟠 On Hold
+                - generic [ref=e731]:
+                  - generic [ref=e732]: IDR 8,235,000,000
+                  - generic [ref=e733]: Updated 15 Apr 2026
+                  - generic [ref=e734]: 🔵Available
+              - link "★★★☆☆ 54%" [ref=e735] [cursor=pointer]:
+                - /url: /master/rec40u1weMHC76CDe#health
+                - text: ★★★☆☆
+                - generic [ref=e736]: 54%
+              - generic [ref=e737]:
+                - generic [ref=e738]:
+                  - strong [ref=e739]: "0"
+                  - text: Favourites
+                - generic [ref=e740]:
+                  - strong [ref=e741]: "0"
+                  - text: Shortlists
+                - generic [ref=e742]:
+                  - strong [ref=e743]: "0"
+                  - text: Tasks
+          - generic [ref=e744]:
+            - link [ref=e745] [cursor=pointer]:
+              - /url: /master/rec63xJzEtBkGCDaG
+            - generic [ref=e747]:
+              - link "BUY-1193 2 Bedroom Modern Tropical Villa in Bingin (off plan) Bukit 🟢 Published IDR 6,528,030,150 Updated 15 Apr 2026 🔵Available" [ref=e748] [cursor=pointer]:
+                - /url: /master/rec63xJzEtBkGCDaG
+                - generic [ref=e749]:
+                  - code [ref=e750]: BUY-1193
+                  - strong [ref=e751]: 2 Bedroom Modern Tropical Villa in Bingin (off plan)
+                  - generic [ref=e752]: Bukit
+                  - generic [ref=e753]: 🟢 Published
+                - generic [ref=e754]:
+                  - generic [ref=e755]: IDR 6,528,030,150
+                  - generic [ref=e756]: Updated 15 Apr 2026
+                  - generic [ref=e757]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e758] [cursor=pointer]:
+                - /url: /master/rec63xJzEtBkGCDaG#health
+                - text: ★★★☆☆
+                - generic [ref=e759]: 62%
+              - generic [ref=e760]:
+                - generic [ref=e761]:
+                  - strong [ref=e762]: "0"
+                  - text: Favourites
+                - generic [ref=e763]:
+                  - strong [ref=e764]: "0"
+                  - text: Shortlists
+                - generic [ref=e765]:
+                  - emphasis [ref=e766]: not tracked
+                  - text: Available from
+                - generic [ref=e767]:
+                  - emphasis [ref=e768]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e769]:
+                  - emphasis [ref=e770]: not tracked
+                  - text: Last promo
+                - generic [ref=e771]:
+                  - emphasis [ref=e772]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e773]:
+                  - strong [ref=e774]: 114d ago
+                  - text: Edited
+                - generic [ref=e775]:
+                  - strong [ref=e776]: "0"
+                  - text: Tasks
+          - generic [ref=e777]:
+            - link [ref=e778] [cursor=pointer]:
+              - /url: /master/recpsUAzmCAfuIs2X
+            - generic [ref=e780]:
+              - link "BUY-1206 2 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views Nusa & Gili Islands 🟢 Published IDR 4,900,000,000 Updated 15 Apr 2026 🔵Available" [ref=e781] [cursor=pointer]:
+                - /url: /master/recpsUAzmCAfuIs2X
+                - generic [ref=e782]:
+                  - code [ref=e783]: BUY-1206
+                  - strong [ref=e784]: 2 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views
+                  - generic [ref=e785]: Nusa & Gili Islands
+                  - generic [ref=e786]: 🟢 Published
+                - generic [ref=e787]:
+                  - generic [ref=e788]: IDR 4,900,000,000
+                  - generic [ref=e789]: Updated 15 Apr 2026
+                  - generic [ref=e790]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e791] [cursor=pointer]:
+                - /url: /master/recpsUAzmCAfuIs2X#health
+                - text: ★★★☆☆
+                - generic [ref=e792]: 62%
+              - generic [ref=e793]:
+                - generic [ref=e794]:
+                  - strong [ref=e795]: "0"
+                  - text: Favourites
+                - generic [ref=e796]:
+                  - strong [ref=e797]: "0"
+                  - text: Shortlists
+                - generic [ref=e798]:
+                  - emphasis [ref=e799]: not tracked
+                  - text: Available from
+                - generic [ref=e800]:
+                  - emphasis [ref=e801]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e802]:
+                  - emphasis [ref=e803]: not tracked
+                  - text: Last promo
+                - generic [ref=e804]:
+                  - emphasis [ref=e805]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e806]:
+                  - strong [ref=e807]: 114d ago
+                  - text: Edited
+                - generic [ref=e808]:
+                  - strong [ref=e809]: "0"
+                  - text: Tasks
+          - generic [ref=e810]:
+            - link [ref=e811] [cursor=pointer]:
+              - /url: /master/recDwtAvuhNT13wnP
+            - generic [ref=e813]:
+              - link "BUY-1199 2 Bedroom Villa Next to Nyang Nyang Beach Bukit 🟢 Published IDR 5,186,654,092 Updated 15 Apr 2026 🔵Available" [ref=e814] [cursor=pointer]:
+                - /url: /master/recDwtAvuhNT13wnP
+                - generic [ref=e815]:
+                  - code [ref=e816]: BUY-1199
+                  - strong [ref=e817]: 2 Bedroom Villa Next to Nyang Nyang Beach
+                  - generic [ref=e818]: Bukit
+                  - generic [ref=e819]: 🟢 Published
+                - generic [ref=e820]:
+                  - generic [ref=e821]: IDR 5,186,654,092
+                  - generic [ref=e822]: Updated 15 Apr 2026
+                  - generic [ref=e823]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e824] [cursor=pointer]:
+                - /url: /master/recDwtAvuhNT13wnP#health
+                - text: ★★★☆☆
+                - generic [ref=e825]: 62%
+              - generic [ref=e826]:
+                - generic [ref=e827]:
+                  - strong [ref=e828]: "0"
+                  - text: Favourites
+                - generic [ref=e829]:
+                  - strong [ref=e830]: "0"
+                  - text: Shortlists
+                - generic [ref=e831]:
+                  - emphasis [ref=e832]: not tracked
+                  - text: Available from
+                - generic [ref=e833]:
+                  - emphasis [ref=e834]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e835]:
+                  - emphasis [ref=e836]: not tracked
+                  - text: Last promo
+                - generic [ref=e837]:
+                  - emphasis [ref=e838]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e839]:
+                  - strong [ref=e840]: 114d ago
+                  - text: Edited
+                - generic [ref=e841]:
+                  - strong [ref=e842]: "0"
+                  - text: Tasks
+          - generic [ref=e843]:
+            - link [ref=e844] [cursor=pointer]:
+              - /url: /master/recQZDdDvY6HYVIfP
+            - generic [ref=e846]:
+              - link "BUY-1196 2 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan) Bukit 🟢 Published IDR 5,950,000,000 Updated 15 Apr 2026 🔵Available" [ref=e847] [cursor=pointer]:
+                - /url: /master/recQZDdDvY6HYVIfP
+                - generic [ref=e848]:
+                  - code [ref=e849]: BUY-1196
+                  - strong [ref=e850]: 2 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)
+                  - generic [ref=e851]: Bukit
+                  - generic [ref=e852]: 🟢 Published
+                - generic [ref=e853]:
+                  - generic [ref=e854]: IDR 5,950,000,000
+                  - generic [ref=e855]: Updated 15 Apr 2026
+                  - generic [ref=e856]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e857] [cursor=pointer]:
+                - /url: /master/recQZDdDvY6HYVIfP#health
+                - text: ★★★☆☆
+                - generic [ref=e858]: 62%
+              - generic [ref=e859]:
+                - generic [ref=e860]:
+                  - strong [ref=e861]: "0"
+                  - text: Favourites
+                - generic [ref=e862]:
+                  - strong [ref=e863]: "0"
+                  - text: Shortlists
+                - generic [ref=e864]:
+                  - emphasis [ref=e865]: not tracked
+                  - text: Available from
+                - generic [ref=e866]:
+                  - emphasis [ref=e867]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e868]:
+                  - emphasis [ref=e869]: not tracked
+                  - text: Last promo
+                - generic [ref=e870]:
+                  - emphasis [ref=e871]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e872]:
+                  - strong [ref=e873]: 114d ago
+                  - text: Edited
+                - generic [ref=e874]:
+                  - strong [ref=e875]: "0"
+                  - text: Tasks
+          - generic [ref=e876]:
+            - link [ref=e877] [cursor=pointer]:
+              - /url: /master/recd8SuG64TDgVkdj
+            - generic [ref=e879]:
+              - link "BUY-1237 2 bedrooms sanctuary in Pejeng Ubud 🟢 Published IDR 3,700,000,000 Updated 15 Apr 2026 🔵Available" [ref=e880] [cursor=pointer]:
+                - /url: /master/recd8SuG64TDgVkdj
+                - generic [ref=e881]:
+                  - code [ref=e882]: BUY-1237
+                  - strong [ref=e883]: 2 bedrooms sanctuary in Pejeng
+                  - generic [ref=e884]: Ubud
+                  - generic [ref=e885]: 🟢 Published
+                - generic [ref=e886]:
+                  - generic [ref=e887]: IDR 3,700,000,000
+                  - generic [ref=e888]: Updated 15 Apr 2026
+                  - generic [ref=e889]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e890] [cursor=pointer]:
+                - /url: /master/recd8SuG64TDgVkdj#health
+                - text: ★★★☆☆
+                - generic [ref=e891]: 62%
+              - generic [ref=e892]:
+                - generic [ref=e893]:
+                  - strong [ref=e894]: "0"
+                  - text: Favourites
+                - generic [ref=e895]:
+                  - strong [ref=e896]: "0"
+                  - text: Shortlists
+                - generic [ref=e897]:
+                  - emphasis [ref=e898]: not tracked
+                  - text: Available from
+                - generic [ref=e899]:
+                  - emphasis [ref=e900]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e901]:
+                  - emphasis [ref=e902]: not tracked
+                  - text: Last promo
+                - generic [ref=e903]:
+                  - emphasis [ref=e904]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e905]:
+                  - strong [ref=e906]: 114d ago
+                  - text: Edited
+                - generic [ref=e907]:
+                  - strong [ref=e908]: "0"
+                  - text: Tasks
+          - generic [ref=e909]:
+            - link [ref=e910] [cursor=pointer]:
+              - /url: /master/recoxm5RVzrhNQDPT
+            - generic [ref=e912]:
+              - link "BUY-1229 2 Story Villa in Nyuh Kuning with 6 years Lease Ubud 🟢 Published IDR 2,235,626,764 Updated 15 Apr 2026 🔵Available" [ref=e913] [cursor=pointer]:
+                - /url: /master/recoxm5RVzrhNQDPT
+                - generic [ref=e914]:
+                  - code [ref=e915]: BUY-1229
+                  - strong [ref=e916]: 2 Story Villa in Nyuh Kuning with 6 years Lease
+                  - generic [ref=e917]: Ubud
+                  - generic [ref=e918]: 🟢 Published
+                - generic [ref=e919]:
+                  - generic [ref=e920]: IDR 2,235,626,764
+                  - generic [ref=e921]: Updated 15 Apr 2026
+                  - generic [ref=e922]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e923] [cursor=pointer]:
+                - /url: /master/recoxm5RVzrhNQDPT#health
+                - text: ★★★☆☆
+                - generic [ref=e924]: 62%
+              - generic [ref=e925]:
+                - generic [ref=e926]:
+                  - strong [ref=e927]: "0"
+                  - text: Favourites
+                - generic [ref=e928]:
+                  - strong [ref=e929]: "0"
+                  - text: Shortlists
+                - generic [ref=e930]:
+                  - emphasis [ref=e931]: not tracked
+                  - text: Available from
+                - generic [ref=e932]:
+                  - emphasis [ref=e933]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e934]:
+                  - emphasis [ref=e935]: not tracked
+                  - text: Last promo
+                - generic [ref=e936]:
+                  - emphasis [ref=e937]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e938]:
+                  - strong [ref=e939]: 114d ago
+                  - text: Edited
+                - generic [ref=e940]:
+                  - strong [ref=e941]: "0"
+                  - text: Tasks
+          - generic [ref=e942]:
+            - link "🏠" [ref=e943] [cursor=pointer]:
+              - /url: /master/recEVHiZNG8gDN5Y1
+            - generic [ref=e946]:
+              - link "BUY-1161 2 Villas in Private Compound in Nyuh Kuning, Ubud Ubud 🟠 On Hold IDR 2,765,000,000 Updated 15 Apr 2026 🔵Available" [ref=e947] [cursor=pointer]:
+                - /url: /master/recEVHiZNG8gDN5Y1
+                - generic [ref=e948]:
+                  - code [ref=e949]: BUY-1161
+                  - strong [ref=e950]: 2 Villas in Private Compound in Nyuh Kuning, Ubud
+                  - generic [ref=e951]: Ubud
+                  - generic [ref=e952]: 🟠 On Hold
+                - generic [ref=e953]:
+                  - generic [ref=e954]: IDR 2,765,000,000
+                  - generic [ref=e955]: Updated 15 Apr 2026
+                  - generic [ref=e956]: 🔵Available
+              - link "★★☆☆☆ 46%" [ref=e957] [cursor=pointer]:
+                - /url: /master/recEVHiZNG8gDN5Y1#health
+                - text: ★★☆☆☆
+                - generic [ref=e958]: 46%
+              - generic [ref=e959]:
+                - generic [ref=e960]:
+                  - strong [ref=e961]: "0"
+                  - text: Favourites
+                - generic [ref=e962]:
+                  - strong [ref=e963]: "0"
+                  - text: Shortlists
+                - generic [ref=e964]:
+                  - strong [ref=e965]: "0"
+                  - text: Tasks
+          - generic [ref=e966]:
+            - link [ref=e967] [cursor=pointer]:
+              - /url: /master/reccDznLTPXeIxk4l
+            - generic [ref=e969]:
+              - link "BUY-1252 2-Bedroom Pool Villa with Sunrise Yoga Shala — 48-Year Leasehold in Penestanan, Ubud Ubud 🟢 Published IDR 300,000 Updated 05 May 2026 🔵Available" [ref=e970] [cursor=pointer]:
+                - /url: /master/reccDznLTPXeIxk4l
+                - generic [ref=e971]:
+                  - code [ref=e972]: BUY-1252
+                  - strong [ref=e973]: 2-Bedroom Pool Villa with Sunrise Yoga Shala — 48-Year Leasehold in Penestanan, Ubud
+                  - generic [ref=e974]: Ubud
+                  - generic [ref=e975]: 🟢 Published
+                - generic [ref=e976]:
+                  - generic [ref=e977]: IDR 300,000
+                  - generic [ref=e978]: Updated 05 May 2026
+                  - generic [ref=e979]: 🔵Available
+              - link "★★★☆☆ 69%" [ref=e980] [cursor=pointer]:
+                - /url: /master/reccDznLTPXeIxk4l#health
+                - text: ★★★☆☆
+                - generic [ref=e981]: 69%
+              - generic [ref=e982]:
+                - generic [ref=e983]:
+                  - strong [ref=e984]: "0"
+                  - text: Favourites
+                - generic [ref=e985]:
+                  - strong [ref=e986]: "0"
+                  - text: Shortlists
+                - generic [ref=e987]:
+                  - emphasis [ref=e988]: not tracked
+                  - text: Available from
+                - generic [ref=e989]:
+                  - emphasis [ref=e990]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e991]:
+                  - emphasis [ref=e992]: not tracked
+                  - text: Last promo
+                - generic [ref=e993]:
+                  - emphasis [ref=e994]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e995]:
+                  - strong [ref=e996]: 94d ago
+                  - text: Edited
+                - generic [ref=e997]:
+                  - strong [ref=e998]: "0"
+                  - text: Tasks
+          - generic [ref=e999]:
+            - link [ref=e1000] [cursor=pointer]:
+              - /url: /master/recR0Mpd3Y661YnAR
+            - generic [ref=e1002]:
+              - link "BUY-1184 2-Bedroom Villa with Expansive Rice Field Views in Eco Community Ubud 🟢 Published IDR 2,525,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1003] [cursor=pointer]:
+                - /url: /master/recR0Mpd3Y661YnAR
+                - generic [ref=e1004]:
+                  - code [ref=e1005]: BUY-1184
+                  - strong [ref=e1006]: 2-Bedroom Villa with Expansive Rice Field Views in Eco Community
+                  - generic [ref=e1007]: Ubud
+                  - generic [ref=e1008]: 🟢 Published
+                - generic [ref=e1009]:
+                  - generic [ref=e1010]: IDR 2,525,000,000
+                  - generic [ref=e1011]: Updated 15 Apr 2026
+                  - generic [ref=e1012]: 🔵Available
+              - link "★★★☆☆ 54%" [ref=e1013] [cursor=pointer]:
+                - /url: /master/recR0Mpd3Y661YnAR#health
+                - text: ★★★☆☆
+                - generic [ref=e1014]: 54%
+              - generic [ref=e1015]:
+                - generic [ref=e1016]:
+                  - strong [ref=e1017]: "0"
+                  - text: Favourites
+                - generic [ref=e1018]:
+                  - strong [ref=e1019]: "0"
+                  - text: Shortlists
+                - generic [ref=e1020]:
+                  - emphasis [ref=e1021]: not tracked
+                  - text: Available from
+                - generic [ref=e1022]:
+                  - emphasis [ref=e1023]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1024]:
+                  - emphasis [ref=e1025]: not tracked
+                  - text: Last promo
+                - generic [ref=e1026]:
+                  - emphasis [ref=e1027]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1028]:
+                  - strong [ref=e1029]: 114d ago
+                  - text: Edited
+                - generic [ref=e1030]:
+                  - strong [ref=e1031]: "0"
+                  - text: Tasks
+          - generic [ref=e1032]:
+            - link [ref=e1033] [cursor=pointer]:
+              - /url: /master/recdvX9OXILx2hGw1
+            - generic [ref=e1035]:
+              - link "BUY-1182 2-Bedroom Villa with Sunrise Views and Open Living in Eco Community Ubud 🟢 Published IDR 2,525,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1036] [cursor=pointer]:
+                - /url: /master/recdvX9OXILx2hGw1
+                - generic [ref=e1037]:
+                  - code [ref=e1038]: BUY-1182
+                  - strong [ref=e1039]: 2-Bedroom Villa with Sunrise Views and Open Living in Eco Community
+                  - generic [ref=e1040]: Ubud
+                  - generic [ref=e1041]: 🟢 Published
+                - generic [ref=e1042]:
+                  - generic [ref=e1043]: IDR 2,525,000,000
+                  - generic [ref=e1044]: Updated 15 Apr 2026
+                  - generic [ref=e1045]: 🔵Available
+              - link "★★★☆☆ 54%" [ref=e1046] [cursor=pointer]:
+                - /url: /master/recdvX9OXILx2hGw1#health
+                - text: ★★★☆☆
+                - generic [ref=e1047]: 54%
+              - generic [ref=e1048]:
+                - generic [ref=e1049]:
+                  - strong [ref=e1050]: "0"
+                  - text: Favourites
+                - generic [ref=e1051]:
+                  - strong [ref=e1052]: "0"
+                  - text: Shortlists
+                - generic [ref=e1053]:
+                  - emphasis [ref=e1054]: not tracked
+                  - text: Available from
+                - generic [ref=e1055]:
+                  - emphasis [ref=e1056]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1057]:
+                  - emphasis [ref=e1058]: not tracked
+                  - text: Last promo
+                - generic [ref=e1059]:
+                  - emphasis [ref=e1060]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1061]:
+                  - strong [ref=e1062]: 114d ago
+                  - text: Edited
+                - generic [ref=e1063]:
+                  - strong [ref=e1064]: "0"
+                  - text: Tasks
+          - generic [ref=e1065]:
+            - link [ref=e1066] [cursor=pointer]:
+              - /url: /master/recZSpWSGtXxWBa8H
+            - generic [ref=e1068]:
+              - link "LAND-1262 20 are Singakerta (Uma’s Land) - Serene 20are Leasehold in Singakerta Ubud 🟢 Published IDR 1,500,000,000 Updated 15 Apr 2026 🔵 Available" [ref=e1069] [cursor=pointer]:
+                - /url: /master/recZSpWSGtXxWBa8H
+                - generic [ref=e1070]:
+                  - code [ref=e1071]: LAND-1262
+                  - strong [ref=e1072]: 20 are Singakerta (Uma’s Land) - Serene 20are Leasehold in Singakerta
+                  - generic [ref=e1073]: Ubud
+                  - generic [ref=e1074]: 🟢 Published
+                - generic [ref=e1075]:
+                  - generic [ref=e1076]: IDR 1,500,000,000
+                  - generic [ref=e1077]: Updated 15 Apr 2026
+                  - generic [ref=e1078]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e1079] [cursor=pointer]:
+                - /url: /master/recZSpWSGtXxWBa8H#health
+                - text: ★★★☆☆
+                - generic [ref=e1080]: 66%
+              - generic [ref=e1081]:
+                - generic [ref=e1082]:
+                  - strong [ref=e1083]: "0"
+                  - text: Favourites
+                - generic [ref=e1084]:
+                  - strong [ref=e1085]: "0"
+                  - text: Shortlists
+                - generic [ref=e1086]:
+                  - emphasis [ref=e1087]: not tracked
+                  - text: Available from
+                - generic [ref=e1088]:
+                  - emphasis [ref=e1089]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1090]:
+                  - emphasis [ref=e1091]: not tracked
+                  - text: Last promo
+                - generic [ref=e1092]:
+                  - emphasis [ref=e1093]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1094]:
+                  - strong [ref=e1095]: 114d ago
+                  - text: Edited
+                - generic [ref=e1096]:
+                  - strong [ref=e1097]: "0"
+                  - text: Tasks
+          - generic [ref=e1098]:
+            - link [ref=e1099] [cursor=pointer]:
+              - /url: /master/recVyNJO5BkhLYLph
+            - generic [ref=e1101]:
+              - link "LAND-1261 24.5 Are Pink Zone Land in Sayan Ubud 🟢 Published IDR 7,962,500,000 Updated 15 Apr 2026 🔵 Available" [ref=e1102] [cursor=pointer]:
+                - /url: /master/recVyNJO5BkhLYLph
+                - generic [ref=e1103]:
+                  - code [ref=e1104]: LAND-1261
+                  - strong [ref=e1105]: 24.5 Are Pink Zone Land in Sayan
+                  - generic [ref=e1106]: Ubud
+                  - generic [ref=e1107]: 🟢 Published
+                - generic [ref=e1108]:
+                  - generic [ref=e1109]: IDR 7,962,500,000
+                  - generic [ref=e1110]: Updated 15 Apr 2026
+                  - generic [ref=e1111]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e1112] [cursor=pointer]:
+                - /url: /master/recVyNJO5BkhLYLph#health
+                - text: ★★★☆☆
+                - generic [ref=e1113]: 66%
+              - generic [ref=e1114]:
+                - generic [ref=e1115]:
+                  - strong [ref=e1116]: "0"
+                  - text: Favourites
+                - generic [ref=e1117]:
+                  - strong [ref=e1118]: "0"
+                  - text: Shortlists
+                - generic [ref=e1119]:
+                  - emphasis [ref=e1120]: not tracked
+                  - text: Available from
+                - generic [ref=e1121]:
+                  - emphasis [ref=e1122]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1123]:
+                  - emphasis [ref=e1124]: not tracked
+                  - text: Last promo
+                - generic [ref=e1125]:
+                  - emphasis [ref=e1126]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1127]:
+                  - strong [ref=e1128]: 114d ago
+                  - text: Edited
+                - generic [ref=e1129]:
+                  - strong [ref=e1130]: "0"
+                  - text: Tasks
+          - generic [ref=e1131]:
+            - link "🏠" [ref=e1132] [cursor=pointer]:
+              - /url: /master/recNSBdCwwU95sKp1
+            - generic [ref=e1135]:
+              - link "BUY-1235 3 Bedroom Japanese Inspired Villa in Nyuh Kuning Ubud 🔴 Archived IDR 4,500,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1136] [cursor=pointer]:
+                - /url: /master/recNSBdCwwU95sKp1
+                - generic [ref=e1137]:
+                  - code [ref=e1138]: BUY-1235
+                  - strong [ref=e1139]: 3 Bedroom Japanese Inspired Villa in Nyuh Kuning
+                  - generic [ref=e1140]: Ubud
+                  - generic [ref=e1141]: 🔴 Archived
+                - generic [ref=e1142]:
+                  - generic [ref=e1143]: IDR 4,500,000,000
+                  - generic [ref=e1144]: Updated 15 Apr 2026
+                  - generic [ref=e1145]: 🔵Available
+              - link "★★☆☆☆ 38%" [ref=e1146] [cursor=pointer]:
+                - /url: /master/recNSBdCwwU95sKp1#health
+                - text: ★★☆☆☆
+                - generic [ref=e1147]: 38%
+              - generic [ref=e1148]:
+                - generic [ref=e1149]:
+                  - emphasis [ref=e1150]: not tracked
+                  - text: Closed reason
+                - generic [ref=e1151]:
+                  - strong [ref=e1152]: "0"
+                  - text: Tasks
+          - generic [ref=e1153]:
+            - link [ref=e1154] [cursor=pointer]:
+              - /url: /master/rec1JTQZQZ9Mk5sHP
+            - generic [ref=e1156]:
+              - link "BUY-1221 3 Bedroom Ubud River Escape Near Nyuh Kuning Ubud 🟢 Published IDR 19,000,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1157] [cursor=pointer]:
+                - /url: /master/rec1JTQZQZ9Mk5sHP
+                - generic [ref=e1158]:
+                  - code [ref=e1159]: BUY-1221
+                  - strong [ref=e1160]: 3 Bedroom Ubud River Escape Near Nyuh Kuning
+                  - generic [ref=e1161]: Ubud
+                  - generic [ref=e1162]: 🟢 Published
+                - generic [ref=e1163]:
+                  - generic [ref=e1164]: IDR 19,000,000,000
+                  - generic [ref=e1165]: Updated 15 Apr 2026
+                  - generic [ref=e1166]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e1167] [cursor=pointer]:
+                - /url: /master/rec1JTQZQZ9Mk5sHP#health
+                - text: ★★★☆☆
+                - generic [ref=e1168]: 62%
+              - generic [ref=e1169]:
+                - generic [ref=e1170]:
+                  - strong [ref=e1171]: "0"
+                  - text: Favourites
+                - generic [ref=e1172]:
+                  - strong [ref=e1173]: "0"
+                  - text: Shortlists
+                - generic [ref=e1174]:
+                  - emphasis [ref=e1175]: not tracked
+                  - text: Available from
+                - generic [ref=e1176]:
+                  - emphasis [ref=e1177]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1178]:
+                  - emphasis [ref=e1179]: not tracked
+                  - text: Last promo
+                - generic [ref=e1180]:
+                  - emphasis [ref=e1181]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1182]:
+                  - strong [ref=e1183]: 114d ago
+                  - text: Edited
+                - generic [ref=e1184]:
+                  - strong [ref=e1185]: "0"
+                  - text: Tasks
+          - generic [ref=e1186]:
+            - link [ref=e1187] [cursor=pointer]:
+              - /url: /master/recIpYDVsoLqNsdhY
+            - generic [ref=e1189]:
+              - link "BUY-1205 3 Bedroom Villa in Bingin area with a Modern Tropical Design Bukit 🟢 Published IDR 7,815,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1190] [cursor=pointer]:
+                - /url: /master/recIpYDVsoLqNsdhY
+                - generic [ref=e1191]:
+                  - code [ref=e1192]: BUY-1205
+                  - strong [ref=e1193]: 3 Bedroom Villa in Bingin area with a Modern Tropical Design
+                  - generic [ref=e1194]: Bukit
+                  - generic [ref=e1195]: 🟢 Published
+                - generic [ref=e1196]:
+                  - generic [ref=e1197]: IDR 7,815,000,000
+                  - generic [ref=e1198]: Updated 15 Apr 2026
+                  - generic [ref=e1199]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e1200] [cursor=pointer]:
+                - /url: /master/recIpYDVsoLqNsdhY#health
+                - text: ★★★☆☆
+                - generic [ref=e1201]: 62%
+              - generic [ref=e1202]:
+                - generic [ref=e1203]:
+                  - strong [ref=e1204]: "0"
+                  - text: Favourites
+                - generic [ref=e1205]:
+                  - strong [ref=e1206]: "0"
+                  - text: Shortlists
+                - generic [ref=e1207]:
+                  - emphasis [ref=e1208]: not tracked
+                  - text: Available from
+                - generic [ref=e1209]:
+                  - emphasis [ref=e1210]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1211]:
+                  - emphasis [ref=e1212]: not tracked
+                  - text: Last promo
+                - generic [ref=e1213]:
+                  - emphasis [ref=e1214]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1215]:
+                  - strong [ref=e1216]: 114d ago
+                  - text: Edited
+                - generic [ref=e1217]:
+                  - strong [ref=e1218]: "0"
+                  - text: Tasks
+          - generic [ref=e1219]:
+            - link "🏠" [ref=e1220] [cursor=pointer]:
+              - /url: /master/rec7BhrP8ZYD9W3fi
+            - generic [ref=e1223]:
+              - link "BUY-1197 3 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan) Bukit 🟡 Draft IDR 7,990,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1224] [cursor=pointer]:
+                - /url: /master/rec7BhrP8ZYD9W3fi
+                - generic [ref=e1225]:
+                  - code [ref=e1226]: BUY-1197
+                  - strong [ref=e1227]: 3 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)
+                  - generic [ref=e1228]: Bukit
+                  - generic [ref=e1229]: 🟡 Draft
+                - generic [ref=e1230]:
+                  - generic [ref=e1231]: IDR 7,990,000,000
+                  - generic [ref=e1232]: Updated 15 Apr 2026
+                  - generic [ref=e1233]: 🔵Available
+              - link "★★★☆☆ 54%" [ref=e1234] [cursor=pointer]:
+                - /url: /master/rec7BhrP8ZYD9W3fi#health
+                - text: ★★★☆☆
+                - generic [ref=e1235]: 54%
+              - link "⚠️ Stagnant >48h ↗" [ref=e1237] [cursor=pointer]:
+                - /url: /master/rec7BhrP8ZYD9W3fi
+              - generic [ref=e1238]:
+                - generic [ref=e1239]:
+                  - strong [ref=e1240]: 80%
+                  - text: Complete
+                - generic [ref=e1241]:
+                  - strong [ref=e1242]: "0"
+                  - text: Tasks
+          - generic [ref=e1243]:
+            - link [ref=e1244] [cursor=pointer]:
+              - /url: /master/recji9mSyL7bPnirF
+            - generic [ref=e1246]:
+              - link "LAND-1266 3-6 Are Tropical Land in Lodtunduh - 3-6 Are Tropical Leasehold Land in Lodtunduh – Jungle Vibes, Rice Field Views & Central Location Ubud 🟢 Published IDR 900,000,000 Updated 15 Apr 2026 🟣 Sold" [ref=e1247] [cursor=pointer]:
+                - /url: /master/recji9mSyL7bPnirF
+                - generic [ref=e1248]:
+                  - code [ref=e1249]: LAND-1266
+                  - strong [ref=e1250]: 3-6 Are Tropical Land in Lodtunduh - 3-6 Are Tropical Leasehold Land in Lodtunduh – Jungle Vibes, Rice Field Views & Central Location
+                  - generic [ref=e1251]: Ubud
+                  - generic [ref=e1252]: 🟢 Published
+                - generic [ref=e1253]:
+                  - generic [ref=e1254]: IDR 900,000,000
+                  - generic [ref=e1255]: Updated 15 Apr 2026
+                  - generic [ref=e1256]: 🟣 Sold
+              - link "★★★☆☆ 66%" [ref=e1257] [cursor=pointer]:
+                - /url: /master/recji9mSyL7bPnirF#health
+                - text: ★★★☆☆
+                - generic [ref=e1258]: 66%
+              - generic [ref=e1259]:
+                - generic [ref=e1260]:
+                  - strong [ref=e1261]: "0"
+                  - text: Favourites
+                - generic [ref=e1262]:
+                  - strong [ref=e1263]: "0"
+                  - text: Shortlists
+                - generic [ref=e1264]:
+                  - emphasis [ref=e1265]: not tracked
+                  - text: Available from
+                - generic [ref=e1266]:
+                  - emphasis [ref=e1267]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1268]:
+                  - emphasis [ref=e1269]: not tracked
+                  - text: Last promo
+                - generic [ref=e1270]:
+                  - emphasis [ref=e1271]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1272]:
+                  - strong [ref=e1273]: 114d ago
+                  - text: Edited
+                - generic [ref=e1274]:
+                  - strong [ref=e1275]: "0"
+                  - text: Tasks
+          - generic [ref=e1276]:
+            - link [ref=e1277] [cursor=pointer]:
+              - /url: /master/recePglsaJfUjaE1j
+            - generic [ref=e1279]:
+              - link "BUY-1180 3-Bedroom Modern Traditional Villa with Private Pool Ubud 🟢 Published IDR 3,200,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1280] [cursor=pointer]:
+                - /url: /master/recePglsaJfUjaE1j
+                - generic [ref=e1281]:
+                  - code [ref=e1282]: BUY-1180
+                  - strong [ref=e1283]: 3-Bedroom Modern Traditional Villa with Private Pool
+                  - generic [ref=e1284]: Ubud
+                  - generic [ref=e1285]: 🟢 Published
+                - generic [ref=e1286]:
+                  - generic [ref=e1287]: IDR 3,200,000,000
+                  - generic [ref=e1288]: Updated 15 Apr 2026
+                  - generic [ref=e1289]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e1290] [cursor=pointer]:
+                - /url: /master/recePglsaJfUjaE1j#health
+                - text: ★★★☆☆
+                - generic [ref=e1291]: 62%
+              - generic [ref=e1292]:
+                - generic [ref=e1293]:
+                  - strong [ref=e1294]: "0"
+                  - text: Favourites
+                - generic [ref=e1295]:
+                  - strong [ref=e1296]: "0"
+                  - text: Shortlists
+                - generic [ref=e1297]:
+                  - emphasis [ref=e1298]: not tracked
+                  - text: Available from
+                - generic [ref=e1299]:
+                  - emphasis [ref=e1300]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1301]:
+                  - emphasis [ref=e1302]: not tracked
+                  - text: Last promo
+                - generic [ref=e1303]:
+                  - emphasis [ref=e1304]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1305]:
+                  - strong [ref=e1306]: 114d ago
+                  - text: Edited
+                - generic [ref=e1307]:
+                  - strong [ref=e1308]: "0"
+                  - text: Tasks
+          - generic [ref=e1309]:
+            - link [ref=e1310] [cursor=pointer]:
+              - /url: /master/recDe0W2BfT7BiA2E
+            - generic [ref=e1312]:
+              - link "BUY-1178 3-Bedroom Spacious Villa with Private Pool in Peliatan Ubud 🟢 Published IDR 3,100,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1313] [cursor=pointer]:
+                - /url: /master/recDe0W2BfT7BiA2E
+                - generic [ref=e1314]:
+                  - code [ref=e1315]: BUY-1178
+                  - strong [ref=e1316]: 3-Bedroom Spacious Villa with Private Pool in Peliatan
+                  - generic [ref=e1317]: Ubud
+                  - generic [ref=e1318]: 🟢 Published
+                - generic [ref=e1319]:
+                  - generic [ref=e1320]: IDR 3,100,000,000
+                  - generic [ref=e1321]: Updated 15 Apr 2026
+                  - generic [ref=e1322]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e1323] [cursor=pointer]:
+                - /url: /master/recDe0W2BfT7BiA2E#health
+                - text: ★★★☆☆
+                - generic [ref=e1324]: 62%
+              - generic [ref=e1325]:
+                - generic [ref=e1326]:
+                  - strong [ref=e1327]: "0"
+                  - text: Favourites
+                - generic [ref=e1328]:
+                  - strong [ref=e1329]: "0"
+                  - text: Shortlists
+                - generic [ref=e1330]:
+                  - emphasis [ref=e1331]: not tracked
+                  - text: Available from
+                - generic [ref=e1332]:
+                  - emphasis [ref=e1333]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1334]:
+                  - emphasis [ref=e1335]: not tracked
+                  - text: Last promo
+                - generic [ref=e1336]:
+                  - emphasis [ref=e1337]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1338]:
+                  - strong [ref=e1339]: 114d ago
+                  - text: Edited
+                - generic [ref=e1340]:
+                  - strong [ref=e1341]: "0"
+                  - text: Tasks
+          - generic [ref=e1342]:
+            - link [ref=e1343] [cursor=pointer]:
+              - /url: /master/rec6V5MBCtP1vIyhx
+            - generic [ref=e1345]:
+              - link "BUY-1179 3-Bedroom Traditional Tropical Villa with Private Pool Ubud 🟢 Published IDR 3,150,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1346] [cursor=pointer]:
+                - /url: /master/rec6V5MBCtP1vIyhx
+                - generic [ref=e1347]:
+                  - code [ref=e1348]: BUY-1179
+                  - strong [ref=e1349]: 3-Bedroom Traditional Tropical Villa with Private Pool
+                  - generic [ref=e1350]: Ubud
+                  - generic [ref=e1351]: 🟢 Published
+                - generic [ref=e1352]:
+                  - generic [ref=e1353]: IDR 3,150,000,000
+                  - generic [ref=e1354]: Updated 15 Apr 2026
+                  - generic [ref=e1355]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e1356] [cursor=pointer]:
+                - /url: /master/rec6V5MBCtP1vIyhx#health
+                - text: ★★★☆☆
+                - generic [ref=e1357]: 62%
+              - generic [ref=e1358]:
+                - generic [ref=e1359]:
+                  - strong [ref=e1360]: "0"
+                  - text: Favourites
+                - generic [ref=e1361]:
+                  - strong [ref=e1362]: "0"
+                  - text: Shortlists
+                - generic [ref=e1363]:
+                  - emphasis [ref=e1364]: not tracked
+                  - text: Available from
+                - generic [ref=e1365]:
+                  - emphasis [ref=e1366]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1367]:
+                  - emphasis [ref=e1368]: not tracked
+                  - text: Last promo
+                - generic [ref=e1369]:
+                  - emphasis [ref=e1370]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1371]:
+                  - strong [ref=e1372]: 114d ago
+                  - text: Edited
+                - generic [ref=e1373]:
+                  - strong [ref=e1374]: "0"
+                  - text: Tasks
+          - generic [ref=e1375]:
+            - link [ref=e1376] [cursor=pointer]:
+              - /url: /master/recwKzc5NRFrewL4D
+            - generic [ref=e1378]:
+              - link "BUY-1254 3-Bedroom Villa in Nyuh Kuning, Ubud — Rare Renovation Opportunity with Private Pool & Tropical Garden Ubud 🟢 Published IDR 3,000,000,000 Updated 05 May 2026 🔵Available" [ref=e1379] [cursor=pointer]:
+                - /url: /master/recwKzc5NRFrewL4D
+                - generic [ref=e1380]:
+                  - code [ref=e1381]: BUY-1254
+                  - strong [ref=e1382]: 3-Bedroom Villa in Nyuh Kuning, Ubud — Rare Renovation Opportunity with Private Pool & Tropical Garden
+                  - generic [ref=e1383]: Ubud
+                  - generic [ref=e1384]: 🟢 Published
+                - generic [ref=e1385]:
+                  - generic [ref=e1386]: IDR 3,000,000,000
+                  - generic [ref=e1387]: Updated 05 May 2026
+                  - generic [ref=e1388]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e1389] [cursor=pointer]:
+                - /url: /master/recwKzc5NRFrewL4D#health
+                - text: ★★★☆☆
+                - generic [ref=e1390]: 62%
+              - generic [ref=e1391]:
+                - generic [ref=e1392]:
+                  - strong [ref=e1393]: "0"
+                  - text: Favourites
+                - generic [ref=e1394]:
+                  - strong [ref=e1395]: "0"
+                  - text: Shortlists
+                - generic [ref=e1396]:
+                  - emphasis [ref=e1397]: not tracked
+                  - text: Available from
+                - generic [ref=e1398]:
+                  - emphasis [ref=e1399]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1400]:
+                  - emphasis [ref=e1401]: not tracked
+                  - text: Last promo
+                - generic [ref=e1402]:
+                  - emphasis [ref=e1403]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1404]:
+                  - strong [ref=e1405]: 94d ago
+                  - text: Edited
+                - generic [ref=e1406]:
+                  - strong [ref=e1407]: "0"
+                  - text: Tasks
+          - generic [ref=e1408]:
+            - link [ref=e1409] [cursor=pointer]:
+              - /url: /master/recVm0bYBfVBDzRtl
+            - generic [ref=e1411]:
+              - link "BUY-1152 3-Bedroom Villa in Prime Area of Penestanan - Perfect for Living or Investing Ubud 🟢 Published IDR 6,111,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1412] [cursor=pointer]:
+                - /url: /master/recVm0bYBfVBDzRtl
+                - generic [ref=e1413]:
+                  - code [ref=e1414]: BUY-1152
+                  - strong [ref=e1415]: 3-Bedroom Villa in Prime Area of Penestanan - Perfect for Living or Investing
+                  - generic [ref=e1416]: Ubud
+                  - generic [ref=e1417]: 🟢 Published
+                - generic [ref=e1418]:
+                  - generic [ref=e1419]: IDR 6,111,000,000
+                  - generic [ref=e1420]: Updated 15 Apr 2026
+                  - generic [ref=e1421]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e1422] [cursor=pointer]:
+                - /url: /master/recVm0bYBfVBDzRtl#health
+                - text: ★★★☆☆
+                - generic [ref=e1423]: 62%
+              - generic [ref=e1424]:
+                - generic [ref=e1425]:
+                  - strong [ref=e1426]: "0"
+                  - text: Favourites
+                - generic [ref=e1427]:
+                  - strong [ref=e1428]: "0"
+                  - text: Shortlists
+                - generic [ref=e1429]:
+                  - emphasis [ref=e1430]: not tracked
+                  - text: Available from
+                - generic [ref=e1431]:
+                  - emphasis [ref=e1432]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1433]:
+                  - emphasis [ref=e1434]: not tracked
+                  - text: Last promo
+                - generic [ref=e1435]:
+                  - emphasis [ref=e1436]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1437]:
+                  - strong [ref=e1438]: 114d ago
+                  - text: Edited
+                - generic [ref=e1439]:
+                  - strong [ref=e1440]: "0"
+                  - text: Tasks
+          - generic [ref=e1441]:
+            - link [ref=e1442] [cursor=pointer]:
+              - /url: /master/rec9uPJeAyw9mNKxK
+            - generic [ref=e1444]:
+              - link "BUY-1157 3-Bedroom Villa with Rice Field Views in an Eco Community Ubud 🟢 Published IDR 1,978,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1445] [cursor=pointer]:
+                - /url: /master/rec9uPJeAyw9mNKxK
+                - generic [ref=e1446]:
+                  - code [ref=e1447]: BUY-1157
+                  - strong [ref=e1448]: 3-Bedroom Villa with Rice Field Views in an Eco Community
+                  - generic [ref=e1449]: Ubud
+                  - generic [ref=e1450]: 🟢 Published
+                - generic [ref=e1451]:
+                  - generic [ref=e1452]: IDR 1,978,000,000
+                  - generic [ref=e1453]: Updated 15 Apr 2026
+                  - generic [ref=e1454]: 🔵Available
+              - link "★★★☆☆ 54%" [ref=e1455] [cursor=pointer]:
+                - /url: /master/rec9uPJeAyw9mNKxK#health
+                - text: ★★★☆☆
+                - generic [ref=e1456]: 54%
+              - generic [ref=e1457]:
+                - generic [ref=e1458]:
+                  - strong [ref=e1459]: "0"
+                  - text: Favourites
+                - generic [ref=e1460]:
+                  - strong [ref=e1461]: "0"
+                  - text: Shortlists
+                - generic [ref=e1462]:
+                  - emphasis [ref=e1463]: not tracked
+                  - text: Available from
+                - generic [ref=e1464]:
+                  - emphasis [ref=e1465]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1466]:
+                  - emphasis [ref=e1467]: not tracked
+                  - text: Last promo
+                - generic [ref=e1468]:
+                  - emphasis [ref=e1469]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1470]:
+                  - strong [ref=e1471]: 114d ago
+                  - text: Edited
+                - generic [ref=e1472]:
+                  - strong [ref=e1473]: "0"
+                  - text: Tasks
+          - generic [ref=e1474]:
+            - link [ref=e1475] [cursor=pointer]:
+              - /url: /master/recoFhSuOUYFGj0jk
+            - generic [ref=e1477]:
+              - link "LAND-1268 3.30 are Singakerta Cahaya/Ayu - 330m² Prime Tourism-Zoned Land in Serene Singakerta Ubud 🟢 Published IDR 19,140,000 Updated 15 Apr 2026 🔵 Available" [ref=e1478] [cursor=pointer]:
+                - /url: /master/recoFhSuOUYFGj0jk
+                - generic [ref=e1479]:
+                  - code [ref=e1480]: LAND-1268
+                  - strong [ref=e1481]: 3.30 are Singakerta Cahaya/Ayu - 330m² Prime Tourism-Zoned Land in Serene Singakerta
+                  - generic [ref=e1482]: Ubud
+                  - generic [ref=e1483]: 🟢 Published
+                - generic [ref=e1484]:
+                  - generic [ref=e1485]: IDR 19,140,000
+                  - generic [ref=e1486]: Updated 15 Apr 2026
+                  - generic [ref=e1487]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e1488] [cursor=pointer]:
+                - /url: /master/recoFhSuOUYFGj0jk#health
+                - text: ★★★☆☆
+                - generic [ref=e1489]: 66%
+              - generic [ref=e1490]:
+                - generic [ref=e1491]:
+                  - strong [ref=e1492]: "0"
+                  - text: Favourites
+                - generic [ref=e1493]:
+                  - strong [ref=e1494]: "0"
+                  - text: Shortlists
+                - generic [ref=e1495]:
+                  - emphasis [ref=e1496]: not tracked
+                  - text: Available from
+                - generic [ref=e1497]:
+                  - emphasis [ref=e1498]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1499]:
+                  - emphasis [ref=e1500]: not tracked
+                  - text: Last promo
+                - generic [ref=e1501]:
+                  - emphasis [ref=e1502]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1503]:
+                  - strong [ref=e1504]: 114d ago
+                  - text: Edited
+                - generic [ref=e1505]:
+                  - strong [ref=e1506]: "0"
+                  - text: Tasks
+          - generic [ref=e1507]:
+            - link [ref=e1508] [cursor=pointer]:
+              - /url: /master/recaIFQtAJTz83QNy
+            - generic [ref=e1510]:
+              - link "BUY-1236 3BR Family Home in Singakerta - 5 mins from Nyuh Kuning Ubud 🟢 Published IDR 5,600,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1511] [cursor=pointer]:
+                - /url: /master/recaIFQtAJTz83QNy
+                - generic [ref=e1512]:
+                  - code [ref=e1513]: BUY-1236
+                  - strong [ref=e1514]: 3BR Family Home in Singakerta - 5 mins from Nyuh Kuning
+                  - generic [ref=e1515]: Ubud
+                  - generic [ref=e1516]: 🟢 Published
+                - generic [ref=e1517]:
+                  - generic [ref=e1518]: IDR 5,600,000,000
+                  - generic [ref=e1519]: Updated 15 Apr 2026
+                  - generic [ref=e1520]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e1521] [cursor=pointer]:
+                - /url: /master/recaIFQtAJTz83QNy#health
+                - text: ★★★☆☆
+                - generic [ref=e1522]: 62%
+              - generic [ref=e1523]:
+                - generic [ref=e1524]:
+                  - strong [ref=e1525]: "0"
+                  - text: Favourites
+                - generic [ref=e1526]:
+                  - strong [ref=e1527]: "0"
+                  - text: Shortlists
+                - generic [ref=e1528]:
+                  - emphasis [ref=e1529]: not tracked
+                  - text: Available from
+                - generic [ref=e1530]:
+                  - emphasis [ref=e1531]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1532]:
+                  - emphasis [ref=e1533]: not tracked
+                  - text: Last promo
+                - generic [ref=e1534]:
+                  - emphasis [ref=e1535]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1536]:
+                  - strong [ref=e1537]: 114d ago
+                  - text: Edited
+                - generic [ref=e1538]:
+                  - strong [ref=e1539]: "0"
+                  - text: Tasks
+          - generic [ref=e1540]:
+            - link [ref=e1541] [cursor=pointer]:
+              - /url: /master/recEYTN5FGd7E1asn
+            - generic [ref=e1543]:
+              - link "LAND-1252 4 Are Singakerta - 4 are Land in Central Singakerta Ubud 🟢 Published IDR 750,000,000 Updated 15 Apr 2026 🟣 Sold" [ref=e1544] [cursor=pointer]:
+                - /url: /master/recEYTN5FGd7E1asn
+                - generic [ref=e1545]:
+                  - code [ref=e1546]: LAND-1252
+                  - strong [ref=e1547]: 4 Are Singakerta - 4 are Land in Central Singakerta
+                  - generic [ref=e1548]: Ubud
+                  - generic [ref=e1549]: 🟢 Published
+                - generic [ref=e1550]:
+                  - generic [ref=e1551]: IDR 750,000,000
+                  - generic [ref=e1552]: Updated 15 Apr 2026
+                  - generic [ref=e1553]: 🟣 Sold
+              - link "★★★☆☆ 66%" [ref=e1554] [cursor=pointer]:
+                - /url: /master/recEYTN5FGd7E1asn#health
+                - text: ★★★☆☆
+                - generic [ref=e1555]: 66%
+              - generic [ref=e1556]:
+                - generic [ref=e1557]:
+                  - strong [ref=e1558]: "0"
+                  - text: Favourites
+                - generic [ref=e1559]:
+                  - strong [ref=e1560]: "0"
+                  - text: Shortlists
+                - generic [ref=e1561]:
+                  - emphasis [ref=e1562]: not tracked
+                  - text: Available from
+                - generic [ref=e1563]:
+                  - emphasis [ref=e1564]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1565]:
+                  - emphasis [ref=e1566]: not tracked
+                  - text: Last promo
+                - generic [ref=e1567]:
+                  - emphasis [ref=e1568]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1569]:
+                  - strong [ref=e1570]: 114d ago
+                  - text: Edited
+                - generic [ref=e1571]:
+                  - strong [ref=e1572]: "0"
+                  - text: Tasks
+          - generic [ref=e1573]:
+            - link [ref=e1574] [cursor=pointer]:
+              - /url: /master/recYj8o4qLSKyP6IX
+            - generic [ref=e1576]:
+              - link "BUY-1207 4 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views Nusa & Gili Islands 🟢 Published IDR 7,653,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1577] [cursor=pointer]:
+                - /url: /master/recYj8o4qLSKyP6IX
+                - generic [ref=e1578]:
+                  - code [ref=e1579]: BUY-1207
+                  - strong [ref=e1580]: 4 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views
+                  - generic [ref=e1581]: Nusa & Gili Islands
+                  - generic [ref=e1582]: 🟢 Published
+                - generic [ref=e1583]:
+                  - generic [ref=e1584]: IDR 7,653,000,000
+                  - generic [ref=e1585]: Updated 15 Apr 2026
+                  - generic [ref=e1586]: 🔵Available
+              - link "★★★☆☆ 62%" [ref=e1587] [cursor=pointer]:
+                - /url: /master/recYj8o4qLSKyP6IX#health
+                - text: ★★★☆☆
+                - generic [ref=e1588]: 62%
+              - generic [ref=e1589]:
+                - generic [ref=e1590]:
+                  - strong [ref=e1591]: "0"
+                  - text: Favourites
+                - generic [ref=e1592]:
+                  - strong [ref=e1593]: "0"
+                  - text: Shortlists
+                - generic [ref=e1594]:
+                  - emphasis [ref=e1595]: not tracked
+                  - text: Available from
+                - generic [ref=e1596]:
+                  - emphasis [ref=e1597]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1598]:
+                  - emphasis [ref=e1599]: not tracked
+                  - text: Last promo
+                - generic [ref=e1600]:
+                  - emphasis [ref=e1601]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1602]:
+                  - strong [ref=e1603]: 114d ago
+                  - text: Edited
+                - generic [ref=e1604]:
+                  - strong [ref=e1605]: "0"
+                  - text: Tasks
+          - generic [ref=e1606]:
+            - link "🏠" [ref=e1607] [cursor=pointer]:
+              - /url: /master/recn5X2dRVUguzSsK
+            - generic [ref=e1610]:
+              - link "BUY-1198 4 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan) Bukit 🟡 Draft IDR 9,765,000,000 Updated 15 Apr 2026 🔵Available" [ref=e1611] [cursor=pointer]:
+                - /url: /master/recn5X2dRVUguzSsK
+                - generic [ref=e1612]:
+                  - code [ref=e1613]: BUY-1198
+                  - strong [ref=e1614]: 4 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)
+                  - generic [ref=e1615]: Bukit
+                  - generic [ref=e1616]: 🟡 Draft
+                - generic [ref=e1617]:
+                  - generic [ref=e1618]: IDR 9,765,000,000
+                  - generic [ref=e1619]: Updated 15 Apr 2026
+                  - generic [ref=e1620]: 🔵Available
+              - link "★★☆☆☆ 46%" [ref=e1621] [cursor=pointer]:
+                - /url: /master/recn5X2dRVUguzSsK#health
+                - text: ★★☆☆☆
+                - generic [ref=e1622]: 46%
+              - link "⚠️ Stagnant >48h ↗" [ref=e1624] [cursor=pointer]:
+                - /url: /master/recn5X2dRVUguzSsK
+              - generic [ref=e1625]:
+                - generic [ref=e1626]:
+                  - strong [ref=e1627]: 80%
+                  - text: Complete
+                - generic [ref=e1628]:
+                  - strong [ref=e1629]: "0"
+                  - text: Tasks
+          - generic [ref=e1630]:
+            - link [ref=e1631] [cursor=pointer]:
+              - /url: /master/recrH3K8hkC9LIcQx
+            - generic [ref=e1633]:
+              - link "LAND-1270 6 are Sayan (back of water temple / Turner land) - 6 are in Sayan located near a Water Temple Ubud 🟢 Published IDR 1,050,000,000 Updated 15 Apr 2026 🔵 Available" [ref=e1634] [cursor=pointer]:
+                - /url: /master/recrH3K8hkC9LIcQx
+                - generic [ref=e1635]:
+                  - code [ref=e1636]: LAND-1270
+                  - strong [ref=e1637]: 6 are Sayan (back of water temple / Turner land) - 6 are in Sayan located near a Water Temple
+                  - generic [ref=e1638]: Ubud
+                  - generic [ref=e1639]: 🟢 Published
+                - generic [ref=e1640]:
+                  - generic [ref=e1641]: IDR 1,050,000,000
+                  - generic [ref=e1642]: Updated 15 Apr 2026
+                  - generic [ref=e1643]: 🔵 Available
+              - link "★★★☆☆ 66%" [ref=e1644] [cursor=pointer]:
+                - /url: /master/recrH3K8hkC9LIcQx#health
+                - text: ★★★☆☆
+                - generic [ref=e1645]: 66%
+              - generic [ref=e1646]:
+                - generic [ref=e1647]:
+                  - strong [ref=e1648]: "0"
+                  - text: Favourites
+                - generic [ref=e1649]:
+                  - strong [ref=e1650]: "0"
+                  - text: Shortlists
+                - generic [ref=e1651]:
+                  - emphasis [ref=e1652]: not tracked
+                  - text: Available from
+                - generic [ref=e1653]:
+                  - emphasis [ref=e1654]: not tracked
+                  - text: Occupancy 12m
+                - generic [ref=e1655]:
+                  - emphasis [ref=e1656]: not tracked
+                  - text: Last promo
+                - generic [ref=e1657]:
+                  - emphasis [ref=e1658]: not tracked
+                  - text: Promos 60d
+                - generic [ref=e1659]:
+                  - strong [ref=e1660]: 114d ago
+                  - text: Edited
+                - generic [ref=e1661]:
+                  - strong [ref=e1662]: "0"
+                  - text: Tasks
+        - generic [ref=e1663]:
+          - generic [ref=e1664]: Page 1 of 9
+          - link "Next →" [ref=e1666] [cursor=pointer]:
+            - /url: /master?page=2
+  - alert [ref=e1667]

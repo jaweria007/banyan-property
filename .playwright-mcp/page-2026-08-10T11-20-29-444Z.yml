@@ -1,0 +1,181 @@
+- generic [active] [ref=f13e1]:
+  - generic [ref=f13e2]:
+    - complementary [ref=f13e3]:
+      - generic [ref=f13e4]:
+        - text: 🌳 Banyan
+        - generic [ref=f13e5]: Listings Dashboard
+      - navigation [ref=f13e6]:
+        - link "🏠 Overview" [ref=f13e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f13e8]: 🏠
+          - generic [ref=f13e9]: Overview
+        - generic [ref=f13e10]:
+          - generic [ref=f13e11]: 🏠 Listings
+          - generic [ref=f13e12]:
+            - link "Overview" [ref=f13e13] [cursor=pointer]:
+              - /url: /master
+            - link "Availability" [ref=f13e15] [cursor=pointer]:
+              - /url: /master/availability
+            - link "Supply Overview" [ref=f13e17] [cursor=pointer]:
+              - /url: /master/supply
+        - generic [ref=f13e19]:
+          - generic [ref=f13e20]: 💼 Sales
+          - generic [ref=f13e21]:
+            - link "Client Inbox" [ref=f13e22] [cursor=pointer]:
+              - /url: /sales
+            - link "Opportunities" [ref=f13e24] [cursor=pointer]:
+              - /url: /opportunities
+        - link "🤝 Relationships" [ref=f13e26] [cursor=pointer]:
+          - /url: /relationships
+          - generic [ref=f13e27]: 🤝
+          - generic [ref=f13e28]: Relationships
+        - link "✅ My Work" [ref=f13e29] [cursor=pointer]:
+          - /url: /tasks
+          - generic [ref=f13e30]: ✅
+          - generic [ref=f13e31]: My Work
+        - generic [ref=f13e32]:
+          - generic [ref=f13e33]: 📢 Marketing
+          - generic [ref=f13e34]:
+            - link "🖥️ Monitors 4" [ref=f13e35] [cursor=pointer]:
+              - /url: /marketing?section=monitors
+              - generic [ref=f13e36]: 🖥️ Monitors
+              - generic "4 waiting for review" [ref=f13e37]: "4"
+            - link "🚀 Promotion" [ref=f13e38] [cursor=pointer]:
+              - /url: /marketing?section=promotion
+            - link "🔍 Blog & SEO" [ref=f13e40] [cursor=pointer]:
+              - /url: /marketing?section=blogseo
+        - link "🧭 Navigation" [ref=f13e42] [cursor=pointer]:
+          - /url: /nav
+          - generic [ref=f13e43]: 🧭
+          - generic [ref=f13e44]: Navigation
+        - link "⚙️ Site settings" [ref=f13e45] [cursor=pointer]:
+          - /url: /settings
+          - generic [ref=f13e46]: ⚙️
+          - generic [ref=f13e47]: Site settings
+      - generic [ref=f13e48]:
+        - button "Sign out" [ref=f13e49] [cursor=pointer]
+        - generic [ref=f13e50]: Staging DB copy — production data is untouched.
+    - main [ref=f13e51]:
+      - generic [ref=f13e52]:
+        - heading "Marketing · Promotion" [level=1] [ref=f13e53]:
+          - text: Marketing
+          - generic [ref=f13e54]: · Promotion
+        - paragraph [ref=f13e55]: Outbound — campaign broadcasts paced across your channels.
+        - generic [ref=f13e56]:
+          - link "🖥️ Monitors" [ref=f13e57] [cursor=pointer]:
+            - /url: /marketing?section=monitors
+          - link "🚀 Promotion" [ref=f13e58] [cursor=pointer]:
+            - /url: /marketing?section=promotion
+          - link "🔍 Blog & SEO" [ref=f13e59] [cursor=pointer]:
+            - /url: /marketing?section=blogseo
+        - generic [ref=f13e60]:
+          - link "Campaigns" [ref=f13e61] [cursor=pointer]:
+            - /url: /marketing?section=promotion&tab=campaigns
+          - link "Channels" [ref=f13e62] [cursor=pointer]:
+            - /url: /marketing?section=promotion&tab=channels
+        - generic [ref=f13e63]:
+          - generic [ref=f13e65]:
+            - heading "New campaign" [level=2] [ref=f13e66]
+            - generic [ref=f13e67]:
+              - generic [ref=f13e68]:
+                - generic [ref=f13e69]: Name
+                - textbox [ref=f13e70]
+              - generic [ref=f13e71]:
+                - generic [ref=f13e72]: Bucket
+                - textbox "e.g. Villas" [ref=f13e73]
+              - generic [ref=f13e74]:
+                - generic [ref=f13e75]: Week number (1–8)
+                - combobox [ref=f13e76]:
+                  - option "—" [selected]
+                  - option "1"
+                  - option "2"
+                  - option "3"
+                  - option "4"
+                  - option "5"
+                  - option "6"
+                  - option "7"
+                  - option "8"
+              - generic [ref=f13e77]:
+                - generic [ref=f13e78]: Reference listing (optional)
+                - combobox [ref=f13e79]:
+                  - option "—" [selected]
+                  - option "BUY-1241 · ** 1 Bedroom exclusive Villa**"
+                  - option "BUY-1212 · ** 2 Bedroom Off Plan Boutique Villa in Sayan**"
+                  - option "BUY-1177 · ** 3-Bedroom Tropical Villa with Private Pool in Peliatan**"
+                  - option "BUY-1186 · ** Brand New 2 Bedroom Villa in Singakerta**"
+                  - option "BUY-1192 · **1 Bedroom Modern Tropical Villa in Bingin**"
+                  - option "BUY-1201 · **1 Bedroom Villa in Uluwatu Walking Distance to The Istana**"
+                  - option "BUY-1195 · **1 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)**"
+                  - option "LAND-1280 · **12.25 Are Freehold Land in Petulu – Rare Jungle & River View Pink-Zone Plot Near Central Ubud**"
+                  - option "LAND-1257 · **12.3 are Keliki - 12.3 are Leasehold Land in Keliki with Beautiful Green Views**"
+                  - option "LAND-1272 · **15 are Singakerta Warung Tipat - Flexible 15 Are Land for Leasehold in Singakerta**"
+                  - option "LAND-1267 · **16 Are Freehold Sebatu - 16are Sebatu Freehold Land For Sale**"
+                  - option "LAND-1269 · **18 are Nyuh Kuning - Prime Location Land Opportunity in Nyuh Kuning, Ubud**"
+                  - option "LAND-1259 · **18 are Yellow Zone Land in Sayan**"
+                  - option "LAND-1277 · **2 Are Freehold Commercial Zone Land Just 5 Mins from Central Ubud – Perfect for Villa or Guest House Development**"
+                  - option "BUY-1166 · **2 Bedroom Eco-Retreat in Lodtunduh with Stunning Rice Field Views**"
+                  - option "BUY-1191 · **2 Bedroom luxurious Modern Tropical Villa in Bingin (Ready May 2026)**"
+                  - option "BUY-1193 · **2 Bedroom Modern Tropical Villa in Bingin (off plan) **"
+                  - option "BUY-1206 · **2 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views**"
+                  - option "BUY-1199 · **2 Bedroom Villa Next to Nyang Nyang Beach**"
+                  - option "BUY-1196 · **2 Bedroom Villa with Rooftop Ocean Views in Nunggalan (offplan)**"
+                  - option "BUY-1237 · **2 bedrooms sanctuary in Pejeng**"
+                  - option "BUY-1229 · **2 Story Villa in Nyuh Kuning with 6 years Lease**"
+                  - option "BUY-1252 · **2-Bedroom Pool Villa with Sunrise Yoga Shala — 48-Year Leasehold in Penestanan, Ubud **"
+                  - option "BUY-1184 · **2-Bedroom Villa with Expansive Rice Field Views in Eco Community**"
+                  - option "BUY-1182 · **2-Bedroom Villa with Sunrise Views and Open Living in Eco Community**"
+                  - option "LAND-1262 · **20 are Singakerta (Uma’s Land) - Serene 20are Leasehold in Singakerta**"
+                  - option "LAND-1261 · **24.5 Are Pink Zone Land in Sayan**"
+                  - option "BUY-1221 · **3 Bedroom Ubud River Escape Near Nyuh Kuning **"
+                  - option "BUY-1205 · **3 Bedroom Villa in Bingin area with a Modern Tropical Design**"
+                  - option "LAND-1266 · **3-6 Are Tropical Land in Lodtunduh - 3-6 Are Tropical Leasehold Land in Lodtunduh – Jungle Vibes, Rice Field Views & Central Location**"
+                  - option "BUY-1180 · **3-Bedroom Modern Traditional Villa with Private Pool**"
+                  - option "BUY-1178 · **3-Bedroom Spacious Villa with Private Pool in Peliatan**"
+                  - option "BUY-1179 · **3-Bedroom Traditional Tropical Villa with Private Pool**"
+                  - option "BUY-1254 · **3-Bedroom Villa in Nyuh Kuning, Ubud — Rare Renovation Opportunity with Private Pool & Tropical Garden**"
+                  - option "BUY-1152 · **3-Bedroom Villa in Prime Area of Penestanan - Perfect for Living or Investing **"
+                  - option "BUY-1157 · **3-Bedroom Villa with Rice Field Views in an Eco Community**"
+                  - option "LAND-1268 · **3.30 are Singakerta Cahaya/Ayu - 330m² Prime Tourism-Zoned Land in Serene Singakerta**"
+                  - option "BUY-1236 · **3BR Family Home in Singakerta - 5 mins from Nyuh Kuning**"
+                  - option "LAND-1252 · **4 Are Singakerta - 4 are Land in Central Singakerta**"
+                  - option "BUY-1207 · **4 Bedroom Nusa Penida Luxury Villa with Ocean & Mt Agung Views**"
+                  - option "LAND-1270 · **6 are Sayan (back of water temple / Turner land) - 6 are in Sayan located near a Water Temple**"
+                  - option "LAND-1253 · **6 are Tebongkang Singakerta Freehold - 6 Are Freehold Land in Singakerta – Prime Pink-Zone Plots Just South of Sayan**"
+                  - option "BUY-1156 · **6-Bedroom Estate with 3 Self-Contained Villas in the Heart of Nyuh Kuning**"
+                  - option "LAND-1279 · **7 Are Freehold Land in Petulu – Stunning Ricefield View Pink-Zone Plot Just 15 Mins from Central Ubud**"
+                  - option "LAND-1258 · **7 are Singakerta Ayu Land - 7 are Leasehold Land in Singakerta – Scenic Rice Field Views**"
+                  - option "LAND-1260 · **7 are Singakerta Warung Sate - 7 are Singakerta Along a Small River **"
+                  - option "LAND-1254 · **7.28 are Land with Jungle & River view in Ubud Center Peliatan **"
+                  - option "LAND-1278 · **7.7 Are Leasehold Commercial Mainroad Land in Pengosekan – Prime Business Plot Near Monkey Forest, Just 5 Mins from Central Ubud**"
+                  - option "LAND-1281 · **8 Are Leasehold Pink-Zone Land in Singakerta – Rare Jungle, River & Ricefield View Plot, 25-Year Lease Near Nyuh Kuning & Sayan**"
+                  - option "LAND-1265 · **9 are Singakerta - 9 Are Leasehold Land in Singakerta – Surrounded by Nature**"
+            - generic [ref=f13e81]:
+              - generic [ref=f13e82]: Caption
+              - textbox [ref=f13e83]
+            - generic [ref=f13e85]:
+              - generic [ref=f13e86]: Media image key (clean R2 key)
+              - textbox "e.g. listings/abc/primary.jpg" [ref=f13e87]
+            - generic [ref=f13e88]:
+              - generic [ref=f13e89]: Channels
+              - generic [ref=f13e90]:
+                - generic [ref=f13e91]:
+                  - checkbox "Facebook Page" [ref=f13e92]
+                  - text: Facebook Page
+                - generic [ref=f13e93]:
+                  - checkbox "Instagram" [ref=f13e94]
+                  - text: Instagram
+                - generic [ref=f13e95]:
+                  - checkbox "Telegram" [ref=f13e96]
+                  - text: Telegram
+                - generic [ref=f13e97]:
+                  - checkbox "WhatsApp Groups" [ref=f13e98]
+                  - text: WhatsApp Groups
+                - generic [ref=f13e99]:
+                  - checkbox "Facebook Groups" [ref=f13e100]
+                  - text: Facebook Groups
+                - generic [ref=f13e101]:
+                  - checkbox "TikTok" [ref=f13e102]
+                  - text: TikTok
+            - button "Create campaign" [ref=f13e103] [cursor=pointer]
+          - generic [ref=f13e104]: No campaigns yet.
+  - alert [ref=f13e105]

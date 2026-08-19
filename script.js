@@ -45,13 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    document.querySelectorAll('.nav-toggle').forEach((btn) => {
-      btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-toggle-wrap').forEach((wrap) => {
+      const btn = wrap.querySelector('.nav-toggle');
+      if (btn) {
+        const key = 'banyan_nav_' + (btn.getAttribute('data-label') || wrap.querySelector('a')?.getAttribute('href') || '');
+        if (localStorage.getItem(key) === 'open') {
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+      wrap.addEventListener('click', (e) => {
+        if (e.target.closest('.nav-sub')) return;
+        const btn = wrap.querySelector('.nav-toggle');
+        if (!btn) return;
         const wasOpen = btn.getAttribute('aria-expanded') === 'true';
-        document.querySelectorAll('.nav-toggle').forEach((other) => {
-          if (other !== btn) other.setAttribute('aria-expanded', 'false');
-        });
         btn.setAttribute('aria-expanded', String(!wasOpen));
+        const key = 'banyan_nav_' + (btn.getAttribute('data-label') || wrap.querySelector('a')?.getAttribute('href') || '');
+        try { localStorage.setItem(key, !wasOpen ? 'open' : 'closed'); } catch (e) {}
       });
     });
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banyan · Shortlists — umar</title>
-  <meta name="description" content="Shortlisted properties for the umar opportunity">
+  <title>Banyan · Live Shortlist — umar</title>
+  <meta name="description" content="Live shortlist workspace for the umar opportunity">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -152,10 +152,6 @@
   </div>
 </aside>
 
-
-
-
-
     <div class="main">
       <header class="topbar">
         <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
@@ -170,40 +166,27 @@
         </div>
       </header>
 
-      <main class="content">
+      <main class="content lw-content">
 
-        <section class="page-head">
-          <div>
-            <h1 class="page-title">Shortlists <span class="page-count" id="slCount">13</span></h1>
-            <p class="page-subtitle">
-              Properties shortlisted for this opportunity.
-              <a href="opportunities.html" class="subtle-link">← Back to Opportunities</a>
-            </p>
+        <!-- Page header -->
+        <nav class="lw-crumbs" aria-label="Breadcrumb">
+          <a href="profile.html" class="lw-crumbs__link">&larr; Back to client</a>
+          <span class="lw-crumbs__sep">›</span>
+          <span>Live Shortlists</span>
+          <span class="lw-crumbs__sep">›</span>
+          <b>umar</b>
+        </nav>
+
+        <section class="lw-head">
+          <div class="lw-head__row">
+            <h1 class="lw-title">Banyan Live Shortlists — umar</h1>
+            <span class="lw-status-pill">Shared with client</span>
           </div>
-          <a href="#" class="btn btn-opp-new" id="slShareBtn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
-            Share client link
-          </a>
+          <p class="lw-headmeta">Created 03 Aug 2026 by Admin User &nbsp;•&nbsp; For: umar (Rent) &nbsp;•&nbsp; Budget: up to IDR 35,000,000 / month</p>
         </section>
 
-        <section class="sl-opp card" aria-label="Opportunity">
-          <div class="sl-opp__client">
-            <span class="opp-avatar">U</span>
-            <div>
-              <p class="sl-opp__name">umar</p>
-              <p class="sl-opp__meta">Phone: 123 · Created 03 Aug 2026</p>
-            </div>
-          </div>
-          <div class="sl-opp__chips">
-            <span class="opp-chip opp-chip--manual">manual</span>
-            <span class="opp-chip opp-chip--med">Med</span>
-            <span class="opp-chip opp-chip--new">New</span>
-            <span class="opp-chip opp-chip--unassigned">Unassigned</span>
-          </div>
-          <code class="sl-opp__id">opp_03aa78f3f5e64521a9f579de148d6702</code>
-        </section>
-
-        <section class="sl-selector card" aria-label="Shortlist picker">
+        <!-- Shortlist picker -->
+        <section class="card sl-selector lw-picker" aria-label="Shortlist picker">
           <div class="sl-selector__pills" id="slPills"></div>
           <div class="sl-selector__new">
             <input type="text" id="slNewName" class="sl-input" placeholder="New shortlist name…" aria-label="New shortlist name">
@@ -211,182 +194,768 @@
           </div>
         </section>
 
-        <div class="sl-layout">
+        <!-- Requirements + Curate tools -->
+        <section class="card lw-topcard" aria-label="Requirements and curation">
 
-          <div class="sl-main">
-
-            <section class="sl-card card" aria-label="Filters">
-              <div class="sl-head">
-                <h2 class="sl-title">Filters</h2>
+          <div class="lw-reqs">
+            <div class="lw-sechead">
+              <h2 class="lw-h2"> Filters</h2>
+              <div class="lw-headactions">
+                <button type="button" class="btn btn-primary" id="lwFilterToggle" aria-expanded="true" aria-controls="lwFilterFields">Filter</button>
+                <button type="button" class="btn btn-ghost" id="lwResetBtn">Reset</button>
               </div>
-              <div class="sl-body">
-                <div class="sl-interest" id="slInterest">
-                  <button type="button" class="sl-pill is-active" data-interest="rent">Rent</button>
-                  <button type="button" class="sl-pill" data-interest="buy_villa">Buy Villa</button>
-                  <button type="button" class="sl-pill" data-interest="buy_land">Buy Land</button>
-                  <button type="button" class="sl-pill" data-interest="buy_commercial">Buy Commercial</button>
-                </div>
-                <div class="sl-frow">
-                  <span class="sl-frow__label">Monthly rent (IDR)</span>
+            </div>
+            <p class="lw-support">Define what the client is looking for.</p>
+
+            <div id="lwFilterFields">
+            <div class="lw-field">
+              <label class="lw-label">Purpose</label>
+              <div class="lw-pills" id="slInterest">
+                <button type="button" class="lw-pill" data-interest="all">All</button>
+                <button type="button" class="lw-pill is-active" data-interest="rent">Rent</button>
+                <button type="button" class="lw-pill" data-interest="buy_villa">Buy Villa</button>
+                <button type="button" class="lw-pill" data-interest="buy_land">Buy Land</button>
+                <button type="button" class="lw-pill" data-interest="buy_commercial">Buy Commercial</button>
+              </div>
+            </div>
+
+            <div class="lw-field-grid">
+              <div class="lw-field">
+                <label class="lw-label" for="slMin">Monthly rent (IDR)</label>
+                <div class="lw-duo">
                   <input type="number" id="slMin" class="sl-input" placeholder="Min" aria-label="Minimum rent">
                   <input type="number" id="slMax" class="sl-input" placeholder="Max" aria-label="Maximum rent">
                 </div>
-                <div class="sl-frow">
-                  <input type="search" id="slSearch" class="sl-input sl-input--grow" placeholder="Bedrooms · furnished · pets · move-in" aria-label="Search available listings">
-                  <button type="button" class="btn btn-primary btn-filter" id="slApplyBtn">Apply</button>
-                </div>
-                <div class="sl-curate">
-                  <span class="sl-curate__label">Curate</span>
-                  <button type="button" class="btn btn-ghost">⚙ Add rules matches</button>
-                  <button type="button" class="btn btn-ghost">✨ Add AI suggestions</button>
-                  <button type="button" class="btn btn-ghost">🔀 Sort by AI fit</button>
-                  <p class="sl-curate__note">These write straight to the client's page — there is no draft to review first.</p>
+              </div>
+              <div class="lw-field">
+                <label class="lw-label">Bedrooms</label>
+                <div class="lw-duo">
+                  <input type="number" id="lwBedMin" class="sl-input" placeholder="Min" aria-label="Minimum bedrooms">
+                  <input type="number" id="lwBedMax" class="sl-input" placeholder="Max" aria-label="Maximum bedrooms">
                 </div>
               </div>
-            </section>
-
-            <section class="sl-card card" aria-label="Available listings">
-              <div class="sl-head">
-                <h2 class="sl-title">Available Listings <span class="sl-title__count" id="slAvailCount">50</span></h2>
+              <div class="lw-field">
+                <label class="lw-label" for="slSearch">Search</label>
+                <input type="search" id="slSearch" class="sl-input" placeholder="Bedrooms · furnished · pets · move-in" aria-label="Search available listings">
               </div>
-              <ul class="sl-list" id="slAvailList"></ul>
-              <p class="opp-empty" id="slAvailEmpty" hidden>No available listings match your filters.</p>
-            </section>
+            </div>
+            </div>
 
+            <div class="lw-tools">
+              <div class="lw-sechead">
+                <h2 class="lw-h2 lw-h2--label"> Curate tools</h2>
+                <span class="lw-aibadge">AI-powered</span>
+              </div>
+              <div class="lw-toolrow">
+                <button type="button" class="lw-tool" id="lwRulesBtn">
+                  <span class="lw-tool__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  </span>
+                  <span class="lw-tool__text">
+                    <b>Add rule matches</b>
+                    <small>Add properties matching rules</small>
+                  </span>
+                </button>
+                <button type="button" class="lw-tool" id="lwAiBtn">
+                  <span class="lw-tool__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/></svg>
+                  </span>
+                  <span class="lw-tool__text">
+                    <b>Add AI suggestions</b>
+                    <small>Add AI-recommended properties</small>
+                  </span>
+                </button>
+                <button type="button" class="lw-tool" id="lwFitBtn">
+                  <span class="lw-tool__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v13"/><path d="M4 14l3 3 3-3"/><path d="M17 20V7"/><path d="M14 10l3-3 3 3"/></svg>
+                  </span>
+                  <span class="lw-tool__text">
+                    <b>Sort by AI fit</b>
+                    <small>Best fit for this client first</small>
+                  </span>
+                </button>
+              </div>
+            <p class="lw-writenote">These write straight to the client's page — there is no draft to review first.</p>
+            <div class="lw-tip">Tip: The order in your shortlist is the order shown to the client. <a href="#">Learn more about shortlists</a></div>
+            </div>
+
+            <p class="lw-filterpill" id="lwActiveFilters">5 active filters</p>
           </div>
+        </section>
 
-          <aside class="sidebar" id="sidebar">
-  <div class="brand">
-    <a href="#" class="brand__link" aria-label="Banyan home">
-      <img class="brand__logo" src="public/banyan logo.png" alt="Banyan Properties">
-      <img class="brand__logo-half" src="public/banyan half logo when side bar shrinks.png" alt="Banyan Properties">
-    </a>
-    <button type="button" class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Collapse or expand sidebar">
-      <svg class="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M21 6l-6 6 6 6"/></svg>
-      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M3 6l6 6-6 6"/></svg>
-    </button>
-  </div>
+        <!-- Workspace -->
+        <div class="lw-workspace">
 
-  <div class="side-search">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-    <input type="search" placeholder="Search" aria-label="Search">
-  </div>
+          <!-- 3 · Available listings -->
+          <section class="card lw-card" aria-label="Available listings">
+            <div class="lw-cardhead">
+              <h2 class="lw-h2"> Available Listings (<span id="lwMatchCount">50</span>)</h2>
+              <div class="lw-toggle" role="group" aria-label="View">
+                <button type="button" class="lw-toggle__btn" data-view="grid" aria-pressed="false">Grid</button>
+                <button type="button" class="lw-toggle__btn is-active" data-view="list" aria-pressed="true">List</button>
+              </div>
+            </div>
+            <p class="lw-support">Everything available for this client right now — tap <b>+ Add</b> to put a property on their shortlist.</p>
+            <div class="lw-sortrow">
+              <select id="lwSortSel" class="sl-input lw-sortsel" aria-label="Sort matches">
+                <option value="default">Recommended (as added)</option>
+                <option value="fit">AI fit (high to low)</option>
+                <option value="price-asc">Price ↑ (low to high)</option>
+                <option value="price-desc">Price ↓ (high to low)</option>
+              </select>
+            </div>
+            <ul class="lw-matches is-scroll" id="lwMatchList">
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">2-Bedroom Tropical Villa with Private Pool ΓÇö Nyuh Kuning, Ubud</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 35,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">90<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" disabled>Γ£ô On shortlist</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">2-Story Villa with Garden ΓÇö Nyuh Kuning, Ubud</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 35,500,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">77<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" disabled>Γ£ô On shortlist</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">3 Bedroom Villa with Stunning Rice Field &amp; Sunrise Views in Nyuh Kuning, Ubud</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 18,600,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">88<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" disabled>Γ£ô On shortlist</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">3-Bedroom Eco-Luxury Home in Taman Petanu Eco Neighborhood</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 35,770,028</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">80<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" disabled>Γ£ô On shortlist</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">3-Bedroom Family Villa with Private Pool &amp; Garden - Singakerta, 5 Mins to Nyuh Kuning, Ubud</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 450,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">67<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" disabled>Γ£ô On shortlist</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">4-Bedroom Family Villa Near Green School ΓÇö Pool, Garden &amp; Community Living</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 127,877,851</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">75<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="4-Bedroom Family Villa Near Green School ΓÇö Pool, Garden &amp; Community Living">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">6BR Luxury Villa with Basketball Court, Pool &amp; Rice Field Views ΓÇö Ubud</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 165,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">62<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="6BR Luxury Villa with Basketball Court, Pool &amp; Rice Field Views ΓÇö Ubud">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">A Bright &amp; Contemporary 2-Bedroom Villa in Ubud</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 55,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">72<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="A Bright &amp; Contemporary 2-Bedroom Villa in Ubud">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">A Private 2 bedroom Villa Sanctuary in Pejeng ΓÇö Contemporary Living Amid the Natural Beauty of Bali</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 390,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">96<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="A Private 2 bedroom Villa Sanctuary in Pejeng ΓÇö Contemporary Living Amid the Natural Beauty of Bali">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">A Striking Contemporary Villa with Panoramic Rice Field Views in Abiansemal, Bali</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 66,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">66<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="A Striking Contemporary Villa with Panoramic Rice Field Views in Abiansemal, Bali">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">A Thoughtfully Designed 3-Bedroom Eco Villa in a Private Green Community ΓÇö Sibang, Bali - 3 mins walk from Green School</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 49,183,789</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">68<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="A Thoughtfully Designed 3-Bedroom Eco Villa in a Private Green Community ΓÇö Sibang, Bali - 3 mins walk from Green School">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Affordable 2BR Private Pool Villa in Nyuh Kuning ΓÇô Long Term Rental Family Home</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 19,800,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">76<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Affordable 2BR Private Pool Villa in Nyuh Kuning ΓÇô Long Term Rental Family Home">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Alke Villa</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 35,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">85<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Alke Villa">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Bambu Nest GS</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 89,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">95<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Bambu Nest GS">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Betawi</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 12,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">92<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Betawi">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Blue Swing Villa 1</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 27,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">89<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Blue Swing Villa 1">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Blue Swing Villa 2</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 27,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">90<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Blue Swing Villa 2">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Butterfly Bungalow</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 15,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">94<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Butterfly Bungalow">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Cala Villa</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 12,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">75<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Cala Villa">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Casa Yemi</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 33,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">70<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Casa Yemi">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Casabelle Villa</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 51,866,541</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">94<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Casabelle Villa">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Charming 3-Bedroom Traditional Balinese Villa with Tropical Garden ΓÇö 5 mins from Green School</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 310,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">81<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Charming 3-Bedroom Traditional Balinese Villa with Tropical Garden ΓÇö 5 mins from Green School">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Charming Joglo House with Direct Rice Field Views and Lush Private Garden in Ubud, Bali</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 35,500,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">90<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Charming Joglo House with Direct Rice Field Views and Lush Private Garden in Ubud, Bali">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Charming Villa in Nyuh Kuning ΓÇö 2 Bedrooms + Studio</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 28,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">96<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Charming Villa in Nyuh Kuning ΓÇö 2 Bedrooms + Studio">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Damai Eco Villa</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 18,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">89<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Damai Eco Villa">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Emerald Lotus Villa</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 76,900,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">91<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Emerald Lotus Villa">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Immersive Jungle Retreat with River Views in Nyuh Kuning, Ubud</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 30,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">88<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Immersive Jungle Retreat with River Views in Nyuh Kuning, Ubud">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Jambul Room downstairs 1</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 10,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">71<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Jambul Room downstairs 1">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Jambul Room downstairs 2</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 10,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">72<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Jambul Room downstairs 2">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Jambul Room upstairs</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 9,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">79<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Jambul Room upstairs">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Jasmine Apartment</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 6,500,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">91<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Jasmine Apartment">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Jasmine Eco Villa</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 13,500,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">72<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Jasmine Eco Villa">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Joglo Sunrise Villa</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 20,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">90<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Joglo Sunrise Villa">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Kasa Apartment</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 9,500,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">80<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Kasa Apartment">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Lamitampa 1</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 16,500,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">59<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Lamitampa 1">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Lamitampa 2</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 15,500,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">60<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Lamitampa 2">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Lamitampa 3</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 18,600,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">61<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Lamitampa 3">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Loft New York</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 74,300,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">64<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Loft New York">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Miami Villa</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 134,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">97<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Miami Villa">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Modern 2-Bedroom Villa for Rent in Ubud, Bali ΓÇö Private Pool</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 45,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">62<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Modern 2-Bedroom Villa for Rent in Ubud, Bali ΓÇö Private Pool">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Morning Light House GS</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 112,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">92<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Morning Light House GS">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Nora House</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 15,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">74<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Nora House">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Peaceful Villa Space with Garden Access in the Heart of Nyuh Kuning, Ubud</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 29,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">71<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Peaceful Villa Space with Garden Access in the Heart of Nyuh Kuning, Ubud">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Pengkolan Villa</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 45,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">71<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Pengkolan Villa">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Rejeki 3 ΓÇô Full House</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 22,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">63<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Rejeki 3 ΓÇô Full House">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Rejeki Cozy Studio</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 6,500,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">81<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Rejeki Cozy Studio">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Rumah Baliku</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 17,500,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">63<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Rumah Baliku">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Rumah Gerbang Biru Downstairs</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 22,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">97<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Rumah Gerbang Biru Downstairs">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Rumah Gerbang Biru Upstairs</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 22,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">66<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Rumah Gerbang Biru Upstairs">+ Add</button>
+          </div>
+        </li>
+        <li class="lw-match">
+          <div class="lw-match__thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+          <div class="lw-match__body">
+            <p class="lw-match__name">Rumah Kelusa Asri</p>
+            <p class="lw-match__meta">Ubud ┬╖ IDR 6,000,000</p>
+          </div>
+          <div class="lw-match__side">
+            <span class="lw-score">75<small>AI Fit</small></span>
+          <button type="button" class="lw-addbtn" data-name="Rumah Kelusa Asri">+ Add</button>
+          </div>
+        </li>
+            </ul>
+            <p class="opp-empty lw-matchempty" id="lwMatchEmpty" hidden>No properties match the client's requirements.</p>
+          </section>
 
-  <nav class="nav" aria-label="Main navigation">
-    <a href="index.html" class="nav-item " data-label="Overview">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-      </span>
-      <span class="nav-item__label">Overview</span>
-    </a>
+          <!-- 4 · On this shortlist -->
+          <section class="card lw-card" aria-label="On this shortlist">
+            <div class="lw-cardhead">
+              <h2 class="lw-h2"> On this shortlist</h2>
+              <span class="lw-countpill" id="slOnCount">5 shown to the client</span>
+            </div>
+            <div class="lw-livebadge">✓ Live</div>
+            <p class="lw-support">Drag to change the order shown to the client.</p>
+            <ol class="lw-build" id="slOnList"></ol>
+            <div class="lw-buildfoot">
+              <button type="button" class="btn btn-ghost" id="lwNotesBtn">+ Add notes to client (optional)</button>
+              <a href="https://banyan-oms-staging.umarbilalpersonal.workers.dev/shortlists/shr_08ce91493868fc48e0a7ccbbaceeb28b" target="_blank" rel="noopener" class="btn btn-primary lw-viewclient" id="lwViewAsClient">View as client</a>
+            </div>
+            <textarea id="lwClientNote" class="sl-input lw-clientnote" rows="3" placeholder="A short note the client will see at the top of their page…" hidden></textarea>
+          </section>
 
-    <a href="#" class="nav-item" data-label="My Work">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
-      </span>
-      <span class="nav-item__label">My Work</span>
-    </a>
+          <!-- Right column: share + monitor + favourites -->
+          <aside class="lw-sidecol">
 
-    <a href="#" class="nav-item" data-label="Relationships">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </span>
-      <span class="nav-item__label">Relationships</span>
-    </a>
+            <section class="card lw-card lw-sharecard" aria-label="Share with client">
+              <div class="lw-cardhead">
+                <h2 class="lw-h2"> Share with client</h2>
+                <span class="lw-linkstatus">Link active</span>
+              </div>
+              <label class="lw-label">Client link</label>
+              <div class="lw-linkrow">
+                <div class="lw-linkbox">
+                  <code id="lwShareUrl">https://banyan-oms-staging.umarbilalpersonal.workers.dev/shortlists/shr_08ce91493868fc48e0a7ccbbaceeb28b</code>
+                </div>
+                <div class="lw-linkactions">
+                  <a class="btn btn-primary" href="https://banyan-oms-staging.umarbilalpersonal.workers.dev/shortlists/shr_08ce91493868fc48e0a7ccbbaceeb28b" target="_blank" rel="noopener">Open</a>
+                  <button type="button" class="btn btn-ghost" id="slCopyBtn">Copy link</button>
+                </div>
+              </div>
+              <p class="lw-helptext">One link for this shortlist. Adding or removing a property never changes it, so the client is never sent a second one — only archiving stops it opening. Copying the link or opening it counts as sharing it.</p>
+              <p class="lw-meta2">Last viewed: 21/08/2026, 10:24:51 · time-spent not tracked</p>
+              <a href="#" class="lw-customize">Customize client view</a>
+              <div class="lw-archiverow">
+                <button type="button" class="lw-archivebtn" id="slArchiveBtn">Archive this shortlist</button>
+              </div>
+              <p class="lw-archivenote" id="lwArchiveNote" hidden>The link stops opening. Nothing is deleted.</p>
+            </section>
 
-    <div class="nav-toggle-wrap">
-      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Listings">
-        <span class="nav-item__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-        </span>
-        <span class="nav-item__label">Listings</span>
-        <span class="nav-item__chevron">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </span>
-      </button>
-      <div class="nav-sub">
-        <div class="nav-sub__inner">
-          <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Listings</a>
-          <a href="availability.html" class="nav-sub__link "><span class="nav-dot"></span>Availability</a>
-          <a href="supply.html" class="nav-sub__link "><span class="nav-dot"></span>Supply Overview</a>
-        </div>
-      </div>
-    </div>
+            <section class="card lw-card lw-engagement" aria-label="Monitor engagement">
+              <div class="lw-cardhead">
+                <h2 class="lw-h2"> Monitor engagement</h2>
+              </div>
+              <p class="lw-support">Client engagement</p>
+              <div class="lw-metrics">
+                <div class="lw-metric">
+                  <span class="lw-metric__value">11</span>
+                  <span class="lw-metric__label">Opens</span>
+                </div>
+                <div class="lw-metric">
+                  <span class="lw-metric__value">3</span>
+                  <span class="lw-metric__label">Favourites</span>
+                </div>
+                <div class="lw-metric">
+                  <span class="lw-metric__value">0</span>
+                  <span class="lw-metric__label">Viewing requests</span>
+                </div>
+                <div class="lw-metric">
+                  <span class="lw-metric__value">0</span>
+                  <span class="lw-metric__label">Comments</span>
+                </div>
+              </div>
+              <p class="lw-hiddenline">0 hidden · Last viewed: 21/08/2026, 10:24:51 · time-spent not tracked</p>
+              <div class="lw-norequests">
+                <p><b>No viewing requests yet</b></p>
+                <p>Send a friendly reminder to the client.</p>
+                <button type="button" class="btn btn-ghost" id="lwRemindBtn">Send reminder</button>
+              </div>
+            </section>
 
-    <div class="nav-toggle-wrap">
-      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Sales">
-        <span class="nav-item__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </span>
-        <span class="nav-item__label">Sales</span>
-        <span class="nav-item__chevron">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </span>
-      </button>
-      <div class="nav-sub">
-        <div class="nav-sub__inner">
-          <a href="client-inbox.html" class="nav-sub__link "><span class="nav-dot"></span>Client Inbox</a>
-          <a href="opportunities.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Opportunities</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="nav-toggle-wrap">
-      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Marketing">
-        <span class="nav-item__icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
-        </span>
-        <span class="nav-item__label">Marketing</span>
-        <span class="nav-item__chevron">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-        </span>
-      </button>
-      <div class="nav-sub">
-        <div class="nav-sub__inner">
-          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Monitors<span class="nav-badge">4</span></a>
-          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Promotion</a>
-          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Blog &amp; SEO</a>
-        </div>
-      </div>
-    </div>
-
-    <a href="#" class="nav-item" data-label="Navigation">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z"/></svg>
-      </span>
-      <span class="nav-item__label">Navigation</span>
-    </a>
-
-    <a href="#" class="nav-item" data-label="Site settings">
-      <span class="nav-item__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      </span>
-      <span class="nav-item__label">Site settings</span>
-    </a>
-  </nav>
-
-  <div class="sidebar-foot">
-    <div class="staging-badge">
-      <span class="staging-badge__dot"></span>
-      Staging DB — production data untouched
-    </div>
-    <div class="side-user">
-      <span class="side-user__avatar">A</span>
-      <div class="side-user__info">
-        <p class="side-user__name">Admin User</p>
-        <p class="side-user__email">admin@banyan.com</p>
-      </div>
-    </div>
-    <button type="button" class="signout" id="signOut">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
-      <span class="signout__label">Sign out</span>
-    </button>
-  </div>
-</aside>
-
-
-
-
+            <section class="card lw-card lw-favs" aria-label="Favourites by person">
+              <div class="lw-cardhead">
+                <h2 class="lw-favstitle">Favourites by person</h2>
+              </div>
+              <div class="lw-person">
+                <div class="lw-person__head">
+                  <span class="lw-person__name">Someone (no name given)</span>
+                  <span class="lw-person__tag">self-declared</span>
+                  <span class="lw-person__count">1 ♥</span>
+                </div>
+                <p class="lw-person__item"><span class="sl-fav">♥</span> 2-Story Villa with Garden — Nyuh Kuning, Ubud</p>
+              </div>
+              <div class="lw-person">
+                <div class="lw-person__head">
+                  <span class="lw-person__name">Someone (no name given)</span>
+                  <span class="lw-person__tag">self-declared</span>
+                  <span class="lw-person__count">2 ♥</span>
+                </div>
+                <p class="lw-person__item"><span class="sl-fav">♥</span> 2-Story Villa with Garden — Nyuh Kuning, Ubud</p>
+                <p class="lw-person__item"><span class="sl-fav">♥</span> 3 Bedroom Villa with Stunning Rice Field &amp; Sunrise Views in Nyuh Kuning, Ubud</p>
+              </div>
+            </section>
+          </aside>
 
         </div>
 

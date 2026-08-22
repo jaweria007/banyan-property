@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const page = document.body.dataset.page || 'overview';
 
+  const TRASH_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>';
+
   /* ================= Shared: sidebar ================= */
   const sidebar = document.getElementById('sidebar');
   if (sidebar) {
@@ -790,6 +792,59 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ================= Shortlist pages ================= */
+  const SL_AVAILABLE = [
+    { name: '2-Bedroom Tropical Villa with Private Pool — Nyuh Kuning, Ubud', area: 'Ubud', price: 35000000 },
+    { name: '2-Story Villa with Garden — Nyuh Kuning, Ubud', area: 'Ubud', price: 35500000 },
+    { name: '3 Bedroom Villa with Stunning Rice Field & Sunrise Views in Nyuh Kuning, Ubud', area: 'Ubud', price: 18600000 },
+    { name: '3-Bedroom Eco-Luxury Home in Taman Petanu Eco Neighborhood', area: 'Ubud', price: 35770028 },
+    { name: '3-Bedroom Family Villa with Private Pool & Garden - Singakerta, 5 Mins to Nyuh Kuning, Ubud', area: 'Ubud', price: 450000000 },
+    { name: '4-Bedroom Family Villa Near Green School — Pool, Garden & Community Living', area: 'Ubud', price: 127877851 },
+    { name: '6BR Luxury Villa with Basketball Court, Pool & Rice Field Views — Ubud', area: 'Ubud', price: 165000000 },
+    { name: 'A Bright & Contemporary 2-Bedroom Villa in Ubud', area: 'Ubud', price: 55000000 },
+    { name: 'A Private 2 bedroom Villa Sanctuary in Pejeng — Contemporary Living Amid the Natural Beauty of Bali', area: 'Ubud', price: 390000000 },
+    { name: 'A Striking Contemporary Villa with Panoramic Rice Field Views in Abiansemal, Bali', area: 'Ubud', price: 66000000 },
+    { name: 'A Thoughtfully Designed 3-Bedroom Eco Villa in a Private Green Community — Sibang, Bali - 3 mins walk from Green School', area: 'Ubud', price: 49183789 },
+    { name: 'Affordable 2BR Private Pool Villa in Nyuh Kuning – Long Term Rental Family Home', area: 'Ubud', price: 19800000 },
+    { name: 'Alke Villa', area: 'Ubud', price: 35000000 },
+    { name: 'Bambu Nest GS', area: 'Ubud', price: 89000000 },
+    { name: 'Betawi', area: 'Ubud', price: 12000000 },
+    { name: 'Blue Swing Villa 1', area: 'Ubud', price: 27000000 },
+    { name: 'Blue Swing Villa 2', area: 'Ubud', price: 27000000 },
+    { name: 'Butterfly Bungalow', area: 'Ubud', price: 15000000 },
+    { name: 'Cala Villa', area: 'Ubud', price: 12000000 },
+    { name: 'Casa Yemi', area: 'Ubud', price: 33000000 },
+    { name: 'Casabelle Villa', area: 'Ubud', price: 51866541 },
+    { name: 'Charming 3-Bedroom Traditional Balinese Villa with Tropical Garden — 5 mins from Green School', area: 'Ubud', price: 310000000 },
+    { name: 'Charming Joglo House with Direct Rice Field Views and Lush Private Garden in Ubud, Bali', area: 'Ubud', price: 35500000 },
+    { name: 'Charming Villa in Nyuh Kuning — 2 Bedrooms + Studio', area: 'Ubud', price: 28000000 },
+    { name: 'Damai Eco Villa', area: 'Ubud', price: 18000000 },
+    { name: 'Emerald Lotus Villa', area: 'Ubud', price: 76900000 },
+    { name: 'Immersive Jungle Retreat with River Views in Nyuh Kuning, Ubud', area: 'Ubud', price: 30000000 },
+    { name: 'Jambul Room downstairs 1', area: 'Ubud', price: 10000000 },
+    { name: 'Jambul Room downstairs 2', area: 'Ubud', price: 10000000 },
+    { name: 'Jambul Room upstairs', area: 'Ubud', price: 9000000 },
+    { name: 'Jasmine Apartment', area: 'Ubud', price: 6500000 },
+    { name: 'Jasmine Eco Villa', area: 'Ubud', price: 13500000 },
+    { name: 'Joglo Sunrise Villa', area: 'Ubud', price: 20000000 },
+    { name: 'Kasa Apartment', area: 'Ubud', price: 9500000 },
+    { name: 'Lamitampa 1', area: 'Ubud', price: 16500000 },
+    { name: 'Lamitampa 2', area: 'Ubud', price: 15500000 },
+    { name: 'Lamitampa 3', area: 'Ubud', price: 18600000 },
+    { name: 'Loft New York', area: 'Ubud', price: 74300000 },
+    { name: 'Miami Villa', area: 'Ubud', price: 134000000 },
+    { name: 'Modern 2-Bedroom Villa for Rent in Ubud, Bali — Private Pool', area: 'Ubud', price: 45000000 },
+    { name: 'Morning Light House GS', area: 'Ubud', price: 112000000 },
+    { name: 'Nora House', area: 'Ubud', price: 15000000 },
+    { name: 'Peaceful Villa Space with Garden Access in the Heart of Nyuh Kuning, Ubud', area: 'Ubud', price: 29000000 },
+    { name: 'Pengkolan Villa', area: 'Ubud', price: 45000000 },
+    { name: 'Rejeki 3 – Full House', area: 'Ubud', price: 22000000 },
+    { name: 'Rejeki Cozy Studio', area: 'Ubud', price: 6500000 },
+    { name: 'Rumah Baliku', area: 'Ubud', price: 17500000 },
+    { name: 'Rumah Gerbang Biru Downstairs', area: 'Ubud', price: 22000000 },
+    { name: 'Rumah Gerbang Biru Upstairs', area: 'Ubud', price: 22000000 },
+    { name: 'Rumah Kelusa Asri', area: 'Ubud', price: 6000000 }
+  ];
+
   function initShortlistPage(shortlists, copyPath) {
     const availListEl = document.getElementById('slAvailList');
     const onListEl = document.getElementById('slOnList');
@@ -799,58 +854,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const onCountEl = document.getElementById('slOnCount');
     const pageCountEl = document.getElementById('slCount');
 
-    const AVAILABLE = [
-      { name: '2-Bedroom Tropical Villa with Private Pool — Nyuh Kuning, Ubud', area: 'Ubud', price: 35000000 },
-      { name: '2-Story Villa with Garden — Nyuh Kuning, Ubud', area: 'Ubud', price: 35500000 },
-      { name: '3 Bedroom Villa with Stunning Rice Field & Sunrise Views in Nyuh Kuning, Ubud', area: 'Ubud', price: 18600000 },
-      { name: '3-Bedroom Eco-Luxury Home in Taman Petanu Eco Neighborhood', area: 'Ubud', price: 35770028 },
-      { name: '3-Bedroom Family Villa with Private Pool & Garden - Singakerta, 5 Mins to Nyuh Kuning, Ubud', area: 'Ubud', price: 450000000 },
-      { name: '4-Bedroom Family Villa Near Green School — Pool, Garden & Community Living', area: 'Ubud', price: 127877851 },
-      { name: '6BR Luxury Villa with Basketball Court, Pool & Rice Field Views — Ubud', area: 'Ubud', price: 165000000 },
-      { name: 'A Bright & Contemporary 2-Bedroom Villa in Ubud', area: 'Ubud', price: 55000000 },
-      { name: 'A Private 2 bedroom Villa Sanctuary in Pejeng — Contemporary Living Amid the Natural Beauty of Bali', area: 'Ubud', price: 390000000 },
-      { name: 'A Striking Contemporary Villa with Panoramic Rice Field Views in Abiansemal, Bali', area: 'Ubud', price: 66000000 },
-      { name: 'A Thoughtfully Designed 3-Bedroom Eco Villa in a Private Green Community — Sibang, Bali - 3 mins walk from Green School', area: 'Ubud', price: 49183789 },
-      { name: 'Affordable 2BR Private Pool Villa in Nyuh Kuning – Long Term Rental Family Home', area: 'Ubud', price: 19800000 },
-      { name: 'Alke Villa', area: 'Ubud', price: 35000000 },
-      { name: 'Bambu Nest GS', area: 'Ubud', price: 89000000 },
-      { name: 'Betawi', area: 'Ubud', price: 12000000 },
-      { name: 'Blue Swing Villa 1', area: 'Ubud', price: 27000000 },
-      { name: 'Blue Swing Villa 2', area: 'Ubud', price: 27000000 },
-      { name: 'Butterfly Bungalow', area: 'Ubud', price: 15000000 },
-      { name: 'Cala Villa', area: 'Ubud', price: 12000000 },
-      { name: 'Casa Yemi', area: 'Ubud', price: 33000000 },
-      { name: 'Casabelle Villa', area: 'Ubud', price: 51866541 },
-      { name: 'Charming 3-Bedroom Traditional Balinese Villa with Tropical Garden — 5 mins from Green School', area: 'Ubud', price: 310000000 },
-      { name: 'Charming Joglo House with Direct Rice Field Views and Lush Private Garden in Ubud, Bali', area: 'Ubud', price: 35500000 },
-      { name: 'Charming Villa in Nyuh Kuning — 2 Bedrooms + Studio', area: 'Ubud', price: 28000000 },
-      { name: 'Damai Eco Villa', area: 'Ubud', price: 18000000 },
-      { name: 'Emerald Lotus Villa', area: 'Ubud', price: 76900000 },
-      { name: 'Immersive Jungle Retreat with River Views in Nyuh Kuning, Ubud', area: 'Ubud', price: 30000000 },
-      { name: 'Jambul Room downstairs 1', area: 'Ubud', price: 10000000 },
-      { name: 'Jambul Room downstairs 2', area: 'Ubud', price: 10000000 },
-      { name: 'Jambul Room upstairs', area: 'Ubud', price: 9000000 },
-      { name: 'Jasmine Apartment', area: 'Ubud', price: 6500000 },
-      { name: 'Jasmine Eco Villa', area: 'Ubud', price: 13500000 },
-      { name: 'Joglo Sunrise Villa', area: 'Ubud', price: 20000000 },
-      { name: 'Kasa Apartment', area: 'Ubud', price: 9500000 },
-      { name: 'Lamitampa 1', area: 'Ubud', price: 16500000 },
-      { name: 'Lamitampa 2', area: 'Ubud', price: 15500000 },
-      { name: 'Lamitampa 3', area: 'Ubud', price: 18600000 },
-      { name: 'Loft New York', area: 'Ubud', price: 74300000 },
-      { name: 'Miami Villa', area: 'Ubud', price: 134000000 },
-      { name: 'Modern 2-Bedroom Villa for Rent in Ubud, Bali — Private Pool', area: 'Ubud', price: 45000000 },
-      { name: 'Morning Light House GS', area: 'Ubud', price: 112000000 },
-      { name: 'Nora House', area: 'Ubud', price: 15000000 },
-      { name: 'Peaceful Villa Space with Garden Access in the Heart of Nyuh Kuning, Ubud', area: 'Ubud', price: 29000000 },
-      { name: 'Pengkolan Villa', area: 'Ubud', price: 45000000 },
-      { name: 'Rejeki 3 – Full House', area: 'Ubud', price: 22000000 },
-      { name: 'Rejeki Cozy Studio', area: 'Ubud', price: 6500000 },
-      { name: 'Rumah Baliku', area: 'Ubud', price: 17500000 },
-      { name: 'Rumah Gerbang Biru Downstairs', area: 'Ubud', price: 22000000 },
-      { name: 'Rumah Gerbang Biru Upstairs', area: 'Ubud', price: 22000000 },
-      { name: 'Rumah Kelusa Asri', area: 'Ubud', price: 6000000 }
-    ];
+    const AVAILABLE = SL_AVAILABLE;
 
     const state = { active: Object.keys(shortlists)[0], interest: 'rent', min: '', max: '', query: '' };
 
@@ -927,8 +931,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         availListEl.appendChild(li);
       });
-      availCountEl.textContent = visible;
-      availEmpty.hidden = visible !== 0;
+      if (availCountEl) availCountEl.textContent = visible;
+      if (availEmpty) availEmpty.hidden = visible !== 0;
     }
 
     function renderOnList() {
@@ -971,7 +975,7 @@ document.addEventListener('DOMContentLoaded', () => {
         remove.type = 'button';
         remove.className = 'sl-remove';
         remove.setAttribute('aria-label', 'Remove');
-        remove.textContent = '✕';
+        remove.innerHTML = TRASH_ICON;
         ctrl.append(up, down, remove);
         top.append(name, ctrl);
 
@@ -988,8 +992,8 @@ document.addEventListener('DOMContentLoaded', () => {
         li.append(top, meta, note);
         onListEl.appendChild(li);
       });
-      onCountEl.textContent = items.length + ' shown to the client';
-      pageCountEl.textContent = items.length;
+      if (onCountEl) onCountEl.textContent = items.length + ' shown to the client';
+      if (pageCountEl) pageCountEl.textContent = items.length;
     }
 
     function renderAll() {
@@ -998,14 +1002,14 @@ document.addEventListener('DOMContentLoaded', () => {
       renderOnList();
     }
 
-    pillsEl.addEventListener('click', (ev) => {
+    pillsEl && pillsEl.addEventListener('click', (ev) => {
       const pill = ev.target.closest('.sl-pill');
       if (!pill) return;
       state.active = pill.dataset.sl;
       renderAll();
     });
 
-    availListEl.addEventListener('click', (ev) => {
+    availListEl && availListEl.addEventListener('click', (ev) => {
       const btn = ev.target.closest('.sl-add');
       if (!btn) return;
       const li = ev.target.closest('.sl-item');
@@ -1014,7 +1018,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderAll();
     });
 
-    onListEl.addEventListener('click', (ev) => {
+    onListEl && onListEl.addEventListener('click', (ev) => {
       const move = ev.target.closest('.sl-move');
       const remove = ev.target.closest('.sl-remove');
       const items = activeList();
@@ -1046,18 +1050,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const slSearch = document.getElementById('slSearch');
-    slSearch.addEventListener('input', () => {
+    slSearch && slSearch.addEventListener('input', () => {
       state.query = slSearch.value.trim().toLowerCase();
       renderAvail();
     });
 
-    document.getElementById('slApplyBtn').addEventListener('click', () => {
+    const slApplyBtn = document.getElementById('slApplyBtn');
+    slApplyBtn && slApplyBtn.addEventListener('click', () => {
       state.min = document.getElementById('slMin').value;
       state.max = document.getElementById('slMax').value;
       renderAvail();
     });
 
-    document.getElementById('slNewBtn').addEventListener('click', () => {
+    const slNewBtn = document.getElementById('slNewBtn');
+    slNewBtn && slNewBtn.addEventListener('click', () => {
       const nameInput = document.getElementById('slNewName');
       const name = nameInput.value.trim() || 'New shortlist';
       const id = 'shl_' + Math.random().toString(36).slice(2, 12);
@@ -1067,7 +1073,8 @@ document.addEventListener('DOMContentLoaded', () => {
       renderAll();
     });
 
-    document.getElementById('slRenameBtn').addEventListener('click', () => {
+    const slRenameBtn = document.getElementById('slRenameBtn');
+    slRenameBtn && slRenameBtn.addEventListener('click', () => {
       const input = document.getElementById('slRenameInput');
       const name = input.value.trim();
       if (!name) return;
@@ -1078,6 +1085,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const copyLink = () => {
       const btn = document.getElementById('slCopyBtn');
+      if (!btn) return;
       const fallback = () => {
         btn.textContent = 'Copied!';
         setTimeout(() => { btn.textContent = 'Copy link'; }, 1500);
@@ -1089,13 +1097,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    document.getElementById('slCopyBtn').addEventListener('click', copyLink);
-    document.getElementById('slShareBtn').addEventListener('click', (ev) => {
+    const slCopyBtn = document.getElementById('slCopyBtn');
+    slCopyBtn && slCopyBtn.addEventListener('click', copyLink);
+    const slShareBtn = document.getElementById('slShareBtn');
+    slShareBtn && slShareBtn.addEventListener('click', (ev) => {
       ev.preventDefault();
       copyLink();
     });
 
-    document.getElementById('slArchiveBtn').addEventListener('click', (ev) => {
+    const slArchiveBtn = document.getElementById('slArchiveBtn');
+    slArchiveBtn && slArchiveBtn.addEventListener('click', (ev) => {
       const btn = ev.currentTarget;
       btn.textContent = 'Archived';
       btn.classList.add('is-archived');
@@ -1204,8 +1215,556 @@ document.addEventListener('DOMContentLoaded', () => {
     renderPills();
   }
 
+  /* ================= Live Shortlist workspace (shortlist.html) ================= */
+  function initLiveShortlist() {
+    const SHARE_URL = 'https://banyan-oms-staging.umarbilalpersonal.workers.dev/shortlists/shr_08ce91493868fc48e0a7ccbbaceeb28b';
+
+    const matchListEl = document.getElementById('lwMatchList');
+    const matchEmpty = document.getElementById('lwMatchEmpty');
+    const matchCountEl = document.getElementById('lwMatchCount');
+    const sortSel = document.getElementById('lwSortSel');
+    const onListEl = document.getElementById('slOnList');
+    const onCountEl = document.getElementById('slOnCount');
+    const pillsEl = document.getElementById('slPills');
+
+    const shortlists = {
+      'shl_9516005c5b3549fd': {
+        name: 'test',
+        live: true,
+        items: [
+          { name: '2-Bedroom Tropical Villa with Private Pool — Nyuh Kuning, Ubud', area: 'Ubud', price: 35000000 },
+          { name: '2-Story Villa with Garden — Nyuh Kuning, Ubud', area: 'Ubud', price: 35500000, fav: true },
+          { name: '3 Bedroom Villa with Stunning Rice Field & Sunrise Views in Nyuh Kuning, Ubud', area: 'Ubud', price: 18600000, fav: true },
+          { name: '3-Bedroom Family Villa with Private Pool & Garden - Singakerta, 5 Mins to Nyuh Kuning, Ubud', area: 'Ubud', price: 450000000 },
+          { name: '3-Bedroom Eco-Luxury Home in Taman Petanu Eco Neighborhood', area: 'Ubud', price: 35770028 }
+        ]
+      }
+    };
+
+    const state = {
+      active: Object.keys(shortlists)[0],
+      interest: 'rent',
+      min: '',
+      max: '',
+      bedMin: '',
+      bedMax: '',
+      query: '',
+      sort: 'default',
+      view: 'list'
+    };
+
+    function activeItems() {
+      return shortlists[state.active].items;
+    }
+
+    function inShortlist(name) {
+      return activeItems().some((it) => it.name === name);
+    }
+
+    function aiScore(name) {
+      let h = 0;
+      for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
+      return 58 + (h % 40);
+    }
+
+    function fmtPrice(v) {
+      return 'IDR ' + Number(v).toLocaleString('en-US');
+    }
+
+    function bedsOf(name) {
+      const m = name.match(/(\d+)\s*-?\s*(?:bedrooms?|\bbr\b|bed)/i);
+      return m ? Number(m[1]) : null;
+    }
+
+    function filteredMatches() {
+      const list = SL_AVAILABLE.filter((a) => {
+        if (state.interest !== 'all' && state.interest !== 'rent') return false;
+        if (state.min && a.price < Number(state.min)) return false;
+        if (state.max && a.price > Number(state.max)) return false;
+        if (state.bedMin || state.bedMax) {
+          const beds = bedsOf(a.name);
+          if (beds === null) return false;
+          if (state.bedMin && beds < Number(state.bedMin)) return false;
+          if (state.bedMax && beds > Number(state.bedMax)) return false;
+        }
+        if (state.query && a.name.toLowerCase().indexOf(state.query) === -1) return false;
+        return true;
+      });
+      if (state.sort === 'price-asc') list.sort((a, b) => a.price - b.price);
+      else if (state.sort === 'price-desc') list.sort((a, b) => b.price - a.price);
+      else if (state.sort === 'fit') list.sort((a, b) => aiScore(b.name) - aiScore(a.name));
+      return list;
+    }
+
+    function updateFilterCount() {
+      let n = 1;
+      if (state.min) n += 1;
+      if (state.max) n += 1;
+      if (state.bedMin) n += 1;
+      if (state.bedMax) n += 1;
+      if (state.query) n += 1;
+      document.getElementById('lwActiveFilters').textContent = n + ' active filter' + (n === 1 ? '' : 's');
+    }
+
+    function renderPills() {
+      pillsEl.innerHTML = '';
+      Object.keys(shortlists).forEach((id) => {
+        const sl = shortlists[id];
+        const pill = document.createElement('button');
+        pill.type = 'button';
+        pill.className = 'sl-pill' + (id === state.active ? ' is-active' : '');
+        pill.dataset.sl = id;
+        const name = document.createElement('span');
+        name.className = 'sl-pill__name';
+        name.textContent = sl.name;
+        const count = document.createElement('span');
+        count.className = 'sl-pill__count';
+        count.textContent = '· ' + sl.items.length;
+        pill.append(name, count);
+        if (sl.live) {
+          const live = document.createElement('span');
+          live.className = 'sl-live';
+          live.textContent = '✓ Live';
+          pill.appendChild(live);
+        }
+        pillsEl.appendChild(pill);
+      });
+    }
+
+    function renderMatches() {
+      matchListEl.innerHTML = '';
+      const all = filteredMatches();
+
+      all.forEach((a) => {
+        const li = document.createElement('li');
+        li.className = 'lw-match';
+
+        const thumb = document.createElement('div');
+        thumb.className = 'lw-match__thumb';
+        thumb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>';
+
+        const body = document.createElement('div');
+        body.className = 'lw-match__body';
+        const nm = document.createElement('p');
+        nm.className = 'lw-match__name';
+        nm.textContent = a.name;
+        const meta = document.createElement('p');
+        meta.className = 'lw-match__meta';
+        meta.textContent = a.area + ' · ' + fmtPrice(a.price);
+        body.append(nm, meta);
+
+        const side = document.createElement('div');
+        side.className = 'lw-match__side';
+        const sc = document.createElement('span');
+        sc.className = 'lw-score';
+        sc.appendChild(document.createTextNode(String(aiScore(a.name))));
+        const scLbl = document.createElement('small');
+        scLbl.textContent = 'AI Fit';
+        sc.appendChild(scLbl);
+
+        if (inShortlist(a.name)) {
+          const tag = document.createElement('button');
+          tag.type = 'button';
+          tag.className = 'lw-addbtn';
+          tag.disabled = true;
+          tag.textContent = '✓ On shortlist';
+          side.append(sc, tag);
+        } else {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'lw-addbtn';
+          btn.textContent = '+ Add';
+          btn.dataset.name = a.name;
+          side.append(sc, btn);
+        }
+
+        li.append(thumb, body, side);
+        matchListEl.appendChild(li);
+      });
+
+      matchCountEl.textContent = all.length;
+      matchEmpty.hidden = all.length !== 0;
+      matchListEl.classList.toggle('is-grid', state.view === 'grid');
+    }
+
+    function renderOnList() {
+      onListEl.innerHTML = '';
+      const items = activeItems();
+
+      items.forEach((it, i) => {
+        const li = document.createElement('li');
+        li.className = 'lw-builditem';
+        li.draggable = true;
+        li.dataset.name = it.name;
+
+        const top = document.createElement('div');
+        top.className = 'lw-builditem__top';
+
+        const drag = document.createElement('span');
+        drag.className = 'lw-drag';
+        drag.setAttribute('aria-hidden', 'true');
+        drag.title = 'Drag to reorder';
+        drag.innerHTML = '<svg width="10" height="16" viewBox="0 0 10 16" fill="currentColor"><circle cx="2" cy="2" r="1.5"/><circle cx="8" cy="2" r="1.5"/><circle cx="2" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="2" cy="14" r="1.5"/><circle cx="8" cy="14" r="1.5"/></svg>';
+
+        const num = document.createElement('span');
+        num.className = 'lw-num';
+
+        const info = document.createElement('div');
+        info.className = 'lw-builditem__info';
+        const nm = document.createElement('p');
+        nm.className = 'lw-builditem__name';
+        if (it.fav) {
+          const fav = document.createElement('span');
+          fav.className = 'lw-fav';
+          fav.textContent = '♥';
+          nm.appendChild(fav);
+        }
+        nm.appendChild(document.createTextNode(it.name));
+        const meta = document.createElement('p');
+        meta.className = 'lw-builditem__meta';
+        meta.textContent = it.area + ' · ' + fmtPrice(it.price);
+        info.append(nm, meta);
+
+        const ctrl = document.createElement('div');
+        ctrl.className = 'lw-builditem__ctrl';
+        const up = document.createElement('button');
+        up.type = 'button';
+        up.className = 'lw-movebtn';
+        up.dataset.dir = 'up';
+        up.setAttribute('aria-label', 'Move up');
+        up.textContent = '↑';
+        up.disabled = i === 0;
+        const down = document.createElement('button');
+        down.type = 'button';
+        down.className = 'lw-movebtn';
+        down.dataset.dir = 'down';
+        down.setAttribute('aria-label', 'Move down');
+        down.textContent = '↓';
+        down.disabled = i === items.length - 1;
+        const del = document.createElement('button');
+        del.type = 'button';
+        del.className = 'lw-delbtn';
+        del.setAttribute('aria-label', 'Remove from shortlist');
+        del.innerHTML = TRASH_ICON;
+        ctrl.append(up, down, del);
+
+        top.append(drag, num, info, ctrl);
+        li.appendChild(top);
+
+        const noteWrap = document.createElement('div');
+        noteWrap.className = 'lw-note';
+        const note = document.createElement('input');
+        note.type = 'text';
+        note.className = 'sl-input lw-note-input';
+        note.placeholder = 'Internal note (never shown to the client)…';
+        note.setAttribute('aria-label', 'Internal note');
+        note.value = it.note || '';
+        noteWrap.appendChild(note);
+        li.appendChild(noteWrap);
+
+        onListEl.appendChild(li);
+      });
+
+      onCountEl.textContent = items.length + ' shown to the client';
+    }
+
+    function renderAll() {
+      renderPills();
+      renderMatches();
+      renderOnList();
+      updateFilterCount();
+    }
+
+    /* --- Review matches interactions --- */
+    matchListEl.addEventListener('click', (ev) => {
+      const btn = ev.target.closest('.lw-addbtn');
+      if (!btn || btn.disabled) return;
+      const src = SL_AVAILABLE.find((a) => a.name === btn.dataset.name);
+      if (src && !inShortlist(src.name)) {
+        activeItems().unshift({ name: src.name, area: src.area, price: src.price });
+        renderAll();
+      }
+    });
+
+    sortSel.addEventListener('change', () => {
+      state.sort = sortSel.value;
+      renderMatches();
+    });
+
+    document.querySelectorAll('.lw-toggle__btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        state.view = btn.dataset.view;
+        document.querySelectorAll('.lw-toggle__btn').forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', String(active));
+        });
+        renderMatches();
+      });
+    });
+
+    /* --- Build shortlist interactions --- */
+    onListEl.addEventListener('click', (ev) => {
+      const move = ev.target.closest('.lw-movebtn');
+      const del = ev.target.closest('.lw-delbtn');
+      if (!move && !del) return;
+      const li = ev.target.closest('.lw-builditem');
+      if (!li) return;
+      const items = activeItems();
+      const idx = items.findIndex((it) => it.name === li.dataset.name);
+      if (idx === -1) return;
+      if (del) {
+        items.splice(idx, 1);
+      } else {
+        const to = move.dataset.dir === 'up' ? idx - 1 : idx + 1;
+        if (to < 0 || to >= items.length) return;
+        const tmp = items[idx];
+        items[idx] = items[to];
+        items[to] = tmp;
+      }
+      renderAll();
+    });
+
+    onListEl.addEventListener('input', (ev) => {
+      if (!ev.target.classList.contains('lw-note-input')) return;
+      const li = ev.target.closest('.lw-builditem');
+      if (!li) return;
+      const it = activeItems().find((x) => x.name === li.dataset.name);
+      if (it) it.note = ev.target.value;
+    });
+
+    let dragName = null;
+
+    onListEl.addEventListener('dragstart', (ev) => {
+      const li = ev.target.closest('.lw-builditem');
+      if (!li) return;
+      dragName = li.dataset.name;
+      li.classList.add('is-dragging');
+      ev.dataTransfer.effectAllowed = 'move';
+      try { ev.dataTransfer.setData('text/plain', dragName); } catch (e) {}
+    });
+
+    onListEl.addEventListener('dragend', () => {
+      onListEl.querySelectorAll('.lw-builditem').forEach((el) => el.classList.remove('is-dragging', 'is-drop-target'));
+    });
+
+    onListEl.addEventListener('dragover', (ev) => {
+      if (!dragName) return;
+      ev.preventDefault();
+      ev.dataTransfer.dropEffect = 'move';
+      onListEl.querySelectorAll('.lw-builditem').forEach((el) => el.classList.remove('is-drop-target'));
+      const li = ev.target.closest('.lw-builditem');
+      if (li && li.dataset.name !== dragName) li.classList.add('is-drop-target');
+    });
+
+    onListEl.addEventListener('drop', (ev) => {
+      if (!dragName) return;
+      ev.preventDefault();
+      const items = activeItems();
+      const from = items.findIndex((it) => it.name === dragName);
+      if (from === -1) { dragName = null; return; }
+      const li = ev.target.closest('.lw-builditem');
+      let to;
+      if (li && li.dataset.name !== dragName) {
+        const rect = li.getBoundingClientRect();
+        const after = ev.clientY > rect.top + rect.height / 2;
+        to = items.findIndex((it) => it.name === li.dataset.name);
+        if (to === -1) { dragName = null; return; }
+        if (after) to += 1;
+        if (from < to) to -= 1;
+      } else {
+        to = items.length - 1;
+      }
+      if (to === from) { dragName = null; return; }
+      const moved = items.splice(from, 1)[0];
+      items.splice(to, 0, moved);
+      dragName = null;
+      renderAll();
+    });
+
+    const notesBtn = document.getElementById('lwNotesBtn');
+    const clientNote = document.getElementById('lwClientNote');
+    notesBtn.addEventListener('click', () => {
+      clientNote.hidden = !clientNote.hidden;
+      notesBtn.textContent = clientNote.hidden ? '+ Add notes to client (optional)' : '− Hide notes to client';
+      if (!clientNote.hidden) clientNote.focus();
+    });
+
+    /* --- Requirements form --- */
+    document.querySelectorAll('#slInterest .lw-pill').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        document.querySelectorAll('#slInterest .lw-pill').forEach((p) => p.classList.remove('is-active'));
+        pill.classList.add('is-active');
+        state.interest = pill.dataset.interest;
+        renderMatches();
+        updateFilterCount();
+      });
+    });
+
+    const minInput = document.getElementById('slMin');
+    const maxInput = document.getElementById('slMax');
+    const bedMinInput = document.getElementById('lwBedMin');
+    const bedMaxInput = document.getElementById('lwBedMax');
+    const searchInput = document.getElementById('slSearch');
+
+    [minInput, maxInput].forEach((input) => {
+      input.addEventListener('input', () => {
+        state.min = minInput.value;
+        state.max = maxInput.value;
+        renderMatches();
+        updateFilterCount();
+      });
+    });
+
+    [bedMinInput, bedMaxInput].forEach((input) => {
+      input.addEventListener('input', () => {
+        state.bedMin = bedMinInput.value;
+        state.bedMax = bedMaxInput.value;
+        renderMatches();
+        updateFilterCount();
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      state.query = searchInput.value.trim().toLowerCase();
+      renderMatches();
+      updateFilterCount();
+    });
+
+    document.getElementById('lwResetBtn').addEventListener('click', () => {
+      state.interest = 'rent';
+      state.min = '';
+      state.max = '';
+      state.bedMin = '';
+      state.bedMax = '';
+      state.query = '';
+      minInput.value = '';
+      maxInput.value = '';
+      bedMinInput.value = '';
+      bedMaxInput.value = '';
+      searchInput.value = '';
+      document.querySelectorAll('#slInterest .lw-pill').forEach((p) => {
+        p.classList.toggle('is-active', p.dataset.interest === 'rent');
+      });
+      renderMatches();
+      updateFilterCount();
+    });
+
+    const filterFields = document.getElementById('lwFilterFields');
+    const filterToggle = document.getElementById('lwFilterToggle');
+    if (filterFields && filterToggle) {
+      filterToggle.addEventListener('click', () => {
+        const isHidden = filterFields.hasAttribute('hidden');
+        if (isHidden) {
+          filterFields.removeAttribute('hidden');
+        } else {
+          filterFields.setAttribute('hidden', '');
+        }
+        filterToggle.setAttribute('aria-expanded', String(isHidden));
+      });
+    }
+
+    /* --- Curate tools --- */
+    function flashTool(btn, msg) {
+      if (btn.dataset.busy) return;
+      btn.dataset.busy = '1';
+      btn.classList.add('is-busy');
+      const label = btn.querySelector('b');
+      const orig = label.textContent;
+      label.textContent = msg;
+      setTimeout(() => {
+        label.textContent = orig;
+        btn.classList.remove('is-busy');
+        delete btn.dataset.busy;
+      }, 1200);
+    }
+
+    document.getElementById('lwRulesBtn').addEventListener('click', function () {
+      const candidates = SL_AVAILABLE
+        .filter((a) => !inShortlist(a.name))
+        .sort((a, b) => aiScore(b.name) - aiScore(a.name))
+        .slice(0, 3);
+      if (!candidates.length) { flashTool(this, 'No new matches'); return; }
+      candidates.forEach((c) => activeItems().push({ name: c.name, area: c.area, price: c.price }));
+      renderAll();
+      flashTool(this, 'Added ✓');
+    });
+
+    document.getElementById('lwAiBtn').addEventListener('click', function () {
+      const candidates = SL_AVAILABLE
+        .filter((a) => !inShortlist(a.name))
+        .sort((a, b) => aiScore(b.name) - aiScore(a.name))
+        .slice(0, 2);
+      if (!candidates.length) { flashTool(this, 'No new matches'); return; }
+      candidates.forEach((c) => activeItems().push({ name: c.name, area: c.area, price: c.price }));
+      renderAll();
+      flashTool(this, 'Added ✓');
+    });
+
+    document.getElementById('lwFitBtn').addEventListener('click', function () {
+      activeItems().sort((a, b) => aiScore(b.name) - aiScore(a.name));
+      renderAll();
+      flashTool(this, 'Sorted ✓');
+    });
+
+    /* --- Shortlist picker --- */
+    pillsEl.addEventListener('click', (ev) => {
+      const pill = ev.target.closest('.sl-pill');
+      if (!pill) return;
+      state.active = pill.dataset.sl;
+      renderAll();
+    });
+
+    document.getElementById('slNewBtn').addEventListener('click', () => {
+      const nameInput = document.getElementById('slNewName');
+      const name = nameInput.value.trim() || 'New shortlist';
+      const id = 'shl_' + Math.random().toString(36).slice(2, 12);
+      shortlists[id] = { name: name, live: false, items: [] };
+      state.active = id;
+      nameInput.value = '';
+      renderAll();
+    });
+
+    /* --- Share card --- */
+    const copyBtn = document.getElementById('slCopyBtn');
+    copyBtn.addEventListener('click', () => {
+      const fallback = () => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => { copyBtn.textContent = 'Copy link'; }, 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(SHARE_URL).then(fallback, fallback);
+      } else {
+        fallback();
+      }
+    });
+
+    const archiveBtn = document.getElementById('slArchiveBtn');
+    archiveBtn.addEventListener('click', () => {
+      if (!window.confirm('Archive this shortlist? The client link stops opening — nothing is deleted.')) return;
+      archiveBtn.textContent = 'Archived';
+      archiveBtn.disabled = true;
+      document.getElementById('lwArchiveNote').hidden = false;
+      const status = document.querySelector('.lw-linkstatus');
+      if (status) status.textContent = 'Archived';
+    });
+
+    /* --- Engagement --- */
+    const remindBtn = document.getElementById('lwRemindBtn');
+    remindBtn.addEventListener('click', () => {
+      remindBtn.textContent = 'Reminder sent ✓';
+      remindBtn.disabled = true;
+      setTimeout(() => {
+        remindBtn.textContent = 'Send reminder';
+        remindBtn.disabled = false;
+      }, 1800);
+    });
+
+    renderAll();
+  }
+
   if (page === 'shortlist') {
-    initShortlistPage(UMAR_SHORTLISTS, '/shortlists/shr_9516005c5b3549fdfa1dc2b9b8cfa30b');
+    initLiveShortlist();
   }
   if (page === 'shortlist-test') {
     initShortlistPage(TEST_SHORTLISTS, '/shortlists/shr_7f74d07fa982b8e4e8c47526d419cf00');

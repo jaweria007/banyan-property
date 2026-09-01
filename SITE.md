@@ -88,6 +88,51 @@ The page follows the uploaded spec's numbered workflow â€” **Understand req
 
 ## Recent Changes
 
+### Branch `client-feedback-aug26-27` — client UI/UX feedback (26–27 August)
+
+Implemented on a separate branch so the existing build stays untouched. Every page was
+checked at 1440px and 390px: no horizontal overflow, no JS errors.
+
+- **Navigation** (all pages): "Operating System" under the logo; level-1 items in caps.
+  `LISTINGS › Portfolio / Availability / Supply Analysis`, `SALES › Client Inbox /
+  Opportunities`, `RELATIONSHIPS`, `MY WORK`, new `REPORTING` group, `MARKETING ›
+  Scouts / Publishers / Blog / Website Settings`, new `SETTINGS` group. The standalone
+  "Navigation" and "Site settings" items were removed.
+- **Portfolio (listings.html)**: the filter bar can be hidden/shown, and "Filter" became
+  an Advanced Search panel that slides in from the right with nested primary/secondary
+  locations and predefined tag checkboxes.
+- **My Work (my-work.html, new)**: board Inbox → To Do → In Progress → Waiting → Done.
+  Status is the source of truth, so dragging a card changes it. Cards have a border,
+  shadow and hover; the raw record URL became a compact `[Sales]` pill. The list view is
+  four columns with inline editing.
+- **Relationships (relationships.html, new)**: group metrics that double as filters,
+  Card and List views, one card structure everywhere, named metrics instead of icons,
+  the whole card clickable and the WhatsApp number itself the contact action.
+- **Opportunities**: Actions Overview counters (including Triage, which covers the
+  Client Inbox merge), search plus Channel at the top and everything else a sortable
+  column, new Type and Action columns, and a loud Shortlist column (grey Create, green
+  Edit). New Opportunity gained Budget, Target Renter, Target Buyer and Client
+  Requirements.
+- **Opportunity page (profile.html)**: four tabs — Requirements, Shortlist, Contract,
+  History. The permanent Create Task / Log Viewing / Record Offer / Generate Contract
+  buttons became a `[+ Action]` menu, and tasks open in a right-hand modal.
+- **Shortlist Builder (shortlist.html)**: the three-panel layout was replaced by a
+  three-step workflow — Search Criteria → Selection → Shortlist Draft — with saved
+  criteria sets, match counts, "+N NEW" notifications, marketplace-style cards, a
+  permanent "Not for client" exclusion with undo, and a publish flow.
+- **Client shortlist (client-shortlist.html + client-property.html, new)**: mobile
+  first, no OMS sidebar, favourites summary, a message panel that attaches favourites
+  and questions automatically, and a separate property detail page rather than a modal.
+- **Listing detail**: operational and marketing status moved to the top, "reason for
+  closing" moved to the bottom of Content, the assigned agent split into Sales agent /
+  Listing agent / Co-broker, pricing bundled into Property Specs with a calculated IDR
+  price, lease duration calculated from an expiration date, predefined tag fields
+  throughout, Private & Sensitive moved under Location with an Agreed Commission field,
+  and Content / Media / Operations built out.
+- **Consistency**: one 16-step type scale (was 51 near-identical sizes) and one
+  44px form-control height across the app (the Listings page had been shrinking its
+  controls to 36px).
+
 - 2026-08-22 (Share link row made one horizontal line): In the **Share with client** card, the client-link box, the golden **Open** button and the white **Copy link** button now sit **side by side on a single line** (the long URL shortens with "…" so it fits; on narrow screens the buttons wrap below the link box).
 - 2026-08-22 (Dustbin icon replaces cross on shortlist cards): The small **✕ remove button** on every card in the "On this shortlist" list (and on the other shortlists pages) is now a **dustbin/trash icon** instead. Same size, same red hover.
 - 2026-08-22 ("Build shortlist" renamed to "On this shortlist"): The heading of the middle workspace column was renamed from **Build shortlist** to **On this shortlist**.

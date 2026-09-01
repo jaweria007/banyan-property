@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banyan · Live Shortlist — umar</title>
+  <meta name="description" content="Live shortlist workspace for the umar opportunity">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      if (localStorage.getItem('banyan_signed_in') !== '1') {
+        location.replace('login.html');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="shortlist">
+  <div class="app">
+
+    <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
+
+    <aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <a href="index.html" class="brand__link" aria-label="Banyan Operating System">
+      <img class="brand__logo" src="public/banyan logo.png" alt="Banyan Properties">
+      <img class="brand__logo-half" src="public/banyan half logo when side bar shrinks.png" alt="Banyan Properties">
+      <span class="brand__subtitle">Operating System</span>
+    </a>
+    <button type="button" class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Collapse or expand sidebar">
+      <svg class="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M21 6l-6 6 6 6"/></svg>
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M3 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="side-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" placeholder="Search" aria-label="Search">
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-item" data-label="Overview">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </span>
+      <span class="nav-item__label">Overview</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Listings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </span>
+        <span class="nav-item__label">Listings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
+          <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Sales">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </span>
+        <span class="nav-item__label">Sales</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="client-inbox.html" class="nav-sub__link"><span class="nav-dot"></span>Client Inbox</a>
+          <a href="opportunities.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Opportunities</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="relationships.html" class="nav-item" data-label="Relationships">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <span class="nav-item__label">Relationships</span>
+    </a>
+
+    <a href="my-work.html" class="nav-item" data-label="My Work">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span class="nav-item__label">My Work</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Reporting">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </span>
+        <span class="nav-item__label">Reporting</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Growth Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Community Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Marketing">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
+        <span class="nav-item__label">Marketing</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Publishers</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Blog</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Settings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Settings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <span class="nav-item__label">Settings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>User Management</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>OMS Settings</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="staging-badge">
+      <span class="staging-badge__dot"></span>
+      Staging DB — production data untouched
+    </div>
+    <div class="side-user">
+      <span class="side-user__avatar">A</span>
+      <div class="side-user__info">
+        <p class="side-user__name">Admin User</p>
+        <p class="side-user__email">admin@banyan.com</p>
+      </div>
+    </div>
+    <button type="button" class="signout" id="signOut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      <span class="signout__label">Sign out</span>
+    </button>
+  </div>
+</aside>
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+        <div class="topbar__right">
+          <div class="staging-badge staging-badge--light">
+            <span class="staging-badge__dot"></span>
+            Staging
+          </div>
+          <span class="user-chip" title="umarbilalpersonal@gmail.com">UA</span>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <section class="page-head sb-head">
+          <div>
+            <p class="sb-crumb"><a href="opportunities.html">Opportunities</a> › Umar Hassan</p>
+            <h1 class="page-title">Shortlist Builder</h1>
+            <p class="page-subtitle">Define what the client wants, find matching properties, select them, publish.</p>
+          </div>
+
+          <!-- The two things that always matter: what I picked, and what I should review -->
+          <div class="sb-head__meta">
+            <span class="sb-status" id="sbStatus" data-state="draft">Draft</span>
+            <button type="button" class="sb-counter" id="sbCounter" title="Open the shortlist draft">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+              Shortlist <span class="sb-counter__num" id="sbCount">0</span>
+            </button>
+            <button type="button" class="sb-newpill" id="sbNewPill" hidden>
+              <span class="sb-newpill__dot"></span>
+              <span id="sbNewCount">0</span> new matches
+            </button>
+          </div>
+        </section>
+
+        <!-- Search Criteria → Selection → Shortlist Draft -->
+        <nav class="sb-steps" aria-label="Shortlist workflow">
+          <button type="button" class="sb-step is-active" data-step="criteria">
+            <span class="sb-step__num">1</span>
+            <span class="sb-step__label">Search Criteria</span>
+          </button>
+          <button type="button" class="sb-step" data-step="selection">
+            <span class="sb-step__num">2</span>
+            <span class="sb-step__label">Selection</span>
+          </button>
+          <button type="button" class="sb-step" data-step="draft">
+            <span class="sb-step__num">3</span>
+            <span class="sb-step__label">Shortlist Draft</span>
+          </button>
+        </nav>
+
+        <!-- ================= STEP 1 — SEARCH CRITERIA ================= -->
+        <section class="sb-panel" id="stepCriteria" aria-label="Search criteria">
+          <div class="sb-panel__head">
+            <div>
+              <h2 class="sb-h2">Search criteria for Umar</h2>
+              <p class="sb-hint">Save more than one brief — clients often want a stretch option and a safer one.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" id="sbAddCriteria">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Add search criteria
+            </button>
+          </div>
+
+          <div class="sb-criteria-list" id="sbCriteriaList"></div>
+        </section>
+
+        <!-- ================= STEP 2 — SELECTION ================= -->
+        <section class="sb-panel" id="stepSelection" hidden aria-label="Selection">
+          <div class="sb-panel__head">
+            <div>
+              <button type="button" class="sb-back" data-goto="criteria">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                Back to criteria
+              </button>
+              <h2 class="sb-h2" id="sbSelectionTitle">Options for “3BR Ubud Family Home”</h2>
+              <p class="sb-hint"><span id="sbOptionCount">0</span> properties to review. Nothing is added to the shortlist until you choose it.</p>
+            </div>
+          </div>
+
+          <div class="sb-cards" id="sbOptions"></div>
+          <p class="list-empty" id="sbOptionsEmpty" hidden>You have reviewed every option for this search.</p>
+
+          <!-- Rejected properties stay out of this shortlist's future searches -->
+          <details class="sb-rejected" id="sbRejectedWrap" hidden>
+            <summary class="sb-rejected__summary">
+              Not for client · <span id="sbRejectedCount">0</span>
+            </summary>
+            <ul class="sb-rejected__list" id="sbRejectedList"></ul>
+          </details>
+        </section>
+
+        <!-- ================= STEP 3 — SHORTLIST DRAFT ================= -->
+        <section class="sb-panel" id="stepDraft" hidden aria-label="Shortlist draft">
+          <div class="sb-panel__head">
+            <div>
+              <button type="button" class="sb-back" data-goto="selection">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                Back to Selection
+              </button>
+              <h2 class="sb-h2">Shortlist draft</h2>
+              <p class="sb-hint">This is close to what the client will see. Removing returns a property to Selection — it is not rejected.</p>
+            </div>
+          </div>
+
+          <div class="sb-cards" id="sbDraft"></div>
+          <p class="list-empty" id="sbDraftEmpty">Nothing selected yet. Generate options and pick the properties you like.</p>
+
+          <!-- Publish -->
+          <section class="sb-publish" id="sbPublish">
+            <div class="sb-publish__draft" id="sbPublishDraft">
+              <div>
+                <h3 class="sb-h3">Publish shortlist</h3>
+                <p class="sb-hint">The client gets a link — no account needed.</p>
+              </div>
+              <div class="sb-publish__row">
+                <label class="field sb-publish__name">
+                  <span class="field__label">Shortlist name</span>
+                  <input type="text" class="input-field" id="sbName" value="Umar — Ubud Family Homes" placeholder="e.g. Umar — Ubud Family Homes">
+                </label>
+                <button type="button" class="btn btn-primary" id="sbPublishBtn">Publish shortlist</button>
+              </div>
+            </div>
+
+            <div class="sb-publish__live" id="sbPublishLive" hidden>
+              <p class="sb-published">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                Shortlist published
+              </p>
+              <code class="sb-url" id="sbUrl">banyan.properties/s/xxxxx</code>
+              <div class="sb-publish__row">
+                <button type="button" class="btn btn-ghost" id="sbCopy">Copy link</button>
+                <a href="client-shortlist.html" target="_blank" rel="noopener" class="btn btn-primary" id="sbOpen">Open shortlist</a>
+              </div>
+              <p class="sb-hint" id="sbLiveHint">This shortlist is live. Anything you add now appears for the client straight away — the link never changes.</p>
+            </div>
+          </section>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

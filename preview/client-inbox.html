@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banyan · Client Inbox</title>
+  <meta name="description" content="Client proposals, follow-ups and viewing pipeline for Banyan Properties">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      if (localStorage.getItem('banyan_signed_in') !== '1') {
+        location.replace('login.html');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="client-inbox">
+  <div class="app">
+
+    <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
+
+    <aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <a href="index.html" class="brand__link" aria-label="Banyan Operating System">
+      <img class="brand__logo" src="public/banyan logo.png" alt="Banyan Properties">
+      <img class="brand__logo-half" src="public/banyan half logo when side bar shrinks.png" alt="Banyan Properties">
+      <span class="brand__subtitle">Operating System</span>
+    </a>
+    <button type="button" class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Collapse or expand sidebar">
+      <svg class="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M21 6l-6 6 6 6"/></svg>
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M3 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="side-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" placeholder="Search" aria-label="Search">
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-item" data-label="Overview">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </span>
+      <span class="nav-item__label">Overview</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Listings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </span>
+        <span class="nav-item__label">Listings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
+          <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Sales">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </span>
+        <span class="nav-item__label">Sales</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="client-inbox.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Client Inbox</a>
+          <a href="opportunities.html" class="nav-sub__link"><span class="nav-dot"></span>Opportunities</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="relationships.html" class="nav-item" data-label="Relationships">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <span class="nav-item__label">Relationships</span>
+    </a>
+
+    <a href="my-work.html" class="nav-item" data-label="My Work">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span class="nav-item__label">My Work</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Reporting">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </span>
+        <span class="nav-item__label">Reporting</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Growth Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Community Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Marketing">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
+        <span class="nav-item__label">Marketing</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Publishers</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Blog</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Settings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Settings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <span class="nav-item__label">Settings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>User Management</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>OMS Settings</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="staging-badge">
+      <span class="staging-badge__dot"></span>
+      Staging DB — production data untouched
+    </div>
+    <div class="side-user">
+      <span class="side-user__avatar">A</span>
+      <div class="side-user__info">
+        <p class="side-user__name">Admin User</p>
+        <p class="side-user__email">admin@banyan.com</p>
+      </div>
+    </div>
+    <button type="button" class="signout" id="signOut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      <span class="signout__label">Sign out</span>
+    </button>
+  </div>
+</aside>
+
+
+
+
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+        <div class="topbar__right">
+          <div class="staging-badge staging-badge--light">
+            <span class="staging-badge__dot"></span>
+            Staging
+          </div>
+          <span class="user-chip" title="umarbilalpersonal@gmail.com">UA</span>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">Client Inbox <span class="page-count" id="inboxCount">16</span></h1>
+            <p class="page-subtitle">
+              Every client, their journey and what needs attention.
+              <a href="listings.html" class="subtle-link">← Back to Listings</a>
+            </p>
+          </div>
+        </section>
+
+        <section class="inbox-summary" aria-label="Pipeline summary">
+
+          <article class="inbox-card inbox-card--overdue">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+            <div class="inbox-card__num">2</div>
+            <div class="inbox-card__label">Follow-up Overdue</div>
+          </article>
+
+          <article class="inbox-card inbox-card--high">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a1 1 0 0 1 1-1h15l-3.5 4L20 11H5"/></svg>
+            </span>
+            <div class="inbox-card__num">1</div>
+            <div class="inbox-card__label">High Priority</div>
+          </article>
+
+          <article class="inbox-card inbox-card--new">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            </span>
+            <div class="inbox-card__num">12</div>
+            <div class="inbox-card__label">New</div>
+          </article>
+
+          <article class="inbox-card inbox-card--viewing">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+            </span>
+            <div class="inbox-card__num">2</div>
+            <div class="inbox-card__label">Viewing</div>
+          </article>
+
+          <article class="inbox-card inbox-card--shortlist">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <div class="inbox-card__num">1</div>
+            <div class="inbox-card__label">Shortlist Active</div>
+          </article>
+
+        </section>
+
+        <div class="toolbar inbox-toolbar">
+          <label class="search-field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="search" id="inboxSearch" placeholder="Search name, phone, email…" aria-label="Search clients">
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Filter by stage</span>
+            <select class="select-field" id="journeySelect">
+              <option value="all">All stages</option>
+              <option value="New">New</option>
+              <option value="Viewing">Viewing</option>
+              <option value="Contracts">Contracts</option>
+              <option value="Shortlist Active">Shortlist Active</option>
+            </select>
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Filter by interest</span>
+            <select class="select-field" id="interestSelect">
+              <option value="all">All interest</option>
+              <option value="Rent">Rent</option>
+              <option value="Rent, Buy Villa">Rent &amp; Buy Villa</option>
+              <option value="none">No interest</option>
+            </select>
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Filter by objective</span>
+            <select class="select-field" id="objectiveSelect">
+              <option value="all">All objectives</option>
+              <option value="Unsure">Unsure</option>
+              <option value="Find Short-Term Accommodation">Find short-term accommodation</option>
+              <option value="Find Long-Term Home">Find long-term home</option>
+            </select>
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Filter by agent</span>
+            <select class="select-field" id="agentSelect">
+              <option value="all">All agents</option>
+              <option value="kashif">kashif</option>
+              <option value="none">Unassigned</option>
+            </select>
+          </label>
+          <button type="button" class="btn btn-primary btn-filter" id="inboxFilterBtn">Filter</button>
+          <button type="button" class="btn btn-ghost" id="inboxResetBtn">Reset</button>
+        </div>
+
+        <section class="inbox-table" aria-label="Client list">
+          <table class="inbox-table__grid">
+            <thead>
+              <tr>
+                <th scope="col">Client</th>
+                <th scope="col">Journey</th>
+                <th scope="col">Interest</th>
+                <th scope="col">Objective</th>
+                <th scope="col">Agent</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Needs Attention</th>
+              </tr>
+            </thead>
+            <tbody id="inboxBody">
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="Follow-up Overdue" data-query="unnamed">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">—</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td><span class="inbox-chip inbox-chip--status inbox-chip--overdue">Follow-up Overdue</span></td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="Contracts" data-interest="" data-objective="Unsure" data-agent="kashif" data-priority="high" data-attention="Follow-up Overdue" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">Contracts</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td><span class="inbox-chip inbox-chip--agent">kashif</span></td>
+                <td><span class="inbox-chip inbox-chip--high">High priority</span></td>
+                <td><span class="inbox-chip inbox-chip--status inbox-chip--overdue">Follow-up Overdue</span></td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="Viewing" data-interest="Rent" data-objective="Find Short-Term Accommodation" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">Viewing</span></td>
+                <td class="inbox-muted">Rent</td>
+                <td class="inbox-objective">Find Short-Term Accommodation</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="Rent, Buy Villa" data-objective="Find Short-Term Accommodation" data-agent="" data-priority="med" data-attention="" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">Rent, Buy Villa</td>
+                <td class="inbox-objective">Find Short-Term Accommodation</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="Viewing" data-interest="Rent" data-objective="Find Long-Term Home" data-agent="" data-priority="med" data-attention="" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">Viewing</span></td>
+                <td class="inbox-muted">Rent</td>
+                <td class="inbox-objective">Find Long-Term Home</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="Shortlist Active" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">Shortlist Active</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+            </tbody>
+          </table>
+          <p class="inbox-empty" id="inboxEmpty" hidden>No clients match your filters.</p>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

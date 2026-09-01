@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div style="margin-left:272px;padding:30px 28px;background:#fbfaf7;">
+    <div class="toolbar inbox-toolbar">
+      <label class="search-field">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="search" id="inboxSearch" placeholder="Search name, phone, email…" aria-label="Search clients">
+      </label>
+      <label class="select-wrap">
+        <span class="sr-only">Filter by stage</span>
+        <select class="select-field" id="journeySelect">
+          <option value="all">All stages</option>
+          <option value="New">New</option>
+          <option value="Viewing">Viewing</option>
+          <option value="Contracts">Contracts</option>
+          <option value="Shortlist Active">Shortlist Active</option>
+        </select>
+      </label>
+      <label class="select-wrap">
+        <span class="sr-only">Filter by interest</span>
+        <select class="select-field" id="interestSelect">
+          <option value="all">All interest</option>
+          <option value="Rent">Rent</option>
+          <option value="Rent, Buy Villa">Rent &amp; Buy Villa</option>
+          <option value="none">No interest</option>
+        </select>
+      </label>
+      <label class="select-wrap">
+        <span class="sr-only">Filter by objective</span>
+        <select class="select-field" id="objectiveSelect">
+          <option value="all">All objectives</option>
+          <option value="Unsure">Unsure</option>
+          <option value="Find Short-Term Accommodation">Find short-term accommodation</option>
+          <option value="Find Long-Term Home">Find long-term home</option>
+        </select>
+      </label>
+      <label class="select-wrap">
+        <span class="sr-only">Filter by agent</span>
+        <select class="select-field" id="agentSelect">
+          <option value="all">All agents</option>
+          <option value="kashif">kashif</option>
+          <option value="none">Unassigned</option>
+        </select>
+      </label>
+      <button type="button" class="btn btn-primary btn-filter" id="inboxFilterBtn">Filter</button>
+      <button type="button" class="btn btn-ghost" id="inboxResetBtn">Reset</button>
+    </div>
+    <pre id="result">loading…</pre>
+  </div>
+  <script>
+    (function () {
+      var toolbar = document.querySelector('.inbox-toolbar');
+      var items = Array.from(toolbar.children);
+      var tops = items.map(function (el) { return Math.round(el.getBoundingClientRect().top); });
+      var oneRow = tops.every(function (t) { return t === tops[0]; });
+      var rect = toolbar.getBoundingClientRect();
+      var widths = items.map(function (el) {
+        var cs = getComputedStyle(el);
+        return el.tagName.toLowerCase() + '[' + (el.id || '') + '] w=' + Math.round(el.getBoundingClientRect().width) + ' flex=' + cs.flex + ' minw=' + cs.minWidth;
+      }).join(' | ');
+      document.getElementById('result').textContent =
+        'viewport=' + window.innerWidth +
+        ' toolbarWidth=' + Math.round(rect.width) +
+        ' scrollWidth=' + toolbar.scrollWidth +
+        ' overflow=' + (toolbar.scrollWidth > toolbar.clientWidth) +
+        ' oneRow=' + oneRow +
+        '\n' + widths;
+    })();
+  </script>
+</body>
+</html>

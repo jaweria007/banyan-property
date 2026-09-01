@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property — Banyan shortlist</title>
+  <meta name="description" content="Property details from your Banyan Properties shortlist.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cs-page" data-page="client-property">
+
+  <!-- Always visible, mobile and desktop -->
+  <header class="cs-top cs-top--detail">
+    <div class="cs-top__inner">
+      <a href="client-shortlist.html" class="cs-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+        Back to shortlist
+      </a>
+      <img class="cs-logo cs-logo--small" src="public/banyan logo.png" alt="Banyan Properties">
+    </div>
+  </header>
+
+  <main class="cs-main cs-detail">
+
+    <div class="cs-gallery" id="cpGallery">
+      <div class="cs-gallery__main">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>Cover photo</span>
+      </div>
+      <div class="cs-gallery__strip">
+        <span class="cs-gallery__thumb"></span>
+        <span class="cs-gallery__thumb"></span>
+        <span class="cs-gallery__thumb"></span>
+        <span class="cs-gallery__thumb"></span>
+      </div>
+    </div>
+
+    <section class="cs-detail__head">
+      <div>
+        <h1 class="cs-title" id="cpTitle">3-Bedroom Family Villa with Private Pool &amp; Garden</h1>
+        <p class="cs-detail__loc" id="cpLoc">Singakerta, Ubud</p>
+      </div>
+      <p class="cs-detail__price"><span id="cpPrice">IDR 32m</span> <small>/ year</small></p>
+    </section>
+
+    <section class="cs-detail__specs" id="cpSpecs"></section>
+
+    <section class="cs-notes">
+      <article class="cs-note cs-note--like">
+        <h2 class="cs-note__title">Why we like it</h2>
+        <p id="cpLike">A quiet lane five minutes from Nyuh Kuning, with a genuinely private pool and a garden big enough for children to play in. The living area opens fully to the garden, which is rare at this price.</p>
+      </article>
+      <article class="cs-note cs-note--consider">
+        <h2 class="cs-note__title">Things to consider</h2>
+        <p id="cpConsider">The kitchen is semi-outdoor, so it needs a little more cleaning in the wet season. The road in narrows for the last 50 metres — fine for a car, but not two passing at once.</p>
+      </article>
+    </section>
+
+    <section class="cs-detail__block">
+      <h2 class="cs-h2">About this property</h2>
+      <p class="cs-body" id="cpDesc">
+        Set on 750 m² in Singakerta, this three-bedroom villa was built for family living. Each bedroom
+        has its own bathroom and air conditioning, and there is a separate study that works well as a
+        home office. The pool is 8 metres and gets sun from mid-morning through the afternoon.
+      </p>
+    </section>
+
+    <section class="cs-detail__block">
+      <h2 class="cs-h2">Features</h2>
+      <div class="cs-featuregrid" id="cpFeatures"></div>
+    </section>
+
+    <div class="cs-detail__actions">
+      <button type="button" class="btn btn-ghost cs-fav" id="cpFav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+        <span class="cs-fav__label">Favourite</span>
+      </button>
+      <button type="button" class="btn btn-primary" id="cpAsk">Ask a question</button>
+    </div>
+
+    <a href="client-shortlist.html" class="cs-backfoot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+      Back to shortlist
+    </a>
+
+    <footer class="cs-foot">
+      <img class="cs-foot__logo" src="public/banyan half logo when side bar shrinks.png" alt="">
+      <p>Banyan Properties · Ubud, Bali</p>
+    </footer>
+  </main>
+
+  <button class="drawer-backdrop" id="csAskBackdrop" aria-label="Close question" hidden></button>
+  <aside class="drawer cs-drawer" id="csAskPanel" aria-labelledby="csAskTitle" aria-hidden="true">
+    <header class="drawer__head">
+      <h2 class="drawer__title" id="csAskTitle">Ask a question</h2>
+      <button type="button" class="icon-btn drawer__close" id="csAskClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+      </button>
+    </header>
+    <div class="drawer__body">
+      <p class="cs-ask__prop" id="csAskProp"></p>
+      <label class="field">
+        <span class="field__label">Your question</span>
+        <textarea class="input-field input-field--area" id="csAskText" rows="4" placeholder="e.g. Is the pool private?"></textarea>
+      </label>
+    </div>
+    <footer class="drawer__foot">
+      <button type="button" class="btn btn-ghost" id="csAskCancel">Cancel</button>
+      <button type="button" class="btn btn-primary" id="csAskSend">Send question</button>
+    </footer>
+  </aside>
+
+  <div class="cs-toast" id="csToast" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

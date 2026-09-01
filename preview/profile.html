@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banyan · Umar Hassan — Requirements</title>
+  <meta name="description" content="Full profile for the umar opportunity">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      if (localStorage.getItem('banyan_signed_in') !== '1') {
+        location.replace('login.html');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="profile">
+  <div class="app">
+
+    <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
+
+    <aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <a href="index.html" class="brand__link" aria-label="Banyan Operating System">
+      <img class="brand__logo" src="public/banyan logo.png" alt="Banyan Properties">
+      <img class="brand__logo-half" src="public/banyan half logo when side bar shrinks.png" alt="Banyan Properties">
+      <span class="brand__subtitle">Operating System</span>
+    </a>
+    <button type="button" class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Collapse or expand sidebar">
+      <svg class="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M21 6l-6 6 6 6"/></svg>
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M3 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="side-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" placeholder="Search" aria-label="Search">
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-item" data-label="Overview">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </span>
+      <span class="nav-item__label">Overview</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Listings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </span>
+        <span class="nav-item__label">Listings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
+          <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Sales">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </span>
+        <span class="nav-item__label">Sales</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="client-inbox.html" class="nav-sub__link"><span class="nav-dot"></span>Client Inbox</a>
+          <a href="opportunities.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Opportunities</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="relationships.html" class="nav-item" data-label="Relationships">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <span class="nav-item__label">Relationships</span>
+    </a>
+
+    <a href="my-work.html" class="nav-item" data-label="My Work">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span class="nav-item__label">My Work</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Reporting">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </span>
+        <span class="nav-item__label">Reporting</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Growth Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Community Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Marketing">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
+        <span class="nav-item__label">Marketing</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Publishers</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Blog</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Settings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Settings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <span class="nav-item__label">Settings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>User Management</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>OMS Settings</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="staging-badge">
+      <span class="staging-badge__dot"></span>
+      Staging DB — production data untouched
+    </div>
+    <div class="side-user">
+      <span class="side-user__avatar">A</span>
+      <div class="side-user__info">
+        <p class="side-user__name">Admin User</p>
+        <p class="side-user__email">admin@banyan.com</p>
+      </div>
+    </div>
+    <button type="button" class="signout" id="signOut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      <span class="signout__label">Sign out</span>
+    </button>
+  </div>
+</aside>
+
+
+
+
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+        <div class="topbar__right">
+          <div class="staging-badge staging-badge--light">
+            <span class="staging-badge__dot"></span>
+            Staging
+          </div>
+          <span class="user-chip" title="umarbilalpersonal@gmail.com">UA</span>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <!-- Header: who, where they are, who owns it — then the action status -->
+        <section class="op-head">
+          <div class="op-head__main">
+            <p class="sb-crumb"><a href="opportunities.html">Opportunities</a> › Umar Hassan</p>
+            <h1 class="page-title">Umar Hassan</h1>
+            <div class="op-head__facts">
+              <span class="opp-chip opp-chip--stage">In Contact</span>
+              <span class="op-fact"><span class="op-fact__label">Type</span> Villa</span>
+              <span class="op-fact"><span class="op-fact__label">Urgency</span> High</span>
+              <span class="op-fact"><span class="op-fact__label">Agent</span> Ratna</span>
+            </div>
+            <p class="op-actionstatus">
+              <span class="action-dot action-dot--orange"></span>
+              <strong>Needs Action</strong>
+              <span class="field-hint">Follow up after Tuesday's viewing</span>
+            </p>
+          </div>
+
+          <div class="op-head__side">
+            <!-- Contact affordance, not navigation -->
+            <a href="https://wa.me/6285678901234" target="_blank" rel="noopener" class="btn-whatsapp">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+              WhatsApp
+            </a>
+
+            <!-- Everything that used to be a permanent button lives here -->
+            <div class="op-actionmenu">
+              <button type="button" class="btn btn-primary" id="opActionBtn" aria-expanded="false" aria-haspopup="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                Action
+                <svg class="op-actionmenu__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="op-actionmenu__list" id="opActionList" hidden role="menu">
+                <button type="button" role="menuitem" data-action="task">Create task</button>
+                <button type="button" role="menuitem" data-action="viewing">Log viewing</button>
+                <button type="button" role="menuitem" data-action="offer">Record offer</button>
+                <button type="button" role="menuitem" data-action="contract">Generate contract</button>
+                <button type="button" role="menuitem" data-action="waiting">Mark as waiting…</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="op-tabs" role="tablist" aria-label="Opportunity sections">
+          <button type="button" class="op-tab is-active" role="tab" aria-selected="true" data-tab="requirements">Requirements</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-tab="shortlist">Shortlist</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-tab="contract">Contract</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-tab="history">History</button>
+        </nav>
+
+        <!-- ================= REQUIREMENTS ================= -->
+        <section class="op-panel" id="tabRequirements" role="tabpanel">
+
+          <section class="op-block">
+            <h2 class="op-h2">Client</h2>
+            <div class="op-grid">
+              <label class="field"><span class="field__label">Name</span><input type="text" class="input-field" value="Umar Hassan"></label>
+              <label class="field"><span class="field__label">WhatsApp</span><input type="tel" class="input-field" value="+62 856-7890-1234"></label>
+              <label class="field"><span class="field__label">Email</span><input type="email" class="input-field" value="umar@example.com"></label>
+              <label class="field"><span class="field__label">Nationality</span><input type="text" class="input-field" value="Pakistani"></label>
+              <label class="field"><span class="field__label">Channel</span>
+                <select class="select-field"><option>Website</option><option>WhatsApp</option><option>Referral</option><option>Scout</option><option>Walk-in</option></select></label>
+              <label class="field"><span class="field__label">Relationship</span>
+                <input type="text" class="input-field" value="REL-00124" readonly></label>
+            </div>
+          </section>
+
+          <section class="op-block">
+            <h2 class="op-h2">Search brief</h2>
+            <div class="op-grid">
+              <label class="field"><span class="field__label">Primary location</span>
+                <select class="select-field"><option>Ubud</option><option>Canggu</option><option>Uluwatu</option><option>Seminyak</option><option>Sanur</option></select></label>
+              <label class="field"><span class="field__label">Secondary locations</span>
+                <input type="text" class="input-field" value="Nyuh Kuning, Singakerta, Penestanan"></label>
+              <label class="field"><span class="field__label">Bedrooms (minimum)</span><input type="number" class="input-field" value="3"></label>
+              <label class="field"><span class="field__label">Budget</span><input type="text" class="input-field" value="IDR 20m–50m per year"></label>
+              <label class="field"><span class="field__label">Duration</span>
+                <select class="select-field"><option>12 months</option><option>6 months</option><option>3 months</option><option>24 months+</option></select></label>
+              <label class="field"><span class="field__label">Move-in</span><input type="date" class="input-field" value="2026-10-01"></label>
+            </div>
+          </section>
+
+          <section class="op-block">
+            <h2 class="op-h2">Detailed requirements</h2>
+
+            <div class="op-tagblock">
+              <h3 class="sb-h4">Pool</h3>
+              <div class="tagset">
+                <label class="tag-check"><input type="checkbox" checked><span>Large Private Pool (&gt;10m)</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Private Pool (&lt;10m)</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Shared</span></label>
+                <label class="tag-check"><input type="checkbox"><span>None</span></label>
+              </div>
+            </div>
+
+            <div class="op-tagblock">
+              <h3 class="sb-h4">Garden &amp; outdoor</h3>
+              <div class="tagset">
+                <label class="tag-check"><input type="checkbox" checked><span>Private garden</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Shared garden</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Outdoor Fireplace</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Playground &amp; Play Area</span></label>
+              </div>
+            </div>
+
+            <div class="op-tagblock">
+              <h3 class="sb-h4">View</h3>
+              <div class="tagset">
+                <label class="tag-check"><input type="checkbox" checked><span>Rice Field View</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Jungle View</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Ocean View</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Garden View</span></label>
+              </div>
+            </div>
+
+            <div class="op-tagblock">
+              <h3 class="sb-h4">Kitchen &amp; living</h3>
+              <div class="tagset">
+                <label class="tag-check"><input type="checkbox" checked><span>Enclosed Kitchen</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Open Kitchen</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Semi-Open living</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Enclosed living</span></label>
+              </div>
+            </div>
+
+            <div class="op-tagblock">
+              <h3 class="sb-h4">Access &amp; pets</h3>
+              <div class="tagset">
+                <label class="tag-check"><input type="checkbox" checked><span>Car Access</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Motorbike Access</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Pet Friendly</span></label>
+              </div>
+            </div>
+          </section>
+
+          <section class="op-block">
+            <h2 class="op-h2">Notes</h2>
+
+            <div class="op-tagblock">
+              <h3 class="sb-h4">Our assessment — Target Renter</h3>
+              <div class="tagset">
+                <label class="tag-check"><input type="checkbox"><span>Budget Home (10–20m)</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Lifestyle Home (20–35m)</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Premium Home (35–60m)</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Executive Home (60m+)</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Perfect Home (Challenging Requirement)</span></label>
+                <label class="tag-check"><input type="checkbox" checked><span>Fit for Pets</span></label>
+              </div>
+            </div>
+
+            <div class="op-tagblock">
+              <h3 class="sb-h4">Our assessment — Target Buyer</h3>
+              <div class="tagset">
+                <label class="tag-check"><input type="checkbox" checked><span>Family &amp; Lifestyle</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Investor (Passive Income)</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Retiree</span></label>
+                <label class="tag-check"><input type="checkbox"><span>Land Banker</span></label>
+              </div>
+            </div>
+
+            <label class="field">
+              <span class="field__label">Client requirements, in their words</span>
+              <textarea class="input-field input-field--area" rows="3">Wants somewhere the kids can run around, close enough to Nyuh Kuning to walk to the village. Would trade a bedroom for a bigger garden.</textarea>
+            </label>
+
+            <label class="field">
+              <span class="field__label">Team notes</span>
+              <textarea class="input-field input-field--area" rows="3">Decisive once he has seen a place in person — get viewings booked early. Partner is the one to convince on the garden.</textarea>
+            </label>
+          </section>
+        </section>
+
+        <!-- ================= SHORTLIST ================= -->
+        <section class="op-panel" id="tabShortlist" role="tabpanel" hidden>
+
+          <section class="op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="op-h2">Live shortlist</h2>
+                <p class="sb-hint">Umar — Ubud Family Homes · published 28 Aug</p>
+              </div>
+              <div class="op-block__actions">
+                <span class="sb-status" data-state="published">Published</span>
+                <a href="shortlist.html" class="btn btn-ghost">Edit shortlist</a>
+                <a href="client-shortlist.html" target="_blank" rel="noopener" class="btn btn-primary">Open client view</a>
+              </div>
+            </div>
+            <code class="sb-url">banyan.properties/s/k3f9d</code>
+          </section>
+
+          <section class="op-block">
+            <h2 class="op-h2">Client favourites <span class="page-count">3</span></h2>
+            <ul class="op-list">
+              <li class="op-listitem">
+                <div><strong>3-Bedroom Family Villa with Private Pool &amp; Garden</strong><span class="field-hint">Singakerta, Ubud · IDR 32m</span></div>
+                <span class="op-when">Favourited 2 Sep</span>
+              </li>
+              <li class="op-listitem">
+                <div><strong>3-Bedroom Eco-Luxury Home, Taman Petanu</strong><span class="field-hint">Pejeng, Ubud · IDR 36m</span></div>
+                <span class="op-when">Favourited 2 Sep</span>
+              </li>
+              <li class="op-listitem">
+                <div><strong>4-Bedroom Family Villa Near Green School</strong><span class="field-hint">Sibang, Bali · IDR 47m</span></div>
+                <span class="op-when">Favourited 1 Sep</span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="op-block">
+            <h2 class="op-h2">Recommended for this brief</h2>
+            <ul class="op-list">
+              <li class="op-listitem">
+                <div><strong>Alke Villa — Quiet Lane, Walk to Centre</strong><span class="field-hint">Penestanan, Ubud · IDR 35m · matches 6 of 7 criteria</span></div>
+                <div class="op-listitem__actions">
+                  <a href="shortlist.html" class="btn btn-ghost">Add to shortlist</a>
+                  <button type="button" class="btn btn-ghost">Dismiss</button>
+                </div>
+              </li>
+              <li class="op-listitem">
+                <div><strong>Thoughtfully Designed 3BR Eco Villa, Sibang</strong><span class="field-hint">Sibang, Bali · IDR 29m · matches 6 of 7 criteria</span></div>
+                <div class="op-listitem__actions">
+                  <a href="shortlist.html" class="btn btn-ghost">Add to shortlist</a>
+                  <button type="button" class="btn btn-ghost">Dismiss</button>
+                </div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="op-block">
+            <h2 class="op-h2">Viewings</h2>
+            <ul class="op-list">
+              <li class="op-listitem">
+                <div><strong>3-Bedroom Family Villa, Singakerta</strong><span class="field-hint">With Ratna · client attended</span></div>
+                <span class="op-when">26 Aug, 15:30</span>
+              </li>
+              <li class="op-listitem">
+                <div><strong>2-Story Villa with Garden, Nyuh Kuning</strong><span class="field-hint">With Berry · client attended</span></div>
+                <span class="op-when">21 Aug, 10:00</span>
+              </li>
+            </ul>
+          </section>
+
+          <section class="op-block">
+            <h2 class="op-h2">Shortlist activity</h2>
+            <ul class="op-list">
+              <li class="op-listitem"><div><strong>Client asked: “Is the pool private?”</strong><span class="field-hint">3-Bedroom Family Villa, Singakerta</span></div><span class="op-when">2 Sep, 16:35</span></li>
+              <li class="op-listitem"><div><strong>Client opened the shortlist</strong><span class="field-hint">4 properties viewed</span></div><span class="op-when">2 Sep, 16:30</span></li>
+              <li class="op-listitem"><div><strong>Shortlist published</strong><span class="field-hint">5 properties</span></div><span class="op-when">28 Aug, 14:20</span></li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- ================= CONTRACT ================= -->
+        <section class="op-panel" id="tabContract" role="tabpanel" hidden>
+          <section class="op-block">
+            <div class="op-block__head">
+              <h2 class="op-h2">Transaction</h2>
+              <span class="opp-chip opp-chip--stage">Negotiating</span>
+            </div>
+            <div class="op-grid">
+              <label class="field"><span class="field__label">Property</span><input type="text" class="input-field" value="3-Bedroom Family Villa, Singakerta"></label>
+              <label class="field"><span class="field__label">Agreed price</span><input type="text" class="input-field" value="IDR 31,000,000 / year"></label>
+              <label class="field"><span class="field__label">Start date</span><input type="date" class="input-field" value="2026-10-01"></label>
+              <label class="field"><span class="field__label">Term</span><input type="text" class="input-field" value="12 months"></label>
+              <label class="field"><span class="field__label">Deposit</span><input type="text" class="input-field" value="IDR 5,000,000"></label>
+              <label class="field"><span class="field__label">Agreed commission</span><input type="text" class="input-field" value="8%"></label>
+            </div>
+          </section>
+
+          <section class="op-block">
+            <h2 class="op-h2">Contracts</h2>
+            <ul class="op-list">
+              <li class="op-listitem">
+                <div><strong>Rental agreement — draft v2</strong><span class="field-hint">Sent to client 30 Aug · awaiting signature</span></div>
+                <div class="op-listitem__actions"><a href="#" class="btn btn-ghost">Open</a></div>
+              </li>
+              <li class="op-listitem">
+                <div><strong>Booking form</strong><span class="field-hint">Signed 28 Aug</span></div>
+                <div class="op-listitem__actions"><a href="#" class="btn btn-ghost">Open</a></div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="op-block">
+            <h2 class="op-h2">Offers</h2>
+            <ul class="op-list">
+              <li class="op-listitem"><div><strong>IDR 31,000,000 / year</strong><span class="field-hint">Accepted by owner</span></div><span class="op-when">29 Aug</span></li>
+              <li class="op-listitem"><div><strong>IDR 29,000,000 / year</strong><span class="field-hint">Declined — owner countered at 32m</span></div><span class="op-when">27 Aug</span></li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- ================= HISTORY ================= -->
+        <!-- The place to answer "what happened with this lead?" -->
+        <section class="op-panel" id="tabHistory" role="tabpanel" hidden>
+          <section class="op-block">
+            <h2 class="op-h2">History</h2>
+            <ol class="op-timeline">
+              <li class="op-tl"><span class="op-tl__when">03 Sep · 10:21</span><span class="op-tl__who">Ratna</span><p class="op-tl__what">Reviewed 5 new matches</p></li>
+              <li class="op-tl"><span class="op-tl__when">02 Sep · 16:35</span><span class="op-tl__who op-tl__who--client">Client</span><p class="op-tl__what">Asked: “Is the pool private?”</p></li>
+              <li class="op-tl"><span class="op-tl__when">02 Sep · 16:32</span><span class="op-tl__who op-tl__who--client">Client</span><p class="op-tl__what">Favourited “3BR Villa — Nyuh Kuning”</p></li>
+              <li class="op-tl"><span class="op-tl__when">01 Sep · 09:15</span><span class="op-tl__who">Ratna</span><p class="op-tl__what">Added Villa A to shortlist</p></li>
+              <li class="op-tl"><span class="op-tl__when">29 Aug · 11:40</span><span class="op-tl__who">Ratna</span><p class="op-tl__what">Offer recorded — IDR 31m accepted by owner</p></li>
+              <li class="op-tl"><span class="op-tl__when">28 Aug · 14:20</span><span class="op-tl__who op-tl__who--system">System</span><p class="op-tl__what">Shortlist published</p></li>
+              <li class="op-tl"><span class="op-tl__when">27 Aug · 11:00</span><span class="op-tl__who">Ratna</span><p class="op-tl__what">Search “3BR Ubud Family Home” generated — 12 matches</p></li>
+              <li class="op-tl"><span class="op-tl__when">26 Aug · 15:30</span><span class="op-tl__who">Ratna</span><p class="op-tl__what">Viewing logged — 3-Bedroom Family Villa, Singakerta</p></li>
+              <li class="op-tl"><span class="op-tl__when">21 Aug · 10:00</span><span class="op-tl__who">Berry</span><p class="op-tl__what">Viewing logged — 2-Story Villa with Garden</p></li>
+              <li class="op-tl"><span class="op-tl__when">18 Aug · 09:02</span><span class="op-tl__who op-tl__who--system">System</span><p class="op-tl__what">Stage changed New → In Contact</p></li>
+              <li class="op-tl"><span class="op-tl__when">17 Aug · 18:44</span><span class="op-tl__who op-tl__who--system">System</span><p class="op-tl__what">Opportunity created from Website enquiry</p></li>
+            </ol>
+          </section>
+        </section>
+
+      </main>
+
+      <!-- Tasks are a layer across the Opportunity, not a tab -->
+      <button class="drawer-backdrop" id="opTaskBackdrop" aria-label="Close" hidden></button>
+      <aside class="drawer" id="opTaskDrawer" aria-labelledby="opTaskTitle" aria-hidden="true">
+        <header class="drawer__head">
+          <h2 class="drawer__title" id="opTaskTitle">Create task</h2>
+          <button type="button" class="icon-btn drawer__close" id="opTaskClose" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+          </button>
+        </header>
+        <div class="drawer__body" id="opTaskBody">
+          <label class="field">
+            <span class="field__label">Task Description</span>
+            <textarea class="input-field input-field--area" id="opTaskDesc" rows="3" placeholder="Follow up with Umar after viewing"></textarea>
+          </label>
+          <div class="drawer-row drawer-row--2">
+            <label class="field"><span class="field__label">Status</span>
+              <select class="select-field"><option>Inbox</option><option selected>To Do</option><option>In Progress</option><option>Waiting</option><option>Done</option></select></label>
+            <label class="field"><span class="field__label">Assignee</span>
+              <select class="select-field"><option>Ratna</option><option>Berry</option><option>Andries</option><option>Kashif</option><option>Unassigned</option></select></label>
+          </div>
+          <label class="field"><span class="field__label">Due date</span><input type="date" class="input-field"></label>
+          <p class="field-hint">Linked to <strong>Umar Hassan</strong> · this task appears in My Work and drives the Action status.</p>
+        </div>
+        <footer class="drawer__foot">
+          <button type="button" class="btn btn-ghost" id="opTaskCancel">Cancel</button>
+          <button type="button" class="btn btn-primary" id="opTaskSave">Create task</button>
+        </footer>
+      </aside>
+
+      <div class="cs-toast" id="opToast" hidden></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

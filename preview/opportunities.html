@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banyan · Opportunities</title>
+  <meta name="description" content="Every lead, contact and deal across the Banyan sales pipeline">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      if (localStorage.getItem('banyan_signed_in') !== '1') {
+        location.replace('login.html');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="opportunities">
+  <div class="app">
+
+    <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
+
+    <aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <a href="index.html" class="brand__link" aria-label="Banyan Operating System">
+      <img class="brand__logo" src="public/banyan logo.png" alt="Banyan Properties">
+      <img class="brand__logo-half" src="public/banyan half logo when side bar shrinks.png" alt="Banyan Properties">
+      <span class="brand__subtitle">Operating System</span>
+    </a>
+    <button type="button" class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Collapse or expand sidebar">
+      <svg class="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M21 6l-6 6 6 6"/></svg>
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M3 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="side-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" placeholder="Search" aria-label="Search">
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-item" data-label="Overview">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </span>
+      <span class="nav-item__label">Overview</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Listings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </span>
+        <span class="nav-item__label">Listings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
+          <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Sales">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </span>
+        <span class="nav-item__label">Sales</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="client-inbox.html" class="nav-sub__link"><span class="nav-dot"></span>Client Inbox</a>
+          <a href="opportunities.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Opportunities</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="relationships.html" class="nav-item" data-label="Relationships">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <span class="nav-item__label">Relationships</span>
+    </a>
+
+    <a href="my-work.html" class="nav-item" data-label="My Work">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span class="nav-item__label">My Work</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Reporting">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </span>
+        <span class="nav-item__label">Reporting</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Growth Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Community Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Marketing">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
+        <span class="nav-item__label">Marketing</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Publishers</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Blog</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Settings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Settings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <span class="nav-item__label">Settings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>User Management</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>OMS Settings</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="staging-badge">
+      <span class="staging-badge__dot"></span>
+      Staging DB — production data untouched
+    </div>
+    <div class="side-user">
+      <span class="side-user__avatar">A</span>
+      <div class="side-user__info">
+        <p class="side-user__name">Admin User</p>
+        <p class="side-user__email">admin@banyan.com</p>
+      </div>
+    </div>
+    <button type="button" class="signout" id="signOut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      <span class="signout__label">Sign out</span>
+    </button>
+  </div>
+</aside>
+
+
+
+
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+        <div class="topbar__right">
+          <div class="staging-badge staging-badge--light">
+            <span class="staging-badge__dot"></span>
+            Staging
+          </div>
+          <span class="user-chip" title="umarbilalpersonal@gmail.com">UA</span>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">Opportunities <span class="page-count" id="oppCount">16</span></h1>
+            <p class="page-subtitle">Every lead, contact and deal across your pipeline.</p>
+          </div>
+          <div class="page-head__actions">
+            <a href="#" class="btn btn-primary" id="newOppBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              New Opportunity
+            </a>
+          </div>
+        </section>
+
+        <!-- Actions Overview — the visual guide the team works from.
+             Statuses are derived from the tasks linked to each Opportunity. -->
+        <section class="queue-stats" aria-label="Actions overview">
+          <button type="button" class="queue-stat is-active" data-action="all">
+            <span class="queue-stat__value">16</span>
+            <span class="queue-stat__label">All</span>
+          </button>
+          <button type="button" class="queue-stat" data-action="needs">
+            <span class="queue-stat__value queue-stat__value--amber">5</span>
+            <span class="queue-stat__label"><span class="action-dot action-dot--orange"></span>Needs Action</span>
+          </button>
+          <button type="button" class="queue-stat" data-action="waiting">
+            <span class="queue-stat__value queue-stat__value--green">4</span>
+            <span class="queue-stat__label"><span class="action-dot action-dot--green"></span>Waiting</span>
+          </button>
+          <button type="button" class="queue-stat" data-action="overdue">
+            <span class="queue-stat__value queue-stat__value--red">3</span>
+            <span class="queue-stat__label"><span class="action-dot action-dot--red"></span>Overdue</span>
+          </button>
+          <button type="button" class="queue-stat" data-action="triage">
+            <span class="queue-stat__value queue-stat__value--amber">2</span>
+            <span class="queue-stat__label"><span class="action-dot action-dot--yellow"></span>Triage</span>
+          </button>
+          <button type="button" class="queue-stat" data-action="none">
+            <span class="queue-stat__value">2</span>
+            <span class="queue-stat__label"><span class="action-dot action-dot--none"></span>No Action</span>
+          </button>
+        </section>
+
+        <!-- Only search + Channel remain up here; everything else is now a sortable column -->
+        <div class="work-bar">
+          <label class="search-field search-field--wide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="search" id="oppSearch" placeholder="Search name, phone or email…" aria-label="Search opportunities">
+          </label>
+          <div class="work-filters">
+            <label class="select-wrap">
+              <span class="sr-only">Filter by channel</span>
+              <select class="select-field" id="channelSelect">
+                <option value="all">All channels</option>
+                <option value="Website">Website</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Referral">Referral</option>
+                <option value="Scout">Scout</option>
+                <option value="Walk-in">Walk-in</option>
+              </select>
+            </label>
+            <button type="button" class="btn btn-ghost" id="oppResetBtn">Reset</button>
+          </div>
+        </div>
+
+        <section class="work-list" aria-label="Opportunity list">
+          <table class="data-table opp-grid">
+            <thead>
+              <tr>
+                <th scope="col" class="th-sort" data-sort="name">Name</th>
+                <th scope="col" class="th-sort" data-sort="action">Action</th>
+                <th scope="col" class="th-sort" data-sort="stage">Stage</th>
+                <th scope="col" class="th-sort" data-sort="type">Type</th>
+                <th scope="col" class="th-sort" data-sort="channel">Channel</th>
+                <th scope="col" class="th-sort" data-sort="priority">Priority</th>
+                <th scope="col" class="th-sort" data-sort="agent">Agent</th>
+                <th scope="col" class="th-sort" data-sort="updated">Last Updated</th>
+                <th scope="col" class="th-sort is-asc" data-sort="shortlist">Shortlist</th>
+                <th scope="col" class="th-edit">Edit</th>
+              </tr>
+            </thead>
+            <tbody id="oppBody"></tbody>
+          </table>
+          <p class="list-empty" id="oppEmpty" hidden>No opportunities match your filters.</p>
+        </section>
+
+      </main>
+
+      <!-- New Opportunity -->
+      <button class="drawer-backdrop" id="oppBackdrop" aria-label="Close" hidden></button>
+      <aside class="drawer" id="oppDrawer" aria-labelledby="oppDrawerTitle" aria-hidden="true">
+        <header class="drawer__head">
+          <h2 class="drawer__title" id="oppDrawerTitle">New Opportunity</h2>
+          <button type="button" class="icon-btn drawer__close" id="oppDrawerClose" aria-label="Close">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+          </button>
+        </header>
+
+        <div class="drawer__body">
+          <section class="drawer-group">
+            <h3 class="drawer-group__title">Client</h3>
+            <label class="field">
+              <span class="field__label">Name</span>
+              <input type="text" class="input-field" id="noName" placeholder="Full name">
+            </label>
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">WhatsApp</span>
+                <input type="tel" class="input-field" id="noPhone" placeholder="+62 …">
+              </label>
+              <label class="field">
+                <span class="field__label">Email</span>
+                <input type="email" class="input-field" id="noEmail" placeholder="name@example.com">
+              </label>
+            </div>
+          </section>
+
+          <section class="drawer-group">
+            <h3 class="drawer-group__title">Opportunity</h3>
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Channel</span>
+                <select class="select-field" id="noChannel">
+                  <option value="Website">Website</option>
+                  <option value="WhatsApp">WhatsApp</option>
+                  <option value="Referral">Referral</option>
+                  <option value="Scout">Scout</option>
+                  <option value="Walk-in">Walk-in</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">Property Type</span>
+                <select class="select-field" id="noType">
+                  <option value="Rent">Rent</option>
+                  <option value="Villa">Villa</option>
+                  <option value="Land">Land</option>
+                  <option value="Commercial">Commercial</option>
+                </select>
+              </label>
+            </div>
+            <label class="field">
+              <span class="field__label">Budget</span>
+              <input type="text" class="input-field" id="noBudget" placeholder="e.g. IDR 20m–50m per year, or USD 350k">
+            </label>
+          </section>
+
+          <section class="drawer-group">
+            <h3 class="drawer-group__title">Target Renter <span class="field-hint">(optional)</span></h3>
+            <div class="tagset">
+              <label class="tag-check"><input type="checkbox" name="targetRenter" value="Budget Home (10-20m)"><span>Budget Home (10–20m)</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetRenter" value="Lifestyle Home (20-35m)"><span>Lifestyle Home (20–35m)</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetRenter" value="Premium Home (35-60m)"><span>Premium Home (35–60m)</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetRenter" value="Executive Home (60m+)"><span>Executive Home (60m+)</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetRenter" value="Perfect Home (Challenging Requirement)"><span>Perfect Home (Challenging Requirement)</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetRenter" value="Fit for Pets"><span>Fit for Pets</span></label>
+            </div>
+          </section>
+
+          <section class="drawer-group">
+            <h3 class="drawer-group__title">Target Buyer <span class="field-hint">(optional)</span></h3>
+            <div class="tagset">
+              <label class="tag-check"><input type="checkbox" name="targetBuyer" value="Family &amp; Lifestyle"><span>Family &amp; Lifestyle</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetBuyer" value="Investor (Passive Income)"><span>Investor (Passive Income)</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetBuyer" value="Retiree"><span>Retiree</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetBuyer" value="Property Developer"><span>Property Developer</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetBuyer" value="Land Banker"><span>Land Banker</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetBuyer" value="Fix &amp; Flip"><span>Fix &amp; Flip</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetBuyer" value="Fix &amp; Live"><span>Fix &amp; Live</span></label>
+              <label class="tag-check"><input type="checkbox" name="targetBuyer" value="Collector (No ROI)"><span>Collector (No ROI)</span></label>
+            </div>
+          </section>
+
+          <label class="field">
+            <span class="field__label">Client Requirements</span>
+            <textarea class="input-field input-field--area" id="noReq" rows="4" placeholder="In the client's own words — what are they looking for?"></textarea>
+          </label>
+        </div>
+
+        <footer class="drawer__foot">
+          <button type="button" class="btn btn-ghost" id="noCancel">Cancel</button>
+          <button type="button" class="btn btn-primary" id="noSave">Create Opportunity</button>
+        </footer>
+      </aside>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

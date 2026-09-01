@@ -2940,3 +2940,349 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCriteria();
   renderAll();
 });
+
+/* ============================================================
+   Client-facing shortlist — mobile first, no account needed
+   Client feedback (26–27 Aug), points 12 & 13
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  const page = document.body.dataset.page;
+  if (page !== 'client-shortlist' && page !== 'client-property') return;
+
+  const AGENT = 'Berry';
+
+  const SHORTLIST = [
+    {
+      id: 'p1',
+      name: '3-Bedroom Family Villa with Private Pool & Garden',
+      loc: 'Singakerta, Ubud',
+      price: 'IDR 32m', per: '/ year',
+      beds: 3, baths: 3, land: '750 m²', build: '210 m²',
+      tags: ['Private pool', 'Rice field view', 'Car access', 'Pet friendly'],
+      like: 'A quiet lane five minutes from Nyuh Kuning, with a genuinely private pool and a garden big enough for children to play in. The living area opens fully to the garden, which is rare at this price.',
+      consider: 'The kitchen is semi-outdoor, so it needs a little more cleaning in the wet season. The road in narrows for the last 50 metres.'
+    },
+    {
+      id: 'p2',
+      name: '2-Story Villa with Garden — Nyuh Kuning',
+      loc: 'Nyuh Kuning, Ubud',
+      price: 'IDR 36m', per: '/ year',
+      beds: 3, baths: 2, land: '500 m²', build: '180 m²',
+      tags: ['Shared pool', 'Garden view', 'Car access'],
+      like: 'Walking distance to the Monkey Forest and the village warungs. Upstairs bedrooms catch the breeze, so you can leave the air conditioning off most evenings.',
+      consider: 'The pool is shared with two other villas in the compound. There is no dedicated study.'
+    },
+    {
+      id: 'p3',
+      name: '3-Bedroom Eco-Luxury Home, Taman Petanu',
+      loc: 'Pejeng, Ubud',
+      price: 'IDR 36m', per: '/ year',
+      beds: 3, baths: 3, land: '640 m²', build: '195 m²',
+      tags: ['Private pool', 'Jungle view', 'Car access', 'Solar'],
+      like: 'Built to a proper eco spec — solar hot water, natural cross-ventilation and a river valley view from the main terrace. The community is friendly and mostly long-stay families.',
+      consider: 'Fifteen minutes from central Ubud, so you will want a car. Mosquitoes near the valley in the evening.'
+    },
+    {
+      id: 'p4',
+      name: '4-Bedroom Family Villa Near Green School',
+      loc: 'Sibang, Bali',
+      price: 'IDR 47m', per: '/ year',
+      beds: 4, baths: 4, land: '900 m²', build: '260 m²',
+      tags: ['Large private pool', 'Garden & pool view', 'Car access', 'Pet friendly'],
+      like: 'Three minutes from Green School and inside a small community of similar families. The largest garden of anything on your list, with a 12-metre pool.',
+      consider: 'The furthest from Ubud centre, and the highest price on your shortlist.'
+    },
+    {
+      id: 'p5',
+      name: 'Bright & Contemporary 2-Bedroom Villa',
+      loc: 'Penestanan, Ubud',
+      price: 'IDR 22m', per: '/ year',
+      beds: 2, baths: 2, land: '400 m²', build: '140 m²',
+      tags: ['Private pool', 'Rice field view', 'Motorbike access'],
+      like: 'The best value on your list. Recently renovated, very light, and the rice field view at the back is uninterrupted.',
+      consider: 'Motorbike access only — the last stretch is a footpath, so no car to the door. Two bedrooms rather than three.'
+    }
+  ];
+
+  /* ---- Per-viewer state, kept on this device only ---- */
+  const KEY = 'banyan_cs_state';
+  const load = () => {
+    try {
+      return JSON.parse(localStorage.getItem(KEY)) || {};
+    } catch (e) {
+      return {};
+    }
+  };
+  const store = Object.assign({ favs: [], rejected: [], questions: [], who: '' }, load());
+  const save = () => {
+    try {
+      localStorage.setItem(KEY, JSON.stringify(store));
+    } catch (e) {}
+  };
+
+  const byId = (id) => SHORTLIST.find((p) => p.id === id);
+
+  const toast = (msg) => {
+    const el = document.getElementById('csToast');
+    if (!el) return;
+    el.textContent = msg;
+    el.hidden = false;
+    el.classList.add('is-in');
+    window.clearTimeout(el._t);
+    el._t = window.setTimeout(() => {
+      el.classList.remove('is-in');
+      window.setTimeout(() => (el.hidden = true), 300);
+    }, 2600);
+  };
+
+  /* ---- Shared drawer helpers ---- */
+  function drawer(panelId, backdropId) {
+    const panel = document.getElementById(panelId);
+    const backdrop = document.getElementById(backdropId);
+    if (!panel) return null;
+    return {
+      panel,
+      open() {
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
+        if (backdrop) backdrop.hidden = false;
+        document.body.style.overflow = 'hidden';
+      },
+      close() {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+        if (backdrop) backdrop.hidden = true;
+        document.body.style.overflow = '';
+      }
+    };
+  }
+
+  const ask = drawer('csAskPanel', 'csAskBackdrop');
+  let askingId = null;
+
+  function wireAsk(nameFor) {
+    if (!ask) return;
+    document.getElementById('csAskClose').addEventListener('click', ask.close);
+    document.getElementById('csAskCancel').addEventListener('click', ask.close);
+    const bd = document.getElementById('csAskBackdrop');
+    if (bd) bd.addEventListener('click', ask.close);
+
+    document.getElementById('csAskSend').addEventListener('click', () => {
+      const text = document.getElementById('csAskText').value.trim();
+      if (!text) {
+        document.getElementById('csAskText').focus();
+        return;
+      }
+      store.questions.push({ id: askingId, name: nameFor(askingId), text });
+      save();
+      document.getElementById('csAskText').value = '';
+      ask.close();
+      toast('Question sent to ' + AGENT);
+      if (page === 'client-shortlist') render();
+    });
+  }
+
+  function openAsk(id, name) {
+    askingId = id;
+    document.getElementById('csAskProp').textContent = name;
+    ask.open();
+    document.getElementById('csAskText').focus();
+  }
+
+  /* ================= Shortlist page ================= */
+  if (page === 'client-shortlist') {
+    const list = document.getElementById('csList');
+
+    function card(p) {
+      const fav = store.favs.includes(p.id);
+      const asked = store.questions.filter((q) => q.id === p.id).length;
+
+      return '<article class="cs-card" data-prop="' + p.id + '">' +
+        '<a class="cs-card__link" href="client-property.html?p=' + p.id + '">' +
+          '<div class="cs-card__photo">' +
+            '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>' +
+            '<span>Cover photo</span>' +
+          '</div>' +
+          '<div class="cs-card__body">' +
+            '<h2 class="cs-card__name">' + p.name + '</h2>' +
+            '<p class="cs-card__loc">' + p.loc + '</p>' +
+            '<p class="cs-card__price">' + p.price + ' <small>' + p.per + '</small></p>' +
+            '<ul class="cs-card__specs"><li>' + p.beds + ' bed</li><li>' + p.baths + ' bath</li>' +
+              '<li>' + p.land + ' land</li><li>' + p.build + ' building</li></ul>' +
+            '<div class="cs-card__notes">' +
+              '<p class="cs-mini"><strong>Why we like it</strong> ' + p.like + '</p>' +
+              '<p class="cs-mini cs-mini--muted"><strong>Things to consider</strong> ' + p.consider + '</p>' +
+            '</div>' +
+          '</div>' +
+        '</a>' +
+
+        '<button type="button" class="cs-heart' + (fav ? ' is-on' : '') + '" data-fav="' + p.id + '" aria-pressed="' + fav + '" aria-label="Favourite">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>' +
+        '</button>' +
+
+        '<div class="cs-card__actions">' +
+          '<button type="button" class="cs-act' + (fav ? ' is-on' : '') + '" data-fav="' + p.id + '">' +
+            (fav ? '♥ Favourited' : '♡ Favourite') + '</button>' +
+          '<button type="button" class="cs-act" data-ask="' + p.id + '">' +
+            'Ask a question' + (asked ? ' (' + asked + ')' : '') + '</button>' +
+          '<button type="button" class="cs-act cs-act--no" data-no="' + p.id + '">Not for me</button>' +
+        '</div>' +
+      '</article>';
+    }
+
+    function render() {
+      const visible = SHORTLIST.filter((p) => !store.rejected.includes(p.id));
+      list.innerHTML = visible.map(card).join('');
+
+      if (store.rejected.length) {
+        list.insertAdjacentHTML('beforeend',
+          '<details class="cs-hidden"><summary>Hidden by you · ' + store.rejected.length + '</summary>' +
+          '<ul>' + store.rejected.map((id) =>
+            '<li><span>' + byId(id).name + '</span><button type="button" class="sb-undo" data-show="' + id + '">Show again</button></li>'
+          ).join('') + '</ul></details>');
+      }
+
+      const favs = store.favs.map(byId).filter(Boolean);
+      document.getElementById('csFavCount').textContent = String(favs.length);
+      document.getElementById('csFavNames').textContent = favs.length
+        ? favs.map((p) => p.name.split('—')[0].trim()).join(' · ')
+        : 'Nothing saved yet — tap ♡ on a property.';
+      document.getElementById('csFavBar').classList.toggle('is-active', favs.length > 0);
+    }
+
+    list.addEventListener('click', (e) => {
+      const favBtn = e.target.closest('[data-fav]');
+      if (favBtn) {
+        e.preventDefault();
+        const id = favBtn.dataset.fav;
+        const i = store.favs.indexOf(id);
+        if (i > -1) store.favs.splice(i, 1);
+        else store.favs.push(id);
+        save();
+        render();
+        return;
+      }
+
+      const askBtn = e.target.closest('[data-ask]');
+      if (askBtn) {
+        e.preventDefault();
+        openAsk(askBtn.dataset.ask, byId(askBtn.dataset.ask).name);
+        return;
+      }
+
+      const noBtn = e.target.closest('[data-no]');
+      if (noBtn) {
+        e.preventDefault();
+        const id = noBtn.dataset.no;
+        if (!store.rejected.includes(id)) store.rejected.push(id);
+        store.favs = store.favs.filter((f) => f !== id);
+        save();
+        render();
+        return;
+      }
+
+      const showBtn = e.target.closest('[data-show]');
+      if (showBtn) {
+        e.preventDefault();
+        store.rejected = store.rejected.filter((id) => id !== showBtn.dataset.show);
+        save();
+        render();
+      }
+    });
+
+    /* ---- Message the agent: favourites + questions attach themselves ---- */
+    const msg = drawer('csMsgPanel', 'csMsgBackdrop');
+    document.getElementById('csMessageBtn').addEventListener('click', () => {
+      const favs = store.favs.map(byId).filter(Boolean);
+      document.getElementById('csMsgFavs').innerHTML = favs.length
+        ? favs.map((p) => '<li>' + p.name + '</li>').join('')
+        : '<li class="cs-attached__none">None yet</li>';
+      document.getElementById('csMsgQs').innerHTML = store.questions.length
+        ? store.questions.map((q) => '<li><strong>' + q.name + '</strong><br>' + q.text + '</li>').join('')
+        : '<li class="cs-attached__none">None yet</li>';
+      msg.open();
+    });
+    document.getElementById('csMsgClose').addEventListener('click', msg.close);
+    document.getElementById('csMsgCancel').addEventListener('click', msg.close);
+    document.getElementById('csMsgBackdrop').addEventListener('click', msg.close);
+    document.getElementById('csMsgSend').addEventListener('click', () => {
+      msg.close();
+      document.getElementById('csMsgText').value = '';
+      toast('Sent to ' + AGENT + ' — he will reply on WhatsApp.');
+    });
+
+    /* ---- Share ---- */
+    document.getElementById('csShare').addEventListener('click', async () => {
+      const data = { title: 'Ubud Family Homes — Banyan', url: location.href };
+      if (navigator.share) {
+        try {
+          await navigator.share(data);
+          return;
+        } catch (e) {
+          if (e && e.name === 'AbortError') return;
+        }
+      }
+      if (navigator.clipboard) {
+        try {
+          await navigator.clipboard.writeText(location.href);
+          toast('Link copied');
+          return;
+        } catch (e) {}
+      }
+      toast(location.href);
+    });
+
+    /* ---- Who's looking (kept deliberately quiet) ---- */
+    const whoInput = document.getElementById('csWhoName');
+    whoInput.value = store.who || '';
+    document.getElementById('csWhoSave').addEventListener('click', () => {
+      store.who = whoInput.value.trim();
+      save();
+      toast(store.who ? 'Thanks, ' + store.who : 'Saved');
+    });
+
+    wireAsk((id) => byId(id).name);
+    render();
+  }
+
+  /* ================= Property detail page ================= */
+  if (page === 'client-property') {
+    const id = new URLSearchParams(location.search).get('p') || 'p1';
+    const p = byId(id) || SHORTLIST[0];
+
+    document.title = p.name + ' — Banyan shortlist';
+    document.getElementById('cpTitle').textContent = p.name;
+    document.getElementById('cpLoc').textContent = p.loc;
+    document.getElementById('cpPrice').textContent = p.price;
+    document.getElementById('cpLike').textContent = p.like;
+    document.getElementById('cpConsider').textContent = p.consider;
+
+    document.getElementById('cpSpecs').innerHTML = [
+      ['Bedrooms', p.beds],
+      ['Bathrooms', p.baths],
+      ['Land', p.land],
+      ['Building', p.build]
+    ].map(([k, v]) => '<div class="cs-spec"><dt>' + k + '</dt><dd>' + v + '</dd></div>').join('');
+
+    document.getElementById('cpFeatures').innerHTML =
+      p.tags.map((t) => '<span class="cs-feature">' + t + '</span>').join('');
+
+    const favBtn = document.getElementById('cpFav');
+    const syncFav = () => {
+      const on = store.favs.includes(p.id);
+      favBtn.classList.toggle('is-on', on);
+      favBtn.querySelector('.cs-fav__label').textContent = on ? 'Favourited' : 'Favourite';
+    };
+    favBtn.addEventListener('click', () => {
+      const i = store.favs.indexOf(p.id);
+      if (i > -1) store.favs.splice(i, 1);
+      else store.favs.push(p.id);
+      save();
+      syncFav();
+    });
+    syncFav();
+
+    document.getElementById('cpAsk').addEventListener('click', () => openAsk(p.id, p.name));
+    wireAsk(() => p.name);
+  }
+});

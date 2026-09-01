@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Banyan shortlist — Ubud Family Homes</title>
+  <meta name="description" content="A hand-picked selection of Bali properties from Banyan Properties.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="cs-page" data-page="client-shortlist">
+
+  <header class="cs-top">
+    <div class="cs-top__inner">
+      <img class="cs-logo" src="public/banyan logo.png" alt="Banyan Properties">
+      <button type="button" class="cs-share" id="csShare">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v14"/></svg>
+        <span class="cs-share__label">Share</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="cs-main">
+
+    <section class="cs-hero">
+      <h1 class="cs-title">Ubud Family Homes</h1>
+      <p class="cs-intro">
+        Hand-picked for you by <strong>Berry</strong> at Banyan Properties.
+        Tap the heart on anything you like — Berry sees it straight away.
+      </p>
+    </section>
+
+    <!-- Favourites summary + the one action that matters -->
+    <section class="cs-favbar" id="csFavBar">
+      <div class="cs-favbar__text">
+        <p class="cs-favbar__title">Your favourites · <span id="csFavCount">0</span></p>
+        <p class="cs-favbar__names" id="csFavNames">Nothing saved yet — tap ♡ on a property.</p>
+      </div>
+      <button type="button" class="btn btn-primary cs-msgbtn" id="csMessageBtn">Message Berry</button>
+    </section>
+
+    <div class="cs-list" id="csList"></div>
+
+    <!-- Deliberately low-key: no account needed -->
+    <section class="cs-who" id="csWho">
+      <label class="cs-who__label" for="csWhoName">Who's looking?</label>
+      <div class="cs-who__row">
+        <input type="text" id="csWhoName" class="input-field" placeholder="First name" autocomplete="given-name">
+        <button type="button" class="btn btn-ghost" id="csWhoSave">Save</button>
+      </div>
+      <p class="cs-who__hint">Optional — it just keeps your favourites separate if someone else is looking at this link too.</p>
+    </section>
+
+    <footer class="cs-foot">
+      <img class="cs-foot__logo" src="public/banyan half logo when side bar shrinks.png" alt="">
+      <p>Banyan Properties · Ubud, Bali</p>
+      <p class="cs-foot__small">Prices and availability are indicative and confirmed at the time of viewing.</p>
+    </footer>
+  </main>
+
+  <!-- Message panel: favourites and questions are attached automatically -->
+  <button class="drawer-backdrop" id="csMsgBackdrop" aria-label="Close message" hidden></button>
+  <aside class="drawer cs-drawer" id="csMsgPanel" aria-labelledby="csMsgTitle" aria-hidden="true">
+    <header class="drawer__head">
+      <h2 class="drawer__title" id="csMsgTitle">Message Berry</h2>
+      <button type="button" class="icon-btn drawer__close" id="csMsgClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+      </button>
+    </header>
+
+    <div class="drawer__body">
+      <section class="drawer-group">
+        <h3 class="drawer-group__title">Attached automatically</h3>
+        <div class="cs-attached">
+          <p class="cs-attached__label">Your favourites</p>
+          <ul class="cs-attached__list" id="csMsgFavs"><li class="cs-attached__none">None yet</li></ul>
+        </div>
+        <div class="cs-attached">
+          <p class="cs-attached__label">Your questions</p>
+          <ul class="cs-attached__list" id="csMsgQs"><li class="cs-attached__none">None yet</li></ul>
+        </div>
+      </section>
+
+      <label class="field">
+        <span class="field__label">Anything else you'd like to say?</span>
+        <textarea class="input-field input-field--area" id="csMsgText" rows="5" placeholder="e.g. We'd like to view two of these next week — we arrive on the 14th."></textarea>
+      </label>
+    </div>
+
+    <footer class="drawer__foot">
+      <button type="button" class="btn btn-ghost" id="csMsgCancel">Cancel</button>
+      <button type="button" class="btn btn-primary" id="csMsgSend">Send to Berry</button>
+    </footer>
+  </aside>
+
+  <!-- Ask a question about one property -->
+  <button class="drawer-backdrop" id="csAskBackdrop" aria-label="Close question" hidden></button>
+  <aside class="drawer cs-drawer" id="csAskPanel" aria-labelledby="csAskTitle" aria-hidden="true">
+    <header class="drawer__head">
+      <h2 class="drawer__title" id="csAskTitle">Ask a question</h2>
+      <button type="button" class="icon-btn drawer__close" id="csAskClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+      </button>
+    </header>
+    <div class="drawer__body">
+      <p class="cs-ask__prop" id="csAskProp"></p>
+      <label class="field">
+        <span class="field__label">Your question</span>
+        <textarea class="input-field input-field--area" id="csAskText" rows="4" placeholder="e.g. Is the pool private?"></textarea>
+      </label>
+    </div>
+    <footer class="drawer__foot">
+      <button type="button" class="btn btn-ghost" id="csAskCancel">Cancel</button>
+      <button type="button" class="btn btn-primary" id="csAskSend">Send question</button>
+    </footer>
+  </aside>
+
+  <div class="cs-toast" id="csToast" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

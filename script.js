@@ -1166,556 +1166,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ================= Live Shortlist workspace (shortlist.html) ================= */
-  function initLiveShortlist() {
-    const SHARE_URL = 'https://banyan-oms-staging.umarbilalpersonal.workers.dev/shortlists/shr_08ce91493868fc48e0a7ccbbaceeb28b';
 
-    const matchListEl = document.getElementById('lwMatchList');
-    const matchEmpty = document.getElementById('lwMatchEmpty');
-    const matchCountEl = document.getElementById('lwMatchCount');
-    const sortSel = document.getElementById('lwSortSel');
-    const onListEl = document.getElementById('slOnList');
-    const onCountEl = document.getElementById('slOnCount');
-    const pillsEl = document.getElementById('slPills');
-
-    const shortlists = {
-      'shl_9516005c5b3549fd': {
-        name: 'test',
-        live: true,
-        items: [
-          { name: '2-Bedroom Tropical Villa with Private Pool — Nyuh Kuning, Ubud', area: 'Ubud', price: 35000000 },
-          { name: '2-Story Villa with Garden — Nyuh Kuning, Ubud', area: 'Ubud', price: 35500000, fav: true },
-          { name: '3 Bedroom Villa with Stunning Rice Field & Sunrise Views in Nyuh Kuning, Ubud', area: 'Ubud', price: 18600000, fav: true },
-          { name: '3-Bedroom Family Villa with Private Pool & Garden - Singakerta, 5 Mins to Nyuh Kuning, Ubud', area: 'Ubud', price: 450000000 },
-          { name: '3-Bedroom Eco-Luxury Home in Taman Petanu Eco Neighborhood', area: 'Ubud', price: 35770028 }
-        ]
-      }
-    };
-
-    const state = {
-      active: Object.keys(shortlists)[0],
-      interest: 'rent',
-      min: '',
-      max: '',
-      bedMin: '',
-      bedMax: '',
-      query: '',
-      sort: 'default',
-      view: 'list'
-    };
-
-    function activeItems() {
-      return shortlists[state.active].items;
-    }
-
-    function inShortlist(name) {
-      return activeItems().some((it) => it.name === name);
-    }
-
-    function aiScore(name) {
-      let h = 0;
-      for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) >>> 0;
-      return 58 + (h % 40);
-    }
-
-    function fmtPrice(v) {
-      return 'IDR ' + Number(v).toLocaleString('en-US');
-    }
-
-    function bedsOf(name) {
-      const m = name.match(/(\d+)\s*-?\s*(?:bedrooms?|\bbr\b|bed)/i);
-      return m ? Number(m[1]) : null;
-    }
-
-    function filteredMatches() {
-      const list = SL_AVAILABLE.filter((a) => {
-        if (state.interest !== 'all' && state.interest !== 'rent') return false;
-        if (state.min && a.price < Number(state.min)) return false;
-        if (state.max && a.price > Number(state.max)) return false;
-        if (state.bedMin || state.bedMax) {
-          const beds = bedsOf(a.name);
-          if (beds === null) return false;
-          if (state.bedMin && beds < Number(state.bedMin)) return false;
-          if (state.bedMax && beds > Number(state.bedMax)) return false;
-        }
-        if (state.query && a.name.toLowerCase().indexOf(state.query) === -1) return false;
-        return true;
-      });
-      if (state.sort === 'price-asc') list.sort((a, b) => a.price - b.price);
-      else if (state.sort === 'price-desc') list.sort((a, b) => b.price - a.price);
-      else if (state.sort === 'fit') list.sort((a, b) => aiScore(b.name) - aiScore(a.name));
-      return list;
-    }
-
-    function updateFilterCount() {
-      let n = 1;
-      if (state.min) n += 1;
-      if (state.max) n += 1;
-      if (state.bedMin) n += 1;
-      if (state.bedMax) n += 1;
-      if (state.query) n += 1;
-      document.getElementById('lwActiveFilters').textContent = n + ' active filter' + (n === 1 ? '' : 's');
-    }
-
-    function renderPills() {
-      pillsEl.innerHTML = '';
-      Object.keys(shortlists).forEach((id) => {
-        const sl = shortlists[id];
-        const pill = document.createElement('button');
-        pill.type = 'button';
-        pill.className = 'sl-pill' + (id === state.active ? ' is-active' : '');
-        pill.dataset.sl = id;
-        const name = document.createElement('span');
-        name.className = 'sl-pill__name';
-        name.textContent = sl.name;
-        const count = document.createElement('span');
-        count.className = 'sl-pill__count';
-        count.textContent = '· ' + sl.items.length;
-        pill.append(name, count);
-        if (sl.live) {
-          const live = document.createElement('span');
-          live.className = 'sl-live';
-          live.textContent = '✓ Live';
-          pill.appendChild(live);
-        }
-        pillsEl.appendChild(pill);
-      });
-    }
-
-    function renderMatches() {
-      matchListEl.innerHTML = '';
-      const all = filteredMatches();
-
-      all.forEach((a) => {
-        const li = document.createElement('li');
-        li.className = 'lw-match';
-
-        const thumb = document.createElement('div');
-        thumb.className = 'lw-match__thumb';
-        thumb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>';
-
-        const body = document.createElement('div');
-        body.className = 'lw-match__body';
-        const nm = document.createElement('p');
-        nm.className = 'lw-match__name';
-        nm.textContent = a.name;
-        const meta = document.createElement('p');
-        meta.className = 'lw-match__meta';
-        meta.textContent = a.area + ' · ' + fmtPrice(a.price);
-        body.append(nm, meta);
-
-        const side = document.createElement('div');
-        side.className = 'lw-match__side';
-        const sc = document.createElement('span');
-        sc.className = 'lw-score';
-        sc.appendChild(document.createTextNode(String(aiScore(a.name))));
-        const scLbl = document.createElement('small');
-        scLbl.textContent = 'AI Fit';
-        sc.appendChild(scLbl);
-
-        if (inShortlist(a.name)) {
-          const tag = document.createElement('button');
-          tag.type = 'button';
-          tag.className = 'lw-addbtn';
-          tag.disabled = true;
-          tag.textContent = '✓ On shortlist';
-          side.append(sc, tag);
-        } else {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'lw-addbtn';
-          btn.textContent = '+ Add';
-          btn.dataset.name = a.name;
-          side.append(sc, btn);
-        }
-
-        li.append(thumb, body, side);
-        matchListEl.appendChild(li);
-      });
-
-      matchCountEl.textContent = all.length;
-      matchEmpty.hidden = all.length !== 0;
-      matchListEl.classList.toggle('is-grid', state.view === 'grid');
-    }
-
-    function renderOnList() {
-      onListEl.innerHTML = '';
-      const items = activeItems();
-
-      items.forEach((it, i) => {
-        const li = document.createElement('li');
-        li.className = 'lw-builditem';
-        li.draggable = true;
-        li.dataset.name = it.name;
-
-        const top = document.createElement('div');
-        top.className = 'lw-builditem__top';
-
-        const drag = document.createElement('span');
-        drag.className = 'lw-drag';
-        drag.setAttribute('aria-hidden', 'true');
-        drag.title = 'Drag to reorder';
-        drag.innerHTML = '<svg width="10" height="16" viewBox="0 0 10 16" fill="currentColor"><circle cx="2" cy="2" r="1.5"/><circle cx="8" cy="2" r="1.5"/><circle cx="2" cy="8" r="1.5"/><circle cx="8" cy="8" r="1.5"/><circle cx="2" cy="14" r="1.5"/><circle cx="8" cy="14" r="1.5"/></svg>';
-
-        const num = document.createElement('span');
-        num.className = 'lw-num';
-
-        const info = document.createElement('div');
-        info.className = 'lw-builditem__info';
-        const nm = document.createElement('p');
-        nm.className = 'lw-builditem__name';
-        if (it.fav) {
-          const fav = document.createElement('span');
-          fav.className = 'lw-fav';
-          fav.textContent = '♥';
-          nm.appendChild(fav);
-        }
-        nm.appendChild(document.createTextNode(it.name));
-        const meta = document.createElement('p');
-        meta.className = 'lw-builditem__meta';
-        meta.textContent = it.area + ' · ' + fmtPrice(it.price);
-        info.append(nm, meta);
-
-        const ctrl = document.createElement('div');
-        ctrl.className = 'lw-builditem__ctrl';
-        const up = document.createElement('button');
-        up.type = 'button';
-        up.className = 'lw-movebtn';
-        up.dataset.dir = 'up';
-        up.setAttribute('aria-label', 'Move up');
-        up.textContent = '↑';
-        up.disabled = i === 0;
-        const down = document.createElement('button');
-        down.type = 'button';
-        down.className = 'lw-movebtn';
-        down.dataset.dir = 'down';
-        down.setAttribute('aria-label', 'Move down');
-        down.textContent = '↓';
-        down.disabled = i === items.length - 1;
-        const del = document.createElement('button');
-        del.type = 'button';
-        del.className = 'lw-delbtn';
-        del.setAttribute('aria-label', 'Remove from shortlist');
-        del.innerHTML = TRASH_ICON;
-        ctrl.append(up, down, del);
-
-        top.append(drag, num, info, ctrl);
-        li.appendChild(top);
-
-        const noteWrap = document.createElement('div');
-        noteWrap.className = 'lw-note';
-        const note = document.createElement('input');
-        note.type = 'text';
-        note.className = 'sl-input lw-note-input';
-        note.placeholder = 'Internal note (never shown to the client)…';
-        note.setAttribute('aria-label', 'Internal note');
-        note.value = it.note || '';
-        noteWrap.appendChild(note);
-        li.appendChild(noteWrap);
-
-        onListEl.appendChild(li);
-      });
-
-      onCountEl.textContent = items.length + ' shown to the client';
-    }
-
-    function renderAll() {
-      renderPills();
-      renderMatches();
-      renderOnList();
-      updateFilterCount();
-    }
-
-    /* --- Review matches interactions --- */
-    matchListEl.addEventListener('click', (ev) => {
-      const btn = ev.target.closest('.lw-addbtn');
-      if (!btn || btn.disabled) return;
-      const src = SL_AVAILABLE.find((a) => a.name === btn.dataset.name);
-      if (src && !inShortlist(src.name)) {
-        activeItems().unshift({ name: src.name, area: src.area, price: src.price });
-        renderAll();
-      }
-    });
-
-    sortSel.addEventListener('change', () => {
-      state.sort = sortSel.value;
-      renderMatches();
-    });
-
-    document.querySelectorAll('.lw-toggle__btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        state.view = btn.dataset.view;
-        document.querySelectorAll('.lw-toggle__btn').forEach((b) => {
-          const active = b === btn;
-          b.classList.toggle('is-active', active);
-          b.setAttribute('aria-pressed', String(active));
-        });
-        renderMatches();
-      });
-    });
-
-    /* --- Build shortlist interactions --- */
-    onListEl.addEventListener('click', (ev) => {
-      const move = ev.target.closest('.lw-movebtn');
-      const del = ev.target.closest('.lw-delbtn');
-      if (!move && !del) return;
-      const li = ev.target.closest('.lw-builditem');
-      if (!li) return;
-      const items = activeItems();
-      const idx = items.findIndex((it) => it.name === li.dataset.name);
-      if (idx === -1) return;
-      if (del) {
-        items.splice(idx, 1);
-      } else {
-        const to = move.dataset.dir === 'up' ? idx - 1 : idx + 1;
-        if (to < 0 || to >= items.length) return;
-        const tmp = items[idx];
-        items[idx] = items[to];
-        items[to] = tmp;
-      }
-      renderAll();
-    });
-
-    onListEl.addEventListener('input', (ev) => {
-      if (!ev.target.classList.contains('lw-note-input')) return;
-      const li = ev.target.closest('.lw-builditem');
-      if (!li) return;
-      const it = activeItems().find((x) => x.name === li.dataset.name);
-      if (it) it.note = ev.target.value;
-    });
-
-    let dragName = null;
-
-    onListEl.addEventListener('dragstart', (ev) => {
-      const li = ev.target.closest('.lw-builditem');
-      if (!li) return;
-      dragName = li.dataset.name;
-      li.classList.add('is-dragging');
-      ev.dataTransfer.effectAllowed = 'move';
-      try { ev.dataTransfer.setData('text/plain', dragName); } catch (e) {}
-    });
-
-    onListEl.addEventListener('dragend', () => {
-      onListEl.querySelectorAll('.lw-builditem').forEach((el) => el.classList.remove('is-dragging', 'is-drop-target'));
-    });
-
-    onListEl.addEventListener('dragover', (ev) => {
-      if (!dragName) return;
-      ev.preventDefault();
-      ev.dataTransfer.dropEffect = 'move';
-      onListEl.querySelectorAll('.lw-builditem').forEach((el) => el.classList.remove('is-drop-target'));
-      const li = ev.target.closest('.lw-builditem');
-      if (li && li.dataset.name !== dragName) li.classList.add('is-drop-target');
-    });
-
-    onListEl.addEventListener('drop', (ev) => {
-      if (!dragName) return;
-      ev.preventDefault();
-      const items = activeItems();
-      const from = items.findIndex((it) => it.name === dragName);
-      if (from === -1) { dragName = null; return; }
-      const li = ev.target.closest('.lw-builditem');
-      let to;
-      if (li && li.dataset.name !== dragName) {
-        const rect = li.getBoundingClientRect();
-        const after = ev.clientY > rect.top + rect.height / 2;
-        to = items.findIndex((it) => it.name === li.dataset.name);
-        if (to === -1) { dragName = null; return; }
-        if (after) to += 1;
-        if (from < to) to -= 1;
-      } else {
-        to = items.length - 1;
-      }
-      if (to === from) { dragName = null; return; }
-      const moved = items.splice(from, 1)[0];
-      items.splice(to, 0, moved);
-      dragName = null;
-      renderAll();
-    });
-
-    const notesBtn = document.getElementById('lwNotesBtn');
-    const clientNote = document.getElementById('lwClientNote');
-    notesBtn.addEventListener('click', () => {
-      clientNote.hidden = !clientNote.hidden;
-      notesBtn.textContent = clientNote.hidden ? '+ Add notes to client (optional)' : '− Hide notes to client';
-      if (!clientNote.hidden) clientNote.focus();
-    });
-
-    /* --- Requirements form --- */
-    document.querySelectorAll('#slInterest .lw-pill').forEach((pill) => {
-      pill.addEventListener('click', () => {
-        document.querySelectorAll('#slInterest .lw-pill').forEach((p) => p.classList.remove('is-active'));
-        pill.classList.add('is-active');
-        state.interest = pill.dataset.interest;
-        renderMatches();
-        updateFilterCount();
-      });
-    });
-
-    const minInput = document.getElementById('slMin');
-    const maxInput = document.getElementById('slMax');
-    const bedMinInput = document.getElementById('lwBedMin');
-    const bedMaxInput = document.getElementById('lwBedMax');
-    const searchInput = document.getElementById('slSearch');
-
-    [minInput, maxInput].forEach((input) => {
-      input.addEventListener('input', () => {
-        state.min = minInput.value;
-        state.max = maxInput.value;
-        renderMatches();
-        updateFilterCount();
-      });
-    });
-
-    [bedMinInput, bedMaxInput].forEach((input) => {
-      input.addEventListener('input', () => {
-        state.bedMin = bedMinInput.value;
-        state.bedMax = bedMaxInput.value;
-        renderMatches();
-        updateFilterCount();
-      });
-    });
-
-    searchInput.addEventListener('input', () => {
-      state.query = searchInput.value.trim().toLowerCase();
-      renderMatches();
-      updateFilterCount();
-    });
-
-    document.getElementById('lwResetBtn').addEventListener('click', () => {
-      state.interest = 'rent';
-      state.min = '';
-      state.max = '';
-      state.bedMin = '';
-      state.bedMax = '';
-      state.query = '';
-      minInput.value = '';
-      maxInput.value = '';
-      bedMinInput.value = '';
-      bedMaxInput.value = '';
-      searchInput.value = '';
-      document.querySelectorAll('#slInterest .lw-pill').forEach((p) => {
-        p.classList.toggle('is-active', p.dataset.interest === 'rent');
-      });
-      renderMatches();
-      updateFilterCount();
-    });
-
-    const filterFields = document.getElementById('lwFilterFields');
-    const filterToggle = document.getElementById('lwFilterToggle');
-    if (filterFields && filterToggle) {
-      filterToggle.addEventListener('click', () => {
-        const isHidden = filterFields.hasAttribute('hidden');
-        if (isHidden) {
-          filterFields.removeAttribute('hidden');
-        } else {
-          filterFields.setAttribute('hidden', '');
-        }
-        filterToggle.setAttribute('aria-expanded', String(isHidden));
-      });
-    }
-
-    /* --- Curate tools --- */
-    function flashTool(btn, msg) {
-      if (btn.dataset.busy) return;
-      btn.dataset.busy = '1';
-      btn.classList.add('is-busy');
-      const label = btn.querySelector('b');
-      const orig = label.textContent;
-      label.textContent = msg;
-      setTimeout(() => {
-        label.textContent = orig;
-        btn.classList.remove('is-busy');
-        delete btn.dataset.busy;
-      }, 1200);
-    }
-
-    document.getElementById('lwRulesBtn').addEventListener('click', function () {
-      const candidates = SL_AVAILABLE
-        .filter((a) => !inShortlist(a.name))
-        .sort((a, b) => aiScore(b.name) - aiScore(a.name))
-        .slice(0, 3);
-      if (!candidates.length) { flashTool(this, 'No new matches'); return; }
-      candidates.forEach((c) => activeItems().push({ name: c.name, area: c.area, price: c.price }));
-      renderAll();
-      flashTool(this, 'Added ✓');
-    });
-
-    document.getElementById('lwAiBtn').addEventListener('click', function () {
-      const candidates = SL_AVAILABLE
-        .filter((a) => !inShortlist(a.name))
-        .sort((a, b) => aiScore(b.name) - aiScore(a.name))
-        .slice(0, 2);
-      if (!candidates.length) { flashTool(this, 'No new matches'); return; }
-      candidates.forEach((c) => activeItems().push({ name: c.name, area: c.area, price: c.price }));
-      renderAll();
-      flashTool(this, 'Added ✓');
-    });
-
-    document.getElementById('lwFitBtn').addEventListener('click', function () {
-      activeItems().sort((a, b) => aiScore(b.name) - aiScore(a.name));
-      renderAll();
-      flashTool(this, 'Sorted ✓');
-    });
-
-    /* --- Shortlist picker --- */
-    pillsEl.addEventListener('click', (ev) => {
-      const pill = ev.target.closest('.sl-pill');
-      if (!pill) return;
-      state.active = pill.dataset.sl;
-      renderAll();
-    });
-
-    document.getElementById('slNewBtn').addEventListener('click', () => {
-      const nameInput = document.getElementById('slNewName');
-      const name = nameInput.value.trim() || 'New shortlist';
-      const id = 'shl_' + Math.random().toString(36).slice(2, 12);
-      shortlists[id] = { name: name, live: false, items: [] };
-      state.active = id;
-      nameInput.value = '';
-      renderAll();
-    });
-
-    /* --- Share card --- */
-    const copyBtn = document.getElementById('slCopyBtn');
-    copyBtn.addEventListener('click', () => {
-      const fallback = () => {
-        copyBtn.textContent = 'Copied!';
-        setTimeout(() => { copyBtn.textContent = 'Copy link'; }, 1500);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(SHARE_URL).then(fallback, fallback);
-      } else {
-        fallback();
-      }
-    });
-
-    const archiveBtn = document.getElementById('slArchiveBtn');
-    archiveBtn.addEventListener('click', () => {
-      if (!window.confirm('Archive this shortlist? The client link stops opening — nothing is deleted.')) return;
-      archiveBtn.textContent = 'Archived';
-      archiveBtn.disabled = true;
-      document.getElementById('lwArchiveNote').hidden = false;
-      const status = document.querySelector('.lw-linkstatus');
-      if (status) status.textContent = 'Archived';
-    });
-
-    /* --- Engagement --- */
-    const remindBtn = document.getElementById('lwRemindBtn');
-    remindBtn.addEventListener('click', () => {
-      remindBtn.textContent = 'Reminder sent ✓';
-      remindBtn.disabled = true;
-      setTimeout(() => {
-        remindBtn.textContent = 'Send reminder';
-        remindBtn.disabled = false;
-      }, 1800);
-    });
-
-    renderAll();
-  }
-
-  if (page === 'shortlist') {
-    initLiveShortlist();
-  }
+  /* shortlist.html is rendered by the rebuilt Shortlist Builder at the end of this file. */
   if (page === 'shortlist-test') {
     initShortlistPage(TEST_SHORTLISTS, '/shortlists/shr_7f74d07fa982b8e4e8c47526d419cf00');
   }
@@ -2984,4 +2436,507 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   render();
+});
+
+/* ============================================================
+   Shortlist Builder — Search Criteria → Selection → Draft
+   Rebuilt from client feedback (26–27 Aug)
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.body.dataset.page !== 'shortlist') return;
+  const criteriaList = document.getElementById('sbCriteriaList');
+  if (!criteriaList) return;
+
+  const IDR = (n) => 'IDR ' + (n / 1000000).toFixed(0) + 'm';
+
+  /* ---- Portfolio the searches run against ---- */
+  const PROPERTIES = [
+    { id: 'p1',  name: '3-Bedroom Family Villa with Private Pool & Garden', area: 'Singakerta', primary: 'Ubud', price: 32000000, beds: 3, baths: 3, type: 'rent', pool: 'Private Pool', view: 'Rice Field View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-08-29', coBroker: false },
+    { id: 'p2',  name: '2-Story Villa with Garden', area: 'Nyuh Kuning', primary: 'Ubud', price: 35500000, beds: 3, baths: 2, type: 'rent', pool: 'Shared', view: 'Garden View', access: 'Car Access', pets: 'No Pets', added: '2026-08-12', coBroker: false },
+    { id: 'p3',  name: '3-Bedroom Eco-Luxury Home, Taman Petanu', area: 'Pejeng', primary: 'Ubud', price: 35770000, beds: 3, baths: 3, type: 'rent', pool: 'Private Pool', view: 'Jungle View', access: 'Car Access', pets: 'Case by Case', added: '2026-08-30', coBroker: true },
+    { id: 'p4',  name: '4-Bedroom Family Villa Near Green School', area: 'Sibang', primary: 'Ubud', price: 47000000, beds: 4, baths: 4, type: 'rent', pool: 'Large Private Pool', view: 'Garden & Pool View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-07-30', coBroker: false },
+    { id: 'p5',  name: 'Bright & Contemporary 2-Bedroom Villa', area: 'Penestanan', primary: 'Ubud', price: 22000000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Rice Field View', access: 'Motorbike Access', pets: 'No Pets', added: '2026-08-05', coBroker: false },
+    { id: 'p6',  name: '3BR Villa with Rice Field & Sunrise Views', area: 'Nyuh Kuning', primary: 'Ubud', price: 18600000, beds: 3, baths: 2, type: 'rent', pool: 'Shared', view: 'Rice Field View', access: 'Car Access', pets: 'Cat Only', added: '2026-08-31', coBroker: false },
+    { id: 'p7',  name: 'Affordable 2BR Private Pool Villa', area: 'Nyuh Kuning', primary: 'Ubud', price: 19800000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Garden View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-06-18', coBroker: false },
+    { id: 'p8',  name: 'Private 2-Bedroom Villa Sanctuary in Pejeng', area: 'Pejeng', primary: 'Ubud', price: 24000000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Jungle View', access: 'Car Access', pets: 'No Pets', added: '2026-08-30', coBroker: true },
+    { id: 'p9',  name: '6BR Luxury Villa with Basketball Court & Pool', area: 'Kedewatan', primary: 'Ubud', price: 165000000, beds: 6, baths: 6, type: 'rent', pool: 'Large Private Pool', view: 'Rice Field View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-05-20', coBroker: false },
+    { id: 'p10', name: 'Thoughtfully Designed 3BR Eco Villa, Sibang', area: 'Sibang', primary: 'Ubud', price: 29000000, beds: 3, baths: 3, type: 'rent', pool: 'Shared', view: 'Garden View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-08-31', coBroker: false },
+    { id: 'p11', name: 'Alke Villa — Quiet Lane, Walk to Centre', area: 'Penestanan', primary: 'Ubud', price: 35000000, beds: 3, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Garden & Pool View', access: 'Walking Access only', pets: 'No Pets', added: '2026-08-30', coBroker: false },
+    { id: 'p12', name: 'Bambu Nest — Green School Community', area: 'Sibang', primary: 'Ubud', price: 41000000, beds: 4, baths: 3, type: 'rent', pool: 'Shared', view: 'Jungle View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-07-11', coBroker: false },
+    { id: 'p13', name: 'Contemporary Villa, Panoramic Rice Field Views', area: 'Abiansemal', primary: 'Ubud', price: 26000000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Rice Field View', access: 'Car Access', pets: 'Case by Case', added: '2026-08-08', coBroker: false },
+    { id: 'p14', name: '2-Bedroom Tropical Villa with Private Pool', area: 'Nyuh Kuning', primary: 'Ubud', price: 35000000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Garden View', access: 'Car Access', pets: 'No Pets', added: '2026-04-02', coBroker: false }
+  ];
+
+  /* ---- Saved search criteria for this client ---- */
+  const CRITERIA = [
+    {
+      id: 'c1',
+      name: '3BR Ubud Family Home',
+      lastChecked: '2026-08-27',
+      priceMin: 20000000,
+      priceMax: 50000000,
+      locations: ['Nyuh Kuning', 'Singakerta', 'Sibang', 'Penestanan', 'Pejeng', 'Abiansemal', 'Kedewatan'],
+      bedsMin: 3,
+      access: 'Car Access',
+      excludeCoBroker: true,
+      open: true
+    },
+    {
+      id: 'c2',
+      name: 'More Affordable Option',
+      lastChecked: '2026-08-27',
+      priceMin: 12000000,
+      priceMax: 25000000,
+      locations: ['Nyuh Kuning', 'Penestanan', 'Pejeng', 'Abiansemal'],
+      bedsMin: 2,
+      access: '',
+      excludeCoBroker: false,
+      open: false
+    }
+  ];
+
+  // Per-shortlist state. "Not for client" is scoped to THIS shortlist only —
+  // the same property still appears for other shortlists with the same brief.
+  const state = {
+    activeCriteria: 'c1',
+    selected: [],          // ids on the draft, in client-facing order
+    rejected: [],          // ids excluded from this shortlist's searches
+    reviewed: {},          // criteriaId -> ids already shown
+    notes: {},             // id -> { like, consider }
+    published: false,
+    url: ''
+  };
+
+  const propById = (id) => PROPERTIES.find((p) => p.id === id);
+
+  const matchesCriteria = (p, c) => {
+    if (p.price < c.priceMin || p.price > c.priceMax) return false;
+    if (c.locations.length && !c.locations.includes(p.area)) return false;
+    if (c.bedsMin && p.beds < c.bedsMin) return false;
+    if (c.access && p.access !== c.access) return false;
+    if (c.excludeCoBroker && p.coBroker) return false;
+    return true;
+  };
+
+  const matchesFor = (c) => PROPERTIES.filter((p) => matchesCriteria(p, c));
+
+  // "New" = entered the portfolio since this search was last reviewed
+  const newMatchesFor = (c) =>
+    matchesFor(c).filter((p) => p.added > c.lastChecked && !state.rejected.includes(p.id));
+
+  const fmtDate = (iso) =>
+    new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+
+  /* ================= Step 1 — criteria cards ================= */
+  function renderCriteria() {
+    criteriaList.innerHTML = '';
+
+    CRITERIA.forEach((c) => {
+      const total = matchesFor(c).length;
+      const fresh = newMatchesFor(c).length;
+
+      const card = document.createElement('article');
+      card.className = 'sb-criteria' + (c.open ? ' is-open' : '');
+      card.dataset.criteria = c.id;
+
+      const summary =
+        IDR(c.priceMin) + '–' + IDR(c.priceMax) + ' · ' +
+        (c.locations.length > 3 ? c.locations.slice(0, 2).join('/') + ' +' + (c.locations.length - 2) : c.locations.join('/')) +
+        ' · ' + c.bedsMin + '+ bedrooms';
+
+      card.innerHTML =
+        '<header class="sb-criteria__head">' +
+          '<button type="button" class="sb-criteria__toggle" aria-expanded="' + c.open + '">' +
+            '<span class="sb-criteria__chev"></span>' +
+            '<span class="sb-criteria__title">' + c.name + '</span>' +
+          '</button>' +
+          '<div class="sb-criteria__meta">' +
+            '<span class="sb-matchcount"><strong>' + total + '</strong> matches</span>' +
+            '<span class="sb-hint">Last checked ' + fmtDate(c.lastChecked) + '</span>' +
+            (fresh ? '<span class="sb-newbadge">+' + fresh + ' NEW</span>' : '') +
+          '</div>' +
+        '</header>' +
+
+        '<div class="sb-criteria__body">' +
+          '<div class="drawer-row drawer-row--2">' +
+            '<label class="field"><span class="field__label">Price from (IDR/year)</span>' +
+              '<input type="number" class="input-field" data-f="priceMin" value="' + c.priceMin + '"></label>' +
+            '<label class="field"><span class="field__label">Price to (IDR/year)</span>' +
+              '<input type="number" class="input-field" data-f="priceMax" value="' + c.priceMax + '"></label>' +
+          '</div>' +
+          '<div class="drawer-row drawer-row--2">' +
+            '<label class="field"><span class="field__label">Bedrooms (minimum)</span>' +
+              '<input type="number" class="input-field" data-f="bedsMin" value="' + c.bedsMin + '"></label>' +
+            '<label class="field"><span class="field__label">Road access</span>' +
+              '<select class="select-field" data-f="access">' +
+                '<option value="">Any</option>' +
+                ['Car Access', 'Motorbike Access', 'Walking Access only']
+                  .map((a) => '<option value="' + a + '"' + (c.access === a ? ' selected' : '') + '>' + a + '</option>').join('') +
+              '</select></label>' +
+          '</div>' +
+
+          '<div class="field"><span class="field__label">Locations</span>' +
+            '<div class="tagset">' +
+              ['Nyuh Kuning', 'Singakerta', 'Sibang', 'Penestanan', 'Pejeng', 'Abiansemal', 'Kedewatan']
+                .map((l) => '<label class="tag-check"><input type="checkbox" data-loc="' + l + '"' +
+                  (c.locations.includes(l) ? ' checked' : '') + '><span>' + l + '</span></label>').join('') +
+            '</div>' +
+          '</div>' +
+
+          '<details class="drawer-more">' +
+            '<summary class="drawer-more__summary">Advanced criteria</summary>' +
+            '<div class="sb-adv">' +
+              '<h4 class="sb-h4">For rent</h4>' +
+              '<div class="drawer-row drawer-row--2">' +
+                '<label class="field"><span class="field__label">Available from</span><input type="date" class="input-field"></label>' +
+                '<label class="field"><span class="field__label">Minimum rental period</span>' +
+                  '<select class="select-field"><option>Any</option><option>3 months</option><option>6 months</option><option>12 months</option></select></label>' +
+              '</div>' +
+              '<div class="drawer-row drawer-row--2">' +
+                '<label class="field"><span class="field__label">Distance to key point</span><input type="text" class="input-field" placeholder="e.g. 10 min to Green School"></label>' +
+                '<label class="field"><span class="field__label">Pets</span>' +
+                  '<select class="select-field"><option>Any</option><option>Pet Friendly</option><option>Cat Only</option><option>Case by Case</option></select></label>' +
+              '</div>' +
+              '<div class="drawer-row drawer-row--3">' +
+                '<label class="field"><span class="field__label">Kitchen</span>' +
+                  '<select class="select-field"><option>Any</option><option>Enclosed Kitchen</option><option>Open Kitchen</option><option>Semi-Outdoor Kitchen</option></select></label>' +
+                '<label class="field"><span class="field__label">Living room</span>' +
+                  '<select class="select-field"><option>Any</option><option>Enclosed</option><option>Semi-Open</option><option>Open</option></select></label>' +
+                '<label class="field"><span class="field__label">Pool</span>' +
+                  '<select class="select-field"><option>Any</option><option>Large Private Pool</option><option>Private Pool</option><option>Shared</option></select></label>' +
+              '</div>' +
+              '<div class="drawer-row drawer-row--2">' +
+                '<label class="field"><span class="field__label">View</span>' +
+                  '<select class="select-field"><option>Any</option><option>Rice Field View</option><option>Jungle View</option><option>Garden View</option><option>Ocean View</option></select></label>' +
+                '<label class="field"><span class="field__label">Garden</span>' +
+                  '<select class="select-field"><option>Any</option><option>Private garden</option><option>Shared garden</option><option>None</option></select></label>' +
+              '</div>' +
+
+              '<h4 class="sb-h4">For buy</h4>' +
+              '<div class="drawer-row drawer-row--2">' +
+                '<label class="field"><span class="field__label">Tenure</span>' +
+                  '<select class="select-field"><option>Any</option><option>Leasehold</option><option>Freehold</option></select></label>' +
+                '<label class="field"><span class="field__label">Lease duration (years min)</span><input type="number" class="input-field" placeholder="Any"></label>' +
+              '</div>' +
+              '<div class="drawer-row drawer-row--3">' +
+                '<label class="field"><span class="field__label">Lease extension</span>' +
+                  '<select class="select-field"><option>Any</option><option>Yes</option><option>No</option></select></label>' +
+                '<label class="field"><span class="field__label">Zoning</span>' +
+                  '<select class="select-field"><option>Any</option><option>Residential</option><option>Tourism</option><option>Green belt</option></select></label>' +
+                '<label class="field"><span class="field__label">Building status</span>' +
+                  '<select class="select-field"><option>Any</option><option>Built</option><option>Under construction</option><option>Off plan</option></select></label>' +
+              '</div>' +
+              '<label class="field"><span class="field__label">Building permits</span>' +
+                '<select class="select-field"><option>Any</option><option>PBG / SLF in place</option><option>In progress</option><option>None</option></select></label>' +
+            '</div>' +
+          '</details>' +
+
+          '<div class="sb-internal">' +
+            '<h4 class="sb-h4">Internal</h4>' +
+            '<label class="tag-check tag-check--wide"><input type="checkbox" data-f="excludeCoBroker"' +
+              (c.excludeCoBroker ? ' checked' : '') + '><span>Exclude co-broker listings</span></label>' +
+          '</div>' +
+
+          '<div class="sb-criteria__foot">' +
+            '<p class="sb-hint">' + summary + '</p>' +
+            (fresh
+              ? '<button type="button" class="btn btn-primary sb-generate sb-generate--new" data-gen="' + c.id + '">' +
+                  '<span class="sb-newpill__dot"></span>Review ' + fresh + ' new options</button>'
+              : '<button type="button" class="btn btn-primary sb-generate" data-gen="' + c.id + '">Generate options</button>') +
+          '</div>' +
+        '</div>';
+
+      criteriaList.appendChild(card);
+    });
+
+    refreshHeader();
+  }
+
+  /* ================= Step 2 — selection ================= */
+  function propCard(p, mode) {
+    const inDraft = state.selected.includes(p.id);
+    const notes = state.notes[p.id] || { like: '', consider: '' };
+    const pos = state.selected.indexOf(p.id);
+
+    const thumb =
+      '<div class="sb-card__thumb" aria-hidden="true">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>' +
+        '<span>Cover photo</span>' +
+      '</div>';
+
+    const facts =
+      '<ul class="sb-card__facts">' +
+        '<li><strong>' + IDR(p.price) + '</strong> / year</li>' +
+        '<li>' + p.beds + ' bed · ' + p.baths + ' bath</li>' +
+        '<li>' + p.area + ', ' + p.primary + '</li>' +
+      '</ul>' +
+      '<div class="sb-card__tags">' +
+        '<span class="sb-tag">' + p.pool + '</span>' +
+        '<span class="sb-tag">' + p.view + '</span>' +
+        '<span class="sb-tag">' + p.access + '</span>' +
+      '</div>';
+
+    if (mode === 'draft') {
+      return '<article class="sb-card sb-card--draft" data-prop="' + p.id + '">' +
+        thumb +
+        '<div class="sb-card__body">' +
+          '<span class="sb-card__pos">' + (pos + 1) + '</span>' +
+          '<h3 class="sb-card__title">' + p.name + '</h3>' +
+          facts +
+          '<label class="field"><span class="field__label">Why we like it</span>' +
+            '<textarea class="input-field input-field--area" rows="2" data-note="like" placeholder="What makes this one worth seeing?">' + notes.like + '</textarea></label>' +
+          '<label class="field"><span class="field__label">Things to consider</span>' +
+            '<textarea class="input-field input-field--area" rows="2" data-note="consider" placeholder="Be honest — it builds trust.">' + notes.consider + '</textarea></label>' +
+          '<div class="sb-card__actions">' +
+            '<button type="button" class="btn btn-ghost sb-move" data-move="up" ' + (pos === 0 ? 'disabled' : '') + ' aria-label="Move up">↑ Move up</button>' +
+            '<button type="button" class="btn btn-ghost sb-move" data-move="down" ' + (pos === state.selected.length - 1 ? 'disabled' : '') + ' aria-label="Move down">↓ Move down</button>' +
+            '<button type="button" class="btn btn-ghost sb-remove">Remove</button>' +
+          '</div>' +
+        '</div>' +
+      '</article>';
+    }
+
+    return '<article class="sb-card" data-prop="' + p.id + '">' +
+      thumb +
+      '<div class="sb-card__body">' +
+        '<h3 class="sb-card__title">' + p.name + '</h3>' +
+        facts +
+        '<div class="sb-card__actions">' +
+          '<button type="button" class="btn ' + (inDraft ? 'btn-ghost' : 'btn-primary') + ' sb-add"' + (inDraft ? ' disabled' : '') + '>' +
+            (inDraft ? '✓ On shortlist' : '♡ Add to shortlist') + '</button>' +
+          '<button type="button" class="btn btn-ghost sb-reject">Not for client</button>' +
+        '</div>' +
+      '</div>' +
+    '</article>';
+  }
+
+  function renderSelection() {
+    const c = CRITERIA.find((x) => x.id === state.activeCriteria);
+    const wrap = document.getElementById('sbOptions');
+    const seen = state.reviewed[c.id] || [];
+
+    const options = matchesFor(c).filter(
+      (p) => !state.rejected.includes(p.id) && seen.includes(p.id)
+    );
+
+    document.getElementById('sbSelectionTitle').textContent = 'Options for “' + c.name + '”';
+    document.getElementById('sbOptionCount').textContent = String(options.length);
+    wrap.innerHTML = options.map((p) => propCard(p, 'select')).join('');
+    document.getElementById('sbOptionsEmpty').hidden = options.length !== 0;
+
+    // Rejected list, with an undo
+    const rejWrap = document.getElementById('sbRejectedWrap');
+    rejWrap.hidden = state.rejected.length === 0;
+    document.getElementById('sbRejectedCount').textContent = String(state.rejected.length);
+    document.getElementById('sbRejectedList').innerHTML = state.rejected
+      .map((id) => {
+        const p = propById(id);
+        return '<li><span>' + p.name + '</span><button type="button" class="sb-undo" data-undo="' + id + '">Undo</button></li>';
+      })
+      .join('');
+  }
+
+  /* ================= Step 3 — draft ================= */
+  function renderDraft() {
+    const wrap = document.getElementById('sbDraft');
+    wrap.innerHTML = state.selected.map((id) => propCard(propById(id), 'draft')).join('');
+    document.getElementById('sbDraftEmpty').hidden = state.selected.length !== 0;
+    document.getElementById('sbPublish').hidden = state.selected.length === 0;
+  }
+
+  function refreshHeader() {
+    document.getElementById('sbCount').textContent = String(state.selected.length);
+    const fresh = CRITERIA.reduce((n, c) => n + newMatchesFor(c).length, 0);
+    const pill = document.getElementById('sbNewPill');
+    pill.hidden = fresh === 0;
+    document.getElementById('sbNewCount').textContent = String(fresh);
+  }
+
+  function renderAll() {
+    renderSelection();
+    renderDraft();
+    refreshHeader();
+  }
+
+  /* ================= Step navigation ================= */
+  function goto(step) {
+    ['criteria', 'selection', 'draft'].forEach((s) => {
+      document.getElementById('step' + s.charAt(0).toUpperCase() + s.slice(1)).hidden = s !== step;
+      const btn = document.querySelector('.sb-step[data-step="' + s + '"]');
+      if (btn) btn.classList.toggle('is-active', s === step);
+    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('.sb-step').forEach((b) =>
+    b.addEventListener('click', () => goto(b.dataset.step))
+  );
+  document.querySelectorAll('[data-goto]').forEach((b) =>
+    b.addEventListener('click', () => goto(b.dataset.goto))
+  );
+  document.getElementById('sbCounter').addEventListener('click', () => goto('draft'));
+  document.getElementById('sbNewPill').addEventListener('click', () => goto('criteria'));
+
+  /* ================= Criteria interactions ================= */
+  criteriaList.addEventListener('click', (e) => {
+    const toggle = e.target.closest('.sb-criteria__toggle');
+    if (toggle) {
+      const card = toggle.closest('.sb-criteria');
+      const c = CRITERIA.find((x) => x.id === card.dataset.criteria);
+      c.open = !c.open;
+      card.classList.toggle('is-open', c.open);
+      toggle.setAttribute('aria-expanded', String(c.open));
+      return;
+    }
+
+    const gen = e.target.closest('.sb-generate');
+    if (gen) {
+      const c = CRITERIA.find((x) => x.id === gen.dataset.gen);
+      state.activeCriteria = c.id;
+      // Generating reviews the search: everything matching becomes visible,
+      // and the "new since" marker moves to today.
+      state.reviewed[c.id] = matchesFor(c).map((p) => p.id);
+      c.lastChecked = '2026-09-01';
+      renderCriteria();
+      renderAll();
+      goto('selection');
+    }
+  });
+
+  criteriaList.addEventListener('change', (e) => {
+    const card = e.target.closest('.sb-criteria');
+    if (!card) return;
+    const c = CRITERIA.find((x) => x.id === card.dataset.criteria);
+
+    const f = e.target.dataset.f;
+    if (f === 'excludeCoBroker') c.excludeCoBroker = e.target.checked;
+    else if (f === 'bedsMin') c.bedsMin = parseInt(e.target.value, 10) || 0;
+    else if (f === 'priceMin' || f === 'priceMax') c[f] = parseInt(e.target.value, 10) || 0;
+    else if (f === 'access') c.access = e.target.value;
+
+    if (e.target.dataset.loc) {
+      const loc = e.target.dataset.loc;
+      if (e.target.checked) {
+        if (!c.locations.includes(loc)) c.locations.push(loc);
+      } else {
+        c.locations = c.locations.filter((l) => l !== loc);
+      }
+    }
+
+    // Live match count without collapsing what the agent is editing
+    const total = matchesFor(c).length;
+    const countEl = card.querySelector('.sb-matchcount strong');
+    if (countEl) countEl.textContent = String(total);
+  });
+
+  document.getElementById('sbAddCriteria').addEventListener('click', () => {
+    CRITERIA.forEach((c) => (c.open = false));
+    CRITERIA.push({
+      id: 'c' + (CRITERIA.length + 1),
+      name: 'New search ' + (CRITERIA.length + 1),
+      lastChecked: '2026-09-01',
+      priceMin: 10000000,
+      priceMax: 100000000,
+      locations: [],
+      bedsMin: 1,
+      access: '',
+      excludeCoBroker: false,
+      open: true
+    });
+    renderCriteria();
+  });
+
+  /* ================= Selection interactions ================= */
+  document.getElementById('sbOptions').addEventListener('click', (e) => {
+    const card = e.target.closest('.sb-card');
+    if (!card) return;
+    const id = card.dataset.prop;
+
+    if (e.target.closest('.sb-add')) {
+      if (!state.selected.includes(id)) state.selected.push(id);
+      renderAll();
+    }
+    // Rejecting is permanent for THIS shortlist — the property does not come
+    // back when the same search is generated again.
+    if (e.target.closest('.sb-reject')) {
+      if (!state.rejected.includes(id)) state.rejected.push(id);
+      state.selected = state.selected.filter((s) => s !== id);
+      renderAll();
+      renderCriteria();
+    }
+  });
+
+  document.getElementById('sbRejectedList').addEventListener('click', (e) => {
+    const undo = e.target.closest('.sb-undo');
+    if (!undo) return;
+    state.rejected = state.rejected.filter((id) => id !== undo.dataset.undo);
+    renderAll();
+    renderCriteria();
+  });
+
+  /* ================= Draft interactions ================= */
+  const draftWrap = document.getElementById('sbDraft');
+
+  draftWrap.addEventListener('click', (e) => {
+    const card = e.target.closest('.sb-card');
+    if (!card) return;
+    const id = card.dataset.prop;
+    const i = state.selected.indexOf(id);
+
+    const move = e.target.closest('.sb-move');
+    if (move) {
+      const j = move.dataset.move === 'up' ? i - 1 : i + 1;
+      if (j < 0 || j >= state.selected.length) return;
+      state.selected[i] = state.selected[j];
+      state.selected[j] = id;
+      renderAll();
+      return;
+    }
+
+    // Remove returns it to Selection — it is not a rejection
+    if (e.target.closest('.sb-remove')) {
+      state.selected.splice(i, 1);
+      renderAll();
+    }
+  });
+
+  draftWrap.addEventListener('input', (e) => {
+    const note = e.target.dataset.note;
+    if (!note) return;
+    const id = e.target.closest('.sb-card').dataset.prop;
+    state.notes[id] = state.notes[id] || { like: '', consider: '' };
+    state.notes[id][note] = e.target.value;
+  });
+
+  /* ================= Publish ================= */
+  document.getElementById('sbPublishBtn').addEventListener('click', () => {
+    const name = document.getElementById('sbName').value.trim();
+    if (!name) {
+      document.getElementById('sbName').focus();
+      return;
+    }
+    state.published = true;
+    state.url = 'banyan.properties/s/' + Math.random().toString(36).slice(2, 7);
+
+    document.getElementById('sbUrl').textContent = state.url;
+    document.getElementById('sbPublishDraft').hidden = true;
+    document.getElementById('sbPublishLive').hidden = false;
+
+    const status = document.getElementById('sbStatus');
+    status.dataset.state = 'published';
+    status.textContent = 'Published';
+  });
+
+  document.getElementById('sbCopy').addEventListener('click', () => {
+    const btn = document.getElementById('sbCopy');
+    const done = () => {
+      btn.textContent = 'Copied';
+      window.setTimeout(() => (btn.textContent = 'Copy link'), 1600);
+    };
+    if (navigator.clipboard) navigator.clipboard.writeText('https://' + state.url).then(done, done);
+    else done();
+  });
+
+  renderCriteria();
+  renderAll();
 });

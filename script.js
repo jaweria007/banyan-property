@@ -1941,6 +1941,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }, { threshold: 0.1, rootMargin: '0px 0px -24px 0px' });
       items.forEach((el) => revealIO.observe(el));
+
+      // Safety net: never leave a card stuck at opacity 0 if the observer
+      // does not fire (e.g. the container was hidden when we started watching).
+      const watched = items;
+      window.setTimeout(() => {
+        watched.forEach((el) => {
+          if (el.isConnected && !el.classList.contains('is-in')) el.classList.add('is-in');
+        });
+      }, 900);
     }
 
     function render() {
@@ -1972,6 +1981,128 @@ document.addEventListener('DOMContentLoaded', () => {
         render();
       });
     });
+
+    /* ---- Collapsible filter bar (client feedback: it takes a lot of space) ---- */
+    const toolbar = document.getElementById('listingsToolbar');
+    const filtersToggle = document.getElementById('filtersToggle');
+    if (toolbar && filtersToggle) {
+      const toggleLabel = filtersToggle.querySelector('.btn-filters-toggle__label');
+      const applyFiltersVisibility = (open) => {
+        toolbar.classList.toggle('is-collapsed', !open);
+        filtersToggle.setAttribute('aria-expanded', String(open));
+        if (toggleLabel) toggleLabel.textContent = open ? 'Hide filters' : 'Show filters';
+      };
+      let filtersOpen = true;
+      try {
+        filtersOpen = localStorage.getItem('banyan_listings_filters') !== 'closed';
+      } catch (e) {}
+      applyFiltersVisibility(filtersOpen);
+      filtersToggle.addEventListener('click', () => {
+        filtersOpen = !filtersOpen;
+        applyFiltersVisibility(filtersOpen);
+        try {
+          localStorage.setItem('banyan_listings_filters', filtersOpen ? 'open' : 'closed');
+        } catch (e) {}
+      });
+    }
+
+    /* ---- Advanced search drawer (right-hand panel) ---- */
+    const drawer = document.getElementById('advSearch');
+    const drawerBackdrop = document.getElementById('advBackdrop');
+    const advBtn = document.getElementById('filterBtn');
+    if (drawer && advBtn) {
+      const advCount = document.getElementById('advCount');
+      const openDrawer = () => {
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+        advBtn.setAttribute('aria-expanded', 'true');
+        if (drawerBackdrop) drawerBackdrop.hidden = false;
+        document.body.style.overflow = 'hidden';
+        const first = drawer.querySelector('input, select, button');
+        if (first) first.focus();
+      };
+      const closeDrawer = () => {
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+        advBtn.setAttribute('aria-expanded', 'false');
+        if (drawerBackdrop) drawerBackdrop.hidden = true;
+        document.body.style.overflow = '';
+        advBtn.focus();
+      };
+
+      advBtn.addEventListener('click', openDrawer);
+      if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeDrawer);
+      const advClose = document.getElementById('advClose');
+      if (advClose) advClose.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+      });
+
+      /* Nested locations: a secondary location must belong to its primary.
+         Mirrors the Website CMS tag hierarchy. */
+      const SECONDARY_LOCATIONS = {
+        Ubud: ['Nyuh Kuning', 'Penestanan', 'Sayan', 'Pengosekan', 'Tegallalang', 'Mas', 'Kedewatan'],
+        Canggu: ['Berawa', 'Batu Bolong', 'Pererenan', 'Echo Beach', 'Umalas', 'Tumbak Bayuh'],
+        Uluwatu: ['Bingin', 'Padang Padang', 'Balangan', 'Pecatu', 'Nyang Nyang'],
+        Seminyak: ['Petitenget', 'Oberoi', 'Kerobokan', 'Batu Belig'],
+        Sanur: ['Sindhu', 'Semawang', 'Padang Galak', 'Mertasari']
+      };
+      const primarySel = document.getElementById('advLocPrimary');
+      const secondarySel = document.getElementById('advLocSecondary');
+      if (primarySel && secondarySel) {
+        primarySel.addEventListener('change', () => {
+          const list = SECONDARY_LOCATIONS[primarySel.value] || [];
+          secondarySel.innerHTML = '';
+          if (!list.length) {
+            secondarySel.disabled = true;
+            secondarySel.appendChild(new Option('Select a primary location first', ''));
+            return;
+          }
+          secondarySel.disabled = false;
+          secondarySel.appendChild(new Option('Any in ' + primarySel.value, ''));
+          list.forEach((name) => secondarySel.appendChild(new Option(name, name)));
+        });
+      }
+
+      const advInputs = () => Array.from(drawer.querySelectorAll('[data-adv], [data-adv-group] input'));
+
+      const refreshAdvCount = () => {
+        const n = advInputs().filter((el) => (el.type === 'checkbox' ? el.checked : String(el.value || '') !== '')).length;
+        if (!advCount) return;
+        advCount.hidden = n === 0;
+        advCount.textContent = String(n);
+      };
+      drawer.addEventListener('change', refreshAdvCount);
+      drawer.addEventListener('input', refreshAdvCount);
+
+      const advClear = document.getElementById('advClear');
+      if (advClear) {
+        advClear.addEventListener('click', () => {
+          advInputs().forEach((el) => {
+            if (el.type === 'checkbox') el.checked = false;
+            else el.value = '';
+          });
+          if (secondarySel) {
+            secondarySel.innerHTML = '';
+            secondarySel.disabled = true;
+            secondarySel.appendChild(new Option('Select a primary location first', ''));
+          }
+          refreshAdvCount();
+        });
+      }
+
+      const advApply = document.getElementById('advApply');
+      if (advApply) {
+        advApply.addEventListener('click', () => {
+          const typeEl = drawer.querySelector('[data-adv="type"]');
+          if (typeEl) state.category = typeEl.value || 'all';
+          const locEl = drawer.querySelector('[data-adv="locPrimary"]');
+          if (locEl) state.area = locEl.value || 'all';
+          render();
+          closeDrawer();
+        });
+      }
+    }
 
     const tabs = Array.from(document.querySelectorAll('#catTabs .cat-tab'));
     tabs.forEach((tab) => {

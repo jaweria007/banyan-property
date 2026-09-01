@@ -205,9 +205,15 @@
               <a href="#" class="subtle-link">Show empty/reserved rows</a>
             </p>
           </div>
-          <div class="view-toggle" role="group" aria-label="Listings view">
-            <button type="button" class="view-link is-active" data-view="cards" aria-pressed="true">Cards</button>
-            <button type="button" class="view-link" data-view="table" aria-pressed="false">Table</button>
+          <div class="page-head__actions">
+            <button type="button" class="btn btn-ghost btn-filters-toggle" id="filtersToggle" aria-expanded="true" aria-controls="listingsToolbar">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+              <span class="btn-filters-toggle__label">Hide filters</span>
+            </button>
+            <div class="view-toggle" role="group" aria-label="Listings view">
+              <button type="button" class="view-link is-active" data-view="cards" aria-pressed="true">Cards</button>
+              <button type="button" class="view-link" data-view="table" aria-pressed="false">Table</button>
+            </div>
           </div>
         </section>
 
@@ -224,7 +230,7 @@
           <button type="button" class="cat-tab" data-stage="closed">Closed <span class="tab-count">0</span></button>
         </nav>
 
-        <div class="toolbar">
+        <div class="toolbar" id="listingsToolbar">
           <label class="select-wrap">
             <span class="sr-only">Filter by area</span>
             <select class="select-field select-field--areas" id="areaSelect">
@@ -266,7 +272,11 @@
               <option value="price-desc">Price ↓</option>
             </select>
           </label>
-          <button type="button" class="btn btn-primary btn-filter" id="filterBtn">Filter</button>
+          <button type="button" class="btn btn-primary btn-filter" id="filterBtn" aria-controls="advSearch" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18"/><path d="M6 12h12"/><path d="M10 19h4"/></svg>
+            Advanced search
+            <span class="adv-count" id="advCount" hidden>0</span>
+          </button>
           <button type="button" class="btn btn-ghost" id="resetBtn">Reset</button>
         </div>
 
@@ -837,6 +847,245 @@
         <p class="list-empty" id="listEmpty" hidden>No listings match your filters.</p>
 
       </main>
+
+      <!-- Advanced search: right-hand slide-in panel -->
+      <button class="drawer-backdrop" id="advBackdrop" aria-label="Close advanced search" hidden></button>
+      <aside class="drawer" id="advSearch" aria-labelledby="advSearchTitle" aria-hidden="true">
+        <header class="drawer__head">
+          <h2 class="drawer__title" id="advSearchTitle">Advanced search</h2>
+          <button type="button" class="icon-btn drawer__close" id="advClose" aria-label="Close advanced search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+          </button>
+        </header>
+
+        <div class="drawer__body">
+
+          <section class="drawer-group">
+            <h3 class="drawer-group__title">Price</h3>
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Min (IDR)</span>
+                <input type="text" class="input-field" data-adv="priceMin" placeholder="e.g. 500,000,000">
+              </label>
+              <label class="field">
+                <span class="field__label">Max (IDR)</span>
+                <input type="text" class="input-field" data-adv="priceMax" placeholder="e.g. 3,000,000,000">
+              </label>
+            </div>
+          </section>
+
+          <section class="drawer-group">
+            <h3 class="drawer-group__title">Location</h3>
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Primary location</span>
+                <select class="select-field" data-adv="locPrimary" id="advLocPrimary">
+                  <option value="">Any</option>
+                  <option value="Ubud">Ubud</option>
+                  <option value="Canggu">Canggu</option>
+                  <option value="Uluwatu">Uluwatu</option>
+                  <option value="Seminyak">Seminyak</option>
+                  <option value="Sanur">Sanur</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">Secondary location</span>
+                <select class="select-field" data-adv="locSecondary" id="advLocSecondary" disabled>
+                  <option value="">Select a primary location first</option>
+                </select>
+              </label>
+            </div>
+          </section>
+
+          <section class="drawer-group">
+            <h3 class="drawer-group__title">Property</h3>
+            <div class="drawer-row drawer-row--3">
+              <label class="field">
+                <span class="field__label">Type</span>
+                <select class="select-field" data-adv="type">
+                  <option value="">Any</option>
+                  <option value="rent">Rent</option>
+                  <option value="sale">Villa / Sale</option>
+                  <option value="land">Land</option>
+                  <option value="commercial">Commercial</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">Bedrooms</span>
+                <select class="select-field" data-adv="beds">
+                  <option value="">Any</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                  <option value="4">4+</option>
+                  <option value="5">5+</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">Bathrooms</span>
+                <select class="select-field" data-adv="baths">
+                  <option value="">Any</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                  <option value="4">4+</option>
+                </select>
+              </label>
+            </div>
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Land size (m² min)</span>
+                <input type="number" class="input-field" data-adv="landMin" placeholder="Any">
+              </label>
+              <label class="field">
+                <span class="field__label">Building size (m² min)</span>
+                <input type="number" class="input-field" data-adv="buildMin" placeholder="Any">
+              </label>
+            </div>
+          </section>
+
+          <section class="drawer-group">
+            <h3 class="drawer-group__title">Ownership</h3>
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Tenure</span>
+                <select class="select-field" data-adv="tenure">
+                  <option value="">Any</option>
+                  <option value="leasehold">Leasehold</option>
+                  <option value="freehold">Freehold</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">Lease remaining (years min)</span>
+                <input type="number" class="input-field" data-adv="leaseMin" placeholder="Any">
+              </label>
+            </div>
+          </section>
+
+          <details class="drawer-more">
+            <summary class="drawer-more__summary">More criteria</summary>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Pool</h3>
+              <div class="tagset" data-adv-group="pool">
+                <label class="tag-check"><input type="checkbox" value="Large Private Pool (&gt;10m)"><span>Large Private Pool (&gt;10m)</span></label>
+                <label class="tag-check"><input type="checkbox" value="Private Pool (&lt;10m)"><span>Private Pool (&lt;10m)</span></label>
+                <label class="tag-check"><input type="checkbox" value="Shared"><span>Shared</span></label>
+                <label class="tag-check"><input type="checkbox" value="None"><span>None</span></label>
+              </div>
+            </section>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">View</h3>
+              <div class="tagset" data-adv-group="view">
+                <label class="tag-check"><input type="checkbox" value="Rice Field View"><span>Rice Field View</span></label>
+                <label class="tag-check"><input type="checkbox" value="Jungle View"><span>Jungle View</span></label>
+                <label class="tag-check"><input type="checkbox" value="Mountain View"><span>Mountain View</span></label>
+                <label class="tag-check"><input type="checkbox" value="River &amp; Waterfall"><span>River &amp; Waterfall</span></label>
+                <label class="tag-check"><input type="checkbox" value="Beachfront"><span>Beachfront</span></label>
+                <label class="tag-check"><input type="checkbox" value="Ocean View"><span>Ocean View</span></label>
+                <label class="tag-check"><input type="checkbox" value="Garden &amp; Pool View"><span>Garden &amp; Pool View</span></label>
+                <label class="tag-check"><input type="checkbox" value="Garden View"><span>Garden View</span></label>
+                <label class="tag-check"><input type="checkbox" value="Balinese Compound"><span>Balinese Compound</span></label>
+                <label class="tag-check"><input type="checkbox" value="Street View"><span>Street View</span></label>
+              </div>
+            </section>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Kitchen</h3>
+              <div class="tagset" data-adv-group="kitchen">
+                <label class="tag-check"><input type="checkbox" value="Enclosed Kitchen"><span>Enclosed Kitchen</span></label>
+                <label class="tag-check"><input type="checkbox" value="Open Kitchen"><span>Open Kitchen</span></label>
+                <label class="tag-check"><input type="checkbox" value="Semi-Outdoor Kitchen"><span>Semi-Outdoor Kitchen</span></label>
+                <label class="tag-check"><input type="checkbox" value="Shared Kitchen"><span>Shared Kitchen</span></label>
+                <label class="tag-check"><input type="checkbox" value="None"><span>None</span></label>
+              </div>
+            </section>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Living area</h3>
+              <div class="tagset" data-adv-group="living">
+                <label class="tag-check"><input type="checkbox" value="Enclosed"><span>Enclosed</span></label>
+                <label class="tag-check"><input type="checkbox" value="Semi-Enclosed"><span>Semi-Enclosed</span></label>
+                <label class="tag-check"><input type="checkbox" value="Private"><span>Private</span></label>
+                <label class="tag-check"><input type="checkbox" value="Semi-Open"><span>Semi-Open</span></label>
+                <label class="tag-check"><input type="checkbox" value="Open"><span>Open</span></label>
+                <label class="tag-check"><input type="checkbox" value="Outdoor"><span>Outdoor</span></label>
+                <label class="tag-check"><input type="checkbox" value="Indoor"><span>Indoor</span></label>
+                <label class="tag-check"><input type="checkbox" value="None"><span>None</span></label>
+              </div>
+            </section>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Access</h3>
+              <div class="tagset" data-adv-group="access">
+                <label class="tag-check"><input type="checkbox" value="Car Access"><span>Car Access</span></label>
+                <label class="tag-check"><input type="checkbox" value="Motorbike Access"><span>Motorbike Access</span></label>
+                <label class="tag-check"><input type="checkbox" value="Walking Access only"><span>Walking Access only</span></label>
+              </div>
+            </section>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Pets</h3>
+              <div class="tagset" data-adv-group="pets">
+                <label class="tag-check"><input type="checkbox" value="Pet Friendly"><span>Pet Friendly</span></label>
+                <label class="tag-check"><input type="checkbox" value="Pets Allowed (extra deposit)"><span>Pets Allowed (extra deposit)</span></label>
+                <label class="tag-check"><input type="checkbox" value="Cat Only"><span>Cat Only</span></label>
+                <label class="tag-check"><input type="checkbox" value="No Pets"><span>No Pets</span></label>
+                <label class="tag-check"><input type="checkbox" value="Case by Case"><span>Case by Case</span></label>
+              </div>
+            </section>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Basic comfort &amp; utility</h3>
+              <div class="tagset" data-adv-group="comfort">
+                <label class="tag-check"><input type="checkbox" value="Wifi"><span>Wifi</span></label>
+                <label class="tag-check"><input type="checkbox" value="AC"><span>AC</span></label>
+                <label class="tag-check"><input type="checkbox" value="Dedicated Workspace"><span>Dedicated Workspace</span></label>
+                <label class="tag-check"><input type="checkbox" value="Oven"><span>Oven</span></label>
+                <label class="tag-check"><input type="checkbox" value="Washing Machine"><span>Washing Machine</span></label>
+                <label class="tag-check"><input type="checkbox" value="Dryer"><span>Dryer</span></label>
+                <label class="tag-check"><input type="checkbox" value="Dish Washer"><span>Dish Washer</span></label>
+                <label class="tag-check"><input type="checkbox" value="Microwave"><span>Microwave</span></label>
+                <label class="tag-check"><input type="checkbox" value="Hot Water"><span>Hot Water</span></label>
+                <label class="tag-check"><input type="checkbox" value="TV"><span>TV</span></label>
+                <label class="tag-check"><input type="checkbox" value="Bathtub"><span>Bathtub</span></label>
+              </div>
+            </section>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Security &amp; safety</h3>
+              <div class="tagset" data-adv-group="security">
+                <label class="tag-check"><input type="checkbox" value="CCTV"><span>CCTV</span></label>
+                <label class="tag-check"><input type="checkbox" value="Smart Lock"><span>Smart Lock</span></label>
+                <label class="tag-check"><input type="checkbox" value="Safe"><span>Safe</span></label>
+                <label class="tag-check"><input type="checkbox" value="Carbon Monoxide Alarm"><span>Carbon Monoxide Alarm</span></label>
+                <label class="tag-check"><input type="checkbox" value="Physical Security"><span>Physical Security</span></label>
+              </div>
+            </section>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Family &amp; child</h3>
+              <div class="tagset" data-adv-group="family">
+                <label class="tag-check"><input type="checkbox" value="Outdoor Fireplace"><span>Outdoor Fireplace</span></label>
+                <label class="tag-check"><input type="checkbox" value="Playground &amp; Play Area"><span>Playground &amp; Play Area</span></label>
+                <label class="tag-check"><input type="checkbox" value="Toys &amp; Board Games"><span>Toys &amp; Board Games</span></label>
+              </div>
+            </section>
+          </details>
+
+          <section class="drawer-group">
+            <h3 class="drawer-group__title">Internal</h3>
+            <label class="tag-check tag-check--wide"><input type="checkbox" data-adv="excludeCoBroker"><span>Exclude co-broker listings</span></label>
+          </section>
+
+        </div>
+
+        <footer class="drawer__foot">
+          <button type="button" class="btn btn-ghost" id="advClear">Clear all</button>
+          <button type="button" class="btn btn-primary" id="advApply">Show results</button>
+        </footer>
+      </aside>
     </div>
   </div>
 

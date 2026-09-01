@@ -739,61 +739,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ================= Opportunities only ================= */
-  if (page === 'opportunities') {
-    const body = document.getElementById('oppBody');
-    const empty = document.getElementById('oppEmpty');
-    const countEl = document.getElementById('oppCount');
-    const searchInput = document.getElementById('oppSearch');
-    const rows = Array.from(body.querySelectorAll('.opp-row'));
-
-    let filtered = [];
-
-    function matches(row, query, priority, pipeline, agent) {
-      if (priority !== 'all' && row.dataset.priority !== priority) return false;
-      if (pipeline !== 'all' && row.dataset.pipeline !== pipeline) return false;
-      if (agent === 'none') {
-        if (row.dataset.agent) return false;
-      } else if (agent !== 'all' && row.dataset.agent !== agent) {
-        return false;
-      }
-      if (query && !row.dataset.query.toLowerCase().includes(query)) return false;
-      return true;
-    }
-
-    function applyFilters() {
-      const query = searchInput.value.trim().toLowerCase();
-      const priority = document.getElementById('prioritySelect').value;
-      const pipeline = document.getElementById('pipelineSelect').value;
-      const agent = document.getElementById('agentSelect').value;
-
-      filtered = rows.filter((row) => matches(row, query, priority, pipeline, agent));
-      render();
-    }
-
-    function render() {
-      rows.forEach((row) => {
-        row.style.display = filtered.includes(row) ? '' : 'none';
-      });
-
-      empty.hidden = filtered.length !== 0;
-      countEl.textContent = filtered.length;
-    }
-
-    searchInput.addEventListener('input', applyFilters);
-    ['prioritySelect', 'pipelineSelect', 'agentSelect'].forEach((id) => {
-      document.getElementById(id).addEventListener('change', applyFilters);
-    });
-    document.getElementById('oppFilterBtn').addEventListener('click', applyFilters);
-    document.getElementById('oppResetBtn').addEventListener('click', () => {
-      searchInput.value = '';
-      document.getElementById('prioritySelect').value = 'all';
-      document.getElementById('pipelineSelect').value = 'all';
-      document.getElementById('agentSelect').value = 'all';
-      applyFilters();
-    });
-
-    applyFilters();
-  }
+  /* Opportunities is rendered by the rebuilt block at the end of this file. */
 
   /* ================= Shortlist pages ================= */
   const SL_AVAILABLE = [
@@ -2799,4 +2745,243 @@ document.addEventListener('DOMContentLoaded', () => {
 
     render();
   }
+});
+
+/* ============================================================
+   Opportunities — rebuilt from client feedback (26–27 Aug)
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.body.dataset.page !== 'opportunities') return;
+
+  const body = document.getElementById('oppBody');
+  const empty = document.getElementById('oppEmpty');
+  if (!body) return;
+
+  /* The five action states. Overdue / Needs Action / No Action / Triage are
+     system-derived from the tasks on the Opportunity; only Waiting is set by
+     the agent, and a Waiting item must carry a Next Follow-Up date — once that
+     date passes it becomes Needs Action. */
+  const ACTION = {
+    overdue: { label: 'Overdue', dot: 'red', rank: 0 },
+    needs:   { label: 'Needs Action', dot: 'orange', rank: 1 },
+    triage:  { label: 'Triage', dot: 'yellow', rank: 2 },
+    waiting: { label: 'Waiting', dot: 'green', rank: 3 },
+    none:    { label: 'No Action', dot: 'none', rank: 4 }
+  };
+
+  const STAGES = ['New', 'In Contact', 'Viewing', 'Negotiation', 'Closed'];
+  const TODAY = new Date('2026-09-01T00:00:00');
+
+  const OPPS = [
+    { name: 'Umar Hassan',    phone: '+62 856-7890-1234', email: 'umar@example.com',   action: 'needs',   followUp: '',           stage: 'In Contact',  type: 'Villa',      channel: 'Website',  priority: 'High', agent: 'Ratna',      updated: '2026-08-30', shortlist: 'edit',   href: 'shortlist.html' },
+    { name: 'Sarah Wilson',   phone: '+62 811-9988-7766', email: 'sarah@example.com',  action: 'waiting', followUp: '2026-09-05', stage: 'Viewing',     type: 'Rent',       channel: 'Referral', priority: 'High', agent: 'Berry',      updated: '2026-08-29', shortlist: 'edit',   href: 'shortlist-lead.html' },
+    { name: 'M. Samo',        phone: '+62 812-3456-7890', email: '',                   action: 'overdue', followUp: '',           stage: 'In Contact',  type: 'Rent',       channel: 'WhatsApp', priority: 'High', agent: 'Ratna',      updated: '2026-08-22', shortlist: 'edit',   href: 'shortlist-test.html' },
+    { name: 'Andries de Vos', phone: '+62 877-1234-0099', email: 'andries@example.com',action: 'needs',   followUp: '',           stage: 'Negotiation', type: 'Villa',      channel: 'Referral', priority: 'High', agent: 'Andries',    updated: '2026-08-28', shortlist: 'edit',   href: 'shortlist-umar.html' },
+    { name: 'Putu Widiana',   phone: '+62 813-5566-7788', email: '',                   action: 'triage',  followUp: '',           stage: 'New',         type: 'Land',       channel: 'Scout',    priority: 'Med',  agent: 'Unassigned', updated: '2026-09-01', shortlist: 'create', href: 'shortlist-unnamed.html' },
+    { name: 'Jenna Clark',    phone: '+62 819-2233-4455', email: 'jenna@example.com',  action: 'needs',   followUp: '',           stage: 'New',         type: 'Rent',       channel: 'Website',  priority: 'Med',  agent: 'Berry',      updated: '2026-08-31', shortlist: 'create', href: 'shortlist-unnamed.html' },
+    { name: 'Kadek Aryani',   phone: '+62 878-6655-4433', email: '',                   action: 'waiting', followUp: '2026-09-09', stage: 'Viewing',     type: 'Commercial', channel: 'Walk-in',  priority: 'Med',  agent: 'Kashif',     updated: '2026-08-27', shortlist: 'edit',   href: 'shortlist-unnamed.html' },
+    { name: 'Tom Bradley',    phone: '+62 815-7788-9900', email: 'tom@example.com',    action: 'overdue', followUp: '',           stage: 'Negotiation', type: 'Villa',      channel: 'Website',  priority: 'High', agent: 'Andries',    updated: '2026-08-18', shortlist: 'edit',   href: 'shortlist-lead.html' },
+    { name: 'Nina Petrova',   phone: '+62 821-4455-6677', email: 'nina@example.com',   action: 'none',    followUp: '',           stage: 'Closed',      type: 'Rent',       channel: 'Referral', priority: 'Low',  agent: 'Ratna',      updated: '2026-08-15', shortlist: 'edit',   href: 'shortlist-test.html' },
+    { name: 'Wayan Adnyana',  phone: '+62 877-1234-0099', email: '',                   action: 'triage',  followUp: '',           stage: 'New',         type: 'Land',       channel: 'Scout',    priority: 'Low',  agent: 'Unassigned', updated: '2026-09-01', shortlist: 'create', href: 'shortlist-unnamed.html' },
+    { name: 'Grace Lim',      phone: '+62 816-3322-1100', email: 'grace@example.com',  action: 'needs',   followUp: '',           stage: 'In Contact',  type: 'Villa',      channel: 'WhatsApp', priority: 'Med',  agent: 'Berry',      updated: '2026-08-30', shortlist: 'create', href: 'shortlist-unnamed.html' },
+    { name: 'Made Sujana',    phone: '+62 817-4433-2211', email: '',                   action: 'waiting', followUp: '2026-09-12', stage: 'In Contact',  type: 'Commercial', channel: 'Walk-in',  priority: 'Low',  agent: 'Kashif',     updated: '2026-08-26', shortlist: 'create', href: 'shortlist-unnamed.html' },
+    { name: 'Oliver Hart',    phone: '+62 812-9090-1212', email: 'oliver@example.com', action: 'overdue', followUp: '',           stage: 'Viewing',     type: 'Rent',       channel: 'Website',  priority: 'Med',  agent: 'Ratna',      updated: '2026-08-14', shortlist: 'edit',   href: 'shortlist-umar.html' },
+    { name: 'Ayu Lestari',    phone: '+62 813-1111-2222', email: '',                   action: 'none',    followUp: '',           stage: 'Closed',      type: 'Rent',       channel: 'Referral', priority: 'Low',  agent: 'Berry',      updated: '2026-08-11', shortlist: 'edit',   href: 'shortlist-test.html' },
+    { name: 'Daniel Chen',    phone: '+62 818-5544-3322', email: 'daniel@example.com', action: 'needs',   followUp: '',           stage: 'New',         type: 'Villa',      channel: 'Website',  priority: 'High', agent: 'Andries',    updated: '2026-08-31', shortlist: 'create', href: 'shortlist-unnamed.html' },
+    { name: 'Rina Kusuma',    phone: '+62 819-7766-5544', email: '',                   action: 'waiting', followUp: '2026-09-03', stage: 'Negotiation', type: 'Land',       channel: 'WhatsApp', priority: 'Med',  agent: 'Kashif',     updated: '2026-08-25', shortlist: 'edit',   href: 'shortlist-lead.html' }
+  ];
+
+  // A Waiting item whose follow-up date has passed becomes Needs Action
+  OPPS.forEach((o) => {
+    if (o.action === 'waiting' && o.followUp && new Date(o.followUp + 'T00:00:00') < TODAY) {
+      o.action = 'needs';
+    }
+  });
+
+  const state = { q: '', channel: 'all', action: 'all' };
+  let sortKey = 'shortlist';
+  let sortDir = 1;
+
+  const fmtDate = (iso) =>
+    new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+  const matches = (o) => {
+    if (state.channel !== 'all' && o.channel !== state.channel) return false;
+    if (state.action !== 'all' && o.action !== state.action) return false;
+    if (state.q) {
+      const hay = (o.name + ' ' + o.phone + ' ' + o.email).toLowerCase();
+      if (!hay.includes(state.q)) return false;
+    }
+    return true;
+  };
+
+  const compare = (a, b) => {
+    let r = 0;
+    switch (sortKey) {
+      case 'name':    r = a.name.localeCompare(b.name); break;
+      case 'action':  r = ACTION[a.action].rank - ACTION[b.action].rank; break;
+      case 'stage':   r = STAGES.indexOf(a.stage) - STAGES.indexOf(b.stage); break;
+      case 'type':    r = a.type.localeCompare(b.type); break;
+      case 'channel': r = a.channel.localeCompare(b.channel); break;
+      case 'priority': {
+        const p = { High: 0, Med: 1, Low: 2 };
+        r = p[a.priority] - p[b.priority];
+        break;
+      }
+      case 'agent':   r = a.agent.localeCompare(b.agent); break;
+      case 'updated': r = b.updated.localeCompare(a.updated); break;
+      // Shortlist sorts Edit-first by default so live shortlists surface
+      default:        r = (a.shortlist === 'edit' ? 0 : 1) - (b.shortlist === 'edit' ? 0 : 1);
+    }
+    return r * sortDir;
+  };
+
+  function render() {
+    const rows = OPPS.filter(matches).slice().sort(compare);
+    body.innerHTML = '';
+
+    rows.forEach((o) => {
+      const tr = document.createElement('tr');
+      const a = ACTION[o.action];
+      const waitingHint = o.action === 'waiting' && o.followUp
+        ? ' <span class="field-hint">· follow up ' + fmtDate(o.followUp) + '</span>'
+        : '';
+
+      tr.innerHTML =
+        '<td><div class="opp-client"><span class="opp-avatar">' + o.name.charAt(0) + '</span>' +
+          '<div><span class="opp-name">' + o.name + '</span>' +
+          '<span class="field-hint opp-phone-sub">' + o.phone + '</span></div></div></td>' +
+        '<td><span class="status-pill"><span class="action-dot action-dot--' + a.dot + '"></span>' + a.label + waitingHint + '</span></td>' +
+        '<td><span class="opp-chip opp-chip--stage">' + o.stage + '</span></td>' +
+        '<td>' + o.type + '</td>' +
+        '<td>' + o.channel + '</td>' +
+        '<td><span class="opp-chip opp-chip--' + o.priority.toLowerCase() + '">' + o.priority + '</span></td>' +
+        '<td>' + (o.agent === 'Unassigned' ? '<span class="field-hint">Unassigned</span>' : o.agent) + '</td>' +
+        '<td class="opp-date">' + fmtDate(o.updated) + '</td>' +
+        '<td><a href="' + o.href + '" class="btn-shortlist btn-shortlist--' + o.shortlist + '">' +
+          (o.shortlist === 'edit' ? 'Edit' : 'Create') + '</a></td>' +
+        '<td><a href="profile.html" class="icon-action" title="Edit requirements" aria-label="Edit requirements">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+          '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></a></td>';
+
+      body.appendChild(tr);
+    });
+
+    empty.hidden = rows.length !== 0;
+    document.getElementById('oppCount').textContent = String(rows.length);
+    refreshCounts();
+  }
+
+  function refreshCounts() {
+    const set = (key, n) => {
+      const el = document.querySelector('.queue-stat[data-action="' + key + '"] .queue-stat__value');
+      if (el) el.textContent = String(n);
+    };
+    set('all', OPPS.length);
+    Object.keys(ACTION).forEach((k) => set(k, OPPS.filter((o) => o.action === k).length));
+  }
+
+  document.querySelectorAll('.th-sort').forEach((th) => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.sort;
+      sortDir = sortKey === key ? -sortDir : 1;
+      sortKey = key;
+      document.querySelectorAll('.th-sort').forEach((o) => o.classList.remove('is-asc', 'is-desc'));
+      th.classList.add(sortDir === 1 ? 'is-asc' : 'is-desc');
+      render();
+    });
+  });
+
+  document.querySelectorAll('.queue-stat[data-action]').forEach((tile) => {
+    tile.addEventListener('click', () => {
+      state.action = tile.dataset.action;
+      document.querySelectorAll('.queue-stat[data-action]').forEach((t) => {
+        t.classList.toggle('is-active', t.dataset.action === state.action);
+      });
+      render();
+    });
+  });
+
+  const search = document.getElementById('oppSearch');
+  search.addEventListener('input', () => {
+    state.q = search.value.trim().toLowerCase();
+    render();
+  });
+
+  const channel = document.getElementById('channelSelect');
+  channel.addEventListener('change', () => {
+    state.channel = channel.value;
+    render();
+  });
+
+  document.getElementById('oppResetBtn').addEventListener('click', () => {
+    state.q = '';
+    state.channel = 'all';
+    state.action = 'all';
+    search.value = '';
+    channel.value = 'all';
+    document.querySelectorAll('.queue-stat[data-action]').forEach((t) => {
+      t.classList.toggle('is-active', t.dataset.action === 'all');
+    });
+    render();
+  });
+
+  /* ---- New Opportunity drawer ---- */
+  const drawer = document.getElementById('oppDrawer');
+  const backdrop = document.getElementById('oppBackdrop');
+  const openDrawer = () => {
+    drawer.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    backdrop.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('noName').focus();
+  };
+  const closeDrawer = () => {
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    backdrop.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  document.getElementById('newOppBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    openDrawer();
+  });
+  backdrop.addEventListener('click', closeDrawer);
+  document.getElementById('oppDrawerClose').addEventListener('click', closeDrawer);
+  document.getElementById('noCancel').addEventListener('click', closeDrawer);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeDrawer();
+  });
+
+  document.getElementById('noSave').addEventListener('click', () => {
+    const name = document.getElementById('noName').value.trim();
+    if (!name) {
+      document.getElementById('noName').focus();
+      return;
+    }
+    OPPS.unshift({
+      name,
+      phone: document.getElementById('noPhone').value.trim(),
+      email: document.getElementById('noEmail').value.trim(),
+      action: 'needs',
+      followUp: '',
+      stage: 'New',
+      type: document.getElementById('noType').value,
+      channel: document.getElementById('noChannel').value,
+      priority: 'Med',
+      agent: 'Unassigned',
+      updated: '2026-09-01',
+      shortlist: 'create',
+      href: 'shortlist-unnamed.html'
+    });
+    drawer.querySelectorAll('input, textarea').forEach((el) => {
+      if (el.type === 'checkbox') el.checked = false;
+      else el.value = '';
+    });
+    render();
+    closeDrawer();
+  });
+
+  render();
 });

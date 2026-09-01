@@ -9634,3 +9634,151 @@ body[data-page="overview"] .attention-card__value {
     min-width: 0;
   }
 }
+
+/* ============================================================
+   Opportunities table — client feedback (26–27 Aug)
+   ============================================================ */
+
+.search-field--wide {
+  flex: 1 1 320px;
+  max-width: 420px;
+}
+
+.action-dot--orange { background: #dd6b20; }
+.action-dot--yellow { background: #d69e2e; }
+
+.queue-stat__label .action-dot {
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.opp-grid td {
+  white-space: nowrap;
+}
+
+.opp-grid td:first-child {
+  white-space: normal;
+}
+
+.opp-client {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.opp-phone-sub {
+  display: block;
+  font-size: 0.75rem;
+}
+
+.opp-chip--stage {
+  background: rgba(26, 61, 53, 0.08);
+  color: var(--green);
+}
+
+.opp-chip--low {
+  background: #f1f3f2;
+  color: var(--muted);
+}
+
+/* Shortlist is the heart of the hub, so both states are loud and clickable */
+.btn-shortlist {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 74px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: filter 0.16s var(--ease), transform 0.16s var(--ease);
+}
+
+.btn-shortlist:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.btn-shortlist--create {
+  background: #4a5568;
+  color: #fff;
+}
+
+.btn-shortlist--edit {
+  background: #2f855a;
+  color: #fff;
+}
+
+/* Profile became a compact Edit icon to give the column back its space */
+.th-edit {
+  width: 60px;
+  text-align: center !important;
+}
+
+.icon-action {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: var(--muted);
+  border: 1px solid var(--card-border);
+  transition: color 0.16s var(--ease), border-color 0.16s var(--ease), background 0.16s var(--ease);
+}
+
+.icon-action svg {
+  width: 15px;
+  height: 15px;
+}
+
+.icon-action:hover {
+  color: var(--green);
+  border-color: var(--green-accent);
+  background: rgba(111, 208, 164, 0.12);
+}
+
+.opp-grid td:last-child {
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .work-list {
+    overflow-x: auto;
+  }
+
+  .opp-grid {
+    min-width: 1020px;
+  }
+}
+
+/* Keep all ten columns on one desktop screen without horizontal scrolling */
+.opp-grid th,
+.opp-grid td {
+  padding: 12px 10px;
+}
+
+.opp-grid td:first-child {
+  min-width: 172px;
+}
+
+.opp-name {
+  white-space: nowrap;
+}
+
+.opp-phone-sub {
+  white-space: nowrap;
+}
+
+.opp-grid .status-pill {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* The follow-up date drops to its own line, aligned under the label */
+.opp-grid .status-pill .field-hint {
+  flex-basis: 100%;
+  margin-left: 15px;
+}

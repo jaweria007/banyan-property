@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banyan · Relationships</title>
+  <meta name="description" content="Property listings management for Banyan Properties">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      if (localStorage.getItem('banyan_signed_in') !== '1') {
+        location.replace('login.html');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="relationships">
+  <div class="app">
+
+    <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
+
+    <aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <a href="index.html" class="brand__link" aria-label="Banyan Operating System">
+      <img class="brand__logo" src="public/banyan logo.png" alt="Banyan Properties">
+      <img class="brand__logo-half" src="public/banyan half logo when side bar shrinks.png" alt="Banyan Properties">
+      <span class="brand__subtitle">Operating System</span>
+    </a>
+    <button type="button" class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Collapse or expand sidebar">
+      <svg class="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M21 6l-6 6 6 6"/></svg>
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M3 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="side-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" placeholder="Search" aria-label="Search">
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-item" data-label="Overview">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </span>
+      <span class="nav-item__label">Overview</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Listings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </span>
+        <span class="nav-item__label">Listings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
+          <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Sales">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </span>
+        <span class="nav-item__label">Sales</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="client-inbox.html" class="nav-sub__link"><span class="nav-dot"></span>Client Inbox</a>
+          <a href="opportunities.html" class="nav-sub__link"><span class="nav-dot"></span>Opportunities</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="relationships.html" class="nav-item is-active" data-label="Relationships">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <span class="nav-item__label">Relationships</span>
+    </a>
+
+    <a href="#" class="nav-item" data-label="My Work">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span class="nav-item__label">My Work</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Reporting">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </span>
+        <span class="nav-item__label">Reporting</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Growth Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Community Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Marketing">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
+        <span class="nav-item__label">Marketing</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Publishers</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Blog</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Settings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Settings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <span class="nav-item__label">Settings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>User Management</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>OMS Settings</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="staging-badge">
+      <span class="staging-badge__dot"></span>
+      Staging DB — production data untouched
+    </div>
+    <div class="side-user">
+      <span class="side-user__avatar">A</span>
+      <div class="side-user__info">
+        <p class="side-user__name">Admin User</p>
+        <p class="side-user__email">admin@banyan.com</p>
+      </div>
+    </div>
+    <button type="button" class="signout" id="signOut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      <span class="signout__label">Sign out</span>
+    </button>
+  </div>
+</aside>
+
+
+
+
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+        <div class="topbar__right">
+          <div class="staging-badge staging-badge--light">
+            <span class="staging-badge__dot"></span>
+            Staging
+          </div>
+          <span class="user-chip" title="umarbilalpersonal@gmail.com">UA</span>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">Relationships</h1>
+            <p class="page-subtitle">Everyone Banyan deals with — one record per person or organisation, however many roles they play.</p>
+          </div>
+          <div class="page-head__actions">
+            <button type="button" class="btn btn-primary" id="relNewTask">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Create Task
+            </button>
+          </div>
+        </section>
+
+        <!-- Relationship metrics double as quick filters -->
+        <section class="queue-stats" aria-label="Relationship groups">
+          <button type="button" class="queue-stat is-active" data-reltype="all">
+            <span class="queue-stat__value">893</span>
+            <span class="queue-stat__label">All</span>
+          </button>
+          <button type="button" class="queue-stat" data-reltype="buyer">
+            <span class="queue-stat__value">51</span>
+            <span class="queue-stat__label">Buyers</span>
+          </button>
+          <button type="button" class="queue-stat" data-reltype="tenant">
+            <span class="queue-stat__value">478</span>
+            <span class="queue-stat__label">Tenants</span>
+          </button>
+          <button type="button" class="queue-stat" data-reltype="landlord">
+            <span class="queue-stat__value">350</span>
+            <span class="queue-stat__label">Landlords</span>
+          </button>
+          <button type="button" class="queue-stat" data-reltype="broker">
+            <span class="queue-stat__value">14</span>
+            <span class="queue-stat__label">Brokers &amp; Partners</span>
+          </button>
+        </section>
+
+        <div class="work-bar">
+          <div class="view-toggle" role="group" aria-label="Relationships view">
+            <button type="button" class="view-link is-active" data-relview="cards" aria-pressed="true">Cards</button>
+            <button type="button" class="view-link" data-relview="list" aria-pressed="false">List</button>
+          </div>
+
+          <div class="work-filters">
+            <label class="search-field">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="search" id="relSearch" placeholder="Search name, company, WhatsApp or email…" aria-label="Search relationships">
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Relationship type</span>
+              <select class="select-field" id="relType">
+                <option value="all">All relationship types</option>
+                <option value="buyer">Buyer</option>
+                <option value="tenant">Tenant</option>
+                <option value="landlord">Landlord</option>
+                <option value="developer">Property Developer</option>
+                <option value="broker">Broker &amp; Partner</option>
+                <option value="contractor">Contractor</option>
+              </select>
+            </label>
+            <label class="select-wrap" id="relSortWrap" hidden>
+              <span class="sr-only">Sort by</span>
+              <select class="select-field" id="relSort">
+                <option value="recent">Sort: last contacted</option>
+                <option value="name">Sort: name</option>
+                <option value="actions">Sort: open actions</option>
+                <option value="type">Sort: relationship type</option>
+              </select>
+            </label>
+            <label class="tag-check"><input type="checkbox" id="relUnverified"><span>Include unverified</span></label>
+          </div>
+        </div>
+
+        <!-- ============ CARD VIEW ============ -->
+        <!-- One consistent structure: WHO -> TYPE -> CONTACT/RECENCY/ACTION -> RELEVANT ACTIVITY -->
+        <section class="rel-grid" id="relGrid" aria-label="Relationships">
+
+          <a href="#" class="rel-card" data-reltype="landlord" data-name="Maria Santos" data-actions="2" data-last="2026-08-26">
+            <header class="rel-card__head">
+              <div>
+                <h2 class="rel-card__name">Maria Santos</h2>
+                <p class="rel-card__company">Santos Family Holdings</p>
+              </div>
+              <span class="rel-type rel-type--landlord">Landlord</span>
+            </header>
+
+            <dl class="rel-facts">
+              <div class="rel-fact"><dt>Contacts</dt><dd>8</dd></div>
+              <div class="rel-fact"><dt>Last contacted</dt><dd>26 Aug 2026</dd></div>
+              <div class="rel-fact"><dt>Actions</dt><dd><span class="action-dot action-dot--red"></span>2 open tasks</dd></div>
+            </dl>
+
+            <dl class="rel-activity">
+              <div class="rel-metric"><dt>Listings</dt><dd>4</dd></div>
+              <div class="rel-metric"><dt>Enquiries</dt><dd>12</dd></div>
+              <div class="rel-metric"><dt>Viewings</dt><dd>7</dd></div>
+              <div class="rel-metric"><dt>Bookings</dt><dd>3</dd></div>
+            </dl>
+
+            <footer class="rel-card__foot">
+              <span class="rel-id">REL-00072</span>
+              <span class="rel-wa" data-wa="6281234567890">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+                +62 812-3456-7890
+              </span>
+            </footer>
+          </a>
+
+          <a href="#" class="rel-card" data-reltype="buyer" data-name="Umar Hassan" data-actions="1" data-last="2026-08-24">
+            <header class="rel-card__head">
+              <div>
+                <h2 class="rel-card__name">Umar Hassan</h2>
+                <p class="rel-card__company">—</p>
+              </div>
+              <span class="rel-type rel-type--buyer">Buyer</span>
+            </header>
+
+            <dl class="rel-facts">
+              <div class="rel-fact"><dt>Contacts</dt><dd>5</dd></div>
+              <div class="rel-fact"><dt>Last contacted</dt><dd>24 Aug 2026</dd></div>
+              <div class="rel-fact"><dt>Actions</dt><dd><span class="action-dot action-dot--green"></span>1 waiting</dd></div>
+            </dl>
+
+            <dl class="rel-activity">
+              <div class="rel-metric"><dt>Shortlists</dt><dd>3</dd></div>
+              <div class="rel-metric"><dt>Viewings</dt><dd>2</dd></div>
+              <div class="rel-metric"><dt>Contracts</dt><dd>1</dd></div>
+            </dl>
+
+            <footer class="rel-card__foot">
+              <span class="rel-id">REL-00124</span>
+              <span class="rel-wa" data-wa="6285678901234">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+                +62 856-7890-1234
+              </span>
+            </footer>
+          </a>
+
+          <a href="#" class="rel-card" data-reltype="tenant" data-name="Sarah Wilson" data-actions="0" data-last="2026-08-27">
+            <header class="rel-card__head">
+              <div>
+                <h2 class="rel-card__name">Sarah Wilson</h2>
+                <p class="rel-card__company">—</p>
+              </div>
+              <span class="rel-type rel-type--tenant">Tenant</span>
+            </header>
+
+            <dl class="rel-facts">
+              <div class="rel-fact"><dt>Contacts</dt><dd>11</dd></div>
+              <div class="rel-fact"><dt>Last contacted</dt><dd>27 Aug 2026</dd></div>
+              <div class="rel-fact"><dt>Actions</dt><dd><span class="action-dot action-dot--none"></span>No action</dd></div>
+            </dl>
+
+            <dl class="rel-activity">
+              <div class="rel-metric"><dt>Shortlists</dt><dd>1</dd></div>
+              <div class="rel-metric"><dt>Viewings</dt><dd>3</dd></div>
+              <div class="rel-metric"><dt>Contracts</dt><dd>1</dd></div>
+            </dl>
+
+            <footer class="rel-card__foot">
+              <span class="rel-id">REL-00318</span>
+              <span class="rel-wa" data-wa="6281199887766">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+                +62 811-9988-7766
+              </span>
+            </footer>
+          </a>
+
+          <a href="#" class="rel-card" data-reltype="broker" data-name="Wayan Partners" data-actions="1" data-last="2026-08-21">
+            <header class="rel-card__head">
+              <div>
+                <h2 class="rel-card__name">Wayan Adnyana</h2>
+                <p class="rel-card__company">Bali Estate Partners</p>
+              </div>
+              <span class="rel-type rel-type--broker">Broker &amp; Partner</span>
+            </header>
+
+            <dl class="rel-facts">
+              <div class="rel-fact"><dt>Contacts</dt><dd>6</dd></div>
+              <div class="rel-fact"><dt>Last contacted</dt><dd>21 Aug 2026</dd></div>
+              <div class="rel-fact"><dt>Actions</dt><dd><span class="action-dot action-dot--red"></span>1 open task</dd></div>
+            </dl>
+
+            <dl class="rel-activity">
+              <div class="rel-metric"><dt>Listings</dt><dd>9</dd></div>
+              <div class="rel-metric"><dt>Listings in Shortlists</dt><dd>5</dd></div>
+              <div class="rel-metric"><dt>Viewings</dt><dd>4</dd></div>
+              <div class="rel-metric"><dt>Contracts</dt><dd>2</dd></div>
+            </dl>
+
+            <footer class="rel-card__foot">
+              <span class="rel-id">REL-00009</span>
+              <span class="rel-wa" data-wa="6287712340099">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+                +62 877-1234-0099
+              </span>
+            </footer>
+          </a>
+
+          <a href="#" class="rel-card" data-reltype="developer" data-name="Nusa Development" data-actions="0" data-last="2026-08-14">
+            <header class="rel-card__head">
+              <div>
+                <h2 class="rel-card__name">Putu Widiana</h2>
+                <p class="rel-card__company">Nusa Development</p>
+              </div>
+              <span class="rel-type rel-type--developer">Property Developer</span>
+            </header>
+
+            <dl class="rel-facts">
+              <div class="rel-fact"><dt>Contacts</dt><dd>3</dd></div>
+              <div class="rel-fact"><dt>Last contacted</dt><dd>14 Aug 2026</dd></div>
+              <div class="rel-fact"><dt>Actions</dt><dd><span class="action-dot action-dot--none"></span>No action</dd></div>
+            </dl>
+
+            <footer class="rel-card__foot">
+              <span class="rel-id">REL-00201</span>
+              <span class="rel-wa" data-wa="6281355667788">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+                +62 813-5566-7788
+              </span>
+            </footer>
+          </a>
+
+          <a href="#" class="rel-card" data-reltype="contractor" data-name="Made Renovations" data-actions="1" data-last="2026-08-29">
+            <header class="rel-card__head">
+              <div>
+                <h2 class="rel-card__name">Made Sujana</h2>
+                <p class="rel-card__company">Made Renovations</p>
+              </div>
+              <span class="rel-type rel-type--contractor">Contractor</span>
+            </header>
+
+            <dl class="rel-facts">
+              <div class="rel-fact"><dt>Contacts</dt><dd>14</dd></div>
+              <div class="rel-fact"><dt>Last contacted</dt><dd>29 Aug 2026</dd></div>
+              <div class="rel-fact"><dt>Actions</dt><dd><span class="action-dot action-dot--green"></span>1 waiting</dd></div>
+            </dl>
+
+            <footer class="rel-card__foot">
+              <span class="rel-id">REL-00455</span>
+              <span class="rel-wa" data-wa="6281744332211">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+                +62 817-4433-2211
+              </span>
+            </footer>
+          </a>
+
+        </section>
+
+        <!-- ============ LIST VIEW ============ -->
+        <section class="work-list" id="relList" hidden aria-label="Relationships list">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col">Name / Company</th>
+                <th scope="col">Type</th>
+                <th scope="col">Contacts</th>
+                <th scope="col">Last contacted</th>
+                <th scope="col">Actions</th>
+                <th scope="col">WhatsApp</th>
+                <th scope="col">ID</th>
+              </tr>
+            </thead>
+            <tbody id="relListBody"></tbody>
+          </table>
+          <p class="list-empty" id="relListEmpty" hidden>No relationships match your filters.</p>
+        </section>
+
+        <p class="list-empty" id="relEmpty" hidden>No relationships match your filters.</p>
+
+
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

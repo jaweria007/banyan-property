@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banyan · My Work</title>
+  <meta name="description" content="Property listings management for Banyan Properties">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      if (localStorage.getItem('banyan_signed_in') !== '1') {
+        location.replace('login.html');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="my-work">
+  <div class="app">
+
+    <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
+
+    <aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <a href="index.html" class="brand__link" aria-label="Banyan Operating System">
+      <img class="brand__logo" src="public/banyan logo.png" alt="Banyan Properties">
+      <img class="brand__logo-half" src="public/banyan half logo when side bar shrinks.png" alt="Banyan Properties">
+      <span class="brand__subtitle">Operating System</span>
+    </a>
+    <button type="button" class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Collapse or expand sidebar">
+      <svg class="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M21 6l-6 6 6 6"/></svg>
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M3 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="side-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" placeholder="Search" aria-label="Search">
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-item" data-label="Overview">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </span>
+      <span class="nav-item__label">Overview</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Listings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </span>
+        <span class="nav-item__label">Listings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
+          <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Sales">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </span>
+        <span class="nav-item__label">Sales</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="client-inbox.html" class="nav-sub__link"><span class="nav-dot"></span>Client Inbox</a>
+          <a href="opportunities.html" class="nav-sub__link"><span class="nav-dot"></span>Opportunities</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" class="nav-item" data-label="Relationships">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <span class="nav-item__label">Relationships</span>
+    </a>
+
+    <a href="my-work.html" class="nav-item is-active" data-label="My Work">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span class="nav-item__label">My Work</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Reporting">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </span>
+        <span class="nav-item__label">Reporting</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Growth Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Community Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Marketing">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
+        <span class="nav-item__label">Marketing</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Publishers</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Blog</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Settings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Settings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <span class="nav-item__label">Settings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>User Management</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>OMS Settings</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="staging-badge">
+      <span class="staging-badge__dot"></span>
+      Staging DB — production data untouched
+    </div>
+    <div class="side-user">
+      <span class="side-user__avatar">A</span>
+      <div class="side-user__info">
+        <p class="side-user__name">Admin User</p>
+        <p class="side-user__email">admin@banyan.com</p>
+      </div>
+    </div>
+    <button type="button" class="signout" id="signOut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      <span class="signout__label">Sign out</span>
+    </button>
+  </div>
+</aside>
+
+
+
+
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+        <div class="topbar__right">
+          <div class="staging-badge staging-badge--light">
+            <span class="staging-badge__dot"></span>
+            Staging
+          </div>
+          <span class="user-chip" title="umarbilalpersonal@gmail.com">UA</span>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">My Work</h1>
+            <p class="page-subtitle">Your work queue — what needs doing, who owns it and when it is due.</p>
+          </div>
+          <div class="page-head__actions">
+            <button type="button" class="btn btn-primary" id="newTaskBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              New Task
+            </button>
+          </div>
+        </section>
+
+        <!-- Queue summary — the visual guide for the day -->
+        <section class="queue-stats" aria-label="Work summary">
+          <button type="button" class="queue-stat is-active" data-queue="all">
+            <span class="queue-stat__value">18</span>
+            <span class="queue-stat__label">All open</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="todo">
+            <span class="queue-stat__value queue-stat__value--amber">6</span>
+            <span class="queue-stat__label">To Do</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="progress">
+            <span class="queue-stat__value queue-stat__value--blue">3</span>
+            <span class="queue-stat__label">In Progress</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="waiting">
+            <span class="queue-stat__value queue-stat__value--green">5</span>
+            <span class="queue-stat__label">Waiting</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="today">
+            <span class="queue-stat__value">2</span>
+            <span class="queue-stat__label">Due today</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="overdue">
+            <span class="queue-stat__value queue-stat__value--red">4</span>
+            <span class="queue-stat__label">Overdue</span>
+          </button>
+        </section>
+
+        <div class="work-bar">
+          <div class="view-toggle" role="group" aria-label="My Work view">
+            <button type="button" class="view-link is-active" data-workview="board" aria-pressed="true">Board</button>
+            <button type="button" class="view-link" data-workview="list" aria-pressed="false">List</button>
+          </div>
+
+          <div class="work-filters">
+            <label class="search-field">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="search" id="taskSearch" placeholder="Search tasks…" aria-label="Search tasks">
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filter by record type</span>
+              <select class="select-field" id="taskHub">
+                <option value="all">All hubs</option>
+                <option value="Sales">Sales</option>
+                <option value="Listings">Listings</option>
+                <option value="Relationships">Relationships</option>
+                <option value="Marketing">Marketing</option>
+              </select>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filter by assignee</span>
+              <select class="select-field" id="taskAssignee">
+                <option value="all">All team members</option>
+                <option value="Ratna">Ratna</option>
+                <option value="Berry">Berry</option>
+                <option value="Andries">Andries</option>
+                <option value="Kashif">Kashif</option>
+              </select>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filter by due date</span>
+              <select class="select-field" id="taskDue">
+                <option value="all">Any due date</option>
+                <option value="overdue">Overdue</option>
+                <option value="today">Due today</option>
+                <option value="week">Due this week</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- ============ BOARD VIEW ============ -->
+        <!-- Status is the source of truth: dropping a card into a column sets its Status. -->
+        <section class="board" id="taskBoard" aria-label="Task board">
+
+          <div class="board-col" data-status="inbox">
+            <header class="board-col__head">
+              <h2 class="board-col__title">Inbox <span class="board-col__count">4</span></h2>
+              <p class="board-col__hint">Arrived, nobody has picked it up</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card" draggable="true" data-task="t1" data-status="inbox" data-assignee="Unassigned" data-due="2026-09-04" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Viewing enquiry from Andries — 3-Bedroom Eco-Luxury Home in Taman Petanu</p>
+                <div class="task-card__meta">
+                  <span class="task-chip task-chip--unassigned">Unassigned</span>
+                  <span class="task-due">4 Sep</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales" title="Open linked Opportunity">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t2" data-status="inbox" data-assignee="Unassigned" data-due="2026-09-02" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Shortlist comment from Andries — 4-Bedroom Family Villa near Green School</p>
+                <div class="task-card__meta">
+                  <span class="task-chip task-chip--unassigned">Unassigned</span>
+                  <span class="task-due">2 Sep</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales" title="Open linked Opportunity">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t3" data-status="inbox" data-assignee="Unassigned" data-due="2026-08-08" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Contract signed — 2-Story Villa with Garden, Nyuh Kuning</p>
+                <div class="task-card__meta">
+                  <span class="task-chip task-chip--unassigned">Unassigned</span>
+                  <span class="task-due is-overdue">8 Aug</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales" title="Open linked Contract">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t4" data-status="inbox" data-assignee="Unassigned" data-due="2026-09-10" data-hub="Listings" tabindex="0">
+                <p class="task-card__desc">New listing needs photos and marketing copy — Bali Moons Shop</p>
+                <div class="task-card__meta">
+                  <span class="task-chip task-chip--unassigned">Unassigned</span>
+                  <span class="task-due">10 Sep</span>
+                  <a href="listings.html" class="record-pill" data-hub="Listings" title="Open linked Listing">Listings</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="board-col" data-status="todo">
+            <header class="board-col__head">
+              <h2 class="board-col__title">To Do <span class="board-col__count">3</span></h2>
+              <p class="board-col__hint">Someone needs to do it</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card" draggable="true" data-task="t5" data-status="todo" data-assignee="Andries" data-due="2026-08-31" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Send contract to Umar Hassan</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Andries</span>
+                  <span class="task-due is-overdue">31 Aug</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t6" data-status="todo" data-assignee="Ratna" data-due="2026-09-01" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Review new matches — Umar / 3BR Ubud Family Home</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Ratna</span>
+                  <span class="task-due is-today">Today</span>
+                  <a href="shortlist.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t7" data-status="todo" data-assignee="Kashif" data-due="2026-09-05" data-hub="Listings" tabindex="0">
+                <p class="task-card__desc">Chase owner for lease extension documents</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Kashif</span>
+                  <span class="task-due">5 Sep</span>
+                  <a href="listing-detail.html" class="record-pill" data-hub="Listings">Listings</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="board-col" data-status="progress">
+            <header class="board-col__head">
+              <h2 class="board-col__title">In Progress <span class="board-col__count">3</span></h2>
+              <p class="board-col__hint">Actively being worked on</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card" draggable="true" data-task="t8" data-status="progress" data-assignee="Berry" data-due="2026-09-01" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Prepare shortlist for M. Samo — Ubud family homes</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Berry</span>
+                  <span class="task-due is-today">Today</span>
+                  <a href="shortlist.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t9" data-status="progress" data-assignee="Ratna" data-due="2026-09-03" data-hub="Relationships" tabindex="0">
+                <p class="task-card__desc">Verify landlord contact details — Maria Santos</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Ratna</span>
+                  <span class="task-due">3 Sep</span>
+                  <a href="relationships.html" class="record-pill" data-hub="Relationships">Relationships</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t10" data-status="progress" data-assignee="Kashif" data-due="2026-09-06" data-hub="Marketing" tabindex="0">
+                <p class="task-card__desc">Publish September blog post — Ubud rental guide</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Kashif</span>
+                  <span class="task-due">6 Sep</span>
+                  <a href="#" class="record-pill" data-hub="Marketing">Marketing</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="board-col" data-status="waiting">
+            <header class="board-col__head">
+              <h2 class="board-col__title">Waiting <span class="board-col__count">3</span></h2>
+              <p class="board-col__hint">Blocked / waiting on someone else</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card" draggable="true" data-task="t11" data-status="waiting" data-assignee="Ratna" data-due="2026-08-30" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Follow up with Umar after viewing</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Ratna</span>
+                  <span class="task-due is-overdue">30 Aug</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t12" data-status="waiting" data-assignee="Berry" data-due="2026-09-08" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Awaiting client decision on Villa A offer</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Berry</span>
+                  <span class="task-due">8 Sep</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t13" data-status="waiting" data-assignee="Andries" data-due="2026-09-12" data-hub="Listings" tabindex="0">
+                <p class="task-card__desc">Waiting on notary for freehold certificate</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Andries</span>
+                  <span class="task-due">12 Sep</span>
+                  <a href="listing-detail.html" class="record-pill" data-hub="Listings">Listings</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="board-col" data-status="done">
+            <header class="board-col__head">
+              <h2 class="board-col__title">Done <span class="board-col__count">2</span></h2>
+              <p class="board-col__hint">Completed</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card is-done" draggable="true" data-task="t14" data-status="done" data-assignee="Ratna" data-due="2026-08-28" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Publish shortlist — Umar / Ubud Family Homes</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Ratna</span>
+                  <span class="task-due">28 Aug</span>
+                  <a href="shortlist.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card is-done" draggable="true" data-task="t15" data-status="done" data-assignee="Berry" data-due="2026-08-26" data-hub="Relationships" tabindex="0">
+                <p class="task-card__desc">Log viewing for Sarah Wilson</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Berry</span>
+                  <span class="task-due">26 Aug</span>
+                  <a href="relationships.html" class="record-pill" data-hub="Relationships">Relationships</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ============ LIST VIEW ============ -->
+        <!-- Four columns only. The [Sales] pill sits at the end of the description. -->
+        <section class="work-list" id="taskList" hidden aria-label="Task list">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col" class="th-sort" data-sort="desc">Task Description</th>
+                <th scope="col" class="th-sort" data-sort="status">Status</th>
+                <th scope="col" class="th-sort" data-sort="assignee">Assignee</th>
+                <th scope="col" class="th-sort" data-sort="due">Due</th>
+              </tr>
+            </thead>
+            <tbody id="taskListBody"></tbody>
+          </table>
+          <p class="list-empty" id="taskListEmpty" hidden>No tasks match your filters.</p>
+        </section>
+
+        <!-- Task detail / edit drawer -->
+        <button class="drawer-backdrop" id="taskBackdrop" aria-label="Close task" hidden></button>
+        <aside class="drawer" id="taskDrawer" aria-labelledby="taskDrawerTitle" aria-hidden="true">
+          <header class="drawer__head">
+            <h2 class="drawer__title" id="taskDrawerTitle">Task</h2>
+            <button type="button" class="icon-btn drawer__close" id="taskDrawerClose" aria-label="Close task">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            </button>
+          </header>
+
+          <div class="drawer__body">
+            <label class="field">
+              <span class="field__label">Task Description</span>
+              <textarea class="input-field input-field--area" id="tdDesc" rows="3"></textarea>
+            </label>
+
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Status</span>
+                <select class="select-field" id="tdStatus">
+                  <option value="inbox">Inbox</option>
+                  <option value="todo">To Do</option>
+                  <option value="progress">In Progress</option>
+                  <option value="waiting">Waiting</option>
+                  <option value="done">Done</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">Assignee</span>
+                <select class="select-field" id="tdAssignee">
+                  <option value="Unassigned">Unassigned</option>
+                  <option value="Ratna">Ratna</option>
+                  <option value="Berry">Berry</option>
+                  <option value="Andries">Andries</option>
+                  <option value="Kashif">Kashif</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Due date</span>
+                <input type="date" class="input-field" id="tdDue">
+              </label>
+              <label class="field">
+                <span class="field__label">Priority</span>
+                <select class="select-field" id="tdPriority">
+                  <option value="normal">Normal</option>
+                  <option value="high">High</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </label>
+            </div>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Linked record</h3>
+              <label class="field">
+                <span class="field__label">Search by name, WhatsApp, shortlist, listing or record ID</span>
+                <input type="search" class="input-field" id="tdLink" list="recordOptions" placeholder="e.g. Umar Hassan, REL-00124, 0812…">
+                <datalist id="recordOptions">
+                  <option value="Umar Hassan · REL-00124 · Buyer"></option>
+                  <option value="Sarah Wilson · REL-00318 · Tenant"></option>
+                  <option value="Maria Santos · REL-00072 · Landlord"></option>
+                  <option value="3BR Villa — Nyuh Kuning · LST-0421"></option>
+                  <option value="Bali Moons Shop · LST-0388"></option>
+                  <option value="Umar — Ubud Family Homes · SHL-0091"></option>
+                </datalist>
+              </label>
+              <p class="field-hint" id="tdLinkCurrent">Currently linked to <a href="opportunities.html">Sales · Opportunity</a></p>
+            </section>
+
+            <label class="field">
+              <span class="field__label">Notes</span>
+              <textarea class="input-field input-field--area" id="tdNotes" rows="4" placeholder="Anything the next person needs to know…"></textarea>
+            </label>
+          </div>
+
+          <footer class="drawer__foot">
+            <button type="button" class="btn btn-ghost" id="tdDelete">Delete</button>
+            <button type="button" class="btn btn-primary" id="tdSave">Save task</button>
+          </footer>
+        </aside>
+
+
+      </main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

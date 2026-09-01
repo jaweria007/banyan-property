@@ -2272,3 +2272,531 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
+/* ============================================================
+   My Work + Relationships — client feedback (26–27 Aug)
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  const page = document.body.dataset.page;
+
+  const STATUS_LABEL = {
+    inbox: 'Inbox',
+    todo: 'To Do',
+    progress: 'In Progress',
+    waiting: 'Waiting',
+    done: 'Done'
+  };
+  const STATUS_ORDER = ['inbox', 'todo', 'progress', 'waiting', 'done'];
+  const TODAY = new Date('2026-09-01T00:00:00');
+
+  const fmtDue = (iso) => {
+    if (!iso) return '—';
+    const d = new Date(iso + 'T00:00:00');
+    if (d.getTime() === TODAY.getTime()) return 'Today';
+    return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+  };
+  const dueClass = (iso) => {
+    if (!iso) return '';
+    const d = new Date(iso + 'T00:00:00');
+    if (d < TODAY) return 'is-overdue';
+    if (d.getTime() === TODAY.getTime()) return 'is-today';
+    return '';
+  };
+
+  /* ================= My Work ================= */
+  if (page === 'my-work') {
+    const board = document.getElementById('taskBoard');
+    const list = document.getElementById('taskList');
+    const listBody = document.getElementById('taskListBody');
+    const listEmpty = document.getElementById('taskListEmpty');
+    if (!board) return;
+
+    // Status is the single source of truth. The board column a card sits in
+    // and its Status field must always agree.
+    const tasks = Array.from(board.querySelectorAll('.task-card')).map((el) => ({
+      id: el.dataset.task,
+      desc: el.querySelector('.task-card__desc').textContent.trim(),
+      status: el.dataset.status,
+      assignee: el.dataset.assignee,
+      due: el.dataset.due,
+      hub: el.dataset.hub,
+      href: el.querySelector('.record-pill').getAttribute('href'),
+      el
+    }));
+    const byId = (id) => tasks.find((t) => t.id === id);
+
+    const filters = { q: '', hub: 'all', assignee: 'all', due: 'all', queue: 'all' };
+
+    const matches = (t) => {
+      if (filters.q && !t.desc.toLowerCase().includes(filters.q)) return false;
+      if (filters.hub !== 'all' && t.hub !== filters.hub) return false;
+      if (filters.assignee !== 'all' && t.assignee !== filters.assignee) return false;
+      const d = t.due ? new Date(t.due + 'T00:00:00') : null;
+      if (filters.due === 'overdue' && !(d && d < TODAY && t.status !== 'done')) return false;
+      if (filters.due === 'today' && !(d && d.getTime() === TODAY.getTime())) return false;
+      if (filters.due === 'week') {
+        const wk = new Date(TODAY); wk.setDate(wk.getDate() + 7);
+        if (!(d && d >= TODAY && d <= wk)) return false;
+      }
+      if (filters.queue === 'todo' && t.status !== 'todo') return false;
+      if (filters.queue === 'progress' && t.status !== 'progress') return false;
+      if (filters.queue === 'waiting' && t.status !== 'waiting') return false;
+      if (filters.queue === 'today' && !(d && d.getTime() === TODAY.getTime())) return false;
+      if (filters.queue === 'overdue' && !(d && d < TODAY && t.status !== 'done')) return false;
+      return true;
+    };
+
+    /* ---- Board rendering: each card lives in the column matching its status ---- */
+    function renderBoard() {
+      STATUS_ORDER.forEach((status) => {
+        const col = board.querySelector('.board-col[data-status="' + status + '"]');
+        const body = col.querySelector('.board-col__body');
+        const mine = tasks.filter((t) => t.status === status && matches(t));
+        body.innerHTML = '';
+        mine.forEach((t) => {
+          t.el.dataset.status = t.status;
+          t.el.classList.toggle('is-done', t.status === 'done');
+          body.appendChild(t.el);
+        });
+        col.querySelector('.board-col__count').textContent = String(mine.length);
+      });
+    }
+
+    /* ---- List rendering: four columns, pill at the end of the description ---- */
+    function renderList() {
+      const rows = tasks.filter(matches).slice().sort(sortList);
+      listBody.innerHTML = '';
+      rows.forEach((t) => {
+        const tr = document.createElement('tr');
+        tr.dataset.task = t.id;
+
+        const tdDesc = document.createElement('td');
+        const wrap = document.createElement('div');
+        wrap.className = 'task-desc-cell';
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'task-desc-link';
+        btn.textContent = t.desc;
+        // Task Description = edit task (never a link to the record)
+        btn.addEventListener('click', () => openTask(t.id));
+        const pill = document.createElement('a');
+        pill.className = 'record-pill';
+        pill.href = t.href;
+        pill.textContent = t.hub;
+        pill.title = 'Open linked record';
+        wrap.append(btn, pill);
+        tdDesc.appendChild(wrap);
+
+        const tdStatus = document.createElement('td');
+        tdStatus.appendChild(makeSelect(STATUS_ORDER.map((s) => [s, STATUS_LABEL[s]]), t.status, (v) => {
+          t.status = v;
+          renderBoard();
+          refreshStats();
+        }));
+
+        const tdAssignee = document.createElement('td');
+        tdAssignee.appendChild(makeSelect(
+          ['Unassigned', 'Ratna', 'Berry', 'Andries', 'Kashif'].map((n) => [n, n]),
+          t.assignee,
+          (v) => {
+            t.assignee = v;
+            const chip = t.el.querySelector('.task-chip');
+            chip.textContent = v;
+            chip.classList.toggle('task-chip--unassigned', v === 'Unassigned');
+          }
+        ));
+
+        const tdDue = document.createElement('td');
+        const dateInput = document.createElement('input');
+        dateInput.type = 'date';
+        dateInput.className = 'inline-edit';
+        dateInput.value = t.due || '';
+        dateInput.addEventListener('change', () => {
+          t.due = dateInput.value;
+          const due = t.el.querySelector('.task-due');
+          due.textContent = fmtDue(t.due);
+          due.className = 'task-due ' + dueClass(t.due);
+          refreshStats();
+        });
+        tdDue.appendChild(dateInput);
+
+        tr.append(tdDesc, tdStatus, tdAssignee, tdDue);
+        listBody.appendChild(tr);
+      });
+      listEmpty.hidden = rows.length !== 0;
+    }
+
+    function makeSelect(options, value, onChange) {
+      const sel = document.createElement('select');
+      sel.className = 'inline-edit';
+      options.forEach(([v, label]) => {
+        const o = new Option(label, v);
+        if (v === value) o.selected = true;
+        sel.appendChild(o);
+      });
+      sel.addEventListener('change', () => onChange(sel.value));
+      return sel;
+    }
+
+    let sortKey = 'due';
+    let sortDir = 1;
+    function sortList(a, b) {
+      let r = 0;
+      if (sortKey === 'desc') r = a.desc.localeCompare(b.desc);
+      else if (sortKey === 'status') r = STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status);
+      else if (sortKey === 'assignee') r = a.assignee.localeCompare(b.assignee);
+      else r = String(a.due).localeCompare(String(b.due));
+      return r * sortDir;
+    }
+
+    list.querySelectorAll('.th-sort').forEach((th) => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.sort;
+        sortDir = sortKey === key ? -sortDir : 1;
+        sortKey = key;
+        list.querySelectorAll('.th-sort').forEach((o) => o.classList.remove('is-asc', 'is-desc'));
+        th.classList.add(sortDir === 1 ? 'is-asc' : 'is-desc');
+        renderList();
+      });
+    });
+
+    function refreshStats() {
+      const open = tasks.filter((t) => t.status !== 'done');
+      const count = (fn) => String(open.filter(fn).length);
+      const set = (q, v) => {
+        const el = document.querySelector('.queue-stat[data-queue="' + q + '"] .queue-stat__value');
+        if (el) el.textContent = v;
+      };
+      set('all', String(open.length));
+      set('todo', count((t) => t.status === 'todo'));
+      set('progress', count((t) => t.status === 'progress'));
+      set('waiting', count((t) => t.status === 'waiting'));
+      set('today', count((t) => t.due && new Date(t.due + 'T00:00:00').getTime() === TODAY.getTime()));
+      set('overdue', count((t) => t.due && new Date(t.due + 'T00:00:00') < TODAY));
+    }
+
+    function renderAll() {
+      renderBoard();
+      renderList();
+      refreshStats();
+    }
+
+    /* ---- View toggle ---- */
+    document.querySelectorAll('[data-workview]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.workview;
+        document.querySelectorAll('[data-workview]').forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', String(on));
+        });
+        board.hidden = v !== 'board';
+        list.hidden = v !== 'list';
+      });
+    });
+
+    /* ---- Filters ---- */
+    const bind = (id, key) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.addEventListener('input', () => {
+        filters[key] = el.type === 'search' ? el.value.trim().toLowerCase() : el.value;
+        renderAll();
+      });
+      el.addEventListener('change', () => {
+        filters[key] = el.type === 'search' ? el.value.trim().toLowerCase() : el.value;
+        renderAll();
+      });
+    };
+    bind('taskSearch', 'q');
+    bind('taskHub', 'hub');
+    bind('taskAssignee', 'assignee');
+    bind('taskDue', 'due');
+
+    document.querySelectorAll('.queue-stat[data-queue]').forEach((tile) => {
+      tile.addEventListener('click', () => {
+        const q = tile.dataset.queue;
+        filters.queue = filters.queue === q && q !== 'all' ? 'all' : q;
+        document.querySelectorAll('.queue-stat[data-queue]').forEach((t) => {
+          t.classList.toggle('is-active', t.dataset.queue === filters.queue);
+        });
+        renderAll();
+      });
+    });
+
+    /* ---- Drag and drop: dropping a card sets its Status ---- */
+    let dragging = null;
+    board.addEventListener('dragstart', (e) => {
+      const card = e.target.closest('.task-card');
+      if (!card) return;
+      dragging = card;
+      card.classList.add('is-dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', card.dataset.task);
+    });
+    board.addEventListener('dragend', () => {
+      if (dragging) dragging.classList.remove('is-dragging');
+      dragging = null;
+      board.querySelectorAll('.board-col').forEach((c) => c.classList.remove('is-dropping'));
+    });
+    board.querySelectorAll('.board-col').forEach((col) => {
+      col.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        col.classList.add('is-dropping');
+      });
+      col.addEventListener('dragleave', () => col.classList.remove('is-dropping'));
+      col.addEventListener('drop', (e) => {
+        e.preventDefault();
+        col.classList.remove('is-dropping');
+        const id = e.dataTransfer.getData('text/plain');
+        const t = byId(id);
+        if (!t) return;
+        t.status = col.dataset.status;   // status follows the column
+        renderAll();
+      });
+    });
+
+    /* ---- Task detail drawer ---- */
+    const drawer = document.getElementById('taskDrawer');
+    const backdrop = document.getElementById('taskBackdrop');
+    let current = null;
+
+    function openTask(id) {
+      const t = byId(id);
+      if (!t) return;
+      current = t;
+      document.getElementById('tdDesc').value = t.desc;
+      document.getElementById('tdStatus').value = t.status;
+      document.getElementById('tdAssignee').value = t.assignee;
+      document.getElementById('tdDue').value = t.due || '';
+      document.getElementById('tdLinkCurrent').innerHTML =
+        'Currently linked to <a href="' + t.href + '">' + t.hub + ' record</a>';
+      drawer.classList.add('is-open');
+      drawer.setAttribute('aria-hidden', 'false');
+      backdrop.hidden = false;
+      document.getElementById('tdDesc').focus();
+    }
+
+    function closeTask() {
+      drawer.classList.remove('is-open');
+      drawer.setAttribute('aria-hidden', 'true');
+      backdrop.hidden = true;
+      current = null;
+    }
+
+    // Clicking the card opens the task — but never the linked record by accident
+    board.addEventListener('click', (e) => {
+      if (e.target.closest('.record-pill')) return;
+      const card = e.target.closest('.task-card');
+      if (card) openTask(card.dataset.task);
+    });
+    board.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const card = e.target.closest('.task-card');
+      if (!card) return;
+      e.preventDefault();
+      openTask(card.dataset.task);
+    });
+
+    backdrop.addEventListener('click', closeTask);
+    document.getElementById('taskDrawerClose').addEventListener('click', closeTask);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeTask();
+    });
+
+    document.getElementById('tdSave').addEventListener('click', () => {
+      if (!current) return;
+      current.desc = document.getElementById('tdDesc').value.trim() || current.desc;
+      current.status = document.getElementById('tdStatus').value;
+      current.assignee = document.getElementById('tdAssignee').value;
+      current.due = document.getElementById('tdDue').value;
+
+      current.el.querySelector('.task-card__desc').textContent = current.desc;
+      const chip = current.el.querySelector('.task-chip');
+      chip.textContent = current.assignee;
+      chip.classList.toggle('task-chip--unassigned', current.assignee === 'Unassigned');
+      const due = current.el.querySelector('.task-due');
+      due.textContent = fmtDue(current.due);
+      due.className = 'task-due ' + dueClass(current.due);
+
+      renderAll();
+      closeTask();
+    });
+
+    document.getElementById('tdDelete').addEventListener('click', () => {
+      if (!current) return;
+      const i = tasks.indexOf(current);
+      if (i > -1) tasks.splice(i, 1);
+      current.el.remove();
+      renderAll();
+      closeTask();
+    });
+
+    const newBtn = document.getElementById('newTaskBtn');
+    if (newBtn) {
+      newBtn.addEventListener('click', () => {
+        const id = 'new-' + Date.now();
+        const el = document.createElement('article');
+        el.className = 'task-card';
+        el.draggable = true;
+        el.tabIndex = 0;
+        el.dataset.task = id;
+        el.innerHTML =
+          '<p class="task-card__desc">New task</p>' +
+          '<div class="task-card__meta">' +
+          '<span class="task-chip task-chip--unassigned">Unassigned</span>' +
+          '<span class="task-due">—</span>' +
+          '<a href="opportunities.html" class="record-pill">Sales</a>' +
+          '</div>';
+        const t = { id, desc: 'New task', status: 'inbox', assignee: 'Unassigned', due: '', hub: 'Sales', href: 'opportunities.html', el };
+        tasks.unshift(t);
+        renderAll();
+        openTask(id);
+      });
+    }
+
+    renderAll();
+  }
+
+  /* ================= Relationships ================= */
+  if (page === 'relationships') {
+    const grid = document.getElementById('relGrid');
+    const list = document.getElementById('relList');
+    const listBody = document.getElementById('relListBody');
+    const listEmpty = document.getElementById('relListEmpty');
+    const gridEmpty = document.getElementById('relEmpty');
+    if (!grid) return;
+
+    const TYPE_LABEL = {
+      buyer: 'Buyer',
+      tenant: 'Tenant',
+      landlord: 'Landlord',
+      developer: 'Property Developer',
+      broker: 'Broker & Partner',
+      contractor: 'Contractor'
+    };
+
+    const cards = Array.from(grid.querySelectorAll('.rel-card')).map((el) => ({
+      el,
+      type: el.dataset.reltype,
+      name: el.dataset.name,
+      company: el.querySelector('.rel-card__company').textContent.trim(),
+      actions: parseInt(el.dataset.actions, 10) || 0,
+      last: el.dataset.last,
+      contacts: el.querySelector('.rel-fact dd').textContent.trim(),
+      id: el.querySelector('.rel-id').textContent.trim(),
+      wa: el.querySelector('.rel-wa').textContent.trim(),
+      waNum: el.querySelector('.rel-wa').dataset.wa,
+      actionText: el.querySelectorAll('.rel-fact dd')[2].textContent.trim(),
+      actionDot: el.querySelector('.action-dot').className
+    }));
+
+    const state = { q: '', type: 'all', sort: 'recent' };
+
+    const matches = (c) => {
+      if (state.type !== 'all' && c.type !== state.type) return false;
+      if (state.q) {
+        const hay = (c.name + ' ' + c.company + ' ' + c.wa + ' ' + c.id).toLowerCase();
+        if (!hay.includes(state.q)) return false;
+      }
+      return true;
+    };
+
+    const sortFn = (a, b) => {
+      if (state.sort === 'name') return a.name.localeCompare(b.name);
+      if (state.sort === 'actions') return b.actions - a.actions;
+      if (state.sort === 'type') return TYPE_LABEL[a.type].localeCompare(TYPE_LABEL[b.type]);
+      return String(b.last).localeCompare(String(a.last));
+    };
+
+    function render() {
+      const visible = cards.filter(matches).slice().sort(sortFn);
+
+      grid.innerHTML = '';
+      visible.forEach((c) => grid.appendChild(c.el));
+      gridEmpty.hidden = visible.length !== 0 || !list.hidden;
+
+      listBody.innerHTML = '';
+      visible.forEach((c) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td><strong>' + c.name + '</strong>' + (c.company && c.company !== '—' ? '<br><span class="field-hint">' + c.company + '</span>' : '') + '</td>' +
+          '<td><span class="rel-type rel-type--' + c.type + '">' + TYPE_LABEL[c.type] + '</span></td>' +
+          '<td>' + c.contacts + '</td>' +
+          '<td>' + new Date(c.last + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + '</td>' +
+          '<td><span class="status-pill"><span class="' + c.actionDot + '"></span>' + c.actionText + '</span></td>' +
+          '<td><span class="rel-wa" data-wa="' + c.waNum + '">' + c.wa + '</span></td>' +
+          '<td><span class="rel-id">' + c.id + '</span></td>';
+        tr.style.cursor = 'pointer';
+        tr.addEventListener('click', (e) => {
+          if (e.target.closest('.rel-wa')) return;
+          window.location.href = '#';
+        });
+        listBody.appendChild(tr);
+      });
+      listEmpty.hidden = visible.length !== 0;
+    }
+
+    document.querySelectorAll('[data-relview]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const v = btn.dataset.relview;
+        document.querySelectorAll('[data-relview]').forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', String(on));
+        });
+        grid.hidden = v !== 'cards';
+        list.hidden = v !== 'list';
+        // Sort by belongs to the List view
+        document.getElementById('relSortWrap').hidden = v !== 'list';
+        render();
+      });
+    });
+
+    const search = document.getElementById('relSearch');
+    search.addEventListener('input', () => {
+      state.q = search.value.trim().toLowerCase();
+      render();
+    });
+
+    const typeSel = document.getElementById('relType');
+    typeSel.addEventListener('change', () => {
+      state.type = typeSel.value;
+      syncTiles();
+      render();
+    });
+
+    const sortSel = document.getElementById('relSort');
+    sortSel.addEventListener('change', () => {
+      state.sort = sortSel.value;
+      render();
+    });
+
+    function syncTiles() {
+      document.querySelectorAll('.queue-stat[data-reltype]').forEach((t) => {
+        t.classList.toggle('is-active', t.dataset.reltype === state.type);
+      });
+    }
+
+    // Metrics double as quick filters
+    document.querySelectorAll('.queue-stat[data-reltype]').forEach((tile) => {
+      tile.addEventListener('click', () => {
+        state.type = tile.dataset.reltype;
+        typeSel.value = state.type;
+        syncTiles();
+        render();
+      });
+    });
+
+    // The number itself opens WhatsApp — no separate Contact button
+    document.addEventListener('click', (e) => {
+      const wa = e.target.closest('.rel-wa');
+      if (!wa) return;
+      e.preventDefault();
+      e.stopPropagation();
+      window.open('https://wa.me/' + wa.dataset.wa, '_blank', 'noopener');
+    });
+
+    render();
+  }
+});

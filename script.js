@@ -54,6 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem(key) === 'open') {
           btn.setAttribute('aria-expanded', 'true');
         }
+        // Always open the group that contains the current page
+        if (wrap.querySelector('.nav-sub__link.is-active')) {
+          btn.setAttribute('aria-expanded', 'true');
+        }
       }
       wrap.addEventListener('click', (e) => {
         if (e.target.closest('.nav-sub')) return;

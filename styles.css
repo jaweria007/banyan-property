@@ -87,9 +87,20 @@ svg {
 
 .brand__link {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
   text-decoration: none;
+}
+
+.brand__subtitle {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(239, 219, 179, 0.72);
+  padding-left: 2px;
 }
 
 .brand__logo {
@@ -315,6 +326,10 @@ svg {
 
 .nav-item__label {
   flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 600;
 }
 
 .nav-item__chevron {
@@ -617,7 +632,8 @@ svg {
   }
 
   body.sb-collapsed .nav-item__label,
-  body.sb-collapsed .nav-item__chevron {
+  body.sb-collapsed .nav-item__chevron,
+  body.sb-collapsed .brand__subtitle {
     display: none;
   }
 

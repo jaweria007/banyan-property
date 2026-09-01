@@ -11089,3 +11089,319 @@ body[data-page="overview"] .attention-card__value {
     padding: 8px 12px;
   }
 }
+
+/* ============================================================
+   Opportunity page — header, tabs, panels
+   ============================================================ */
+
+.op-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.op-head__facts {
+  display: flex;
+  align-items: center;
+  gap: 8px 16px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.op-fact {
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+
+.op-fact__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-right: 4px;
+}
+
+.op-actionstatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+.op-head__side {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Unmistakably a WhatsApp contact button */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  background: #25d366;
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: filter 0.16s var(--ease), transform 0.16s var(--ease);
+}
+
+.btn-whatsapp:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.btn-whatsapp svg { width: 17px; height: 17px; }
+
+/* --- [+ Action] menu --- */
+.op-actionmenu { position: relative; }
+
+.op-actionmenu__chev { width: 14px; height: 14px; }
+
+.op-actionmenu__list {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 30;
+  min-width: 210px;
+  padding: 6px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.op-actionmenu__list button {
+  text-align: left;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 8px;
+  background: none;
+  font-family: inherit;
+  font-size: 0.87rem;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.op-actionmenu__list button:hover {
+  background: rgba(111, 208, 164, 0.14);
+  color: var(--green);
+}
+
+/* --- Tabs --- */
+.op-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 26px;
+  overflow-x: auto;
+}
+
+.op-tab {
+  padding: 12px 20px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.16s var(--ease), border-color 0.16s var(--ease);
+}
+
+.op-tab:hover { color: var(--green); }
+
+.op-tab.is-active {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+
+/* --- Panels --- */
+.op-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.op-block {
+  padding: 22px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.op-block__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.op-block__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.op-h2 {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.op-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.op-tagblock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.op-tagblock + .op-tagblock {
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* --- Lists --- */
+.op-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.op-listitem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 13px 16px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: #fbfaf7;
+  font-size: 0.88rem;
+}
+
+.op-listitem strong { display: block; color: var(--ink); }
+.op-listitem .field-hint { display: block; margin-top: 2px; }
+
+.op-listitem__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.op-when {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* --- History --- */
+.op-timeline {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid var(--line);
+  padding-left: 20px;
+  margin-left: 6px;
+}
+
+.op-tl {
+  position: relative;
+  padding: 12px 0;
+}
+
+.op-tl + .op-tl { border-top: 1px solid var(--line-soft); }
+
+.op-tl::before {
+  content: "";
+  position: absolute;
+  left: -27px;
+  top: 18px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green-accent);
+  border: 2px solid var(--surface);
+}
+
+.op-tl__when {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin-right: 10px;
+}
+
+.op-tl__who {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--green);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(111, 208, 164, 0.16);
+}
+
+.op-tl__who--client {
+  color: #2b6cb0;
+  background: rgba(43, 108, 176, 0.12);
+}
+
+.op-tl__who--system {
+  color: var(--muted);
+  background: #f1f3f2;
+}
+
+.op-tl__what {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+
+@media (max-width: 1000px) {
+  .op-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .op-grid { grid-template-columns: 1fr; }
+
+  .op-head__side { width: 100%; }
+  .op-head__side .btn,
+  .op-head__side .btn-whatsapp { flex: 1; justify-content: center; }
+  .op-actionmenu { flex: 1; }
+  .op-actionmenu .btn { width: 100%; }
+
+  .op-tab { padding: 12px 14px; font-size: 0.78rem; }
+}

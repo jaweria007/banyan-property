@@ -3286,3 +3286,122 @@ document.addEventListener('DOMContentLoaded', () => {
     wireAsk(() => p.name);
   }
 });
+
+/* ============================================================
+   Opportunity page — Requirements / Shortlist / Contract / History
+   Tasks are a layer across the record, not a tab.
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.body.dataset.page !== 'profile') return;
+  const tabs = Array.from(document.querySelectorAll('.op-tab'));
+  if (!tabs.length) return;
+
+  const PANEL = {
+    requirements: 'tabRequirements',
+    shortlist: 'tabShortlist',
+    contract: 'tabContract',
+    history: 'tabHistory'
+  };
+
+  const show = (key) => {
+    tabs.forEach((t) => {
+      const on = t.dataset.tab === key;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', String(on));
+    });
+    Object.entries(PANEL).forEach(([k, id]) => {
+      document.getElementById(id).hidden = k !== key;
+    });
+    try {
+      history.replaceState(null, '', '#' + key);
+    } catch (e) {}
+  };
+
+  tabs.forEach((t) => t.addEventListener('click', () => show(t.dataset.tab)));
+
+  const initial = (location.hash || '').replace('#', '');
+  if (PANEL[initial]) show(initial);
+
+  /* ---- [+ Action] dropdown replaces the old permanent buttons ---- */
+  const actionBtn = document.getElementById('opActionBtn');
+  const actionList = document.getElementById('opActionList');
+
+  const closeMenu = () => {
+    actionList.hidden = true;
+    actionBtn.setAttribute('aria-expanded', 'false');
+  };
+
+  actionBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = actionList.hidden;
+    actionList.hidden = !open;
+    actionBtn.setAttribute('aria-expanded', String(open));
+  });
+
+  document.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  /* ---- Task modal, on the right, collapses again once created ---- */
+  const drawer = document.getElementById('opTaskDrawer');
+  const backdrop = document.getElementById('opTaskBackdrop');
+
+  const openTask = (title) => {
+    document.getElementById('opTaskTitle').textContent = title;
+    drawer.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    backdrop.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('opTaskDesc').focus();
+  };
+  const closeTask = () => {
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    backdrop.hidden = true;
+    document.body.style.overflow = '';
+  };
+
+  const toast = (msg) => {
+    const el = document.getElementById('opToast');
+    el.textContent = msg;
+    el.hidden = false;
+    el.classList.add('is-in');
+    window.clearTimeout(el._t);
+    el._t = window.setTimeout(() => {
+      el.classList.remove('is-in');
+      window.setTimeout(() => (el.hidden = true), 300);
+    }, 2400);
+  };
+
+  const TITLES = {
+    task: 'Create task',
+    viewing: 'Log viewing',
+    offer: 'Record offer',
+    contract: 'Generate contract',
+    waiting: 'Mark as waiting'
+  };
+
+  actionList.querySelectorAll('[data-action]').forEach((item) => {
+    item.addEventListener('click', () => {
+      const kind = item.dataset.action;
+      closeMenu();
+      // Waiting must carry a follow-up date, so it opens the task form too
+      openTask(TITLES[kind] || 'Action');
+      const hint = document.querySelector('#opTaskBody .field-hint');
+      if (hint) {
+        hint.innerHTML = kind === 'waiting'
+          ? 'A waiting item needs a <strong>Next Follow-Up Date</strong> — once it passes, this Opportunity flips to Needs Action.'
+          : 'Linked to <strong>Umar Hassan</strong> · this task appears in My Work and drives the Action status.';
+      }
+    });
+  });
+
+  backdrop.addEventListener('click', closeTask);
+  document.getElementById('opTaskClose').addEventListener('click', closeTask);
+  document.getElementById('opTaskCancel').addEventListener('click', closeTask);
+  document.getElementById('opTaskSave').addEventListener('click', () => {
+    closeTask();
+    toast('Task created and added to My Work');
+  });
+});

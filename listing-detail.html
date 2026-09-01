@@ -200,15 +200,31 @@
           <p class="detail-sub"><span class="detail-sub__id">BUY-1301</span> · Sale</p>
         </div>
 
+        <!-- The two statuses an agent changes most often belong at the top -->
         <div class="detail-actions">
-          <div class="detail-actions__closing">
-            <label class="detail-actions__label" for="closingReason">Closing reason</label>
-            <input class="detail-actions__input" id="closingReason" type="text"
-              placeholder="Reason for closing (e.g., sold, withdrawn, expired)…">
+          <div class="detail-status">
+            <label class="field field--inline">
+              <span class="field__label">Operational status</span>
+              <select class="select-field" id="opStatusSel">
+                <option value="draft" selected>Draft</option>
+                <option value="published">Published</option>
+                <option value="hold">On Hold</option>
+                <option value="archived">Archived</option>
+              </select>
+            </label>
+            <label class="field field--inline">
+              <span class="field__label">Marketing status</span>
+              <select class="select-field" id="mktStatusSel">
+                <option value="available" selected>Available</option>
+                <option value="negotiation">Under Negotiation</option>
+                <option value="request">Upon Request</option>
+                <option value="rented">Rented</option>
+                <option value="sold">Sold</option>
+              </select>
+            </label>
           </div>
           <div class="detail-actions__btns">
             <span class="detail-actions__saved" id="saveState" hidden></span>
-            <button type="button" class="btn detail-btn detail-btn--danger" id="closeListingBtn">Close listing</button>
             <button type="button" class="btn detail-btn detail-btn--primary" id="saveChangesBtn">Save changes</button>
             <button type="button" class="btn detail-btn detail-btn--ghost">Cancel</button>
           </div>
@@ -225,6 +241,9 @@
           <button type="button" class="detail-tab" data-tab="Intelligence">Intelligence</button>
           <button type="button" class="detail-tab" data-tab="Resources">Resources</button>
         </nav>
+
+        <!-- ================= OVERVIEW ================= -->
+        <section class="detail-panel" id="panelOverview">
 
         <section class="card readiness" aria-label="Listing readiness">
           <div class="readiness__top">
@@ -370,12 +389,23 @@
                 </div>
                 <div class="summary-card__col">
                   <div class="summary-card__row">
-                    <dt>Assigned agent</dt>
-                    <dd>Unassigned</dd>
+                    <dt>Sales agent</dt>
+                    <dd>Ratna</dd>
                   </div>
                   <div class="summary-card__row">
-                    <dt>&nbsp;</dt>
-                    <dd><a class="summary-card__link" href="#">Assign agent</a></dd>
+                    <dt>Listing agent</dt>
+                    <dd>Berry</dd>
+                  </div>
+                  <div class="summary-card__row">
+                    <dt>Co-broker</dt>
+                    <dd>
+                      <a class="summary-card__link" href="relationships.html">Wayan Adnyana</a>
+                      <br>
+                      <span class="rel-wa" data-wa="6287712340099">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+                        +62 877-1234-0099
+                      </span>
+                    </dd>
                   </div>
                   <div class="summary-card__row">
                     <dt>Last updated</dt>
@@ -431,6 +461,422 @@
           </div>
         </section>
 
+        </section>
+
+        <!-- ================= CONTENT ================= -->
+        <section class="detail-panel" id="panelContent" hidden>
+
+          <div class="detail-cols">
+            <div class="detail-col">
+
+              <section class="card op-block">
+                <h2 class="section-title">Property specs</h2>
+                <div class="op-grid">
+                  <label class="field"><span class="field__label">Property type</span>
+                    <select class="select-field" id="ldType"><option value="rent">Rent</option><option value="sale" selected>Villa (sale)</option><option value="land">Land</option><option value="commercial">Commercial</option></select></label>
+                  <label class="field"><span class="field__label">Bedrooms</span><input type="number" class="input-field" value="4"></label>
+                  <label class="field"><span class="field__label">Bathrooms</span><input type="number" class="input-field" value="4"></label>
+                  <label class="field"><span class="field__label">Land size (m²)</span><input type="number" class="input-field" value="850"></label>
+                  <label class="field"><span class="field__label">Building size (m²)</span><input type="number" class="input-field" value="320"></label>
+                  <label class="field"><span class="field__label">Year built</span><input type="number" class="input-field" value="2019"></label>
+                </div>
+
+                <!-- Pricing lives with the specs, not down in Marketing & Notes -->
+                <h3 class="sb-h4">Pricing</h3>
+                <div class="op-grid">
+                  <label class="field"><span class="field__label">Primary price</span>
+                    <input type="text" class="input-field" id="ldPrimaryPrice" value="350000"></label>
+                  <label class="field"><span class="field__label">Primary currency</span>
+                    <select class="select-field" id="ldCurrency">
+                      <option value="USD" selected>USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="AUD">AUD</option>
+                      <option value="IDR">IDR</option>
+                    </select></label>
+                  <label class="field"><span class="field__label">IDR display price</span>
+                    <input type="text" class="input-field" id="ldIdrPrice" readonly></label>
+                </div>
+                <p class="field-hint" id="ldFxNote"></p>
+              </section>
+
+              <section class="card op-block" id="ldLeaseBlock">
+                <h2 class="section-title">Tenure &amp; lease</h2>
+                <div class="op-grid">
+                  <label class="field"><span class="field__label">Tenure</span>
+                    <select class="select-field"><option>Leasehold</option><option>Freehold</option></select></label>
+                  <label class="field"><span class="field__label">Lease expiration</span>
+                    <input type="date" class="input-field" id="ldLeaseEnd" value="2047-03-27"></label>
+                  <label class="field"><span class="field__label">Lease duration</span>
+                    <input type="text" class="input-field" id="ldLeaseDuration" readonly></label>
+                </div>
+                <label class="field"><span class="field__label">Lease extension</span>
+                  <input type="text" class="input-field" value="Yes, 25 years"></label>
+                <p class="field-hint">Duration is calculated from the expiration date, so the two can never disagree.</p>
+              </section>
+
+              <section class="card op-block" id="ldInclusions" hidden>
+                <h2 class="section-title">Inclusions</h2>
+                <div class="tagset">
+                  <label class="tag-check"><input type="checkbox" checked><span>Electricity</span></label>
+                  <label class="tag-check"><input type="checkbox" checked><span>Water</span></label>
+                  <label class="tag-check"><input type="checkbox"><span>Internet</span></label>
+                  <label class="tag-check"><input type="checkbox" checked><span>Pool maintenance</span></label>
+                  <label class="tag-check"><input type="checkbox" checked><span>Garden maintenance</span></label>
+                  <label class="tag-check"><input type="checkbox"><span>Weekly cleaning</span></label>
+                  <label class="tag-check"><input type="checkbox"><span>Staff</span></label>
+                  <label class="tag-check"><input type="checkbox"><span>Taxes</span></label>
+                </div>
+                <p class="field-hint">Shown for Property Type — Rent.</p>
+              </section>
+
+              <section class="card op-block">
+                <h2 class="section-title">Features</h2>
+
+                <div class="op-tagblock">
+                  <h3 class="sb-h4">Swimming pool</h3>
+                  <div class="tagset">
+                    <label class="tag-check"><input type="checkbox" checked><span>Large Private Pool (&gt;10m)</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Private Pool (&lt;10m)</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Shared</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>None</span></label>
+                  </div>
+                </div>
+
+                <div class="op-tagblock">
+                  <h3 class="sb-h4">Living area</h3>
+                  <div class="tagset">
+                    <label class="tag-check"><input type="checkbox"><span>Enclosed</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Semi-Enclosed</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Private</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Semi-Open</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Open</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Outdoor</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Indoor</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>None</span></label>
+                  </div>
+                </div>
+
+                <div class="op-tagblock">
+                  <h3 class="sb-h4">View</h3>
+                  <div class="tagset">
+                    <label class="tag-check"><input type="checkbox" checked><span>Rice Field View</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Jungle View</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Mountain View</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>River &amp; Waterfall</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Beachfront</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Ocean View</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Garden &amp; Pool View</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Garden View</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Balinese Compound</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Street View</span></label>
+                  </div>
+                </div>
+
+                <div class="op-tagblock">
+                  <h3 class="sb-h4">Kitchen</h3>
+                  <div class="tagset">
+                    <label class="tag-check"><input type="checkbox" checked><span>Enclosed Kitchen</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Open Kitchen</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Semi-Outdoor Kitchen</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Shared Kitchen</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>None</span></label>
+                  </div>
+                </div>
+
+                <div class="op-tagblock">
+                  <h3 class="sb-h4">Access</h3>
+                  <div class="tagset">
+                    <label class="tag-check"><input type="checkbox" checked><span>Car Access</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Motorbike Access</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Walking Access only</span></label>
+                  </div>
+                </div>
+
+                <div class="op-tagblock">
+                  <h3 class="sb-h4">Basic comfort &amp; utility</h3>
+                  <div class="tagset">
+                    <label class="tag-check"><input type="checkbox" checked><span>Wifi</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>AC</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Dedicated Workspace</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Oven</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Washing Machine</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Dryer</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Dish Washer</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Microwave</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Hot Water</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>TV</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Bathtub</span></label>
+                  </div>
+                </div>
+
+                <div class="op-tagblock">
+                  <h3 class="sb-h4">Security &amp; safety</h3>
+                  <div class="tagset">
+                    <label class="tag-check"><input type="checkbox" checked><span>CCTV</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Smart Lock</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Safe</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Carbon Monoxide Alarm</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Physical Security</span></label>
+                  </div>
+                </div>
+
+                <div class="op-tagblock">
+                  <h3 class="sb-h4">Family &amp; child</h3>
+                  <div class="tagset">
+                    <label class="tag-check"><input type="checkbox"><span>Outdoor Fireplace</span></label>
+                    <label class="tag-check"><input type="checkbox" checked><span>Playground &amp; Play Area</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Toys &amp; Board Games</span></label>
+                  </div>
+                </div>
+
+                <div class="op-tagblock">
+                  <h3 class="sb-h4">Pets</h3>
+                  <div class="tagset">
+                    <label class="tag-check"><input type="checkbox" checked><span>Pet Friendly</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Pets Allowed (extra deposit)</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Cat Only</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>No Pets</span></label>
+                    <label class="tag-check"><input type="checkbox"><span>Case by Case</span></label>
+                  </div>
+                </div>
+              </section>
+
+              <section class="card op-block">
+                <h2 class="section-title">Marketing &amp; notes</h2>
+                <label class="field"><span class="field__label">Headline</span>
+                  <input type="text" class="input-field" value="Spacious Luxury Villa with Separate Guest House in Singakerta, Ubud"></label>
+                <label class="field"><span class="field__label">Description</span>
+                  <textarea class="input-field input-field--area" rows="5">A generous four-bedroom villa on 850 m² in Singakerta, with a separate two-bedroom guest house, a 12-metre pool and uninterrupted rice field views to the north.</textarea></label>
+                <label class="field"><span class="field__label">Internal notes</span>
+                  <textarea class="input-field input-field--area" rows="3">Owner is flexible on the start date but firm on price until the end of the quarter.</textarea></label>
+              </section>
+
+              <!-- Moved down here, out of the top header -->
+              <section class="card op-block">
+                <h2 class="section-title">Reason for closing</h2>
+                <div class="op-grid">
+                  <label class="field"><span class="field__label">Reason</span>
+                    <select class="select-field" id="ldClosingReason">
+                      <option value="">Not closed</option>
+                      <option value="sold">Sold</option>
+                      <option value="rented">Rented</option>
+                      <option value="withdrawn">Withdrawn by owner</option>
+                      <option value="expired">Listing expired</option>
+                      <option value="other">Other</option>
+                    </select></label>
+                  <label class="field"><span class="field__label">Closed on</span><input type="date" class="input-field"></label>
+                </div>
+                <label class="field"><span class="field__label">Notes</span>
+                  <textarea class="input-field input-field--area" rows="2" placeholder="Anything worth recording about why this listing closed…"></textarea></label>
+              </section>
+
+              <section class="card op-block">
+                <h2 class="section-title">Related tasks</h2>
+                <ul class="op-list">
+                  <li class="op-listitem"><div><strong>Chase owner for lease extension documents</strong><span class="field-hint">Kashif · due 5 Sep</span></div><a href="my-work.html" class="record-pill">My Work</a></li>
+                  <li class="op-listitem"><div><strong>New listing needs photos and marketing copy</strong><span class="field-hint">Unassigned · due 10 Sep</span></div><a href="my-work.html" class="record-pill">My Work</a></li>
+                </ul>
+              </section>
+            </div>
+
+            <aside class="detail-side">
+              <section class="card op-block">
+                <h2 class="section-title">Location</h2>
+                <label class="field"><span class="field__label">Primary location</span>
+                  <select class="select-field" id="ldLocPrimary">
+                    <option value="Ubud" selected>Ubud</option>
+                    <option value="Canggu">Canggu</option>
+                    <option value="Uluwatu">Uluwatu</option>
+                    <option value="Seminyak">Seminyak</option>
+                    <option value="Sanur">Sanur</option>
+                  </select></label>
+                <label class="field"><span class="field__label">Secondary location</span>
+                  <select class="select-field" id="ldLocSecondary"></select></label>
+                <p class="field-hint">Secondary locations are nested under their primary, so Ubud can never be paired with Uluwatu.</p>
+                <label class="field"><span class="field__label">Google Maps pin</span>
+                  <input type="text" class="input-field" value="-8.5231, 115.2519"></label>
+              </section>
+
+              <!-- Sits below the Location table on the right, as requested -->
+              <section class="card op-block op-block--sensitive">
+                <h2 class="section-title">Private &amp; sensitive</h2>
+                <label class="field"><span class="field__label">Owner name</span><input type="text" class="input-field" value="Maria Santos"></label>
+                <label class="field"><span class="field__label">Owner WhatsApp</span><input type="tel" class="input-field" value="+62 812-3456-7890"></label>
+                <label class="field"><span class="field__label">Agreed commission</span>
+                  <input type="text" class="input-field" placeholder="e.g. 5%, 10%" value="8%"></label>
+                <label class="field"><span class="field__label">Owner expectations</span>
+                  <textarea class="input-field input-field--area" rows="3">Wants USD 350k net. Will consider 335k for a fast close.</textarea></label>
+                <p class="field-hint">Never shown on the public website or on a client shortlist.</p>
+              </section>
+            </aside>
+          </div>
+        </section>
+
+        <!-- ================= MEDIA ================= -->
+        <section class="detail-panel" id="panelMedia" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Website media gallery</h2>
+              <button type="button" class="btn btn-ghost">Reorder</button>
+            </div>
+            <p class="field-hint">Images keep the order they have in Google Drive (1.jpg, 2.jpg …) unless you reorder them here.</p>
+            <div class="ld-gallery">
+              <span class="ld-thumb ld-thumb--cover">1 · Cover</span>
+              <span class="ld-thumb">2</span>
+              <span class="ld-thumb">3</span>
+              <span class="ld-thumb">4</span>
+              <span class="ld-thumb">5</span>
+              <span class="ld-thumb">6</span>
+            </div>
+          </section>
+
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Videos</h2>
+              <button type="button" class="btn btn-ghost" id="ldAddVideo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                Add YouTube video
+              </button>
+            </div>
+            <div class="op-list" id="ldVideoList">
+              <div class="op-listitem">
+                <input type="url" class="input-field" value="https://youtube.com/watch?v=example1">
+                <button type="button" class="btn btn-ghost ld-video-remove">Remove</button>
+              </div>
+            </div>
+          </section>
+
+          <section class="card op-block">
+            <h2 class="section-title">Source</h2>
+            <label class="field"><span class="field__label">GDrive IMG folder</span>
+              <input type="url" class="input-field" value="https://drive.google.com/drive/folders/example"></label>
+            <p class="field-hint">Reference only. Used once to seed the gallery during the transition; the OMS gallery is the source of truth from then on.</p>
+          </section>
+        </section>
+
+        <!-- ================= OPERATIONS ================= -->
+        <section class="detail-panel" id="panelOperations" hidden>
+
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Bookings</h2>
+              <div class="op-block__actions">
+                <a href="#" class="btn btn-ghost" target="_blank" rel="noopener">Open Bookings folder ↗</a>
+                <button type="button" class="btn btn-primary">Add booking</button>
+              </div>
+            </div>
+            <p class="field-hint">The Google Drive link is view-only here; edit it in Resources.</p>
+            <div class="work-list">
+              <table class="data-table">
+                <thead><tr><th>Customer name</th><th>Date of entry</th><th>Date of exit</th><th>Status</th><th class="th-edit"></th></tr></thead>
+                <tbody>
+                  <tr><td>Sarah Wilson</td><td>01 Oct 2026</td><td>01 Oct 2027</td><td><span class="opp-chip opp-chip--stage">Upcoming</span></td><td><button type="button" class="icon-action ld-expand" aria-label="Show more">▾</button></td></tr>
+                  <tr class="ld-more" hidden><td colspan="5">
+                    <div class="op-grid">
+                      <label class="field"><span class="field__label">Booking currency</span><select class="select-field"><option>IDR</option><option>USD</option><option>EUR</option><option>AUD</option></select></label>
+                      <label class="field"><span class="field__label">Booking value</span><input type="text" class="input-field" value="31,000,000"></label>
+                      <label class="field"><span class="field__label">Gross commission</span><input type="text" class="input-field" value="2,480,000"></label>
+                      <label class="field"><span class="field__label">Sales agent</span><select class="select-field"><option>Ratna</option><option>Berry</option><option>Andries</option><option>Kashif</option></select></label>
+                    </div>
+                  </td></tr>
+                  <tr><td>Tom Bradley</td><td>12 Mar 2026</td><td>12 Sep 2026</td><td><span class="opp-chip opp-chip--stage">Ongoing</span></td><td><button type="button" class="icon-action ld-expand" aria-label="Show more">▾</button></td></tr>
+                  <tr class="ld-more" hidden><td colspan="5">
+                    <div class="op-grid">
+                      <label class="field"><span class="field__label">Booking currency</span><select class="select-field"><option>IDR</option><option>USD</option></select></label>
+                      <label class="field"><span class="field__label">Booking value</span><input type="text" class="input-field" value="18,000,000"></label>
+                      <label class="field"><span class="field__label">Gross commission</span><input type="text" class="input-field" value="1,440,000"></label>
+                      <label class="field"><span class="field__label">Sales agent</span><select class="select-field"><option>Berry</option></select></label>
+                    </div>
+                  </td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Routine maintenance</h2>
+              <div class="op-block__actions">
+                <a href="#" class="btn btn-ghost" target="_blank" rel="noopener">Open Maintenance folder ↗</a>
+                <button type="button" class="btn btn-primary">Add job</button>
+              </div>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead><tr><th>Description</th><th>Date</th><th>Job rating</th><th>Status</th><th class="th-edit"></th></tr></thead>
+                <tbody>
+                  <tr><td>Pool pump service</td><td>18 Aug 2026</td><td><span class="ld-stars">★★★★☆</span></td><td><span class="opp-chip opp-chip--stage">Done</span></td><td><button type="button" class="icon-action ld-expand" aria-label="Show more">▾</button></td></tr>
+                  <tr class="ld-more" hidden><td colspan="5">
+                    <div class="op-grid">
+                      <label class="field"><span class="field__label">Provider name</span><input type="text" class="input-field" value="Made Renovations"></label>
+                      <label class="field"><span class="field__label">Provider WhatsApp</span><input type="tel" class="input-field" value="+62 817-4433-2211"></label>
+                      <label class="field"><span class="field__label">Ops agent</span><select class="select-field"><option>Kashif</option><option>Ratna</option></select></label>
+                    </div>
+                    <label class="field"><span class="field__label">Notes</span><textarea class="input-field input-field--area" rows="2">Impeller replaced, filter cleaned.</textarea></label>
+                  </td></tr>
+                  <tr><td>Garden trim &amp; replanting</td><td>02 Sep 2026</td><td><span class="ld-stars">—</span></td><td><span class="opp-chip opp-chip--stage">Pending</span></td><td><button type="button" class="icon-action ld-expand" aria-label="Show more">▾</button></td></tr>
+                  <tr class="ld-more" hidden><td colspan="5">
+                    <div class="op-grid">
+                      <label class="field"><span class="field__label">Provider name</span><input type="text" class="input-field" placeholder="Optional"></label>
+                      <label class="field"><span class="field__label">Provider WhatsApp</span><input type="tel" class="input-field" placeholder="Optional"></label>
+                      <label class="field"><span class="field__label">Ops agent</span><select class="select-field"><option>Unassigned</option><option>Kashif</option></select></label>
+                    </div>
+                    <label class="field"><span class="field__label">Notes</span><textarea class="input-field input-field--area" rows="2"></textarea></label>
+                  </td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Inspections</h2>
+              <div class="op-block__actions">
+                <a href="#" class="btn btn-ghost" target="_blank" rel="noopener">Open Inspections folder ↗</a>
+                <button type="button" class="btn btn-primary">Add inspection</button>
+              </div>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead><tr><th>Type</th><th>Date</th><th>Job rating</th><th>Status</th><th class="th-edit"></th></tr></thead>
+                <tbody>
+                  <tr><td>Move-in</td><td>01 Oct 2026</td><td><span class="ld-stars">—</span></td><td><span class="opp-chip opp-chip--stage">Pending</span></td><td><button type="button" class="icon-action ld-expand" aria-label="Show more">▾</button></td></tr>
+                  <tr class="ld-more" hidden><td colspan="5">
+                    <div class="op-grid">
+                      <label class="field"><span class="field__label">Ops agent</span><select class="select-field"><option>Unassigned</option><option>Kashif</option><option>Ratna</option></select></label>
+                    </div>
+                    <label class="field"><span class="field__label">Notes</span><textarea class="input-field input-field--area" rows="2"></textarea></label>
+                  </td></tr>
+                  <tr><td>Move-Out</td><td>12 Sep 2026</td><td><span class="ld-stars">★★★☆☆</span></td><td><span class="opp-chip opp-chip--stage">Settlement Required</span></td><td><button type="button" class="icon-action ld-expand" aria-label="Show more">▾</button></td></tr>
+                  <tr class="ld-more" hidden><td colspan="5">
+                    <div class="op-grid">
+                      <label class="field"><span class="field__label">Ops agent</span><select class="select-field"><option>Kashif</option></select></label>
+                    </div>
+                    <label class="field"><span class="field__label">Notes</span><textarea class="input-field input-field--area" rows="2">Two broken tiles on the terrace; deposit deduction pending.</textarea></label>
+                  </td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Issue log</h2>
+              <button type="button" class="btn btn-primary">Log issue</button>
+            </div>
+            <p class="field-hint">Status is driven by the linked task in My Work, so it cannot drift out of date here.</p>
+            <div class="work-list">
+              <table class="data-table">
+                <thead><tr><th>Issue</th><th>Date</th><th>Ops agent</th><th>Urgency</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td>Water pressure low in guest house</td><td>28 Aug 2026</td><td>Kashif</td><td><span class="opp-chip opp-chip--high">Critical</span></td><td><a href="my-work.html" class="record-pill">My Work</a></td></tr>
+                  <tr><td>Gate motor intermittent</td><td>22 Aug 2026</td><td>Ratna</td><td><span class="opp-chip opp-chip--med">Medium</span></td><td><a href="my-work.html" class="record-pill">My Work</a></td></tr>
+                  <tr><td>Repaint north wall</td><td>14 Aug 2026</td><td>Unassigned</td><td><span class="opp-chip opp-chip--low">Low</span></td><td><a href="my-work.html" class="record-pill">My Work</a></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
       </main>
     </div>
   </div>

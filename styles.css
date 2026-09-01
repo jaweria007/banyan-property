@@ -11405,3 +11405,132 @@ body[data-page="overview"] .attention-card__value {
 
   .op-tab { padding: 12px 14px; font-size: 0.78rem; }
 }
+
+/* ============================================================
+   Listing detail — status header, Content / Media / Operations
+   ============================================================ */
+
+.detail-status {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.field--inline {
+  min-width: 190px;
+}
+
+.detail-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  align-items: start;
+}
+
+.detail-col,
+.detail-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.detail-side {
+  position: sticky;
+  top: 20px;
+}
+
+.op-block--sensitive {
+  border-color: rgba(176, 138, 79, 0.4);
+  background: #fdfbf6;
+}
+
+.detail-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Media */
+.ld-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.ld-thumb {
+  display: grid;
+  place-items: center;
+  height: 104px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, #eceae2, #e2e6e0);
+  color: #9aa4a0;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.ld-thumb--cover {
+  outline: 2px solid var(--green-accent);
+  outline-offset: -2px;
+  color: var(--green);
+}
+
+#ldVideoList .op-listitem {
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+#ldVideoList .input-field {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Operations */
+.ld-stars {
+  color: var(--gold-2);
+  letter-spacing: 0.06em;
+  font-size: 0.9rem;
+}
+
+.ld-more > td {
+  background: #fbfaf7;
+  padding: 16px !important;
+}
+
+.ld-more .op-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ld-expand {
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+@media (max-width: 1100px) {
+  .detail-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-side {
+    position: static;
+  }
+
+  .ld-more .op-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .detail-status {
+    width: 100%;
+  }
+
+  .field--inline {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ld-more .op-grid {
+    grid-template-columns: 1fr;
+  }
+}

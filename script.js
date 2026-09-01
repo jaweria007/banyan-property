@@ -1627,10 +1627,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ================= Listing detail only ================= */
   if (page === 'listing-detail') {
+    const DETAIL_PANEL = {
+      'Overview': 'panelOverview',
+      'Content': 'panelContent',
+      'Media': 'panelMedia',
+      'Operations': 'panelOperations'
+    };
+
     document.querySelectorAll('.detail-tab').forEach((tab) => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.detail-tab').forEach((t) => t.classList.remove('is-active'));
         tab.classList.add('is-active');
+        const target = DETAIL_PANEL[tab.dataset.tab];
+        Object.values(DETAIL_PANEL).forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.hidden = id !== target;
+        });
       });
     });
 
@@ -3403,5 +3415,133 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('opTaskSave').addEventListener('click', () => {
     closeTask();
     toast('Task created and added to My Work');
+  });
+});
+
+/* ============================================================
+   Listing detail — Content / Media / Operations behaviour
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.body.dataset.page !== 'listing-detail') return;
+
+  /* ---- Nested primary / secondary location ---- */
+  const SECONDARY = {
+    Ubud: ['Nyuh Kuning', 'Penestanan', 'Sayan', 'Pengosekan', 'Tegallalang', 'Mas', 'Kedewatan', 'Singakerta'],
+    Canggu: ['Berawa', 'Batu Bolong', 'Pererenan', 'Echo Beach', 'Umalas', 'Tumbak Bayuh'],
+    Uluwatu: ['Bingin', 'Padang Padang', 'Balangan', 'Pecatu', 'Nyang Nyang'],
+    Seminyak: ['Petitenget', 'Oberoi', 'Kerobokan', 'Batu Belig'],
+    Sanur: ['Sindhu', 'Semawang', 'Padang Galak', 'Mertasari']
+  };
+
+  const primary = document.getElementById('ldLocPrimary');
+  const secondary = document.getElementById('ldLocSecondary');
+  if (primary && secondary) {
+    const fillSecondary = (keep) => {
+      const list = SECONDARY[primary.value] || [];
+      secondary.innerHTML = '';
+      secondary.appendChild(new Option('Not set', ''));
+      list.forEach((n) => secondary.appendChild(new Option(n, n)));
+      if (keep && list.includes(keep)) secondary.value = keep;
+    };
+    fillSecondary('Singakerta');
+    primary.addEventListener('change', () => fillSecondary());
+  }
+
+  /* ---- Pricing: primary price + currency drive the IDR display price ---- */
+  const FX = { USD: 16250, EUR: 17600, AUD: 10650, IDR: 1 };
+  const priceEl = document.getElementById('ldPrimaryPrice');
+  const curEl = document.getElementById('ldCurrency');
+  const idrEl = document.getElementById('ldIdrPrice');
+  const fxNote = document.getElementById('ldFxNote');
+
+  const recalcPrice = () => {
+    if (!priceEl || !curEl || !idrEl) return;
+    const raw = Number(String(priceEl.value).replace(/[^0-9.]/g, '')) || 0;
+    const rate = FX[curEl.value] || 1;
+    idrEl.value = 'IDR ' + Math.round(raw * rate).toLocaleString('en-US');
+    fxNote.textContent = curEl.value === 'IDR'
+      ? 'Priced directly in IDR.'
+      : 'Converted at 1 ' + curEl.value + ' = IDR ' + rate.toLocaleString('en-US') + ' · FX updated weekly.';
+  };
+  if (priceEl) {
+    priceEl.addEventListener('input', recalcPrice);
+    curEl.addEventListener('change', recalcPrice);
+    recalcPrice();
+  }
+
+  /* ---- Lease duration is calculated, never typed ---- */
+  const leaseEnd = document.getElementById('ldLeaseEnd');
+  const leaseDur = document.getElementById('ldLeaseDuration');
+  const recalcLease = () => {
+    if (!leaseEnd || !leaseDur) return;
+    if (!leaseEnd.value) {
+      leaseDur.value = '—';
+      return;
+    }
+    const end = new Date(leaseEnd.value + 'T00:00:00');
+    const now = new Date('2026-09-01T00:00:00');
+    let months = (end.getFullYear() - now.getFullYear()) * 12 + (end.getMonth() - now.getMonth());
+    if (end.getDate() < now.getDate()) months -= 1;
+    if (months < 0) {
+      leaseDur.value = 'Expired';
+      return;
+    }
+    leaseDur.value = '~' + Math.floor(months / 12) + '.' + (months % 12) + ' years';
+  };
+  if (leaseEnd) {
+    leaseEnd.addEventListener('change', recalcLease);
+    recalcLease();
+  }
+
+  /* ---- Inclusions only apply to rentals ---- */
+  const typeSel = document.getElementById('ldType');
+  const inclusions = document.getElementById('ldInclusions');
+  const leaseBlock = document.getElementById('ldLeaseBlock');
+  const syncType = () => {
+    if (!typeSel) return;
+    const isRent = typeSel.value === 'rent';
+    if (inclusions) inclusions.hidden = !isRent;
+    if (leaseBlock) leaseBlock.hidden = isRent;
+  };
+  if (typeSel) {
+    typeSel.addEventListener('change', syncType);
+    syncType();
+  }
+
+  /* ---- Operations: reveal the secondary fields on a row ---- */
+  document.querySelectorAll('.ld-expand').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const row = btn.closest('tr');
+      const more = row.nextElementSibling;
+      if (!more || !more.classList.contains('ld-more')) return;
+      more.hidden = !more.hidden;
+      btn.textContent = more.hidden ? '▾' : '▴';
+    });
+  });
+
+  /* ---- Media: add more YouTube videos ---- */
+  const addVideo = document.getElementById('ldAddVideo');
+  const videoList = document.getElementById('ldVideoList');
+  if (addVideo && videoList) {
+    addVideo.addEventListener('click', () => {
+      const row = document.createElement('div');
+      row.className = 'op-listitem';
+      row.innerHTML =
+        '<input type="url" class="input-field" placeholder="https://youtube.com/watch?v=…">' +
+        '<button type="button" class="btn btn-ghost ld-video-remove">Remove</button>';
+      videoList.appendChild(row);
+      row.querySelector('input').focus();
+    });
+    videoList.addEventListener('click', (e) => {
+      if (e.target.closest('.ld-video-remove')) e.target.closest('.op-listitem').remove();
+    });
+  }
+
+  /* ---- WhatsApp numbers are clickable wherever they appear ---- */
+  document.addEventListener('click', (e) => {
+    const wa = e.target.closest('.rel-wa');
+    if (!wa || !wa.dataset.wa) return;
+    e.preventDefault();
+    window.open('https://wa.me/' + wa.dataset.wa, '_blank', 'noopener');
   });
 });

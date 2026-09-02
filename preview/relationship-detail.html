@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banyan · Relationship</title>
+  <meta name="description" content="Property listings management for Banyan Properties">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    try {
+      if (localStorage.getItem('banyan_signed_in') !== '1') {
+        location.replace('login.html');
+      }
+    } catch (e) {}
+  </script>
+</head>
+<body data-page="relationship-detail">
+  <div class="app">
+
+    <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
+
+    <aside class="sidebar" id="sidebar">
+  <div class="brand">
+    <a href="index.html" class="brand__link" aria-label="Banyan Operating System">
+      <img class="brand__logo" src="public/banyan logo.png" alt="Banyan Properties">
+      <img class="brand__logo-half" src="public/banyan half logo when side bar shrinks.png" alt="Banyan Properties">
+      <span class="brand__subtitle">Operating System</span>
+    </a>
+    <button type="button" class="icon-btn sidebar-toggle" id="sidebarToggle" aria-label="Collapse or expand sidebar">
+      <svg class="icon-collapse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/><path d="M21 6l-6 6 6 6"/></svg>
+      <svg class="icon-expand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/><path d="M3 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <div class="side-search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+    <input type="search" placeholder="Search" aria-label="Search">
+  </div>
+
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="nav-item" data-label="Overview">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+      </span>
+      <span class="nav-item__label">Overview</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Listings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </span>
+        <span class="nav-item__label">Listings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
+          <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Sales">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </span>
+        <span class="nav-item__label">Sales</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="client-inbox.html" class="nav-sub__link"><span class="nav-dot"></span>Client Inbox</a>
+          <a href="opportunities.html" class="nav-sub__link"><span class="nav-dot"></span>Opportunities</a>
+        </div>
+      </div>
+    </div>
+
+    <a href="relationships.html" class="nav-item is-active" data-label="Relationships">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </span>
+      <span class="nav-item__label">Relationships</span>
+    </a>
+
+    <a href="#" class="nav-item" data-label="My Work">
+      <span class="nav-item__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+      </span>
+      <span class="nav-item__label">My Work</span>
+    </a>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Reporting">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </span>
+        <span class="nav-item__label">Reporting</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Growth Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Community Dashboard</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Marketing">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+        </span>
+        <span class="nav-item__label">Marketing</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Publishers</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Blog</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>Website Settings</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-toggle-wrap">
+      <button type="button" class="nav-item nav-toggle" aria-expanded="false" data-label="Settings">
+        <span class="nav-item__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <span class="nav-item__label">Settings</span>
+        <span class="nav-item__chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </button>
+      <div class="nav-sub">
+        <div class="nav-sub__inner">
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>User Management</a>
+          <a href="#" class="nav-sub__link"><span class="nav-dot"></span>OMS Settings</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar-foot">
+    <div class="staging-badge">
+      <span class="staging-badge__dot"></span>
+      Staging DB — production data untouched
+    </div>
+    <div class="side-user">
+      <span class="side-user__avatar">A</span>
+      <div class="side-user__info">
+        <p class="side-user__name">Admin User</p>
+        <p class="side-user__email">admin@banyan.com</p>
+      </div>
+    </div>
+    <button type="button" class="signout" id="signOut">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>
+      <span class="signout__label">Sign out</span>
+    </button>
+  </div>
+</aside>
+
+
+
+
+
+    <div class="main">
+      <header class="topbar">
+        <button type="button" class="hamburger" id="hamburger" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M3 12h18"/><path d="M3 18h18"/></svg>
+        </button>
+        <div class="topbar__right">
+          <div class="staging-badge staging-badge--light">
+            <span class="staging-badge__dot"></span>
+            Staging
+          </div>
+          <span class="user-chip" title="umarbilalpersonal@gmail.com">UA</span>
+        </div>
+      </header>
+
+      <main class="content">
+
+        <a class="sb-back" href="relationships.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          Back to Relationships
+        </a>
+
+        <!-- Header mirrors the card: WHO -> TYPE -> how to reach them -->
+        <section class="rd-head">
+          <div class="rd-head__who">
+            <div class="rd-head__title">
+              <h1 class="page-title" id="rdName">—</h1>
+              <span class="rel-type" id="rdType">—</span>
+              <span class="rel-id" id="rdId">—</span>
+            </div>
+            <p class="rd-head__company" id="rdCompany"></p>
+            <div class="rd-head__contact">
+              <span class="rel-wa" id="rdWa" data-wa="">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+                <span id="rdWaLabel">—</span>
+              </span>
+              <a class="rd-mail" id="rdEmail" href="#">—</a>
+              <span class="rd-assigned">Assigned to <strong id="rdAgent">—</strong></span>
+            </div>
+          </div>
+
+          <div class="rd-head__actions">
+            <button type="button" class="btn btn-primary" id="rdNewTask">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Create Task
+            </button>
+          </div>
+        </section>
+
+        <!-- Same four facts as the card, so the two never disagree -->
+        <section class="rd-facts" id="rdFacts"></section>
+
+        <div class="rd-cols">
+          <div class="rd-main">
+
+            <!-- The workspace: what needs doing, then what has happened -->
+            <section class="card op-block">
+              <div class="op-block__head">
+                <h2 class="section-title">Open tasks</h2>
+                <a href="my-work.html" class="record-pill">My Work</a>
+              </div>
+              <ul class="op-list" id="rdTasks"></ul>
+              <p class="list-empty" id="rdTasksEmpty" hidden>Nothing open. Nice.</p>
+            </section>
+
+            <section class="card op-block">
+              <h2 class="section-title">Activity history</h2>
+              <ol class="op-timeline" id="rdHistory"></ol>
+            </section>
+
+            <section class="card op-block">
+              <div class="op-block__head">
+                <h2 class="section-title">Notes</h2>
+              </div>
+              <label class="field">
+                <span class="field__label">Add a note</span>
+                <textarea class="input-field input-field--area" id="rdNoteText" rows="2" placeholder="Preferences, context, anything the next person should know…"></textarea>
+              </label>
+              <div class="rd-noterow">
+                <button type="button" class="btn btn-primary" id="rdAddNote">Add note</button>
+              </div>
+              <ul class="op-list" id="rdNotes"></ul>
+            </section>
+
+            <section class="card op-block">
+              <h2 class="section-title">Connected records</h2>
+              <ul class="op-list" id="rdConnections"></ul>
+              <p class="field-hint">Named, not coded — the internal IDs stay out of the way.</p>
+            </section>
+          </div>
+
+          <aside class="rd-side">
+
+            <section class="card op-block">
+              <h2 class="section-title">Contact details</h2>
+              <dl class="rd-kv" id="rdContact"></dl>
+            </section>
+
+            <!-- Where applicable, per the feedback -->
+            <section class="card op-block" id="rdBrokerCard" hidden>
+              <h2 class="section-title">Referring broker / partner</h2>
+              <a class="rd-broker" id="rdBrokerLink" href="relationships.html">
+                <span class="rd-broker__name" id="rdBrokerName">—</span>
+                <span class="rd-broker__meta" id="rdBrokerMeta">—</span>
+              </a>
+            </section>
+
+            <section class="card op-block">
+              <h2 class="section-title">Activity with Banyan</h2>
+              <dl class="rd-kv" id="rdActivity"></dl>
+            </section>
+
+            <section class="card op-block">
+              <h2 class="section-title">Documents</h2>
+              <ul class="op-list" id="rdDocs"></ul>
+              <p class="field-hint">Documents belong to the property, booking or contract that owns them — Google Drive stays the source of truth.</p>
+            </section>
+          </aside>
+        </div>
+
+        <!-- Deeper CRM detail, out of the way until it is wanted -->
+        <details class="rd-deeper">
+          <summary class="rd-deeper__summary">Marketing attribution &amp; CRM detail</summary>
+          <div class="rd-deeper__body">
+            <section class="card op-block">
+              <h2 class="section-title">First touch</h2>
+              <dl class="rd-kv rd-kv--wide" id="rdFirstTouch"></dl>
+            </section>
+            <section class="card op-block">
+              <h2 class="section-title">Lifecycle</h2>
+              <dl class="rd-kv rd-kv--wide" id="rdLifecycle"></dl>
+              <p class="field-hint">Derived from the relationship's event stream on every read — never stored, so it cannot go stale.</p>
+            </section>
+            <section class="card op-block">
+              <h2 class="section-title">Preferences</h2>
+              <div class="op-grid">
+                <label class="field"><span class="field__label">Acquisition source</span>
+                  <select class="select-field"><option>Unset</option><option>Website</option><option>Referral</option><option>Scout</option><option>Walk-in</option></select></label>
+                <label class="field"><span class="field__label">Preferred channel</span>
+                  <select class="select-field"><option>Unset</option><option>WhatsApp</option><option>Email</option><option>Phone</option></select></label>
+                <label class="field"><span class="field__label">Communication frequency</span>
+                  <select class="select-field"><option>Unset</option><option>Weekly</option><option>Monthly</option><option>Only when relevant</option></select></label>
+                <label class="field"><span class="field__label">Newsletter</span>
+                  <select class="select-field"><option>Unset</option><option>Subscribed</option><option>Unsubscribed</option></select></label>
+              </div>
+            </section>
+          </div>
+        </details>
+
+        <!-- Create Task, consistent with My Work and the Opportunity page -->
+        <button class="drawer-backdrop" id="rdTaskBackdrop" aria-label="Close" hidden></button>
+        <aside class="drawer" id="rdTaskDrawer" aria-labelledby="rdTaskTitle" aria-hidden="true">
+          <header class="drawer__head">
+            <h2 class="drawer__title" id="rdTaskTitle">Create task</h2>
+            <button type="button" class="icon-btn drawer__close" id="rdTaskClose" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            </button>
+          </header>
+          <div class="drawer__body">
+            <label class="field">
+              <span class="field__label">Task Description</span>
+              <textarea class="input-field input-field--area" id="rdTaskDesc" rows="3" placeholder="Call about the lease renewal"></textarea>
+            </label>
+            <div class="drawer-row drawer-row--2">
+              <label class="field"><span class="field__label">Status</span>
+                <select class="select-field"><option>Inbox</option><option selected>To Do</option><option>In Progress</option><option>Waiting</option><option>Done</option></select></label>
+              <label class="field"><span class="field__label">Assignee</span>
+                <select class="select-field"><option>Ratna</option><option>Berry</option><option>Andries</option><option>Kashif</option><option>Unassigned</option></select></label>
+            </div>
+            <label class="field"><span class="field__label">Due date</span><input type="date" class="input-field"></label>
+            <p class="field-hint">Linked to <strong id="rdTaskLink">this relationship</strong> · appears in My Work and drives the Actions status.</p>
+          </div>
+          <footer class="drawer__foot">
+            <button type="button" class="btn btn-ghost" id="rdTaskCancel">Cancel</button>
+            <button type="button" class="btn btn-primary" id="rdTaskSave">Create task</button>
+          </footer>
+        </aside>
+
+        <div class="cs-toast" id="rdToast" hidden></div>
+
+</main>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

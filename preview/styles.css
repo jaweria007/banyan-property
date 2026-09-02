@@ -11505,3 +11505,221 @@ body[data-page="overview"] .attention-card__value {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   Relationship detail — a workspace, not a database dump
+   ============================================================ */
+
+.rd-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 6px 0 20px;
+}
+
+.rd-head__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rd-head__company {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.rd-head__contact {
+  display: flex;
+  align-items: center;
+  gap: 8px 18px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  font-size: 0.86rem;
+}
+
+.rd-head__contact .rel-wa {
+  padding-left: 0;
+}
+
+.rd-mail {
+  color: var(--gold);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.rd-mail:hover { text-decoration: underline; }
+
+.rd-assigned { color: var(--muted); }
+.rd-assigned strong { color: var(--ink); }
+
+/* The card's own facts, repeated so the two views cannot disagree */
+.rd-facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.rd-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 13px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.rd-fact__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.rd-fact__value {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.rd-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 20px;
+  align-items: start;
+}
+
+.rd-main,
+.rd-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.rd-noterow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.op-when.is-overdue { color: #c0392b; }
+
+/* Key/value pairs read as a list, not a table of columns */
+.rd-kv {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.rd-kvrow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 0.86rem;
+}
+
+.rd-kvrow dt {
+  color: var(--muted);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.rd-kvrow dd {
+  color: var(--ink);
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+.rd-kv--wide .rd-kvrow {
+  border-bottom: 1px solid var(--line-soft);
+  padding-bottom: 8px;
+}
+
+.rd-kv--wide .rd-kvrow:last-child { border-bottom: none; }
+
+.rd-broker {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 13px 16px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  background: #fbfaf7;
+  text-decoration: none;
+  transition: border-color 0.16s var(--ease);
+}
+
+.rd-broker:hover { border-color: var(--green-accent); }
+
+.rd-broker__name {
+  font-weight: 700;
+  color: var(--green);
+}
+
+.rd-broker__meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Deeper CRM detail stays folded away until it is wanted */
+.rd-deeper {
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.rd-deeper__summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.rd-deeper__summary::-webkit-details-marker { display: none; }
+
+.rd-deeper__summary::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(-45deg);
+  transition: transform 0.2s var(--ease);
+}
+
+.rd-deeper[open] > .rd-deeper__summary::before { transform: rotate(45deg); }
+
+.rd-deeper__body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+  margin-top: 18px;
+}
+
+@media (max-width: 1100px) {
+  .rd-cols { grid-template-columns: 1fr; }
+  .rd-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .rd-facts { grid-template-columns: 1fr; }
+  .rd-head__actions { width: 100%; }
+  .rd-head__actions .btn { width: 100%; justify-content: center; }
+  .rd-kvrow { flex-direction: column; gap: 2px; }
+  .rd-kvrow dd { text-align: left; }
+}

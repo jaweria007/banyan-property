@@ -3545,3 +3545,334 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open('https://wa.me/' + wa.dataset.wa, '_blank', 'noopener');
   });
 });
+
+/* ============================================================
+   Relationship detail — "a relationship workspace, not a
+   database dump" (client feedback, Relationships point 12)
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.body.dataset.page !== 'relationship-detail') return;
+
+  const TYPE_LABEL = {
+    buyer: 'Buyer',
+    tenant: 'Tenant',
+    landlord: 'Landlord',
+    developer: 'Property Developer',
+    broker: 'Broker & Partner',
+    contractor: 'Contractor'
+  };
+
+  /* The same six relationships as the card view, with the deeper detail
+     the card cannot carry. Activity metrics match the card exactly. */
+  const PEOPLE = {
+    'REL-00072': {
+      name: 'Maria Santos', company: 'Santos Family Holdings', type: 'landlord',
+      wa: '6281234567890', waLabel: '+62 812-3456-7890', email: 'maria@santosholdings.com',
+      agent: 'Ratna', contacts: 8, last: '26 Aug 2026', action: { dot: 'red', text: '2 open tasks' },
+      address: 'Jl. Raya Singakerta, Ubud', language: 'Indonesian, English',
+      verified: '12 Feb 2026', since: '04 Nov 2024',
+      activity: [['Listings', 4], ['Enquiries', 12], ['Viewings', 7], ['Bookings', 3]],
+      broker: null,
+      tasks: [
+        { t: 'Chase owner for lease extension documents', who: 'Kashif', due: 'due 5 Sep', urgent: false },
+        { t: 'Confirm 2027 pricing for the Singakerta villa', who: 'Ratna', due: 'overdue 30 Aug', urgent: true }
+      ],
+      history: [
+        ['26 Aug · 14:10', 'Ratna', 'Called about the 2027 renewal — wants to hold price'],
+        ['21 Aug · 09:30', 'System', 'Booking confirmed — Sarah Wilson, 12 months'],
+        ['14 Aug · 16:05', 'Berry', 'Viewing logged — 3-Bedroom Family Villa, Singakerta'],
+        ['02 Aug · 11:20', 'Ratna', 'New listing added to the portfolio'],
+        ['04 Nov · 2024', 'System', 'Relationship created from a website enquiry']
+      ],
+      notes: [['Ratna · 26 Aug', 'Prefers WhatsApp voice notes over calls. Slow to reply on weekends.']],
+      connections: [
+        ['Listing', '3-Bedroom Family Villa, Singakerta', 'listing-detail.html'],
+        ['Listing', 'Spacious Luxury Villa with Guest House', 'listing-detail.html'],
+        ['Booking', 'Sarah Wilson · Oct 2026 – Oct 2027', '#'],
+        ['Contract', 'Rental agreement — signed 28 Aug', '#']
+      ],
+      docs: [['Contract documents', '#'], ['Property certificates', '#']],
+      firstTouch: [['Source', 'Website'], ['Campaign', '—'], ['Landing page', '/villas-for-rent'], ['First seen', '04 Nov 2024']],
+      lifecycle: [['Last website visit', '18 Aug 2026'], ['Last enquiry', '—'], ['Last transaction', '28 Aug 2026'], ['Last activity', '26 Aug 2026']]
+    },
+
+    'REL-00124': {
+      name: 'Umar Hassan', company: '', type: 'buyer',
+      wa: '6285678901234', waLabel: '+62 856-7890-1234', email: 'umar@example.com',
+      agent: 'Ratna', contacts: 5, last: '24 Aug 2026', action: { dot: 'green', text: '1 waiting' },
+      address: 'Currently in Singapore', language: 'English, Urdu',
+      verified: '18 Aug 2026', since: '17 Aug 2026',
+      activity: [['Shortlists', 3], ['Viewings', 2], ['Contracts', 1]],
+      broker: { name: 'Wayan Adnyana', meta: 'Bali Estate Partners · REL-00009' },
+      tasks: [
+        { t: 'Follow up after Tuesday’s viewing', who: 'Ratna', due: 'waiting until 5 Sep', urgent: false }
+      ],
+      history: [
+        ['02 Sep · 16:35', 'Client', 'Asked: “Is the pool private?”'],
+        ['02 Sep · 16:32', 'Client', 'Favourited “3BR Villa — Nyuh Kuning”'],
+        ['28 Aug · 14:20', 'System', 'Shortlist published — Ubud Family Homes'],
+        ['26 Aug · 15:30', 'Ratna', 'Viewing logged — 3-Bedroom Family Villa, Singakerta'],
+        ['18 Aug · 09:02', 'System', 'Stage changed New → In Contact'],
+        ['17 Aug · 18:44', 'System', 'Relationship created from a website enquiry']
+      ],
+      notes: [['Ratna · 24 Aug', 'Decisive once he has seen a place in person. Partner is the one to convince on the garden.']],
+      connections: [
+        ['Opportunity', 'Umar Hassan — Villa, In Contact', 'profile.html'],
+        ['Shortlist', 'Umar — Ubud Family Homes (published)', 'shortlist.html'],
+        ['Contract', 'Rental agreement — draft v2', '#']
+      ],
+      docs: [['Contract documents', '#']],
+      firstTouch: [['Source', 'Referral'], ['Campaign', '—'], ['Landing page', '/villas-for-rent/ubud'], ['First seen', '17 Aug 2026']],
+      lifecycle: [['Last website visit', '02 Sep 2026'], ['Last enquiry', '17 Aug 2026'], ['Last transaction', '—'], ['Last activity', '02 Sep 2026']]
+    },
+
+    'REL-00318': {
+      name: 'Sarah Wilson', company: '', type: 'tenant',
+      wa: '6281199887766', waLabel: '+62 811-9988-7766', email: 'sarah.wilson@example.com',
+      agent: 'Berry', contacts: 11, last: '27 Aug 2026', action: { dot: 'none', text: 'No action' },
+      address: 'Nyuh Kuning, Ubud', language: 'English',
+      verified: '03 Mar 2026', since: '11 Jan 2026',
+      activity: [['Shortlists', 1], ['Viewings', 3], ['Contracts', 1]],
+      broker: null,
+      tasks: [],
+      history: [
+        ['27 Aug · 10:15', 'Berry', 'Move-in date confirmed for 1 October'],
+        ['21 Aug · 10:00', 'Berry', 'Viewing logged — 2-Story Villa with Garden'],
+        ['12 Aug · 13:40', 'System', 'Contract signed — 12 months'],
+        ['11 Jan · 2026', 'System', 'Relationship created from a walk-in']
+      ],
+      notes: [['Berry · 27 Aug', 'Two cats — only show pet-friendly properties.']],
+      connections: [
+        ['Booking', 'Singakerta villa · Oct 2026 – Oct 2027', '#'],
+        ['Contract', 'Rental agreement — signed 12 Aug', '#']
+      ],
+      docs: [['Contract documents', '#'], ['Move-in inspection', '#']],
+      firstTouch: [['Source', 'Walk-in'], ['Campaign', '—'], ['Landing page', '—'], ['First seen', '11 Jan 2026']],
+      lifecycle: [['Last website visit', '20 Aug 2026'], ['Last enquiry', '11 Jan 2026'], ['Last transaction', '12 Aug 2026'], ['Last activity', '27 Aug 2026']]
+    },
+
+    'REL-00009': {
+      name: 'Wayan Adnyana', company: 'Bali Estate Partners', type: 'broker',
+      wa: '6287712340099', waLabel: '+62 877-1234-0099', email: 'wayan@baliestatepartners.com',
+      agent: 'Andries', contacts: 6, last: '21 Aug 2026', action: { dot: 'red', text: '1 open task' },
+      address: 'Seminyak, Bali', language: 'Indonesian, English',
+      verified: '09 Jun 2025', since: '22 Mar 2023',
+      activity: [['Listings', 9], ['Listings in Shortlists', 5], ['Viewings', 4], ['Contracts', 2]],
+      broker: null,
+      tasks: [
+        { t: 'Agree co-broker split on the Pejeng villa', who: 'Andries', due: 'due 8 Sep', urgent: false }
+      ],
+      history: [
+        ['21 Aug · 11:45', 'Andries', 'Sent three new co-broker listings'],
+        ['08 Aug · 15:10', 'System', 'Contract signed — co-broker commission 4%'],
+        ['22 Mar · 2023', 'System', 'Relationship created — partner agreement']
+      ],
+      notes: [['Andries · 21 Aug', 'Reliable on paperwork. Always confirm the split in writing before viewings.']],
+      connections: [
+        ['Listing', '3-Bedroom Eco-Luxury Home, Taman Petanu', 'listing-detail.html'],
+        ['Relationship', 'Umar Hassan — referred buyer', 'relationship-detail.html?id=REL-00124']
+      ],
+      docs: [['Partner agreement', '#']],
+      firstTouch: [['Source', 'Partner introduction'], ['Campaign', '—'], ['Landing page', '—'], ['First seen', '22 Mar 2023']],
+      lifecycle: [['Last website visit', '—'], ['Last enquiry', '—'], ['Last transaction', '08 Aug 2026'], ['Last activity', '21 Aug 2026']]
+    },
+
+    'REL-00201': {
+      name: 'Putu Widiana', company: 'Nusa Development', type: 'developer',
+      wa: '6281355667788', waLabel: '+62 813-5566-7788', email: 'putu@nusadevelopment.co.id',
+      agent: 'Unassigned', contacts: 3, last: '14 Aug 2026', action: { dot: 'none', text: 'No action' },
+      address: 'Denpasar, Bali', language: 'Indonesian',
+      verified: '—', since: '30 Jul 2026',
+      activity: [],
+      broker: null,
+      tasks: [],
+      history: [
+        ['14 Aug · 09:00', 'System', 'Land parcel submitted for review'],
+        ['30 Jul · 2026', 'System', 'Relationship created by a Scout']
+      ],
+      notes: [],
+      connections: [['Opportunity', 'Putu Widiana — Land, Triage', 'opportunities.html']],
+      docs: [],
+      firstTouch: [['Source', 'Scout'], ['Campaign', '—'], ['Landing page', '—'], ['First seen', '30 Jul 2026']],
+      lifecycle: [['Last website visit', '—'], ['Last enquiry', '30 Jul 2026'], ['Last transaction', '—'], ['Last activity', '14 Aug 2026']]
+    },
+
+    'REL-00455': {
+      name: 'Made Sujana', company: 'Made Renovations', type: 'contractor',
+      wa: '6281744332211', waLabel: '+62 817-4433-2211', email: 'made@maderenovations.id',
+      agent: 'Kashif', contacts: 14, last: '29 Aug 2026', action: { dot: 'green', text: '1 waiting' },
+      address: 'Gianyar, Bali', language: 'Indonesian',
+      verified: '15 Apr 2025', since: '08 Sep 2024',
+      activity: [],
+      broker: null,
+      tasks: [
+        { t: 'Quote for the guest house water pressure fix', who: 'Kashif', due: 'waiting until 4 Sep', urgent: false }
+      ],
+      history: [
+        ['29 Aug · 08:20', 'Kashif', 'Asked for a quote on the water pressure issue'],
+        ['18 Aug · 14:00', 'System', 'Pool pump service completed — rated 4/5'],
+        ['08 Sep · 2024', 'System', 'Relationship created — preferred contractor']
+      ],
+      notes: [['Kashif · 18 Aug', 'Good on plumbing and pools. Slower on anything electrical.']],
+      connections: [['Listing', 'Spacious Luxury Villa with Guest House', 'listing-detail.html']],
+      docs: [['Maintenance records', '#']],
+      firstTouch: [['Source', 'Referral'], ['Campaign', '—'], ['Landing page', '—'], ['First seen', '08 Sep 2024']],
+      lifecycle: [['Last website visit', '—'], ['Last enquiry', '—'], ['Last transaction', '18 Aug 2026'], ['Last activity', '29 Aug 2026']]
+    }
+  };
+
+  const id = new URLSearchParams(location.search).get('id') || 'REL-00124';
+  const p = PEOPLE[id] || PEOPLE['REL-00124'];
+
+  const el = (i) => document.getElementById(i);
+  const kv = (rows) => rows.map(([k, v]) => '<div class="rd-kvrow"><dt>' + k + '</dt><dd>' + v + '</dd></div>').join('');
+
+  document.title = 'Banyan · ' + p.name;
+
+  /* ---- Header ---- */
+  el('rdName').textContent = p.name;
+  el('rdType').textContent = TYPE_LABEL[p.type];
+  el('rdType').className = 'rel-type rel-type--' + p.type;
+  el('rdId').textContent = id;
+  el('rdCompany').textContent = p.company || '';
+  el('rdCompany').hidden = !p.company;
+  el('rdWa').dataset.wa = p.wa;
+  el('rdWaLabel').textContent = p.waLabel;
+  el('rdEmail').textContent = p.email;
+  el('rdEmail').href = 'mailto:' + p.email;
+  el('rdAgent').textContent = p.agent;
+  el('rdTaskLink').textContent = p.name;
+
+  /* ---- The card's four facts, repeated so the two views agree ---- */
+  el('rdFacts').innerHTML =
+    '<div class="rd-fact"><span class="rd-fact__label">Relationship type</span>' +
+      '<span class="rd-fact__value">' + TYPE_LABEL[p.type] + '</span></div>' +
+    '<div class="rd-fact"><span class="rd-fact__label">Contacts</span>' +
+      '<span class="rd-fact__value">' + p.contacts + '</span></div>' +
+    '<div class="rd-fact"><span class="rd-fact__label">Last contacted</span>' +
+      '<span class="rd-fact__value">' + p.last + '</span></div>' +
+    '<div class="rd-fact"><span class="rd-fact__label">Actions</span>' +
+      '<span class="rd-fact__value"><span class="action-dot action-dot--' + p.action.dot + '"></span>' +
+      p.action.text + '</span></div>';
+
+  /* ---- Open tasks ---- */
+  el('rdTasks').innerHTML = p.tasks.map((t) =>
+    '<li class="op-listitem"><div><strong>' + t.t + '</strong>' +
+    '<span class="field-hint">' + t.who + '</span></div>' +
+    '<span class="op-when' + (t.urgent ? ' is-overdue' : '') + '">' + t.due + '</span></li>'
+  ).join('');
+  el('rdTasksEmpty').hidden = p.tasks.length !== 0;
+
+  /* ---- Activity history, written for people rather than machines ---- */
+  el('rdHistory').innerHTML = p.history.map(([when, who, what]) => {
+    const cls = who === 'Client' ? ' op-tl__who--client' : (who === 'System' ? ' op-tl__who--system' : '');
+    return '<li class="op-tl"><span class="op-tl__when">' + when + '</span>' +
+      '<span class="op-tl__who' + cls + '">' + who + '</span>' +
+      '<p class="op-tl__what">' + what + '</p></li>';
+  }).join('');
+
+  /* ---- Notes ---- */
+  const notes = p.notes.slice();
+  const paintNotes = () => {
+    el('rdNotes').innerHTML = notes.length
+      ? notes.map(([who, text]) =>
+          '<li class="op-listitem"><div><strong>' + text + '</strong>' +
+          '<span class="field-hint">' + who + '</span></div></li>').join('')
+      : '<li class="op-listitem"><span class="field-hint">No notes yet.</span></li>';
+  };
+  paintNotes();
+
+  el('rdAddNote').addEventListener('click', () => {
+    const box = el('rdNoteText');
+    const text = box.value.trim();
+    if (!text) {
+      box.focus();
+      return;
+    }
+    notes.unshift(['You · today', text]);
+    box.value = '';
+    paintNotes();
+  });
+
+  /* ---- Connections: named records, no raw IDs ---- */
+  el('rdConnections').innerHTML = p.connections.map(([kind, label, href]) =>
+    '<li class="op-listitem"><div><strong>' + label + '</strong>' +
+    '<span class="field-hint">' + kind + '</span></div>' +
+    '<a href="' + href + '" class="btn btn-ghost">Open</a></li>'
+  ).join('') || '<li class="op-listitem"><span class="field-hint">No connected records yet.</span></li>';
+
+  /* ---- Side column ---- */
+  el('rdContact').innerHTML = kv([
+    ['WhatsApp', p.waLabel],
+    ['Email', p.email],
+    ['Location', p.address],
+    ['Language', p.language],
+    ['Verified', p.verified],
+    ['Relationship since', p.since]
+  ]);
+
+  if (p.broker) {
+    el('rdBrokerCard').hidden = false;
+    el('rdBrokerName').textContent = p.broker.name;
+    el('rdBrokerMeta').textContent = p.broker.meta;
+    const relId = (p.broker.meta.match(/REL-\d+/) || [])[0];
+    if (relId) el('rdBrokerLink').href = 'relationship-detail.html?id=' + relId;
+  }
+
+  el('rdActivity').innerHTML = p.activity.length
+    ? kv(p.activity)
+    : '<p class="field-hint">No property activity recorded for this relationship type.</p>';
+
+  el('rdDocs').innerHTML = p.docs.length
+    ? p.docs.map(([label, href]) =>
+        '<li class="op-listitem"><div><strong>' + label + '</strong></div>' +
+        '<a href="' + href + '" class="btn btn-ghost" target="_blank" rel="noopener">Open folder ↗</a></li>').join('')
+    : '<li class="op-listitem"><span class="field-hint">No documents yet.</span></li>';
+
+  /* ---- Deeper CRM ---- */
+  el('rdFirstTouch').innerHTML = kv(p.firstTouch);
+  el('rdLifecycle').innerHTML = kv(p.lifecycle);
+
+  /* ---- Create task ---- */
+  const drawer = el('rdTaskDrawer');
+  const backdrop = el('rdTaskBackdrop');
+  const openTask = () => {
+    drawer.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    backdrop.hidden = false;
+    document.body.style.overflow = 'hidden';
+    el('rdTaskDesc').focus();
+  };
+  const closeTask = () => {
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    backdrop.hidden = true;
+    document.body.style.overflow = '';
+  };
+  el('rdNewTask').addEventListener('click', openTask);
+  backdrop.addEventListener('click', closeTask);
+  el('rdTaskClose').addEventListener('click', closeTask);
+  el('rdTaskCancel').addEventListener('click', closeTask);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('is-open')) closeTask();
+  });
+  el('rdTaskSave').addEventListener('click', () => {
+    closeTask();
+    const t = el('rdToast');
+    t.textContent = 'Task created and added to My Work';
+    t.hidden = false;
+    t.classList.add('is-in');
+    window.setTimeout(() => {
+      t.classList.remove('is-in');
+      window.setTimeout(() => (t.hidden = true), 300);
+    }, 2400);
+  });
+
+  /* ---- WhatsApp number is the contact action, here too ---- */
+  document.addEventListener('click', (e) => {
+    const wa = e.target.closest('.rel-wa');
+    if (!wa || !wa.dataset.wa) return;
+    e.preventDefault();
+    window.open('https://wa.me/' + wa.dataset.wa, '_blank', 'noopener');
+  });
+});

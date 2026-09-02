@@ -105,6 +105,12 @@ checked at 1440px and 390px: no horizontal overflow, no JS errors.
   Status is the source of truth, so dragging a card changes it. Cards have a border,
   shadow and hover; the raw record URL became a compact `[Sales]` pill. The list view is
   four columns with inline editing.
+- **Relationship detail (relationship-detail.html, new)**: opens from any relationship card.
+  Header shows name, type, REL id, WhatsApp, email and the assigned agent; the four facts under
+  it repeat the card's own so the two views cannot disagree. Open tasks and a plain-English
+  activity history lead, with contact details, the referring broker and the activity metrics on
+  the right. Marketing attribution and the deeper CRM fields are folded away at the foot, so the
+  page reads as a workspace rather than a database dump.
 - **Relationships (relationships.html, new)**: group metrics that double as filters,
   Card and List views, one card structure everywhere, named metrics instead of icons,
   the whole card clickable and the WhatsApp number itself the contact action.

@@ -2558,8 +2558,11 @@ document.addEventListener('DOMContentLoaded', () => {
     criteriaList.innerHTML = '';
 
     CRITERIA.forEach((c) => {
-      const total = matchesFor(c).length;
-      const fresh = newFor(c).length;
+      // Nothing narrowed = no brief yet, so no matches. Without this an empty
+      // search claims the whole portfolio and offers to push it at the client.
+      const unset = !c.locations.length && c.bedsMin <= 1 && !c.access;
+      const total = unset ? 0 : matchesFor(c).length;
+      const fresh = unset ? 0 : newFor(c).length;
       const unreviewed = state.selection.filter((s) => s.from === c.id && s.isNew).length;
 
       const card = document.createElement('article');
@@ -2577,12 +2580,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // a search nobody has narrowed yet matches almost everything, which is
       // true but unhelpful — say so rather than letting the number puzzle
-      const untouched = !c.locations.length && c.bedsMin <= 1 && !c.access;
+      const untouched = unset;
 
       // The match count is the headline, and stays visible whether or not
       // there are new ones — the button never replaces it.
       const hint = (!c.live && untouched)
-        ? '<p class="sb-warn">No criteria set yet — this matches almost the whole portfolio. Narrow it down first.</p>'
+        ? '<p class="sb-warn">No criteria set yet — pick at least a location or a bedroom count.</p>'
         : '';
 
       const action = c.live
@@ -2593,8 +2596,11 @@ document.addEventListener('DOMContentLoaded', () => {
                   'Review ' + unreviewed + ' new in Selection →</button>'
               : '<button type="button" class="btn btn-ghost sb-goreview" data-gen="' + c.id + '">Open Selection</button>') +
           '</div>'
-        : '<button type="button" class="btn btn-primary sb-addall" data-gen="' + c.id + '">' +
-            'Add ' + total + ' Matching Results to Selection</button>';
+        : (unset
+            ? '<button type="button" class="btn btn-primary sb-addall" data-gen="' + c.id + '" disabled>' +
+                'Add Matching Results to Selection</button>'
+            : '<button type="button" class="btn btn-primary sb-addall" data-gen="' + c.id + '">' +
+                'Add ' + total + ' Matching Results to Selection</button>');
 
       card.innerHTML =
         '<header class="sb-criteria__head">' +
@@ -2984,11 +2990,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    const total = matchesFor(c).length;
+    const nowUnset = !c.locations.length && c.bedsMin <= 1 && !c.access;
+    const total = nowUnset ? 0 : matchesFor(c).length;
     const countEl = card.querySelector('.sb-matchcount strong');
     if (countEl) countEl.textContent = String(total);
     const addBtn = card.querySelector('.sb-addall');
-    if (addBtn) addBtn.textContent = 'Add ' + total + ' Matching Results to Selection';
+    if (addBtn) {
+      addBtn.disabled = nowUnset;
+      addBtn.textContent = nowUnset
+        ? 'Add Matching Results to Selection'
+        : 'Add ' + total + ' Matching Results to Selection';
+    }
+    const warn = card.querySelector('.sb-warn');
+    if (warn) warn.hidden = !nowUnset;
   });
 
   el('sbAddCriteria').addEventListener('click', () => {

@@ -2452,74 +2452,82 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ============================================================
    Shortlist Builder — Search Criteria → Selection → Draft
-   Rebuilt from client feedback (26–27 Aug)
+
+   A search does not just "generate options". Once its results are added, the
+   search keeps listening: anything that enters the portfolio later turns up in
+   Selection on its own, flagged NEW, for the agent to review.
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   if (document.body.dataset.page !== 'shortlist') return;
   const criteriaList = document.getElementById('sbCriteriaList');
   if (!criteriaList) return;
 
+  const el = (i) => document.getElementById(i);
   const IDR = (n) => 'IDR ' + (n / 1000000).toFixed(0) + 'm';
+  const TODAY = '2026-09-02';
 
-  /* ---- Portfolio the searches run against ---- */
+  /* ---- Every location Banyan covers, nested under its primary ---- */
+  const LOCATIONS = {
+    Ubud: ['Nyuh Kuning', 'Penestanan', 'Sayan', 'Pengosekan', 'Tegallalang', 'Mas',
+           'Kedewatan', 'Singakerta', 'Lodtunduh', 'Peliatan', 'Petulu', 'Sibang', 'Pejeng', 'Abiansemal'],
+    'Tanah Lot – Canggu': ['Berawa', 'Batu Bolong', 'Pererenan', 'Echo Beach', 'Umalas', 'Tumbak Bayuh', 'Seseh'],
+    Bukit: ['Bingin', 'Padang Padang', 'Balangan', 'Pecatu', 'Nyang Nyang', 'Uluwatu', 'Jimbaran', 'Nusa Dua'],
+    Seminyak: ['Petitenget', 'Oberoi', 'Kerobokan', 'Batu Belig'],
+    Sanur: ['Sindhu', 'Semawang', 'Padang Galak', 'Mertasari'],
+    'Central Bali': ['Kintamani', 'Bedugul', 'Munduk', 'Jatiluwih'],
+    'East Bali': ['Amed', 'Candidasa', 'Sidemen'],
+    'North Bali': ['Lovina', 'Pemuteran', 'Singaraja'],
+    'West Bali': ['Medewi', 'Balian', 'Pekutatan'],
+    'Nusa & Gili Islands': ['Nusa Penida', 'Nusa Lembongan', 'Nusa Ceningan', 'Gili Air', 'Gili Meno', 'Gili Trawangan'],
+    'Denpasar & Reno': ['Renon', 'Sanur Kaja', 'Sesetan']
+  };
+  // the ones agents reach for most, shown without opening the full list
+  const POPULAR = ['Nyuh Kuning', 'Singakerta', 'Sibang', 'Penestanan', 'Pejeng', 'Abiansemal', 'Kedewatan'];
+  const ALL_LOCATIONS = Object.values(LOCATIONS).flat();
+
+  /* ---- The portfolio the searches run against ---- */
   const PROPERTIES = [
-    { id: 'p1',  name: '3-Bedroom Family Villa with Private Pool & Garden', area: 'Singakerta', primary: 'Ubud', price: 32000000, beds: 3, baths: 3, type: 'rent', pool: 'Private Pool', view: 'Rice Field View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-08-29', coBroker: false },
-    { id: 'p2',  name: '2-Story Villa with Garden', area: 'Nyuh Kuning', primary: 'Ubud', price: 35500000, beds: 3, baths: 2, type: 'rent', pool: 'Shared', view: 'Garden View', access: 'Car Access', pets: 'No Pets', added: '2026-08-12', coBroker: false },
-    { id: 'p3',  name: '3-Bedroom Eco-Luxury Home, Taman Petanu', area: 'Pejeng', primary: 'Ubud', price: 35770000, beds: 3, baths: 3, type: 'rent', pool: 'Private Pool', view: 'Jungle View', access: 'Car Access', pets: 'Case by Case', added: '2026-08-30', coBroker: true },
-    { id: 'p4',  name: '4-Bedroom Family Villa Near Green School', area: 'Sibang', primary: 'Ubud', price: 47000000, beds: 4, baths: 4, type: 'rent', pool: 'Large Private Pool', view: 'Garden & Pool View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-07-30', coBroker: false },
-    { id: 'p5',  name: 'Bright & Contemporary 2-Bedroom Villa', area: 'Penestanan', primary: 'Ubud', price: 22000000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Rice Field View', access: 'Motorbike Access', pets: 'No Pets', added: '2026-08-05', coBroker: false },
-    { id: 'p6',  name: '3BR Villa with Rice Field & Sunrise Views', area: 'Nyuh Kuning', primary: 'Ubud', price: 18600000, beds: 3, baths: 2, type: 'rent', pool: 'Shared', view: 'Rice Field View', access: 'Car Access', pets: 'Cat Only', added: '2026-08-31', coBroker: false },
-    { id: 'p7',  name: 'Affordable 2BR Private Pool Villa', area: 'Nyuh Kuning', primary: 'Ubud', price: 19800000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Garden View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-06-18', coBroker: false },
-    { id: 'p8',  name: 'Private 2-Bedroom Villa Sanctuary in Pejeng', area: 'Pejeng', primary: 'Ubud', price: 24000000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Jungle View', access: 'Car Access', pets: 'No Pets', added: '2026-08-30', coBroker: true },
-    { id: 'p9',  name: '6BR Luxury Villa with Basketball Court & Pool', area: 'Kedewatan', primary: 'Ubud', price: 165000000, beds: 6, baths: 6, type: 'rent', pool: 'Large Private Pool', view: 'Rice Field View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-05-20', coBroker: false },
-    { id: 'p10', name: 'Thoughtfully Designed 3BR Eco Villa, Sibang', area: 'Sibang', primary: 'Ubud', price: 29000000, beds: 3, baths: 3, type: 'rent', pool: 'Shared', view: 'Garden View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-08-31', coBroker: false },
-    { id: 'p11', name: 'Alke Villa — Quiet Lane, Walk to Centre', area: 'Penestanan', primary: 'Ubud', price: 35000000, beds: 3, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Garden & Pool View', access: 'Walking Access only', pets: 'No Pets', added: '2026-08-30', coBroker: false },
-    { id: 'p12', name: 'Bambu Nest — Green School Community', area: 'Sibang', primary: 'Ubud', price: 41000000, beds: 4, baths: 3, type: 'rent', pool: 'Shared', view: 'Jungle View', access: 'Car Access', pets: 'Pet Friendly', added: '2026-07-11', coBroker: false },
-    { id: 'p13', name: 'Contemporary Villa, Panoramic Rice Field Views', area: 'Abiansemal', primary: 'Ubud', price: 26000000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Rice Field View', access: 'Car Access', pets: 'Case by Case', added: '2026-08-08', coBroker: false },
-    { id: 'p14', name: '2-Bedroom Tropical Villa with Private Pool', area: 'Nyuh Kuning', primary: 'Ubud', price: 35000000, beds: 2, baths: 2, type: 'rent', pool: 'Private Pool', view: 'Garden View', access: 'Car Access', pets: 'No Pets', added: '2026-04-02', coBroker: false }
+    { id: 'p1',  name: '3-Bedroom Family Villa with Private Pool & Garden', area: 'Singakerta', primary: 'Ubud', price: 32000000, beds: 3, baths: 3, pool: 'Private Pool', view: 'Rice Field View', access: 'Car Access', added: '2026-08-29', coBroker: false },
+    { id: 'p2',  name: '2-Story Villa with Garden', area: 'Nyuh Kuning', primary: 'Ubud', price: 35500000, beds: 3, baths: 2, pool: 'Shared', view: 'Garden View', access: 'Car Access', added: '2026-08-12', coBroker: false },
+    { id: 'p3',  name: '3-Bedroom Eco-Luxury Home, Taman Petanu', area: 'Pejeng', primary: 'Ubud', price: 35770000, beds: 3, baths: 3, pool: 'Private Pool', view: 'Jungle View', access: 'Car Access', added: '2026-08-30', coBroker: true },
+    { id: 'p4',  name: '4-Bedroom Family Villa Near Green School', area: 'Sibang', primary: 'Ubud', price: 47000000, beds: 4, baths: 4, pool: 'Large Private Pool', view: 'Garden & Pool View', access: 'Car Access', added: '2026-07-30', coBroker: false },
+    { id: 'p5',  name: 'Bright & Contemporary 2-Bedroom Villa', area: 'Penestanan', primary: 'Ubud', price: 22000000, beds: 2, baths: 2, pool: 'Private Pool', view: 'Rice Field View', access: 'Motorbike Access', added: '2026-08-05', coBroker: false },
+    { id: 'p6',  name: '3BR Villa with Rice Field & Sunrise Views', area: 'Nyuh Kuning', primary: 'Ubud', price: 18600000, beds: 3, baths: 2, pool: 'Shared', view: 'Rice Field View', access: 'Car Access', added: '2026-08-31', coBroker: false },
+    { id: 'p7',  name: 'Affordable 2BR Private Pool Villa', area: 'Nyuh Kuning', primary: 'Ubud', price: 19800000, beds: 2, baths: 2, pool: 'Private Pool', view: 'Garden View', access: 'Car Access', added: '2026-06-18', coBroker: false },
+    { id: 'p8',  name: 'Private 2-Bedroom Villa Sanctuary in Pejeng', area: 'Pejeng', primary: 'Ubud', price: 24000000, beds: 2, baths: 2, pool: 'Private Pool', view: 'Jungle View', access: 'Car Access', added: '2026-08-30', coBroker: true },
+    { id: 'p9',  name: '6BR Luxury Villa with Basketball Court & Pool', area: 'Kedewatan', primary: 'Ubud', price: 165000000, beds: 6, baths: 6, pool: 'Large Private Pool', view: 'Rice Field View', access: 'Car Access', added: '2026-05-20', coBroker: false },
+    { id: 'p10', name: 'Thoughtfully Designed 3BR Eco Villa, Sibang', area: 'Sibang', primary: 'Ubud', price: 29000000, beds: 3, baths: 3, pool: 'Shared', view: 'Garden View', access: 'Car Access', added: '2026-08-31', coBroker: false },
+    { id: 'p11', name: 'Alke Villa — Quiet Lane, Walk to Centre', area: 'Penestanan', primary: 'Ubud', price: 35000000, beds: 3, baths: 2, pool: 'Private Pool', view: 'Garden & Pool View', access: 'Walking Access only', added: '2026-08-30', coBroker: false },
+    { id: 'p12', name: 'Bambu Nest — Green School Community', area: 'Sibang', primary: 'Ubud', price: 41000000, beds: 4, baths: 3, pool: 'Shared', view: 'Jungle View', access: 'Car Access', added: '2026-07-11', coBroker: false },
+    { id: 'p13', name: 'Contemporary Villa, Panoramic Rice Field Views', area: 'Abiansemal', primary: 'Ubud', price: 26000000, beds: 2, baths: 2, pool: 'Private Pool', view: 'Rice Field View', access: 'Car Access', added: '2026-08-08', coBroker: false },
+    { id: 'p14', name: '2-Bedroom Tropical Villa with Private Pool', area: 'Nyuh Kuning', primary: 'Ubud', price: 35000000, beds: 2, baths: 2, pool: 'Private Pool', view: 'Garden View', access: 'Car Access', added: '2026-04-02', coBroker: false }
   ];
 
-  /* ---- Saved search criteria for this client ---- */
   const CRITERIA = [
-    {
-      id: 'c1',
-      name: '3BR Ubud Family Home',
-      lastChecked: '2026-08-27',
-      priceMin: 20000000,
-      priceMax: 50000000,
+    { id: 'c1', name: '3BR Ubud Family Home', lastChecked: '2026-08-27', live: false,
+      priceMin: 20000000, priceMax: 50000000,
       locations: ['Nyuh Kuning', 'Singakerta', 'Sibang', 'Penestanan', 'Pejeng', 'Abiansemal', 'Kedewatan'],
-      bedsMin: 3,
-      access: 'Car Access',
-      excludeCoBroker: true,
-      open: true
-    },
-    {
-      id: 'c2',
-      name: 'More Affordable Option',
-      lastChecked: '2026-08-27',
-      priceMin: 12000000,
-      priceMax: 25000000,
+      bedsMin: 3, access: 'Car Access', excludeCoBroker: true, open: true },
+    { id: 'c2', name: 'More Affordable Option', lastChecked: '2026-08-27', live: false,
+      priceMin: 12000000, priceMax: 25000000,
       locations: ['Nyuh Kuning', 'Penestanan', 'Pejeng', 'Abiansemal'],
-      bedsMin: 2,
-      access: '',
-      excludeCoBroker: false,
-      open: false
-    }
+      bedsMin: 2, access: '', excludeCoBroker: false, open: false }
   ];
 
-  // Per-shortlist state. "Not for client" is scoped to THIS shortlist only —
-  // the same property still appears for other shortlists with the same brief.
+  /* selection = the staging area the searches feed.
+     Each entry remembers which search surfaced it and whether it is unreviewed. */
   const state = {
-    activeCriteria: 'c1',
-    selected: [],          // ids on the draft, in client-facing order
-    rejected: [],          // ids excluded from this shortlist's searches
-    reviewed: {},          // criteriaId -> ids already shown
-    notes: {},             // id -> { like, consider }
+    selection: [],   // [{ id, from, isNew }]
+    selected: [],    // draft, in client-facing order
+    rejected: [],    // excluded from this shortlist for good
+    notes: {},
     published: false,
-    url: ''
+    url: '',
+    selFilter: 'all'
   };
 
   const propById = (id) => PROPERTIES.find((p) => p.id === id);
+  const inSelection = (id) => state.selection.some((s) => s.id === id);
 
   const matchesCriteria = (p, c) => {
     if (p.price < c.priceMin || p.price > c.priceMax) return false;
@@ -2529,23 +2537,30 @@ document.addEventListener('DOMContentLoaded', () => {
     if (c.excludeCoBroker && p.coBroker) return false;
     return true;
   };
-
   const matchesFor = (c) => PROPERTIES.filter((p) => matchesCriteria(p, c));
-
-  // "New" = entered the portfolio since this search was last reviewed
-  const newMatchesFor = (c) =>
-    matchesFor(c).filter((p) => p.added > c.lastChecked && !state.rejected.includes(p.id));
+  const newFor = (c) => matchesFor(c).filter((p) => p.added > c.lastChecked && !state.rejected.includes(p.id));
 
   const fmtDate = (iso) =>
     new Date(iso + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
 
-  /* ================= Step 1 — criteria cards ================= */
+  /* A live search keeps feeding Selection on its own */
+  function syncLiveSearches() {
+    CRITERIA.filter((c) => c.live).forEach((c) => {
+      matchesFor(c).forEach((p) => {
+        if (state.rejected.includes(p.id) || inSelection(p.id)) return;
+        state.selection.push({ id: p.id, from: c.id, isNew: p.added > c.lastChecked });
+      });
+    });
+  }
+
+  /* ================= Step 1 — criteria ================= */
   function renderCriteria() {
     criteriaList.innerHTML = '';
 
     CRITERIA.forEach((c) => {
       const total = matchesFor(c).length;
-      const fresh = newMatchesFor(c).length;
+      const fresh = newFor(c).length;
+      const unreviewed = state.selection.filter((s) => s.from === c.id && s.isNew).length;
 
       const card = document.createElement('article');
       card.className = 'sb-criteria' + (c.open ? ' is-open' : '');
@@ -2555,6 +2570,19 @@ document.addEventListener('DOMContentLoaded', () => {
         IDR(c.priceMin) + '–' + IDR(c.priceMax) + ' · ' +
         (c.locations.length > 3 ? c.locations.slice(0, 2).join('/') + ' +' + (c.locations.length - 2) : c.locations.join('/')) +
         ' · ' + c.bedsMin + '+ bedrooms';
+
+      // The match count is the headline, and stays visible whether or not
+      // there are new ones — the button never replaces it.
+      const action = c.live
+        ? '<div class="sb-liveline">' +
+            '<span class="sb-listening"><span class="sb-newpill__dot"></span>Listening — new matches go to Selection</span>' +
+            (unreviewed
+              ? '<button type="button" class="btn btn-primary sb-goreview" data-gen="' + c.id + '">' +
+                  'Review ' + unreviewed + ' new in Selection →</button>'
+              : '<button type="button" class="btn btn-ghost sb-goreview" data-gen="' + c.id + '">Open Selection</button>') +
+          '</div>'
+        : '<button type="button" class="btn btn-primary sb-addall" data-gen="' + c.id + '">' +
+            'Add ' + total + ' Matching Results to Selection</button>';
 
       card.innerHTML =
         '<header class="sb-criteria__head">' +
@@ -2587,12 +2615,30 @@ document.addEventListener('DOMContentLoaded', () => {
               '</select></label>' +
           '</div>' +
 
+          // popular locations up front, every location one click away
           '<div class="field"><span class="field__label">Locations</span>' +
             '<div class="tagset">' +
-              ['Nyuh Kuning', 'Singakerta', 'Sibang', 'Penestanan', 'Pejeng', 'Abiansemal', 'Kedewatan']
-                .map((l) => '<label class="tag-check"><input type="checkbox" data-loc="' + l + '"' +
-                  (c.locations.includes(l) ? ' checked' : '') + '><span>' + l + '</span></label>').join('') +
+              POPULAR.map((l) => '<label class="tag-check"><input type="checkbox" data-loc="' + l + '"' +
+                (c.locations.includes(l) ? ' checked' : '') + '><span>' + l + '</span></label>').join('') +
+              c.locations.filter((l) => !POPULAR.includes(l)).map((l) =>
+                '<label class="tag-check"><input type="checkbox" data-loc="' + l + '" checked><span>' + l + '</span></label>').join('') +
             '</div>' +
+            '<details class="sb-alllocs">' +
+              '<summary class="drawer-more__summary">All locations <span class="field-hint">(' + ALL_LOCATIONS.length + ')</span></summary>' +
+              '<label class="field sb-locsearch"><span class="sr-only">Search locations</span>' +
+                '<input type="search" class="input-field" data-locsearch placeholder="Search a location…"></label>' +
+              '<div class="sb-locgroups">' +
+                Object.entries(LOCATIONS).map(([primary, subs]) =>
+                  '<section class="sb-locgroup" data-primary="' + primary + '">' +
+                    '<h4 class="sb-h4">' + primary + '</h4>' +
+                    '<div class="tagset">' +
+                      subs.map((sub) => '<label class="tag-check" data-locname="' + sub.toLowerCase() + '">' +
+                        '<input type="checkbox" data-loc="' + sub + '"' +
+                        (c.locations.includes(sub) ? ' checked' : '') + '><span>' + sub + '</span></label>').join('') +
+                    '</div>' +
+                  '</section>').join('') +
+              '</div>' +
+            '</details>' +
           '</div>' +
 
           '<details class="drawer-more">' +
@@ -2651,24 +2697,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
           '<div class="sb-criteria__foot">' +
             '<p class="sb-hint">' + summary + '</p>' +
-            (fresh
-              ? '<button type="button" class="btn btn-primary sb-generate sb-generate--new" data-gen="' + c.id + '">' +
-                  '<span class="sb-newpill__dot"></span>Review ' + fresh + ' new options</button>'
-              : '<button type="button" class="btn btn-primary sb-generate" data-gen="' + c.id + '">Generate options</button>') +
+            action +
           '</div>' +
         '</div>';
 
       criteriaList.appendChild(card);
     });
-
-    refreshHeader();
   }
 
-  /* ================= Step 2 — selection ================= */
-  function propCard(p, mode) {
+  /* ================= Cards ================= */
+  function propCard(p, mode, entry) {
     const inDraft = state.selected.includes(p.id);
     const notes = state.notes[p.id] || { like: '', consider: '' };
     const pos = state.selected.indexOf(p.id);
+    const isNew = entry && entry.isNew;
 
     const thumb =
       '<div class="sb-card__thumb" aria-hidden="true">' +
@@ -2700,15 +2742,16 @@ document.addEventListener('DOMContentLoaded', () => {
           '<label class="field"><span class="field__label">Things to consider</span>' +
             '<textarea class="input-field input-field--area" rows="2" data-note="consider" placeholder="Be honest — it builds trust.">' + notes.consider + '</textarea></label>' +
           '<div class="sb-card__actions">' +
-            '<button type="button" class="btn btn-ghost sb-move" data-move="up" ' + (pos === 0 ? 'disabled' : '') + ' aria-label="Move up">↑ Move up</button>' +
-            '<button type="button" class="btn btn-ghost sb-move" data-move="down" ' + (pos === state.selected.length - 1 ? 'disabled' : '') + ' aria-label="Move down">↓ Move down</button>' +
+            '<button type="button" class="btn btn-ghost sb-move" data-move="up" ' + (pos === 0 ? 'disabled' : '') + '>↑ Move up</button>' +
+            '<button type="button" class="btn btn-ghost sb-move" data-move="down" ' + (pos === state.selected.length - 1 ? 'disabled' : '') + '>↓ Move down</button>' +
             '<button type="button" class="btn btn-ghost sb-remove">Remove</button>' +
           '</div>' +
         '</div>' +
       '</article>';
     }
 
-    return '<article class="sb-card" data-prop="' + p.id + '">' +
+    return '<article class="sb-card' + (isNew ? ' is-new' : '') + '" data-prop="' + p.id + '">' +
+      (isNew ? '<span class="sb-newflag">NEW</span>' : '') +
       thumb +
       '<div class="sb-card__body">' +
         '<h3 class="sb-card__title">' + p.name + '</h3>' +
@@ -2722,58 +2765,75 @@ document.addEventListener('DOMContentLoaded', () => {
     '</article>';
   }
 
+  /* ================= Step 2 — selection ================= */
   function renderSelection() {
-    const c = CRITERIA.find((x) => x.id === state.activeCriteria);
-    const wrap = document.getElementById('sbOptions');
-    const seen = state.reviewed[c.id] || [];
+    const wrap = el('sbOptions');
+    let list = state.selection.filter((s) => !state.rejected.includes(s.id));
+    if (state.selFilter === 'new') list = list.filter((s) => s.isNew);
+    // unreviewed first, so what needs attention is at the top
+    list = list.slice().sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
 
-    const options = matchesFor(c).filter(
-      (p) => !state.rejected.includes(p.id) && seen.includes(p.id)
-    );
+    wrap.innerHTML = list.map((s) => propCard(propById(s.id), 'select', s)).join('');
+    el('sbOptionsEmpty').hidden = list.length !== 0;
+    el('sbOptionsEmpty').textContent = state.selection.length
+      ? 'Nothing left to review here.'
+      : 'Nothing yet. Add a search’s matching results from Search Criteria.';
 
-    document.getElementById('sbSelectionTitle').textContent = 'Options for “' + c.name + '”';
-    document.getElementById('sbOptionCount').textContent = String(options.length);
-    wrap.innerHTML = options.map((p) => propCard(p, 'select')).join('');
-    document.getElementById('sbOptionsEmpty').hidden = options.length !== 0;
+    const newCount = state.selection.filter((s) => s.isNew && !state.rejected.includes(s.id)).length;
+    el('sbOptionCount').textContent = String(state.selection.filter((s) => !state.rejected.includes(s.id)).length);
+    el('sbNewStat').hidden = newCount === 0;
+    el('sbNewStatNum').textContent = String(newCount);
+    el('sbMarkSeen').hidden = newCount === 0;
+    el('sbSelFilter').hidden = newCount === 0;
 
-    // Rejected list, with an undo
-    const rejWrap = document.getElementById('sbRejectedWrap');
+    const rejWrap = el('sbRejectedWrap');
     rejWrap.hidden = state.rejected.length === 0;
-    document.getElementById('sbRejectedCount').textContent = String(state.rejected.length);
-    document.getElementById('sbRejectedList').innerHTML = state.rejected
-      .map((id) => {
-        const p = propById(id);
-        return '<li><span>' + p.name + '</span><button type="button" class="sb-undo" data-undo="' + id + '">Undo</button></li>';
-      })
-      .join('');
+    el('sbRejectedCount').textContent = String(state.rejected.length);
+    el('sbRejectedList').innerHTML = state.rejected.map((id) =>
+      '<li><span>' + propById(id).name + '</span><button type="button" class="sb-undo" data-undo="' + id + '">Undo</button></li>').join('');
   }
 
   /* ================= Step 3 — draft ================= */
   function renderDraft() {
-    const wrap = document.getElementById('sbDraft');
-    wrap.innerHTML = state.selected.map((id) => propCard(propById(id), 'draft')).join('');
-    document.getElementById('sbDraftEmpty').hidden = state.selected.length !== 0;
-    document.getElementById('sbPublish').hidden = state.selected.length === 0;
+    el('sbDraft').innerHTML = state.selected.map((id) => propCard(propById(id), 'draft')).join('');
+    el('sbDraftEmpty').hidden = state.selected.length !== 0;
+    el('sbPublish').hidden = false;   // always reachable, so Publish is never hidden
+    const empty = state.selected.length === 0;
+    el('sbPublishBtn').disabled = empty;
+    el('sbPreview').classList.toggle('is-disabled', empty);
+    el('sbPublishHint').textContent = empty
+      ? 'Add at least one property before publishing.'
+      : 'The client gets a link — no account needed.';
   }
 
   function refreshHeader() {
-    document.getElementById('sbCount').textContent = String(state.selected.length);
-    const fresh = CRITERIA.reduce((n, c) => n + newMatchesFor(c).length, 0);
-    const pill = document.getElementById('sbNewPill');
-    pill.hidden = fresh === 0;
-    document.getElementById('sbNewCount').textContent = String(fresh);
+    const inSel = state.selection.filter((s) => !state.rejected.includes(s.id));
+    const newCount = inSel.filter((s) => s.isNew).length;
+
+    el('sbCount').textContent = String(state.selected.length);
+    el('sbSelCount').textContent = String(inSel.length);
+    el('sbDraftCount').textContent = String(state.selected.length);
+
+    el('sbSelNew').hidden = newCount === 0;
+    el('sbSelNew').textContent = '+' + newCount + ' NEW';
+
+    const pill = el('sbNewPill');
+    pill.hidden = newCount === 0;
+    el('sbNewCount').textContent = String(newCount);
   }
 
   function renderAll() {
+    syncLiveSearches();
+    renderCriteria();
     renderSelection();
     renderDraft();
     refreshHeader();
   }
 
-  /* ================= Step navigation ================= */
+  /* ================= Steps ================= */
   function goto(step) {
     ['criteria', 'selection', 'draft'].forEach((s) => {
-      document.getElementById('step' + s.charAt(0).toUpperCase() + s.slice(1)).hidden = s !== step;
+      el('step' + s.charAt(0).toUpperCase() + s.slice(1)).hidden = s !== step;
       const btn = document.querySelector('.sb-step[data-step="' + s + '"]');
       if (btn) btn.classList.toggle('is-active', s === step);
     });
@@ -2781,13 +2841,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   document.querySelectorAll('.sb-step').forEach((b) =>
-    b.addEventListener('click', () => goto(b.dataset.step))
-  );
+    b.addEventListener('click', () => goto(b.dataset.step)));
   document.querySelectorAll('[data-goto]').forEach((b) =>
-    b.addEventListener('click', () => goto(b.dataset.goto))
-  );
-  document.getElementById('sbCounter').addEventListener('click', () => goto('draft'));
-  document.getElementById('sbNewPill').addEventListener('click', () => goto('criteria'));
+    b.addEventListener('click', () => goto(b.dataset.goto)));
+  el('sbCounter').addEventListener('click', () => goto('draft'));
+  el('sbNewPill').addEventListener('click', () => goto('selection'));
+  el('sbPublishTop').addEventListener('click', () => {
+    goto('draft');
+    window.setTimeout(() => el('sbPublish').scrollIntoView({ behavior: 'smooth', block: 'center' }), 350);
+  });
 
   /* ================= Criteria interactions ================= */
   criteriaList.addEventListener('click', (e) => {
@@ -2801,18 +2863,42 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const gen = e.target.closest('.sb-generate');
-    if (gen) {
-      const c = CRITERIA.find((x) => x.id === gen.dataset.gen);
-      state.activeCriteria = c.id;
-      // Generating reviews the search: everything matching becomes visible,
-      // and the "new since" marker moves to today.
-      state.reviewed[c.id] = matchesFor(c).map((p) => p.id);
-      c.lastChecked = '2026-09-01';
-      renderCriteria();
+    // First add: everything matching moves into Selection, and the search goes live
+    const add = e.target.closest('.sb-addall');
+    if (add) {
+      const c = CRITERIA.find((x) => x.id === add.dataset.gen);
+      matchesFor(c).forEach((p) => {
+        if (state.rejected.includes(p.id) || inSelection(p.id)) return;
+        state.selection.push({ id: p.id, from: c.id, isNew: p.added > c.lastChecked });
+      });
+      c.live = true;
+      renderAll();
+      goto('selection');
+      return;
+    }
+
+    const go = e.target.closest('.sb-goreview');
+    if (go) {
+      state.selFilter = 'all';
       renderAll();
       goto('selection');
     }
+  });
+
+  criteriaList.addEventListener('input', (e) => {
+    if (e.target.dataset.locsearch === undefined) return;
+    // filter the full location list as the agent types
+    const q = e.target.value.trim().toLowerCase();
+    const root = e.target.closest('.sb-alllocs');
+    root.querySelectorAll('.sb-locgroup').forEach((group) => {
+      let any = false;
+      group.querySelectorAll('[data-locname]').forEach((chip) => {
+        const hit = !q || chip.dataset.locname.includes(q);
+        chip.hidden = !hit;
+        if (hit) any = true;
+      });
+      group.hidden = !any;
+    });
   });
 
   criteriaList.addEventListener('change', (e) => {
@@ -2833,61 +2919,79 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         c.locations = c.locations.filter((l) => l !== loc);
       }
+      // the same location can appear in both the popular row and the full list
+      card.querySelectorAll('[data-loc="' + loc + '"]').forEach((box) => {
+        box.checked = e.target.checked;
+      });
     }
 
-    // Live match count without collapsing what the agent is editing
     const total = matchesFor(c).length;
     const countEl = card.querySelector('.sb-matchcount strong');
     if (countEl) countEl.textContent = String(total);
+    const addBtn = card.querySelector('.sb-addall');
+    if (addBtn) addBtn.textContent = 'Add ' + total + ' Matching Results to Selection';
   });
 
-  document.getElementById('sbAddCriteria').addEventListener('click', () => {
+  el('sbAddCriteria').addEventListener('click', () => {
     CRITERIA.forEach((c) => (c.open = false));
     CRITERIA.push({
-      id: 'c' + (CRITERIA.length + 1),
-      name: 'New search ' + (CRITERIA.length + 1),
-      lastChecked: '2026-09-01',
-      priceMin: 10000000,
-      priceMax: 100000000,
-      locations: [],
-      bedsMin: 1,
-      access: '',
-      excludeCoBroker: false,
-      open: true
+      id: 'c' + (CRITERIA.length + 1), name: 'New search ' + (CRITERIA.length + 1),
+      lastChecked: TODAY, live: false, priceMin: 10000000, priceMax: 100000000,
+      locations: [], bedsMin: 1, access: '', excludeCoBroker: false, open: true
     });
     renderCriteria();
   });
 
   /* ================= Selection interactions ================= */
-  document.getElementById('sbOptions').addEventListener('click', (e) => {
+  const clearNew = (id) => {
+    const entry = state.selection.find((s) => s.id === id);
+    if (entry) entry.isNew = false;
+  };
+
+  el('sbOptions').addEventListener('click', (e) => {
     const card = e.target.closest('.sb-card');
     if (!card) return;
     const id = card.dataset.prop;
 
     if (e.target.closest('.sb-add')) {
       if (!state.selected.includes(id)) state.selected.push(id);
+      clearNew(id);
       renderAll();
     }
-    // Rejecting is permanent for THIS shortlist — the property does not come
-    // back when the same search is generated again.
     if (e.target.closest('.sb-reject')) {
       if (!state.rejected.includes(id)) state.rejected.push(id);
       state.selected = state.selected.filter((s) => s !== id);
+      clearNew(id);
       renderAll();
-      renderCriteria();
     }
   });
 
-  document.getElementById('sbRejectedList').addEventListener('click', (e) => {
+  el('sbRejectedList').addEventListener('click', (e) => {
     const undo = e.target.closest('.sb-undo');
     if (!undo) return;
     state.rejected = state.rejected.filter((id) => id !== undo.dataset.undo);
     renderAll();
-    renderCriteria();
   });
 
+  el('sbMarkSeen').addEventListener('click', () => {
+    state.selection.forEach((s) => (s.isNew = false));
+    CRITERIA.forEach((c) => { if (c.live) c.lastChecked = TODAY; });
+    state.selFilter = 'all';
+    document.querySelectorAll('[data-selfilter]').forEach((b) =>
+      b.classList.toggle('is-active', b.dataset.selfilter === 'all'));
+    renderAll();
+  });
+
+  document.querySelectorAll('[data-selfilter]').forEach((b) =>
+    b.addEventListener('click', () => {
+      state.selFilter = b.dataset.selfilter;
+      document.querySelectorAll('[data-selfilter]').forEach((o) =>
+        o.classList.toggle('is-active', o === b));
+      renderSelection();
+    }));
+
   /* ================= Draft interactions ================= */
-  const draftWrap = document.getElementById('sbDraft');
+  const draftWrap = el('sbDraft');
 
   draftWrap.addEventListener('click', (e) => {
     const card = e.target.closest('.sb-card');
@@ -2904,8 +3008,7 @@ document.addEventListener('DOMContentLoaded', () => {
       renderAll();
       return;
     }
-
-    // Remove returns it to Selection — it is not a rejection
+    // Remove sends it back to Selection; it is not a rejection
     if (e.target.closest('.sb-remove')) {
       state.selected.splice(i, 1);
       renderAll();
@@ -2921,26 +3024,27 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ================= Publish ================= */
-  document.getElementById('sbPublishBtn').addEventListener('click', () => {
-    const name = document.getElementById('sbName').value.trim();
+  el('sbPublishBtn').addEventListener('click', () => {
+    const name = el('sbName').value.trim();
     if (!name) {
-      document.getElementById('sbName').focus();
+      el('sbName').focus();
       return;
     }
     state.published = true;
     state.url = 'banyan.properties/s/' + Math.random().toString(36).slice(2, 7);
 
-    document.getElementById('sbUrl').textContent = state.url;
-    document.getElementById('sbPublishDraft').hidden = true;
-    document.getElementById('sbPublishLive').hidden = false;
+    el('sbUrl').textContent = state.url;
+    el('sbPublishDraft').hidden = true;
+    el('sbPublishLive').hidden = false;
 
-    const status = document.getElementById('sbStatus');
+    const status = el('sbStatus');
     status.dataset.state = 'published';
     status.textContent = 'Published';
+    el('sbPublishTop').textContent = 'Published — open link';
   });
 
-  document.getElementById('sbCopy').addEventListener('click', () => {
-    const btn = document.getElementById('sbCopy');
+  el('sbCopy').addEventListener('click', () => {
+    const btn = el('sbCopy');
     const done = () => {
       btn.textContent = 'Copied';
       window.setTimeout(() => (btn.textContent = 'Copy link'), 1600);
@@ -2949,7 +3053,6 @@ document.addEventListener('DOMContentLoaded', () => {
     else done();
   });
 
-  renderCriteria();
   renderAll();
 });
 

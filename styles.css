@@ -12327,3 +12327,132 @@ body[data-page="overview"] .attention-card__value {
   overflow-wrap: anywhere;
   min-width: 0;
 }
+
+/* --- Shortlist Builder: counts on the step rail, NEW items in Selection --- */
+.sb-step__count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #f1f3f2;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.sb-step.is-active .sb-step__count {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.sb-step__new {
+  font-size: 0.66rem;
+  padding: 3px 7px;
+}
+
+/* A live search says so, rather than hiding its match count behind a button */
+.sb-liveline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.sb-listening {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2f855a;
+}
+
+.sb-listening .sb-newpill__dot {
+  background: #2f855a;
+}
+
+/* Selection is a staging area: what is waiting, and what is unreviewed */
+.sb-selstats {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.sb-selstat {
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.sb-selstat strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--green);
+}
+
+.sb-selstat--new strong {
+  color: #975a16;
+}
+
+.sb-selfilter {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 16px;
+  border: 1px solid var(--card-border);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+/* Unreviewed cards are unmistakable */
+.sb-card.is-new {
+  position: relative;
+  border-color: #d69e2e;
+  box-shadow: 0 0 0 3px rgba(214, 158, 46, 0.16), var(--shadow-sm);
+}
+
+.sb-newflag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #d69e2e;
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+/* All locations, searchable, grouped under their primary */
+.sb-alllocs {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.sb-locsearch {
+  margin: 12px 0;
+  max-width: 320px;
+}
+
+.sb-locgroups {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.sb-locgroup .sb-h4 {
+  margin-bottom: 8px;
+}
+
+.btn.is-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}

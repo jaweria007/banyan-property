@@ -1,0 +1,347 @@
+/* ============================================================
+   bridge.css — optional
+
+   Only needed if you keep your existing layout instead of adopting
+   handover/shell.html. It re-states the shell rules against the class
+   names your sidebar already uses, so it takes on this design without
+   layout.tsx being touched.
+
+   Load it AFTER styles.css. If you adopt shell.html instead, delete this
+   file — it does nothing.
+
+   Mapping:
+     .nav-item__chevron     -> .bnav-chevron
+     .nav-item__label       -> .bnav-link > span:not(.bnav-ico)
+     .nav-item__icon        -> .bnav-ico
+     .nav-sub__inner        -> .bnav-group + div
+     .nav-sub__link         -> .bnav-child
+     .nav-toggle-wrap       -> .bnav-group-wrap
+     .nav-toggle            -> .bnav-group
+     .nav-badge             -> .bnav-badge
+     .nav-item              -> .bnav-link
+     .nav-sub               -> .bnav-group + div
+     .sidebar               -> .app-rail
+     .nav                   -> .app-rail-nav nav
+     .main                  -> .app-main
+     .app                   -> .app-shell
+     .is-active             -> .active
+   ============================================================ */
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.app-rail {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(168deg, var(--green) 0%, var(--green-deep) 100%);
+  color: rgba(255, 255, 255, 0.86);
+  z-index: 40;
+  transition: transform 0.35s var(--ease), width 0.3s var(--ease);
+}
+
+.app-rail .sidebar-toggle {
+  background: transparent;
+  border: none;
+  padding: 3px;
+  color: rgba(239, 219, 179, 0.85);
+}
+
+.app-rail-nav nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.app-rail-nav nav::-webkit-scrollbar {
+  width: 8px;
+}
+
+.app-rail-nav nav::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+}
+
+.bnav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: left;
+  position: relative;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.bnav-link:hover {
+  background: rgba(111, 208, 164, 0.14);
+  color: #fff;
+}
+
+.bnav-link.active {
+  background: rgba(239, 219, 179, 0.12);
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.bnav-link.active::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 20%;
+  bottom: 20%;
+  width: 4px;
+  border-radius: 0 6px 6px 0;
+  background: var(--gold-2);
+}
+
+.bnav-ico {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  display: grid;
+  place-items: center;
+  color: var(--green-light);
+  transition: color 0.2s var(--ease);
+}
+
+.bnav-ico svg {
+  width: 20px;
+  height: 20px;
+}
+
+.bnav-link:hover .bnav-ico {
+  color: var(--green-bright);
+}
+
+.bnav-link.active .bnav-ico {
+  color: var(--cream);
+}
+
+.bnav-link.active:hover {
+  background: rgba(239, 219, 179, 0.12);
+  color: var(--cream);
+}
+
+.bnav-link.active:hover .bnav-ico {
+  color: var(--cream);
+}
+
+.bnav-link.active:hover::before {
+  background: var(--gold-2);
+}
+
+.bnav-link > span:not(.bnav-ico) {
+  flex: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.bnav-chevron {
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  transition: transform 0.3s var(--ease);
+}
+
+.bnav-chevron svg {
+  width: 16px;
+  height: 16px;
+}
+
+.bnav-group-wrap {
+  position: relative;
+}
+
+.bnav-group[aria-expanded="true"] .bnav-chevron {
+  transform: rotate(180deg);
+}
+
+.bnav-group + div {
+  display: none;
+  padding-left: 21px;
+}
+
+.bnav-group[aria-expanded="true"] + .bnav-group + div {
+  display: block;
+  animation: submenuOpen 0.25s var(--ease);
+}
+
+.bnav-group + div {
+  padding-bottom: 4px;
+}
+
+.bnav-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 8px 8px 5px;
+  font-size: 0.86rem;
+  color: var(--green-light);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.bnav-child:hover {
+  color: var(--green-bright);
+  background: rgba(111, 208, 164, 0.12);
+}
+
+.bnav-child:hover .nav-dot {
+  background: var(--green-accent);
+  transform: scale(1.3);
+}
+
+.bnav-child.active {
+  color: var(--cream);
+  font-weight: 600;
+  background: rgba(239, 219, 179, 0.12);
+}
+
+.bnav-child.active .nav-dot {
+  background: var(--gold-2);
+}
+
+.bnav-badge {
+  margin-left: auto;
+  min-width: 20px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.app-main {
+  flex: 1;
+  margin-left: 272px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s var(--ease);
+}
+
+@media (min-width: 901px) {
+  body.sb-collapsed .app-rail {
+    width: 76px;
+  }
+
+  body.sb-collapsed .app-main {
+    margin-left: 76px;
+  }
+
+  body.sb-collapsed .app-rail-nav nav {
+    overflow: visible;
+    padding: 6px 10px 14px;
+  }
+
+  body.sb-collapsed .bnav-link {
+    justify-content: center;
+    padding: 9px;
+  }
+
+  body.sb-collapsed .bnav-link > span:not(.bnav-ico),
+  body.sb-collapsed .bnav-chevron {
+    display: none;
+  }
+
+  body.sb-collapsed .bnav-link.active::before {
+    left: -10px;
+  }
+
+  body.sb-collapsed .bnav-group[aria-expanded="true"] + .bnav-group + div,
+  body.sb-collapsed .bnav-group + div {
+    display: none;
+  }
+
+  body.sb-collapsed .bnav-group-wrap {
+    position: relative;
+  }
+
+  body.sb-collapsed .bnav-group-wrap:hover .bnav-group + div {
+    display: block;
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 0;
+    width: 224px;
+    padding: 8px;
+    border-radius: 14px;
+    background: var(--green-2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: var(--shadow-lg);
+    z-index: 60;
+  }
+
+  body.sb-collapsed .bnav-group + div {
+    overflow: visible;
+  }
+
+  body.sb-collapsed .bnav-child {
+    color: var(--green-light);
+    padding: 9px 10px;
+  }
+
+  body.sb-collapsed .bnav-link:not(.bnav-group):hover::after {
+    content: attr(data-label);
+    position: absolute;
+    left: calc(100% + 8px);
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 7px 11px;
+    border-radius: 9px;
+    background: var(--green-2);
+    color: var(--cream);
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+    box-shadow: var(--shadow-md);
+    z-index: 60;
+    pointer-events: none;
+  }
+
+}
+
+@media (max-width: 900px) {
+  .app-rail {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .app-rail.is-open {
+    transform: translateX(0);
+  }
+
+  .app-main {
+    margin-left: 0;
+  }
+
+  .bnav-link.active::before {
+    left: -14px;
+  }
+
+}
+
+.app-main {
+  min-width: 0;
+}
+

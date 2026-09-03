@@ -11,10 +11,19 @@ Everything needed to put this UI onto the existing staging app.
 
 ## What the target is
 
-Staging is **Next.js (App Router) + React**, with a single hand-written CSS file and
-semantic class names (`app-shell`, `app-rail`, `bnav-link`). That matters: the CSS approach
-here is the same, so the design lifts across cleanly. This is not a Tailwind-to-CSS
-conversion.
+Staging is **Next.js (App Router) + React**, styled with **Tailwind + shadcn/ui**, plus
+FullCalendar on the overview. Semantic class names exist in exactly one place — the sidebar:
+`app-shell`, `app-main`, `app-rail`, `app-rail-nav`, `bnav-link`, `bnav-ico`, `bnav-group`,
+`bnav-child`, `bnav-badge`. Everything else is utility classes and shadcn slots.
+
+**What that means for the port:** there is nothing to rename our classes *to*. Staging has no
+`.list-card`, `.task-card` or `.sb-criteria` equivalent, because its pages carry no component
+vocabulary. So the components here bring their own class names, and `styles.css` sits alongside
+Tailwind rather than replacing it.
+
+The two do not collide — our selectors are all semantic (`.rp-funnel`, `.op-tabs`), Tailwind's
+are all utilities (`flex`, `px-3`). One thing to watch: **Tailwind's preflight resets** may fight
+our base rules. If something looks off before you start, load `styles.css` **after** Tailwind.
 
 ---
 
@@ -26,15 +35,17 @@ conversion.
 | **React components** (`handover/react/*.tsx`) | **Copy in** | Already converted — 24 components, each validated as parsable JSX. Copy each to the path named in its header comment. |
 | **`script.js`** | **Rewrite as state** | React does not manipulate the DOM. Read the behaviour here, implement it with `useState`. The code is the spec, not the implementation. |
 
-### One decision to make first
+### The one decision: the sidebar
 
-Your class names differ from ours (`bnav-link` vs our `nav-item`). Pick one:
+Only the shell overlaps, and you have two ways to take it:
 
-- **Rename your JSX classNames to ours** — cleanest, and the whole stylesheet then just works.
-- **Alias in CSS** — add `.bnav-link { /* same rules as .nav-item */ }`. Faster to start, but you
-  now maintain two names for one thing.
+- **Use `handover/shell.html`** — replace your `layout.tsx` markup with ours. Your `bnav-*`
+  classes then simply go unused. Cleanest.
+- **Keep your layout, add `handover/bridge.css`** — 49 rules that re-state our shell styles
+  against `app-rail`, `bnav-link`, `bnav-child` and the rest, media queries included. Load it
+  after `styles.css` and the sidebar takes on this design with no JSX change.
 
-We would take the first.
+Either works. Take the second if your layout already does things ours does not.
 
 ---
 
@@ -189,6 +200,7 @@ handover/
   react/*.tsx        24 React components — copy straight in
   react/README.md    which component goes to which app/ path
   shell.html         sidebar + topbar, rendered once around every page
+  bridge.css         optional — our shell styles under your sidebar's class names
   pages/*.html       the same pages as plain HTML, if you prefer the source
   _routes.tsv        the page map above, tab-separated
 ```

@@ -20,9 +20,10 @@ says so and why.
 | LISTINGS › Portfolio, Availability, Supply Analysis | ✅ | Page titles renamed too, not just the nav |
 | SALES › Client Inbox, Opportunities | ✅ | — |
 | RELATIONSHIPS, MY WORK | ✅ | Both now open real pages |
-| REPORTING › Growth / Community / Website Dashboard | ⚠️ | The three items are in the nav, but the dashboards themselves do not exist in this prototype yet. Moving the PostHog page out of Blog & SEO needs those pages built first. |
-| MARKETING › Scouts, Publishers, Blog, Website Settings | ⚠️ | Renamed in the nav. The Marketing pages themselves are not in this prototype, so removing their in-page h1 navigation, and moving Site Content and SEO under Website Settings, still has to be done when those pages are built. |
-| SETTINGS › User Management, OMS Settings | ⚠️ | Both in the nav; the pages themselves are not built yet. |
+| REPORTING › Growth / Community / Website Dashboard | ✅ | All three built. **Website Dashboard is the PostHog page, moved out of Blog & SEO** as you asked. |
+| MARKETING › Scouts, Publishers, Blog, Website Settings | ✅ | All four built. The in-page Monitors / Promotion / Blog & SEO strip is gone — the left nav does that job, and the body gets the space back. Blog keeps only the blog. |
+| Website Settings absorbs Site Content and SEO | ✅ | Three tabs: Navigation, Site Content (moved out of Site Settings) and SEO (moved out of Blog & SEO). |
+| SETTINGS › User Management, OMS Settings | ✅ | User Management is its own page as you asked; everything else is under OMS Settings. |
 | Remove the standalone "Navigation" and "Site settings" items | ✅ | Gone |
 
 ---
@@ -253,7 +254,6 @@ says so and why.
 
 **Work identified but not yet done:**
 
-- **Reporting, Marketing and Settings pages** — the navigation is restructured as you asked, but those pages themselves do not exist in this prototype. Moving PostHog to Website Dashboard, and Site Content and SEO under Website Settings, depends on them.
 - **Automatic 48h tasks** from the shortlist workflow — the tasks are shown in My Work so you can see the result, but creating them automatically belongs in the real OMS rather than this prototype.
 - The **Card/Table toggle bug** — we could not reproduce it. Please try it and tell us the browser if it persists.
 

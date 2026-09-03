@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banyan · Availability</title>
+  <title>Banyan · OMS Settings</title>
   <meta name="description" content="Property listings management for Banyan Properties">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     } catch (e) {}
   </script>
 </head>
-<body data-page="availability">
+<body data-page="settings-oms">
   <div class="app">
 
     <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
@@ -62,7 +62,7 @@
       <div class="nav-sub">
         <div class="nav-sub__inner">
           <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
-          <a href="availability.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Availability</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
           <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
         </div>
       </div>
@@ -152,7 +152,7 @@
       <div class="nav-sub">
         <div class="nav-sub__inner">
           <a href="settings-users.html" class="nav-sub__link"><span class="nav-dot"></span>User Management</a>
-          <a href="settings-oms.html" class="nav-sub__link"><span class="nav-dot"></span>OMS Settings</a>
+          <a href="settings-oms.html" class="nav-sub__link is-active"><span class="nav-dot"></span>OMS Settings</a>
         </div>
       </div>
     </div>
@@ -199,97 +199,160 @@
 
         <section class="page-head">
           <div>
-            <h1 class="page-title">Availability</h1>
-            <p class="page-subtitle">Portfolio-wide lease expiries and upcoming availability.</p>
+            <h1 class="page-title">OMS Settings</h1>
+            <p class="page-subtitle">How the system itself behaves. Anything the public website reads lives under <a href="marketing-website-settings.html">Website Settings</a>; people live under <a href="settings-users.html">User Management</a>.</p>
           </div>
         </section>
 
-        <section class="avail-grid" aria-label="Availability overview">
+        <nav class="op-tabs" role="tablist" aria-label="OMS settings sections">
+          <button type="button" class="op-tab is-active" role="tab" aria-selected="true" data-ostab="system">System</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-ostab="sales">Sales configuration</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-ostab="communities">Communities</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-ostab="backups">Backups</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-ostab="logs">Logs</button>
+        </nav>
 
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              </span>
-              <h2 class="avail-card__title">Upcoming Lease Events</h2>
-              <span class="avail-card__count" id="leaseCount">0</span>
+        <!-- ============ SYSTEM ============ -->
+        <section class="op-panel" id="osSystem" role="tabpanel">
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">General</h2>
+              <button type="button" class="btn btn-primary" data-os-save>Save changes</button>
             </div>
-
-            <div class="filter-tabs" role="group" aria-label="Filter lease events">
-              <button type="button" class="filter-tab is-active" data-filter="all">All</button>
-              <button type="button" class="filter-tab" data-filter="7">Next 7 days</button>
-              <button type="button" class="filter-tab" data-filter="30">Next 30 days</button>
-              <button type="button" class="filter-tab" data-filter="60">Next 60 days</button>
-              <button type="button" class="filter-tab" data-filter="expired">Expired</button>
+            <div class="op-grid">
+              <label class="field"><span class="field__label">Organisation name</span><input type="text" class="input-field" value="Banyan Properties"></label>
+              <label class="field"><span class="field__label">Time zone</span>
+                <select class="select-field"><option selected>Asia/Makassar (WITA)</option><option>Asia/Jakarta (WIB)</option><option>UTC</option></select></label>
+              <label class="field"><span class="field__label">Date format</span>
+                <select class="select-field"><option selected>27 Mar 2047</option><option>27/03/2047</option><option>2047-03-27</option></select></label>
+              <label class="field"><span class="field__label">Default currency</span>
+                <select class="select-field"><option selected>IDR</option><option>USD</option><option>EUR</option><option>AUD</option></select></label>
             </div>
+          </section>
 
-            <div class="avail-body" id="leaseEvents">
-              <p class="avail-empty">No lease events match.</p>
+          <section class="card op-block">
+            <h2 class="section-title">Exchange rates</h2>
+            <p class="sb-hint">Used for the IDR display price on every listing. Refreshed weekly.</p>
+            <div class="op-grid">
+              <label class="field"><span class="field__label">1 USD =</span><input type="text" class="input-field" value="16,250"></label>
+              <label class="field"><span class="field__label">1 EUR =</span><input type="text" class="input-field" value="17,600"></label>
+              <label class="field"><span class="field__label">1 AUD =</span><input type="text" class="input-field" value="10,650"></label>
             </div>
-          </article>
+            <p class="field-hint">Last refreshed 1 Sep 2026 · next refresh 8 Sep 2026</p>
+          </section>
 
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-              </span>
-              <h2 class="avail-card__title">Current Availability</h2>
-              <span class="avail-card__count" id="currentCount">0</span>
-            </div>
-
-            <div class="avail-body">
-              <p class="avail-empty">Nothing currently available.</p>
-            </div>
-          </article>
-
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              </span>
-              <h2 class="avail-card__title">Future Availability</h2>
-              <span class="avail-card__count" id="futureCount">0</span>
-            </div>
-
-            <div class="avail-body">
-              <p class="avail-empty">No upcoming availability.</p>
-            </div>
-          </article>
-
+          <section class="card op-block">
+            <h2 class="section-title">Integrations</h2>
+            <ul class="op-list" id="osIntegrations"></ul>
+          </section>
         </section>
 
-        <section class="card cal-card">
-          <div class="cal-head">
-            <div class="cal-nav">
-              <button type="button" class="icon-btn" id="prevMonth" aria-label="Previous month">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button type="button" class="icon-btn" id="nextMonth" aria-label="Next month">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-              </button>
-              <h2 class="cal-month" id="calMonth">August 2026</h2>
-              <span class="cal-today" id="todayLabel">Today · Sat, Aug 7</span>
+        <!-- ============ SALES CONFIGURATION ============ -->
+        <section class="op-panel" id="osSales" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Pipeline stages</h2>
+              <button type="button" class="btn btn-ghost" id="osAddStage">Add stage</button>
             </div>
-            <div class="seg" role="group" aria-label="Calendar view">
-              <button type="button" class="seg__btn is-active" data-view="month">Month</button>
-              <button type="button" class="seg__btn" data-view="week">Week</button>
+            <ul class="op-list" id="osStages"></ul>
+          </section>
+
+          <section class="card op-block">
+            <h2 class="section-title">Action rules</h2>
+            <p class="sb-hint">How an Opportunity's Action status is derived. Only Waiting is set by an agent.</p>
+            <div class="work-list">
+              <table class="data-table">
+                <thead><tr><th>Status</th><th>Set by</th><th>Rule</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="status-pill"><span class="action-dot action-dot--red"></span>Overdue</span></td><td>System</td><td>An open task's due date has passed</td></tr>
+                  <tr><td><span class="status-pill"><span class="action-dot action-dot--orange"></span>Needs Action</span></td><td>System</td><td>There is an open task due now</td></tr>
+                  <tr><td><span class="status-pill"><span class="action-dot action-dot--green"></span>Waiting</span></td><td>Agent</td><td>Requires a Next Follow-Up date; flips to Needs Action once it passes</td></tr>
+                  <tr><td><span class="status-pill"><span class="action-dot action-dot--none"></span>No Action</span></td><td>System</td><td>No open task</td></tr>
+                  <tr><td><span class="status-pill"><span class="action-dot action-dot--yellow"></span>Triage</span></td><td>System</td><td>Created by a Scout and not yet qualified</td></tr>
+                </tbody>
+              </table>
             </div>
-          </div>
-          <div class="cal-body" id="calBody" aria-live="polite"></div>
+          </section>
+
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Task deadlines</h2>
+              <button type="button" class="btn btn-primary" data-os-save>Save changes</button>
+            </div>
+            <div class="op-grid">
+              <label class="field"><span class="field__label">Review new shortlist matches</span><input type="text" class="input-field" value="48 hours"></label>
+              <label class="field"><span class="field__label">Publish a draft shortlist</span><input type="text" class="input-field" value="48 hours"></label>
+              <label class="field"><span class="field__label">Triage a scouted opportunity</span><input type="text" class="input-field" value="24 hours"></label>
+            </div>
+          </section>
         </section>
+
+        <!-- ============ COMMUNITIES ============ -->
+        <section class="op-panel" id="osCommunities" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Configured communities</h2>
+                <p class="sb-hint">The groups the daily sync counts. Numbers appear on the <a href="reporting-community.html">Community Dashboard</a>.</p>
+              </div>
+              <button type="button" class="btn btn-ghost" id="osAddCommunity">Add community</button>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead><tr><th>Community</th><th>Platform</th><th>Sync</th><th>Last snapshot</th><th class="th-edit">Edit</th></tr></thead>
+                <tbody id="osCommBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <!-- ============ BACKUPS ============ -->
+        <section class="op-panel" id="osBackups" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Backups</h2>
+                <p class="sb-hint">Nightly, retained for 30 days.</p>
+              </div>
+              <button type="button" class="btn btn-primary" id="osBackupNow">Back up now</button>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead><tr><th>Taken</th><th>Size</th><th>Type</th><th>Status</th><th></th></tr></thead>
+                <tbody id="osBackupBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <!-- ============ LOGS ============ -->
+        <section class="op-panel" id="osLogs" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">System log</h2>
+              <label class="select-wrap">
+                <span class="sr-only">Filter by level</span>
+                <select class="select-field" id="osLogLevel">
+                  <option value="all">All levels</option>
+                  <option value="Error">Error</option>
+                  <option value="Warning">Warning</option>
+                  <option value="Info">Info</option>
+                </select>
+              </label>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead><tr><th>When</th><th>Level</th><th>Source</th><th>Message</th></tr></thead>
+                <tbody id="osLogBody"></tbody>
+              </table>
+            </div>
+            <p class="list-empty" id="osLogEmpty" hidden>No log entries at this level.</p>
+          </section>
+        </section>
+
+        <div class="cs-toast" id="osToast" hidden></div>
+
       </main>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="dayModal" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dayModalTitle">
-      <div class="modal__head">
-        <h3 class="modal__title" id="dayModalTitle">August 2, 2026</h3>
-        <button type="button" class="modal__close" id="dayModalClose" aria-label="Close">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div class="modal__body" id="dayModalBody"></div>
     </div>
   </div>
 

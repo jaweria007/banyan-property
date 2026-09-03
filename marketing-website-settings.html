@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banyan · Availability</title>
+  <title>Banyan · Website Settings</title>
   <meta name="description" content="Property listings management for Banyan Properties">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     } catch (e) {}
   </script>
 </head>
-<body data-page="availability">
+<body data-page="website-settings">
   <div class="app">
 
     <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
@@ -62,7 +62,7 @@
       <div class="nav-sub">
         <div class="nav-sub__inner">
           <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
-          <a href="availability.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Availability</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
           <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
         </div>
       </div>
@@ -134,7 +134,7 @@
           <a href="marketing-scouts.html" class="nav-sub__link"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
           <a href="marketing-publishers.html" class="nav-sub__link"><span class="nav-dot"></span>Publishers</a>
           <a href="marketing-blog.html" class="nav-sub__link"><span class="nav-dot"></span>Blog</a>
-          <a href="marketing-website-settings.html" class="nav-sub__link"><span class="nav-dot"></span>Website Settings</a>
+          <a href="marketing-website-settings.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Website Settings</a>
         </div>
       </div>
     </div>
@@ -199,97 +199,153 @@
 
         <section class="page-head">
           <div>
-            <h1 class="page-title">Availability</h1>
-            <p class="page-subtitle">Portfolio-wide lease expiries and upcoming availability.</p>
+            <h1 class="page-title">Website Settings</h1>
+            <p class="page-subtitle">Everything the public website reads from — navigation, page content and search settings, in one place.</p>
+          </div>
+          <div class="page-head__actions">
+            <a href="https://banyan.properties" target="_blank" rel="noopener" class="btn btn-ghost">View website ↗</a>
           </div>
         </section>
 
-        <section class="avail-grid" aria-label="Availability overview">
+        <!-- Site Content came from Site Settings, SEO came from Blog & SEO -->
+        <nav class="op-tabs" role="tablist" aria-label="Website settings sections">
+          <button type="button" class="op-tab is-active" role="tab" aria-selected="true" data-wstab="navigation">Navigation</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-wstab="content">Site Content</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-wstab="seo">SEO</button>
+        </nav>
 
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              </span>
-              <h2 class="avail-card__title">Upcoming Lease Events</h2>
-              <span class="avail-card__count" id="leaseCount">0</span>
-            </div>
-
-            <div class="filter-tabs" role="group" aria-label="Filter lease events">
-              <button type="button" class="filter-tab is-active" data-filter="all">All</button>
-              <button type="button" class="filter-tab" data-filter="7">Next 7 days</button>
-              <button type="button" class="filter-tab" data-filter="30">Next 30 days</button>
-              <button type="button" class="filter-tab" data-filter="60">Next 60 days</button>
-              <button type="button" class="filter-tab" data-filter="expired">Expired</button>
-            </div>
-
-            <div class="avail-body" id="leaseEvents">
-              <p class="avail-empty">No lease events match.</p>
-            </div>
-          </article>
-
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-              </span>
-              <h2 class="avail-card__title">Current Availability</h2>
-              <span class="avail-card__count" id="currentCount">0</span>
-            </div>
-
-            <div class="avail-body">
-              <p class="avail-empty">Nothing currently available.</p>
-            </div>
-          </article>
-
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              </span>
-              <h2 class="avail-card__title">Future Availability</h2>
-              <span class="avail-card__count" id="futureCount">0</span>
-            </div>
-
-            <div class="avail-body">
-              <p class="avail-empty">No upcoming availability.</p>
-            </div>
-          </article>
-
-        </section>
-
-        <section class="card cal-card">
-          <div class="cal-head">
-            <div class="cal-nav">
-              <button type="button" class="icon-btn" id="prevMonth" aria-label="Previous month">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        <!-- ============ NAVIGATION ============ -->
+        <section class="op-panel" id="wsNavigation" role="tabpanel">
+          <div class="work-bar">
+            <label class="search-field search-field--wide">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="search" id="wsNavSearch" placeholder="Search label or slug…" aria-label="Search navigation items">
+            </label>
+            <div class="work-filters">
+              <label class="select-wrap">
+                <span class="sr-only">Filter by category</span>
+                <select class="select-field" id="wsNavCategory">
+                  <option value="all">All categories</option>
+                  <option value="Top Main Nav">Top Main Nav</option>
+                  <option value="Top Left Nav">Top Left Nav</option>
+                  <option value="Top Right Nav">Top Right Nav</option>
+                  <option value="Rent">Rent</option>
+                  <option value="Buy">Buy</option>
+                  <option value="Land">Land</option>
+                  <option value="Commercial">Commercial</option>
+                  <option value="Footer">Footer</option>
+                </select>
+              </label>
+              <button type="button" class="btn btn-primary" id="wsNavAdd">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                Add nav item
               </button>
-              <button type="button" class="icon-btn" id="nextMonth" aria-label="Next month">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-              </button>
-              <h2 class="cal-month" id="calMonth">August 2026</h2>
-              <span class="cal-today" id="todayLabel">Today · Sat, Aug 7</span>
-            </div>
-            <div class="seg" role="group" aria-label="Calendar view">
-              <button type="button" class="seg__btn is-active" data-view="month">Month</button>
-              <button type="button" class="seg__btn" data-view="week">Week</button>
             </div>
           </div>
-          <div class="cal-body" id="calBody" aria-live="polite"></div>
+
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Navigation items <span class="page-count" id="wsNavCount">0</span></h2>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th-sort" data-sort="category">Category</th>
+                    <th scope="col" class="th-sort" data-sort="type">Type</th>
+                    <th scope="col" class="th-sort is-asc" data-sort="primary">Primary</th>
+                    <th scope="col" class="th-sort" data-sort="secondary">Secondary</th>
+                    <th scope="col">Slug</th>
+                    <th scope="col" class="th-sort" data-sort="sort">Sort</th>
+                    <th scope="col" class="th-edit">Edit</th>
+                  </tr>
+                </thead>
+                <tbody id="wsNavBody"></tbody>
+              </table>
+            </div>
+            <p class="list-empty" id="wsNavEmpty" hidden>No navigation items match your filters.</p>
+          </section>
         </section>
+
+        <!-- ============ SITE CONTENT ============ -->
+        <section class="op-panel" id="wsContent" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Price sliders</h2>
+                <p class="sb-hint">The min and max on each search slider on the public website.</p>
+              </div>
+              <button type="button" class="btn btn-primary" id="wsSaveSliders">Save price sliders</button>
+            </div>
+            <div class="ws-sliders" id="wsSliders"></div>
+          </section>
+
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Site text</h2>
+                <p class="sb-hint">Copy blocks the website renders. Grouped by the page they appear on.</p>
+              </div>
+              <label class="search-field">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="search" id="wsTextSearch" placeholder="Find a text block…" aria-label="Search site text">
+              </label>
+            </div>
+            <div id="wsTextGroups"></div>
+            <p class="list-empty" id="wsTextEmpty" hidden>No text blocks match that search.</p>
+            <div class="rd-noterow">
+              <button type="button" class="btn btn-primary" id="wsSaveText">Save site text</button>
+            </div>
+          </section>
+        </section>
+
+        <!-- ============ SEO ============ -->
+        <section class="op-panel" id="wsSeo" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Crawler files</h2>
+                <p class="sb-hint">Stored here; the website serves <code>/robots.txt</code>, <code>/llms.txt</code> and a dynamic <code>/sitemap.xml</code> that always reflects published listings.</p>
+              </div>
+              <button type="button" class="btn btn-primary" id="wsSaveSeo">Save SEO content</button>
+            </div>
+            <label class="field">
+              <span class="field__label">robots.txt</span>
+              <textarea class="input-field input-field--area ws-mono" id="wsRobots" rows="8">User-agent: *
+Allow: /
+Disallow: /admin
+Sitemap: https://banyan.properties/sitemap.xml</textarea>
+            </label>
+            <label class="field">
+              <span class="field__label">llms.txt</span>
+              <textarea class="input-field input-field--area ws-mono" id="wsLlms" rows="8"># Banyan Properties
+Villa rentals and property sales in Ubud, Bali.
+
+## Pages
+- /villas-for-rent
+- /villas-for-sale
+- /land-for-sale
+- /blog</textarea>
+            </label>
+          </section>
+
+          <section class="card op-block">
+            <h2 class="section-title">Default meta</h2>
+            <div class="op-grid">
+              <label class="field"><span class="field__label">Site title</span><input type="text" class="input-field" value="Banyan Properties — Villas in Bali"></label>
+              <label class="field"><span class="field__label">Title separator</span><input type="text" class="input-field" value="·"></label>
+              <label class="field"><span class="field__label">Canonical domain</span><input type="url" class="input-field" value="https://banyan.properties"></label>
+            </div>
+            <label class="field">
+              <span class="field__label">Meta description</span>
+              <textarea class="input-field input-field--area" rows="2">Long-term villa rentals and property sales in Ubud and across Bali, handled by a team that lives here.</textarea>
+            </label>
+          </section>
+        </section>
+
+        <div class="cs-toast" id="wsToast" hidden></div>
+
       </main>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="dayModal" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dayModalTitle">
-      <div class="modal__head">
-        <h3 class="modal__title" id="dayModalTitle">August 2, 2026</h3>
-        <button type="button" class="modal__close" id="dayModalClose" aria-label="Close">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div class="modal__body" id="dayModalBody"></div>
     </div>
   </div>
 

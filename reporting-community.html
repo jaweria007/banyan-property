@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banyan · Availability</title>
+  <title>Banyan · Community Dashboard</title>
   <meta name="description" content="Property listings management for Banyan Properties">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     } catch (e) {}
   </script>
 </head>
-<body data-page="availability">
+<body data-page="reporting-community">
   <div class="app">
 
     <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
@@ -62,7 +62,7 @@
       <div class="nav-sub">
         <div class="nav-sub__inner">
           <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
-          <a href="availability.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Availability</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
           <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
         </div>
       </div>
@@ -113,7 +113,7 @@
       <div class="nav-sub">
         <div class="nav-sub__inner">
           <a href="reporting-growth.html" class="nav-sub__link"><span class="nav-dot"></span>Growth Dashboard</a>
-          <a href="reporting-community.html" class="nav-sub__link"><span class="nav-dot"></span>Community Dashboard</a>
+          <a href="reporting-community.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Community Dashboard</a>
           <a href="reporting-website.html" class="nav-sub__link"><span class="nav-dot"></span>Website Dashboard</a>
         </div>
       </div>
@@ -197,99 +197,88 @@
 
       <main class="content">
 
+        <a class="sb-back" href="reporting-growth.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          Back to Growth Dashboard
+        </a>
+
         <section class="page-head">
           <div>
-            <h1 class="page-title">Availability</h1>
-            <p class="page-subtitle">Portfolio-wide lease expiries and upcoming availability.</p>
+            <h1 class="page-title">Community Dashboard</h1>
+            <p class="page-subtitle">Member counts per community from the daily sync, with weekly and monthly growth derived over the snapshot series.</p>
+          </div>
+          <div class="page-head__actions">
+            <button type="button" class="btn btn-ghost" id="cdSync">Run sync now</button>
+            <button type="button" class="btn btn-primary" id="cdAdd">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Add community
+            </button>
           </div>
         </section>
 
-        <section class="avail-grid" aria-label="Availability overview">
-
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              </span>
-              <h2 class="avail-card__title">Upcoming Lease Events</h2>
-              <span class="avail-card__count" id="leaseCount">0</span>
+        <section class="card op-block">
+          <div class="op-block__head">
+            <div>
+              <h2 class="section-title">Totals — all communities</h2>
+              <p class="sb-hint">Feeds the Activation stage's Community Members KPI.</p>
             </div>
-
-            <div class="filter-tabs" role="group" aria-label="Filter lease events">
-              <button type="button" class="filter-tab is-active" data-filter="all">All</button>
-              <button type="button" class="filter-tab" data-filter="7">Next 7 days</button>
-              <button type="button" class="filter-tab" data-filter="30">Next 30 days</button>
-              <button type="button" class="filter-tab" data-filter="60">Next 60 days</button>
-              <button type="button" class="filter-tab" data-filter="expired">Expired</button>
-            </div>
-
-            <div class="avail-body" id="leaseEvents">
-              <p class="avail-empty">No lease events match.</p>
-            </div>
-          </article>
-
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-              </span>
-              <h2 class="avail-card__title">Current Availability</h2>
-              <span class="avail-card__count" id="currentCount">0</span>
-            </div>
-
-            <div class="avail-body">
-              <p class="avail-empty">Nothing currently available.</p>
-            </div>
-          </article>
-
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              </span>
-              <h2 class="avail-card__title">Future Availability</h2>
-              <span class="avail-card__count" id="futureCount">0</span>
-            </div>
-
-            <div class="avail-body">
-              <p class="avail-empty">No upcoming availability.</p>
-            </div>
-          </article>
-
-        </section>
-
-        <section class="card cal-card">
-          <div class="cal-head">
-            <div class="cal-nav">
-              <button type="button" class="icon-btn" id="prevMonth" aria-label="Previous month">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button type="button" class="icon-btn" id="nextMonth" aria-label="Next month">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-              </button>
-              <h2 class="cal-month" id="calMonth">August 2026</h2>
-              <span class="cal-today" id="todayLabel">Today · Sat, Aug 7</span>
-            </div>
-            <div class="seg" role="group" aria-label="Calendar view">
-              <button type="button" class="seg__btn is-active" data-view="month">Month</button>
-              <button type="button" class="seg__btn" data-view="week">Week</button>
-            </div>
+            <span class="rp-syncpill" id="cdSyncState">Synced 2 Sep, 04:00</span>
           </div>
-          <div class="cal-body" id="calBody" aria-live="polite"></div>
+          <section class="queue-stats">
+            <div class="queue-stat is-static">
+              <span class="queue-stat__value">4,812</span>
+              <span class="queue-stat__label">Members</span>
+            </div>
+            <div class="queue-stat is-static">
+              <span class="queue-stat__value queue-stat__value--green">+186</span>
+              <span class="queue-stat__label">Weekly growth</span>
+            </div>
+            <div class="queue-stat is-static">
+              <span class="queue-stat__value queue-stat__value--green">+742</span>
+              <span class="queue-stat__label">Monthly growth</span>
+            </div>
+            <div class="queue-stat is-static">
+              <span class="queue-stat__value">9</span>
+              <span class="queue-stat__label">Communities</span>
+            </div>
+          </section>
         </section>
+
+        <section class="card op-block">
+          <div class="op-block__head">
+            <div>
+              <h2 class="section-title">Communities</h2>
+              <p class="sb-hint" id="cdCount">9 configured · 8 with a snapshot</p>
+            </div>
+            <label class="select-wrap">
+              <span class="sr-only">Filter by platform</span>
+              <select class="select-field" id="cdPlatform">
+                <option value="all">All platforms</option>
+                <option value="WhatsApp">WhatsApp</option>
+                <option value="Telegram">Telegram</option>
+                <option value="Facebook">Facebook</option>
+              </select>
+            </label>
+          </div>
+          <div class="work-list">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col" class="th-sort is-asc" data-sort="name">Community</th>
+                  <th scope="col" class="th-sort" data-sort="platform">Platform</th>
+                  <th scope="col" class="th-sort" data-sort="members">Members</th>
+                  <th scope="col" class="th-sort" data-sort="weekly">Weekly growth</th>
+                  <th scope="col" class="th-sort" data-sort="monthly">Monthly growth</th>
+                  <th scope="col">Last snapshot</th>
+                </tr>
+              </thead>
+              <tbody id="cdBody"></tbody>
+            </table>
+          </div>
+          <p class="list-empty" id="cdEmpty" hidden>No communities match this filter.</p>
+        </section>
+
       </main>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="dayModal" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dayModalTitle">
-      <div class="modal__head">
-        <h3 class="modal__title" id="dayModalTitle">August 2, 2026</h3>
-        <button type="button" class="modal__close" id="dayModalClose" aria-label="Close">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div class="modal__body" id="dayModalBody"></div>
     </div>
   </div>
 

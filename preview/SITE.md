@@ -135,6 +135,12 @@ checked at 1440px and 390px: no horizontal overflow, no JS errors.
   price, lease duration calculated from an expiration date, predefined tag fields
   throughout, Private & Sensitive moved under Location with an Agreed Commission field,
   and Content / Media / Operations built out.
+- **Reporting, Marketing and Settings pages** (9 new): Growth Dashboard, Community Dashboard
+  and Website Dashboard under REPORTING; Scouts, Publishers, Blog and Website Settings under
+  MARKETING; User Management and OMS Settings under SETTINGS. Rebuilt from the staging app in
+  this theme, with the in-page Monitors / Promotion / Blog & SEO strip dropped as the client
+  asked. The moves the client wanted are done: PostHog is now Website Dashboard, and Site
+  Content and SEO sit under Website Settings.
 - **Consistency**: one 16-step type scale (was 51 near-identical sizes) and one
   44px form-control height across the app (the Listings page had been shrinking its
   controls to 36px).

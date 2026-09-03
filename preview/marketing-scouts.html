@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banyan · Availability</title>
+  <title>Banyan · Scouts</title>
   <meta name="description" content="Property listings management for Banyan Properties">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     } catch (e) {}
   </script>
 </head>
-<body data-page="availability">
+<body data-page="marketing-scouts">
   <div class="app">
 
     <button class="sidebar-backdrop" id="backdrop" aria-label="Close menu"></button>
@@ -62,7 +62,7 @@
       <div class="nav-sub">
         <div class="nav-sub__inner">
           <a href="listings.html" class="nav-sub__link"><span class="nav-dot"></span>Portfolio</a>
-          <a href="availability.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Availability</a>
+          <a href="availability.html" class="nav-sub__link"><span class="nav-dot"></span>Availability</a>
           <a href="supply.html" class="nav-sub__link"><span class="nav-dot"></span>Supply Analysis</a>
         </div>
       </div>
@@ -131,7 +131,7 @@
       </button>
       <div class="nav-sub">
         <div class="nav-sub__inner">
-          <a href="marketing-scouts.html" class="nav-sub__link"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
+          <a href="marketing-scouts.html" class="nav-sub__link is-active"><span class="nav-dot"></span>Scouts<span class="nav-badge">4</span></a>
           <a href="marketing-publishers.html" class="nav-sub__link"><span class="nav-dot"></span>Publishers</a>
           <a href="marketing-blog.html" class="nav-sub__link"><span class="nav-dot"></span>Blog</a>
           <a href="marketing-website-settings.html" class="nav-sub__link"><span class="nav-dot"></span>Website Settings</a>
@@ -199,97 +199,132 @@
 
         <section class="page-head">
           <div>
-            <h1 class="page-title">Availability</h1>
-            <p class="page-subtitle">Portfolio-wide lease expiries and upcoming availability.</p>
+            <h1 class="page-title">Scouts</h1>
+            <p class="page-subtitle">Inbound — data-collection campaigns watching co-broker channels. Nothing reaches an Opportunity or a Listing without a human qualifying it first.</p>
+          </div>
+          <div class="page-head__actions">
+            <button type="button" class="btn btn-primary" id="scNewCampaign">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Create campaign
+            </button>
           </div>
         </section>
 
-        <section class="avail-grid" aria-label="Availability overview">
+        <!-- The Monitors / Promotion / Blog strip is gone: the left nav does that job -->
+        <nav class="op-tabs" role="tablist" aria-label="Scouts sections">
+          <button type="button" class="op-tab is-active" role="tab" aria-selected="true" data-sctab="campaigns">Campaigns</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-sctab="quarantine">Quarantine <span class="page-count" id="scQCount">3</span></button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-sctab="groups">Groups</button>
+        </nav>
 
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-              </span>
-              <h2 class="avail-card__title">Upcoming Lease Events</h2>
-              <span class="avail-card__count" id="leaseCount">0</span>
-            </div>
-
-            <div class="filter-tabs" role="group" aria-label="Filter lease events">
-              <button type="button" class="filter-tab is-active" data-filter="all">All</button>
-              <button type="button" class="filter-tab" data-filter="7">Next 7 days</button>
-              <button type="button" class="filter-tab" data-filter="30">Next 30 days</button>
-              <button type="button" class="filter-tab" data-filter="60">Next 60 days</button>
-              <button type="button" class="filter-tab" data-filter="expired">Expired</button>
-            </div>
-
-            <div class="avail-body" id="leaseEvents">
-              <p class="avail-empty">No lease events match.</p>
-            </div>
-          </article>
-
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
-              </span>
-              <h2 class="avail-card__title">Current Availability</h2>
-              <span class="avail-card__count" id="currentCount">0</span>
-            </div>
-
-            <div class="avail-body">
-              <p class="avail-empty">Nothing currently available.</p>
-            </div>
-          </article>
-
-          <article class="avail-card">
-            <div class="avail-card__head">
-              <span class="avail-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              </span>
-              <h2 class="avail-card__title">Future Availability</h2>
-              <span class="avail-card__count" id="futureCount">0</span>
-            </div>
-
-            <div class="avail-body">
-              <p class="avail-empty">No upcoming availability.</p>
-            </div>
-          </article>
-
+        <!-- ============ CAMPAIGNS ============ -->
+        <section class="op-panel" id="scCampaigns" role="tabpanel">
+          <div class="sc-grid" id="scCampaignList"></div>
         </section>
 
-        <section class="card cal-card">
-          <div class="cal-head">
-            <div class="cal-nav">
-              <button type="button" class="icon-btn" id="prevMonth" aria-label="Previous month">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-              </button>
-              <button type="button" class="icon-btn" id="nextMonth" aria-label="Next month">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-              </button>
-              <h2 class="cal-month" id="calMonth">August 2026</h2>
-              <span class="cal-today" id="todayLabel">Today · Sat, Aug 7</span>
+        <!-- ============ QUARANTINE ============ -->
+        <section class="op-panel" id="scQuarantine" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Quarantine</h2>
+                <p class="sb-hint">Messages the Guard held back. Nothing here has touched an Opportunity or a Listing.</p>
+              </div>
+              <label class="select-wrap">
+                <span class="sr-only">Filter by platform</span>
+                <select class="select-field" id="scQPlatform">
+                  <option value="all">All platforms</option>
+                  <option value="WhatsApp">WhatsApp</option>
+                  <option value="Telegram">Telegram</option>
+                  <option value="Facebook">Facebook</option>
+                </select>
+              </label>
             </div>
-            <div class="seg" role="group" aria-label="Calendar view">
-              <button type="button" class="seg__btn is-active" data-view="month">Month</button>
-              <button type="button" class="seg__btn" data-view="week">Week</button>
+            <div class="work-list">
+              <table class="data-table sc-qtable">
+                <thead>
+                  <tr>
+                    <th scope="col">Message</th>
+                    <th scope="col">Reasons</th>
+                    <th scope="col">Platform</th>
+                    <th scope="col">Received</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="scQBody"></tbody>
+              </table>
             </div>
+            <p class="list-empty" id="scQEmpty" hidden>Nothing in Quarantine.</p>
+          </section>
+        </section>
+
+        <!-- ============ GROUPS ============ -->
+        <section class="op-panel" id="scGroups" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Monitored groups</h2>
+                <p class="sb-hint">The channels the scouts listen to. Pausing a group stops collection without losing its history.</p>
+              </div>
+              <button type="button" class="btn btn-ghost" id="scAddGroup">Add group</button>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th-sort is-asc" data-sort="name">Group</th>
+                    <th scope="col" class="th-sort" data-sort="platform">Platform</th>
+                    <th scope="col" class="th-sort" data-sort="members">Members</th>
+                    <th scope="col" class="th-sort" data-sort="messages">Messages / 24h</th>
+                    <th scope="col" class="th-sort" data-sort="status">Status</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="scGBody"></tbody>
+              </table>
+            </div>
+            <p class="list-empty" id="scGEmpty" hidden>No groups match this filter.</p>
+          </section>
+        </section>
+
+        <!-- Create campaign -->
+        <button class="drawer-backdrop" id="scBackdrop" aria-label="Close" hidden></button>
+        <aside class="drawer" id="scDrawer" aria-labelledby="scDrawerTitle" aria-hidden="true">
+          <header class="drawer__head">
+            <h2 class="drawer__title" id="scDrawerTitle">Create campaign</h2>
+            <button type="button" class="icon-btn drawer__close" id="scClose" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            </button>
+          </header>
+          <div class="drawer__body">
+            <label class="field">
+              <span class="field__label">Campaign name</span>
+              <input type="text" class="input-field" id="scName" placeholder="e.g. Ubud Rental Listings">
+            </label>
+            <label class="field">
+              <span class="field__label">Category</span>
+              <select class="select-field" id="scCategory">
+                <option value="Rental Listing">Rental Listing</option>
+                <option value="Rental Lead">Rental Lead</option>
+                <option value="Sale Listing">Sale Listing</option>
+                <option value="Buyer Lead">Buyer Lead</option>
+              </select>
+            </label>
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Groups to watch</h3>
+              <div class="tagset" id="scGroupPick"></div>
+            </section>
+            <p class="field-hint">Everything a campaign collects lands in review first — it never reaches an Opportunity or a Listing on its own.</p>
           </div>
-          <div class="cal-body" id="calBody" aria-live="polite"></div>
-        </section>
+          <footer class="drawer__foot">
+            <button type="button" class="btn btn-ghost" id="scCancel">Cancel</button>
+            <button type="button" class="btn btn-primary" id="scSave">Create campaign</button>
+          </footer>
+        </aside>
+
+        <div class="cs-toast" id="scToast" hidden></div>
+
       </main>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="dayModal" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dayModalTitle">
-      <div class="modal__head">
-        <h3 class="modal__title" id="dayModalTitle">August 2, 2026</h3>
-        <button type="button" class="modal__close" id="dayModalClose" aria-label="Close">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-        </button>
-      </div>
-      <div class="modal__body" id="dayModalBody"></div>
     </div>
   </div>
 

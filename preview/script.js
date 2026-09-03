@@ -3876,3 +3876,954 @@ document.addEventListener('DOMContentLoaded', () => {
     window.open('https://wa.me/' + wa.dataset.wa, '_blank', 'noopener');
   });
 });
+
+/* ============================================================
+   Reporting, Marketing and Settings pages
+   Built from the staging app, in the OMS theme, with the
+   in-page section strip dropped as the client asked.
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  const page = document.body.dataset.page;
+  if (!page) return;
+
+  /* ---------- small shared helpers ---------- */
+  const el = (i) => document.getElementById(i);
+
+  const toast = (id, msg) => {
+    const t = el(id);
+    if (!t) return;
+    t.textContent = msg;
+    t.hidden = false;
+    t.classList.add('is-in');
+    window.clearTimeout(t._t);
+    t._t = window.setTimeout(() => {
+      t.classList.remove('is-in');
+      window.setTimeout(() => (t.hidden = true), 300);
+    }, 2400);
+  };
+
+  // Tab groups: data-<key>tab on the buttons, panels named by id
+  const tabs = (attr, panels) => {
+    const btns = Array.from(document.querySelectorAll('[data-' + attr + ']'));
+    if (!btns.length) return;
+    btns.forEach((b) => b.addEventListener('click', () => {
+      const key = b.dataset[attr.replace(/-([a-z])/g, (m, c) => c.toUpperCase())];
+      btns.forEach((o) => {
+        const on = o === b;
+        o.classList.toggle('is-active', on);
+        o.setAttribute('aria-selected', String(on));
+      });
+      Object.entries(panels).forEach(([k, id]) => {
+        const p = el(id);
+        if (p) p.hidden = k !== key;
+      });
+    }));
+  };
+
+  const drawer = (panelId, backdropId) => {
+    const panel = el(panelId);
+    const backdrop = el(backdropId);
+    if (!panel) return null;
+    const api = {
+      open() {
+        panel.classList.add('is-open');
+        panel.setAttribute('aria-hidden', 'false');
+        if (backdrop) backdrop.hidden = false;
+        document.body.style.overflow = 'hidden';
+      },
+      close() {
+        panel.classList.remove('is-open');
+        panel.setAttribute('aria-hidden', 'true');
+        if (backdrop) backdrop.hidden = true;
+        document.body.style.overflow = '';
+      }
+    };
+    if (backdrop) backdrop.addEventListener('click', api.close);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.classList.contains('is-open')) api.close();
+    });
+    return api;
+  };
+
+  // Sortable table headers, shared by every list on these pages
+  const sortable = (root, rows, render, initial) => {
+    let key = initial;
+    let dir = 1;
+    root.querySelectorAll('.th-sort').forEach((th) => {
+      th.addEventListener('click', () => {
+        dir = key === th.dataset.sort ? -dir : 1;
+        key = th.dataset.sort;
+        root.querySelectorAll('.th-sort').forEach((o) => o.classList.remove('is-asc', 'is-desc'));
+        th.classList.add(dir === 1 ? 'is-asc' : 'is-desc');
+        render();
+      });
+    });
+    return {
+      apply(list) {
+        return list.slice().sort((a, b) => {
+          const x = a[key], y = b[key];
+          const r = (typeof x === 'number' && typeof y === 'number')
+            ? x - y
+            : String(x).localeCompare(String(y));
+          return r * dir;
+        });
+      }
+    };
+  };
+
+  /* ================= Growth Dashboard ================= */
+  if (page === 'reporting-growth') {
+    const STAGES = [
+      { key: 'acquisition', label: 'Acquisition' },
+      { key: 'activation',  label: 'Activation' },
+      { key: 'retention',   label: 'Retention' },
+      { key: 'conversion',  label: 'Conversion' },
+      { key: 'referral',    label: 'Referral' }
+    ];
+
+    // Each period returns its own numbers, so the filter visibly drives everything
+    const DATA = {
+      today:   { acquisition: [42, 51], activation: [6, 9], retention: [2, 1], conversion: [1, 0], referral: [0, 1] },
+      week:    { acquisition: [318, 296], activation: [44, 39], retention: [11, 14], conversion: [4, 6], referral: [3, 2] },
+      month:   { acquisition: [1284, 1109], activation: [172, 148], retention: [46, 52], conversion: [18, 21], referral: [9, 7] },
+      quarter: { acquisition: [3760, 3402], activation: [498, 455], retention: [141, 138], conversion: [57, 61], referral: [24, 19] },
+      year:    { acquisition: [14208, 11930], activation: [1874, 1602], retention: [520, 498], conversion: [212, 188], referral: [88, 61] },
+      custom:  { acquisition: [0, 0], activation: [0, 0], retention: [0, 0], conversion: [0, 0], referral: [0, 0] }
+    };
+
+    const KPIS = [
+      ['New Relationships', 'activation'], ['Property Enquiries', 'activation'],
+      ['Saved Website Searches', 'activation'], ['Live Shortlists Created', 'activation'],
+      ['Community Members', 'activation'], ['Newsletter Subscribers', 'activation'],
+      ['Website Visitors', 'acquisition'], ['Organic Visitors', 'acquisition'],
+      ['Returning Website Visitors', 'retention'], ['Repeat Enquiries', 'retention'],
+      ['Rental Opportunities', 'conversion'], ['Rental Listings Won', 'conversion'],
+      ['Rentals Closed', 'conversion'], ['Average Days to Lease', 'conversion'],
+      ['Referred Enquiries', 'referral'], ['Co-broker Deals', 'referral']
+    ];
+
+    let period = (new URLSearchParams(location.search).get('period')) || 'month';
+    if (!DATA[period]) period = 'month';
+
+    const LABEL = { today: 'Today', week: 'This Week', month: 'This Month',
+                    quarter: 'This Quarter', year: 'This Year', custom: 'a custom range' };
+
+    const pct = (cur, prev) => {
+      if (!prev) return cur ? '—' : '—';
+      const v = ((cur - prev) / prev) * 100;
+      return (v > 0 ? '+' : '') + v.toFixed(1) + '%';
+    };
+    const trend = (cur, prev) => (cur === prev ? 'Flat' : cur > prev ? 'Up' : 'Down');
+
+    // A KPI's numbers derive from its stage, so card and row always agree
+    const kpiNumbers = (stage, i) => {
+      const [c, p] = DATA[period][stage];
+      const share = 0.18 + ((i * 7) % 11) / 40;
+      return [Math.round(c * share), Math.round(p * share)];
+    };
+
+    function renderFunnel() {
+      el('growthFunnel').innerHTML = STAGES.map((s) => {
+        const [cur, prev] = DATA[period][s.key];
+        const t = trend(cur, prev);
+        return '<article class="rp-card">' +
+          '<header class="rp-card__head"><h2>' + s.label + '</h2>' +
+            '<span class="rp-live">Live</span></header>' +
+          '<dl class="rp-card__rows">' +
+            '<div><dt>Current period</dt><dd>' + cur.toLocaleString('en-US') + '</dd></div>' +
+            '<div><dt>Previous period</dt><dd>' + prev.toLocaleString('en-US') + '</dd></div>' +
+            '<div><dt>% change</dt><dd class="rp-' + t.toLowerCase() + '">' + pct(cur, prev) + '</dd></div>' +
+            '<div><dt>Trend</dt><dd class="rp-' + t.toLowerCase() + '">' + t + '</dd></div>' +
+          '</dl></article>';
+      }).join('');
+    }
+
+    let sorter;
+    function renderKpis() {
+      const rows = KPIS.map(([name, stage], i) => {
+        const [current, previous] = kpiNumbers(stage, i);
+        return { kpi: name, stage, current, previous,
+                 change: previous ? ((current - previous) / previous) * 100 : 0,
+                 trend: trend(current, previous) };
+      });
+      const list = sorter ? sorter.apply(rows) : rows;
+      el('kpiBody').innerHTML = list.map((r) =>
+        '<tr class="rp-kpirow"><td><strong>' + r.kpi + '</strong></td>' +
+        '<td><span class="opp-chip opp-chip--stage">' + r.stage + '</span></td>' +
+        '<td class="rp-num">' + r.current.toLocaleString('en-US') + '</td>' +
+        '<td class="rp-num rp-muted">' + r.previous.toLocaleString('en-US') + '</td>' +
+        '<td class="rp-num rp-' + r.trend.toLowerCase() + '">' + pct(r.current, r.previous) + '</td>' +
+        '<td class="rp-' + r.trend.toLowerCase() + '">' + r.trend + '</td>' +
+        '<td class="rp-muted">on read</td></tr>').join('');
+      el('kpiEmpty').hidden = list.length !== 0;
+    }
+
+    sorter = sortable(document.querySelector('.rp-kpi'), null, renderKpis, 'kpi');
+
+    function apply() {
+      document.querySelectorAll('#growthPeriod .seg__btn').forEach((b) =>
+        b.classList.toggle('is-active', b.dataset.period === period));
+      el('growthPeriodNote').innerHTML = 'Showing <strong>' + LABEL[period] + '</strong> · the URL keeps your selection.';
+      el('growthCustom').hidden = period !== 'custom';
+      renderFunnel();
+      renderKpis();
+      try {
+        history.replaceState(null, '', '?period=' + period);
+      } catch (e) {}
+    }
+
+    document.querySelectorAll('#growthPeriod .seg__btn').forEach((b) =>
+      b.addEventListener('click', () => {
+        period = b.dataset.period;
+        apply();
+      }));
+
+    apply();
+  }
+
+  /* ================= Community Dashboard ================= */
+  if (page === 'reporting-community') {
+    const COMMUNITIES = [
+      { name: 'Banyan Ubud Rentals',      platform: 'WhatsApp', members: 1284, weekly: 52,  monthly: 214, snapshot: '2 Sep 2026' },
+      { name: 'Bali Long Stay',           platform: 'Telegram', members: 968,  weekly: 41,  monthly: 168, snapshot: '2 Sep 2026' },
+      { name: 'Ubud Villas & Land',       platform: 'Facebook', members: 742,  weekly: 18,  monthly: 96,  snapshot: '2 Sep 2026' },
+      { name: 'Canggu Housing',           platform: 'WhatsApp', members: 611,  weekly: 27,  monthly: 88,  snapshot: '2 Sep 2026' },
+      { name: 'Green School Families',    platform: 'WhatsApp', members: 438,  weekly: 12,  monthly: 51,  snapshot: '2 Sep 2026' },
+      { name: 'Bali Property Investors',  platform: 'Telegram', members: 396,  weekly: 19,  monthly: 62,  snapshot: '2 Sep 2026' },
+      { name: 'Uluwatu Rentals',          platform: 'Facebook', members: 214,  weekly: 8,   monthly: 33,  snapshot: '2 Sep 2026' },
+      { name: 'Sanur Community',          platform: 'WhatsApp', members: 159,  weekly: 9,   monthly: 30,  snapshot: '2 Sep 2026' },
+      { name: 'Bali Co-brokers',          platform: 'Telegram', members: 0,    weekly: 0,   monthly: 0,   snapshot: '' }
+    ];
+
+    let platform = 'all';
+    let sorter;
+
+    function render() {
+      const rows = COMMUNITIES.filter((c) => platform === 'all' || c.platform === platform);
+      const list = sorter ? sorter.apply(rows) : rows;
+      el('cdBody').innerHTML = list.map((c) =>
+        '<tr><td><strong>' + c.name + '</strong></td>' +
+        '<td>' + c.platform + '</td>' +
+        '<td class="rp-num">' + (c.snapshot ? c.members.toLocaleString('en-US') : '<span class="rp-muted">awaiting sync</span>') + '</td>' +
+        '<td class="rp-num ' + (c.weekly ? 'rp-up' : 'rp-muted') + '">' + (c.snapshot ? (c.weekly ? '+' + c.weekly : '0') : '—') + '</td>' +
+        '<td class="rp-num ' + (c.monthly ? 'rp-up' : 'rp-muted') + '">' + (c.snapshot ? (c.monthly ? '+' + c.monthly : '0') : '—') + '</td>' +
+        '<td class="rp-muted">' + (c.snapshot || 'never') + '</td></tr>').join('');
+      el('cdEmpty').hidden = list.length !== 0;
+      el('cdCount').textContent = COMMUNITIES.length + ' configured · ' +
+        COMMUNITIES.filter((c) => c.snapshot).length + ' with a snapshot';
+    }
+
+    sorter = sortable(document.querySelector('.data-table'), null, render, 'members');
+    el('cdPlatform').addEventListener('change', (e) => {
+      platform = e.target.value;
+      render();
+    });
+    el('cdSync').addEventListener('click', () => {
+      el('cdSyncState').textContent = 'Syncing…';
+      window.setTimeout(() => (el('cdSyncState').textContent = 'Synced just now'), 1200);
+    });
+    render();
+  }
+
+  /* ================= Website Dashboard (PostHog) ================= */
+  if (page === 'reporting-website') {
+    const KEY = 'banyan_posthog_url';
+    let url = '';
+    try {
+      url = localStorage.getItem(KEY) || '';
+    } catch (e) {}
+
+    const paint = () => {
+      const on = !!url;
+      el('wdEmbed').hidden = !on;
+      el('wdEmpty').hidden = on;
+      el('wdUrlLabel').textContent = url || '—';
+      el('wdOpenPosthog').href = url || '#';
+      el('wdConfigure').textContent = on ? 'Change connection' : 'Configure';
+      if (on) el('wdShared').value = url;
+    };
+
+    el('wdSave').addEventListener('click', () => {
+      const v = el('wdShared').value.trim();
+      if (!v) {
+        el('wdShared').focus();
+        return;
+      }
+      url = v;
+      try {
+        localStorage.setItem(KEY, url);
+      } catch (e) {}
+      paint();
+    });
+
+    el('wdConfigure').addEventListener('click', () => {
+      el('wdEmpty').hidden = false;
+      el('wdShared').focus();
+    });
+
+    paint();
+  }
+
+  /* ================= Scouts ================= */
+  if (page === 'marketing-scouts') {
+    tabs('sctab', { campaigns: 'scCampaigns', quarantine: 'scQuarantine', groups: 'scGroups' });
+
+    const GROUPS = [
+      { name: 'Bali Property Agents', platform: 'WhatsApp', members: 892, messages: 214, status: 'Active' },
+      { name: 'Ubud Villas For Rent', platform: 'WhatsApp', members: 654, messages: 168, status: 'Active' },
+      { name: 'Bali Land & Villa Deals', platform: 'Telegram', members: 1204, messages: 96, status: 'Active' },
+      { name: 'Canggu Rentals Network', platform: 'Facebook', members: 431, messages: 42, status: 'Paused' },
+      { name: 'Bali Co-broker Exchange', platform: 'Telegram', members: 318, messages: 61, status: 'Active' }
+    ];
+
+    const CAMPAIGNS = [
+      { name: 'Rental Listings', category: 'Rental Listing', review: 2, paused: false,
+        stats: { listened: 214, relevant: 96, into: 31, qualified: 12 } },
+      { name: 'Rental Leads', category: 'Rental Lead', review: 0, paused: false,
+        stats: { listened: 168, relevant: 71, into: 24, qualified: 9 } },
+      { name: 'Sale Listings', category: 'Sale Listing', review: 1, paused: false,
+        stats: { listened: 96, relevant: 38, into: 14, qualified: 4 } },
+      { name: 'Buyer Leads', category: 'Buyer Lead', review: 0, paused: true,
+        stats: { listened: 0, relevant: 0, into: 0, qualified: 0 } }
+    ];
+
+    const QUARANTINE = [
+      { msg: 'Villa for rent Ubud 3BR call me 0812…', reasons: ['Duplicate', 'No price'], platform: 'WhatsApp', at: '2 Sep, 09:14' },
+      { msg: 'URGENT!!! best deal land seminyak DM fast', reasons: ['Spam signals'], platform: 'Telegram', at: '2 Sep, 08:40' },
+      { msg: 'Anyone know a good notary in Denpasar?', reasons: ['Off topic'], platform: 'WhatsApp', at: '1 Sep, 17:22' }
+    ];
+
+    const pctOf = (n, total) => (total ? Math.round((n / total) * 100) : 0) + '%';
+
+    function renderCampaigns() {
+      el('scCampaignList').innerHTML = CAMPAIGNS.map((c, i) => {
+        const s = c.stats;
+        return '<article class="sc-card' + (c.paused ? ' is-paused' : '') + '" data-camp="' + i + '">' +
+          '<header class="sc-card__head">' +
+            '<div><h2 class="sc-card__name">' + c.name + '</h2>' +
+              '<span class="opp-chip opp-chip--stage">' + c.category + '</span></div>' +
+            '<span class="sc-state">' + (c.paused ? 'Paused' : 'Listening') + '</span>' +
+          '</header>' +
+
+          '<div class="sc-review">' +
+            '<div><span class="sc-review__num' + (c.review ? ' is-waiting' : '') + '">' + c.review + '</span>' +
+              '<span class="sc-review__label">waiting for review</span></div>' +
+            (c.review
+              ? '<a href="opportunities.html" class="btn btn-primary">Review items →</a>'
+              : '<span class="field-hint">Nothing to review</span>') +
+          '</div>' +
+
+          '<div class="sc-stats">' +
+            '<p class="sc-stats__title">Last 24h · all monitored groups</p>' +
+            '<dl class="sc-stats__rows">' +
+              '<div><dt>Messages listened</dt><dd>' + s.listened + '</dd></div>' +
+              '<div><dt>Relevant (passed Guard)</dt><dd>' + s.relevant + ' <span class="rp-muted">' + pctOf(s.relevant, s.listened) + '</span></dd></div>' +
+              '<div><dt>Into ' + c.category + '</dt><dd>' + s.into + ' <span class="rp-muted">' + pctOf(s.into, s.listened) + '</span></dd></div>' +
+              '<div><dt>Qualified to Opportunity / Listing</dt><dd>' + s.qualified + ' <span class="rp-muted">' + pctOf(s.qualified, s.listened) + '</span></dd></div>' +
+            '</dl>' +
+          '</div>' +
+
+          '<footer class="sc-card__foot">' +
+            '<span class="field-hint">Real-time · 5 fields</span>' +
+            '<div class="sc-card__actions">' +
+              '<button type="button" class="btn btn-ghost sc-settings">Edit settings</button>' +
+              '<button type="button" class="btn btn-ghost sc-pause">' + (c.paused ? 'Resume' : 'Pause') + '</button>' +
+            '</div>' +
+          '</footer>' +
+        '</article>';
+      }).join('');
+    }
+
+    el('scCampaignList').addEventListener('click', (e) => {
+      const card = e.target.closest('.sc-card');
+      if (!card) return;
+      const c = CAMPAIGNS[Number(card.dataset.camp)];
+      if (e.target.closest('.sc-pause')) {
+        c.paused = !c.paused;
+        renderCampaigns();
+        toast('scToast', c.name + (c.paused ? ' paused' : ' resumed'));
+      }
+      if (e.target.closest('.sc-settings')) toast('scToast', 'Campaign settings open in the real OMS');
+    });
+
+    let qPlatform = 'all';
+    function renderQuarantine() {
+      const rows = QUARANTINE.filter((q) => qPlatform === 'all' || q.platform === qPlatform);
+      el('scQBody').innerHTML = rows.map((q, i) =>
+        '<tr><td class="sc-msg">' + q.msg + '</td>' +
+        '<td>' + q.reasons.map((r) => '<span class="sb-tag">' + r + '</span>').join(' ') + '</td>' +
+        '<td>' + q.platform + '</td>' +
+        '<td class="rp-muted">' + q.at + '</td>' +
+        '<td class="sc-qactions"><button type="button" class="btn btn-ghost" data-q="release" data-i="' + i + '">Release</button>' +
+        '<button type="button" class="btn btn-ghost" data-q="discard" data-i="' + i + '">Discard</button></td></tr>').join('');
+      el('scQEmpty').hidden = rows.length !== 0;
+      el('scQCount').textContent = String(QUARANTINE.length);
+    }
+
+    el('scQBody').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-q]');
+      if (!btn) return;
+      const i = Number(btn.dataset.i);
+      const name = QUARANTINE[i].msg.slice(0, 28) + '…';
+      QUARANTINE.splice(i, 1);
+      renderQuarantine();
+      toast('scToast', btn.dataset.q === 'release' ? 'Released for review — ' + name : 'Discarded — ' + name);
+    });
+    el('scQPlatform').addEventListener('change', (e) => {
+      qPlatform = e.target.value;
+      renderQuarantine();
+    });
+
+    let gSorter;
+    function renderGroups() {
+      const list = gSorter ? gSorter.apply(GROUPS) : GROUPS;
+      el('scGBody').innerHTML = list.map((g, i) =>
+        '<tr><td><strong>' + g.name + '</strong></td>' +
+        '<td>' + g.platform + '</td>' +
+        '<td class="rp-num">' + g.members.toLocaleString('en-US') + '</td>' +
+        '<td class="rp-num">' + g.messages + '</td>' +
+        '<td><span class="status-pill"><span class="action-dot action-dot--' +
+          (g.status === 'Active' ? 'green' : 'none') + '"></span>' + g.status + '</span></td>' +
+        '<td><button type="button" class="btn btn-ghost sc-gtoggle" data-g="' + i + '">' +
+          (g.status === 'Active' ? 'Pause' : 'Resume') + '</button></td></tr>').join('');
+      el('scGEmpty').hidden = list.length !== 0;
+    }
+    gSorter = sortable(el('scGroups'), null, renderGroups, 'name');
+    el('scGBody').addEventListener('click', (e) => {
+      const btn = e.target.closest('.sc-gtoggle');
+      if (!btn) return;
+      const g = GROUPS[Number(btn.dataset.g)];
+      g.status = g.status === 'Active' ? 'Paused' : 'Active';
+      renderGroups();
+    });
+
+    // Create campaign
+    const d = drawer('scDrawer', 'scBackdrop');
+    el('scGroupPick').innerHTML = GROUPS.map((g) =>
+      '<label class="tag-check"><input type="checkbox" checked><span>' + g.name + '</span></label>').join('');
+    el('scNewCampaign').addEventListener('click', () => {
+      d.open();
+      el('scName').focus();
+    });
+    el('scClose').addEventListener('click', d.close);
+    el('scCancel').addEventListener('click', d.close);
+    el('scSave').addEventListener('click', () => {
+      const name = el('scName').value.trim();
+      if (!name) {
+        el('scName').focus();
+        return;
+      }
+      CAMPAIGNS.unshift({ name, category: el('scCategory').value, review: 0, paused: false,
+                          stats: { listened: 0, relevant: 0, into: 0, qualified: 0 } });
+      el('scName').value = '';
+      renderCampaigns();
+      d.close();
+      toast('scToast', 'Campaign created — listening starts on the next sync');
+    });
+
+    renderCampaigns();
+    renderQuarantine();
+    renderGroups();
+  }
+
+  /* ================= Publishers ================= */
+  if (page === 'marketing-publishers') {
+    tabs('pbtab', { campaigns: 'pbCampaigns', channels: 'pbChannels' });
+
+    const CHANNELS = [
+      { type: 'Facebook Page', mech: 'Graph API', label: 'Banyan Bali — main page', status: 'Connected' },
+      { type: 'Instagram', mech: 'Graph API', label: '@banyan.properties', status: 'Connected' },
+      { type: 'WhatsApp Groups', mech: 'VPS session', label: 'Agent broadcast', status: 'Needs re-auth' },
+      { type: 'Telegram', mech: 'VPS session', label: 'Bali Property Investors', status: 'Connected' },
+      { type: 'Facebook Groups', mech: 'VPS session', label: 'Ubud Villas & Land', status: 'Disconnected' }
+    ];
+
+    const CAMPAIGNS = [
+      { name: 'September rice-field villas', bucket: 'Rentals — Ubud', week: 3, listing: 'BUY-1301 · Spacious Luxury Villa', channels: 4, status: 'Sending' },
+      { name: 'Green School family homes', bucket: 'Rentals — Sibang', week: 3, listing: 'BUY-1186 · Brand New 2BR Villa', channels: 3, status: 'Scheduled' },
+      { name: 'Freehold land — Petulu', bucket: 'Land', week: 4, listing: 'LAND-1280 · 12.25 Are Freehold', channels: 2, status: 'Scheduled' },
+      { name: 'Uluwatu ocean views', bucket: 'Sales — Bukit', week: 2, listing: 'BUY-1195 · 1BR Rooftop Ocean Views', channels: 5, status: 'Sent' },
+      { name: 'August long-stay push', bucket: 'Rentals — Ubud', week: 1, listing: '', channels: 4, status: 'Sent' },
+      { name: 'Commercial — Canggu', bucket: 'Commercial', week: '', listing: '', channels: 0, status: 'Draft' }
+    ];
+
+    const state = { q: '', status: 'all' };
+    let sorter;
+
+    const statusClass = (s) => ({
+      Sending: 'amber', Scheduled: 'blue', Sent: 'green', Draft: 'none'
+    })[s] || 'none';
+
+    function renderCampaigns() {
+      const rows = CAMPAIGNS.filter((c) => {
+        if (state.status !== 'all' && c.status !== state.status) return false;
+        if (state.q && !(c.name + ' ' + c.bucket).toLowerCase().includes(state.q)) return false;
+        return true;
+      });
+      const list = sorter ? sorter.apply(rows) : rows;
+      el('pbBody').innerHTML = list.map((c) =>
+        '<tr><td><strong>' + c.name + '</strong></td>' +
+        '<td>' + c.bucket + '</td>' +
+        '<td class="rp-num">' + (c.week || '<span class="rp-muted">—</span>') + '</td>' +
+        '<td>' + (c.listing || '<span class="rp-muted">—</span>') + '</td>' +
+        '<td class="rp-num">' + c.channels + '</td>' +
+        '<td><span class="status-pill"><span class="action-dot action-dot--' + statusClass(c.status) + '"></span>' + c.status + '</span></td>' +
+        '<td><button type="button" class="icon-action" aria-label="Edit campaign">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>' +
+        '</button></td></tr>').join('');
+      el('pbEmpty').hidden = list.length !== 0;
+    }
+
+    function renderChannels() {
+      el('pbChBody').innerHTML = CHANNELS.map((c, i) =>
+        '<tr><td><strong>' + c.type + '</strong></td>' +
+        '<td>' + c.mech + '</td>' +
+        '<td class="rp-muted">' + c.label + '</td>' +
+        '<td><span class="status-pill"><span class="action-dot action-dot--' +
+          (c.status === 'Connected' ? 'green' : c.status === 'Needs re-auth' ? 'orange' : 'red') +
+          '"></span>' + c.status + '</span></td>' +
+        '<td>' + (c.status === 'Connected'
+          ? '<span class="rp-muted">Not needed</span>'
+          : '<button type="button" class="btn btn-ghost pb-reauth" data-c="' + i + '">Re-authenticate</button>') +
+        '</td></tr>').join('');
+      el('pbChEmpty').hidden = CHANNELS.length !== 0;
+    }
+
+    el('pbChBody').addEventListener('click', (e) => {
+      const btn = e.target.closest('.pb-reauth');
+      if (!btn) return;
+      CHANNELS[Number(btn.dataset.c)].status = 'Connected';
+      renderChannels();
+      toast('pbToast', 'Channel reconnected');
+    });
+
+    sorter = sortable(el('pbCampaigns'), null, renderCampaigns, 'name');
+
+    el('pbSearch').addEventListener('input', (e) => {
+      state.q = e.target.value.trim().toLowerCase();
+      renderCampaigns();
+    });
+    document.querySelectorAll('[data-pbstatus]').forEach((t) =>
+      t.addEventListener('click', () => {
+        state.status = t.dataset.pbstatus;
+        document.querySelectorAll('[data-pbstatus]').forEach((o) =>
+          o.classList.toggle('is-active', o.dataset.pbstatus === state.status));
+        renderCampaigns();
+      }));
+
+    // The one button changes meaning with the tab
+    const d = drawer('pbDrawer', 'pbBackdrop');
+    let mode = 'campaign';
+    document.querySelectorAll('[data-pbtab]').forEach((b) =>
+      b.addEventListener('click', () => {
+        mode = b.dataset.pbtab === 'channels' ? 'channel' : 'campaign';
+        el('pbNewLabel').textContent = mode === 'channel' ? 'Add channel' : 'Create campaign';
+      }));
+
+    el('pbChannelPick').innerHTML = CHANNELS.map((c) =>
+      '<label class="tag-check"><input type="checkbox"><span>' + c.type + ' · ' + c.label + '</span></label>').join('');
+
+    el('pbNew').addEventListener('click', () => {
+      const isCh = mode === 'channel';
+      el('pbDrawerTitle').textContent = isCh ? 'Add channel' : 'Create campaign';
+      el('pbFormCampaign').hidden = isCh;
+      el('pbFormChannel').hidden = !isCh;
+      d.open();
+    });
+    el('pbClose').addEventListener('click', d.close);
+    el('pbCancel').addEventListener('click', d.close);
+    el('pbSave').addEventListener('click', () => {
+      if (mode === 'channel') {
+        CHANNELS.unshift({ type: el('pbChType').value, mech: el('pbChMech').value,
+                           label: el('pbChLabel').value.trim() || '—',
+                           status: el('pbChMech').value === 'Graph API' ? 'Connected' : 'Needs re-auth' });
+        el('pbChLabel').value = '';
+        renderChannels();
+        toast('pbToast', 'Channel added');
+      } else {
+        const name = el('pbName').value.trim();
+        if (!name) {
+          el('pbName').focus();
+          return;
+        }
+        CAMPAIGNS.unshift({ name, bucket: el('pbBucket').value.trim() || '—',
+                            week: el('pbWeek').value, listing: el('pbListing').value.trim(),
+                            channels: 0, status: 'Draft' });
+        el('pbName').value = '';
+        el('pbBucket').value = '';
+        el('pbListing').value = '';
+        renderCampaigns();
+        toast('pbToast', 'Campaign created as a draft');
+      }
+      d.close();
+    });
+
+    renderCampaigns();
+    renderChannels();
+  }
+
+  /* ================= Blog ================= */
+  if (page === 'marketing-blog') {
+    const ARTICLES = [
+      { title: 'What a long-term rental in Ubud actually costs in 2026', category: 'Renting guide', author: 'Ratna', status: 'Published', date: '2026-08-28' },
+      { title: 'Leasehold vs freehold: what foreigners can really buy', category: 'Buying guide', author: 'Andries', status: 'Published', date: '2026-08-21' },
+      { title: 'Living near Green School — the honest version', category: 'Living in Bali', author: 'Berry', status: 'Published', date: '2026-08-14' },
+      { title: 'Ubud market update — Q3 2026', category: 'Market update', author: 'Andries', status: 'Published', date: '2026-08-02' },
+      { title: 'Five villages worth considering instead of central Ubud', category: 'Living in Bali', author: 'Ratna', status: 'Scheduled', date: '2026-09-08' },
+      { title: 'How our shortlists work', category: 'Renting guide', author: 'Berry', status: 'Scheduled', date: '2026-09-15' },
+      { title: 'Zoning explained without the jargon', category: 'Buying guide', author: 'Andries', status: 'In review', date: '2026-09-01' },
+      { title: 'What a good notary does for you', category: 'Buying guide', author: 'Kashif', status: 'In review', date: '2026-08-30' },
+      { title: 'Bringing pets to Bali', category: 'Living in Bali', author: 'Ratna', status: 'Draft', date: '2026-08-27' },
+      { title: 'The Banyan community groups', category: 'Community', author: 'Berry', status: 'Draft', date: '2026-08-19' },
+      { title: 'Wet season and what it means for your villa', category: 'Living in Bali', author: 'Kashif', status: 'Draft', date: '2026-08-11' },
+      { title: 'Rice field views: which ones are protected', category: 'Market update', author: 'Andries', status: 'Draft', date: '2026-07-29' }
+    ];
+
+    const state = { q: '', status: 'all', category: 'all', author: 'all' };
+    let sorter;
+
+    const cls = (s) => ({ Published: 'green', Scheduled: 'blue', 'In review': 'amber', Draft: 'none' })[s] || 'none';
+
+    function render() {
+      const rows = ARTICLES.filter((a) => {
+        if (state.status !== 'all' && a.status !== state.status) return false;
+        if (state.category !== 'all' && a.category !== state.category) return false;
+        if (state.author !== 'all' && a.author !== state.author) return false;
+        if (state.q && !(a.title + ' ' + a.author).toLowerCase().includes(state.q)) return false;
+        return true;
+      });
+      const list = sorter ? sorter.apply(rows) : rows;
+      el('blBody').innerHTML = list.map((a) =>
+        '<tr><td><strong>' + a.title + '</strong></td>' +
+        '<td>' + a.category + '</td>' +
+        '<td>' + a.author + '</td>' +
+        '<td><span class="status-pill"><span class="action-dot action-dot--' + cls(a.status) + '"></span>' + a.status + '</span></td>' +
+        '<td class="rp-muted">' + new Date(a.date + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + '</td>' +
+        '<td><button type="button" class="icon-action" aria-label="Edit article">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>' +
+        '</button></td></tr>').join('');
+      el('blEmpty').hidden = list.length !== 0;
+    }
+
+    sorter = sortable(document.querySelector('.data-table'), null, render, 'date');
+
+    el('blSearch').addEventListener('input', (e) => {
+      state.q = e.target.value.trim().toLowerCase();
+      render();
+    });
+    ['blCategory', 'blAuthor'].forEach((id) =>
+      el(id).addEventListener('change', (e) => {
+        state[id === 'blCategory' ? 'category' : 'author'] = e.target.value;
+        render();
+      }));
+    document.querySelectorAll('[data-blstatus]').forEach((t) =>
+      t.addEventListener('click', () => {
+        state.status = t.dataset.blstatus;
+        document.querySelectorAll('[data-blstatus]').forEach((o) =>
+          o.classList.toggle('is-active', o.dataset.blstatus === state.status));
+        render();
+      }));
+    el('blNew').addEventListener('click', () => {
+      ARTICLES.unshift({ title: 'Untitled article', category: 'Living in Bali', author: 'Ratna',
+                         status: 'Draft', date: '2026-09-02' });
+      state.status = 'all';
+      document.querySelectorAll('[data-blstatus]').forEach((o) =>
+        o.classList.toggle('is-active', o.dataset.blstatus === 'all'));
+      render();
+    });
+
+    render();
+  }
+
+  /* ================= Website Settings ================= */
+  if (page === 'website-settings') {
+    tabs('wstab', { navigation: 'wsNavigation', content: 'wsContent', seo: 'wsSeo' });
+
+    /* --- Navigation --- */
+    const CATS = ['Top Main Nav', 'Top Left Nav', 'Top Right Nav', 'Rent', 'Buy', 'Land', 'Commercial', 'Footer'];
+    const AREAS = ['Ubud', 'Canggu', 'Uluwatu', 'Seminyak', 'Sanur', 'Sibang', 'Pejeng', 'Nyuh Kuning', 'Penestanan', 'Kedewatan'];
+    const NAVITEMS = [];
+    CATS.forEach((cat, ci) => {
+      AREAS.forEach((area, ai) => {
+        if ((ci + ai) % 3 === 0) return;
+        NAVITEMS.push({
+          category: cat,
+          type: ci < 3 ? 'Page' : 'Filter',
+          primary: cat === 'Footer' ? 'About' : area,
+          secondary: ci < 3 ? '—' : (ai % 2 ? 'Villas' : 'Land'),
+          slug: '/' + cat.toLowerCase().replace(/\s+/g, '-') + '/' + area.toLowerCase().replace(/\s+/g, '-'),
+          sort: (ai + 1) * 10
+        });
+      });
+    });
+
+    const navState = { q: '', category: 'all' };
+    let navSorter;
+
+    function renderNav() {
+      const rows = NAVITEMS.filter((n) => {
+        if (navState.category !== 'all' && n.category !== navState.category) return false;
+        if (navState.q && !(n.primary + ' ' + n.secondary + ' ' + n.slug).toLowerCase().includes(navState.q)) return false;
+        return true;
+      });
+      const list = navSorter ? navSorter.apply(rows) : rows;
+      el('wsNavBody').innerHTML = list.map((n) =>
+        '<tr><td>' + n.category + '</td><td>' + n.type + '</td>' +
+        '<td><strong>' + n.primary + '</strong></td><td>' + n.secondary + '</td>' +
+        '<td><code class="ws-slug">' + n.slug + '</code></td>' +
+        '<td class="rp-num">' + n.sort + '</td>' +
+        '<td><button type="button" class="icon-action" aria-label="Edit nav item">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>' +
+        '</button></td></tr>').join('');
+      el('wsNavEmpty').hidden = list.length !== 0;
+      el('wsNavCount').textContent = String(list.length);
+    }
+
+    navSorter = sortable(el('wsNavigation'), null, renderNav, 'primary');
+    el('wsNavSearch').addEventListener('input', (e) => {
+      navState.q = e.target.value.trim().toLowerCase();
+      renderNav();
+    });
+    el('wsNavCategory').addEventListener('change', (e) => {
+      navState.category = e.target.value;
+      renderNav();
+    });
+    el('wsNavAdd').addEventListener('click', () => {
+      NAVITEMS.unshift({ category: 'Top Main Nav', type: 'Page', primary: 'New item',
+                         secondary: '—', slug: '/new-item', sort: 0 });
+      renderNav();
+      toast('wsToast', 'Nav item added — edit it to finish');
+    });
+
+    /* --- Site content: price sliders --- */
+    const SLIDERS = [
+      ['Rent — Ubud (IDR/year)', '10,000,000', '500,000,000'],
+      ['Rent — Canggu (IDR/year)', '15,000,000', '800,000,000'],
+      ['Buy — Villa (USD)', '90,000', '3,500,000'],
+      ['Buy — Land (IDR/are)', '150,000,000', '2,500,000,000'],
+      ['Commercial (IDR/year)', '50,000,000', '1,200,000,000'],
+      ['Bedrooms', '1', '8']
+    ];
+    el('wsSliders').innerHTML = SLIDERS.map(([label, min, max]) =>
+      '<div class="ws-slider"><span class="ws-slider__label">' + label + '</span>' +
+      '<label class="field"><span class="field__label">Min</span><input type="text" class="input-field" value="' + min + '"></label>' +
+      '<label class="field"><span class="field__label">Max</span><input type="text" class="input-field" value="' + max + '"></label></div>').join('');
+
+    /* --- Site content: text blocks, grouped by page --- */
+    const TEXT = {
+      'Homepage': [
+        ['Hero | Title', 'Villas in Bali, handled by people who live here'],
+        ['Hero | Subtitle', 'Long-term rentals and property sales across Ubud and beyond.'],
+        ['Section 2 | Properties Listed', '400+'],
+        ['Section 2 | Happy Clients', '1,200+'],
+        ['Section 2 | Languages Spoken', '5'],
+        ['Section 2 | Contact Us Button', 'Talk to us']
+      ],
+      'About Us': [
+        ['Top section | Small cap description', 'Who we are'],
+        ['Title', 'About Banyan'],
+        ['Body', 'We have been finding homes in Bali since 2018 — first for friends, then for everyone they sent our way.'],
+        ['Contact us', 'Come and see us in Nyuh Kuning, or send a message. We answer.']
+      ],
+      'Footer': [
+        ['About Banyan | Title', 'Banyan Properties'],
+        ['About Banyan | Description', 'Villa rentals and property sales in Ubud, Bali.'],
+        ['Explore other articles | Button', 'Read the blog']
+      ]
+    };
+
+    function renderText(filter) {
+      const q = (filter || '').toLowerCase();
+      let any = false;
+      el('wsTextGroups').innerHTML = Object.entries(TEXT).map(([group, rows]) => {
+        const shown = rows.filter(([k, v]) => !q || (k + ' ' + v).toLowerCase().includes(q));
+        if (!shown.length) return '';
+        any = true;
+        return '<section class="ws-textgroup"><h3 class="sb-h4">' + group + '</h3>' +
+          shown.map(([k, v]) =>
+            '<label class="field"><span class="field__label">' + k + '</span>' +
+            (v.length > 60
+              ? '<textarea class="input-field input-field--area" rows="2">' + v + '</textarea>'
+              : '<input type="text" class="input-field" value="' + v.replace(/"/g, '&quot;') + '">') +
+            '</label>').join('') +
+          '</section>';
+      }).join('');
+      el('wsTextEmpty').hidden = any;
+    }
+
+    el('wsTextSearch').addEventListener('input', (e) => renderText(e.target.value.trim()));
+
+    ['wsSaveSliders', 'wsSaveText', 'wsSaveSeo'].forEach((id) =>
+      el(id).addEventListener('click', () => toast('wsToast', 'Saved')));
+
+    renderNav();
+    renderText('');
+  }
+
+  /* ================= User Management ================= */
+  if (page === 'settings-users') {
+    const USERS = [
+      { name: 'Andries de Vos', email: 'andries@banyan.com', role: 'Admin', status: 'Active', last: 'Today, 09:12' },
+      { name: 'Umar Bilal', email: 'umar@banyan.com', role: 'Admin', status: 'Active', last: 'Today, 08:40' },
+      { name: 'Ratna Dewi', email: 'ratna@banyan.com', role: 'Agent', status: 'Active', last: 'Today, 10:02' },
+      { name: 'Berry Wijaya', email: 'berry@banyan.com', role: 'Agent', status: 'Active', last: 'Yesterday, 17:26' },
+      { name: 'Made Putra', email: 'made@banyan.com', role: 'Agent', status: 'Suspended', last: '14 Aug 2026' },
+      { name: 'Kashif Ali', email: 'kashif@banyan.com', role: 'Ops', status: 'Active', last: 'Today, 07:55' },
+      { name: 'Ketut Sari', email: 'ketut@banyan.com', role: 'Marketing', status: 'Invited', last: 'never' }
+    ];
+
+    const SESSIONS = [
+      ['Ratna Dewi', 'Chrome on macOS · Ubud', 'Active now'],
+      ['Kashif Ali', 'Safari on iPhone · Gianyar', '2 hours ago'],
+      ['Andries de Vos', 'Chrome on Windows · Amsterdam', 'Yesterday']
+    ];
+
+    const state = { q: '', role: 'all' };
+    let sorter;
+
+    function render() {
+      const rows = USERS.filter((u) => {
+        if (state.role !== 'all') {
+          if (state.role === 'Invited' ? u.status !== 'Invited' : u.role !== state.role) return false;
+        }
+        if (state.q && !(u.name + ' ' + u.email).toLowerCase().includes(state.q)) return false;
+        return true;
+      });
+      const list = sorter ? sorter.apply(rows) : rows;
+      el('umBody').innerHTML = list.map((u) =>
+        '<tr><td><div class="opp-client"><span class="opp-avatar">' + u.name.charAt(0) + '</span>' +
+          '<strong>' + u.name + '</strong></div></td>' +
+        '<td class="rp-muted">' + u.email + '</td>' +
+        '<td><span class="opp-chip opp-chip--stage">' + u.role + '</span></td>' +
+        '<td><span class="status-pill"><span class="action-dot action-dot--' +
+          (u.status === 'Active' ? 'green' : u.status === 'Invited' ? 'orange' : 'red') +
+          '"></span>' + u.status + '</span></td>' +
+        '<td class="rp-muted">' + u.last + '</td>' +
+        '<td><button type="button" class="icon-action" aria-label="Edit user">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>' +
+        '</button></td></tr>').join('');
+      el('umEmpty').hidden = list.length !== 0;
+    }
+
+    el('umSessions').innerHTML = SESSIONS.map(([who, where, when]) =>
+      '<li class="op-listitem"><div><strong>' + who + '</strong><span class="field-hint">' + where + '</span></div>' +
+      '<span class="op-when">' + when + '</span></li>').join('');
+
+    sorter = sortable(document.querySelector('.data-table'), null, render, 'name');
+    el('umSearch').addEventListener('input', (e) => {
+      state.q = e.target.value.trim().toLowerCase();
+      render();
+    });
+    document.querySelectorAll('[data-umrole]').forEach((t) =>
+      t.addEventListener('click', () => {
+        state.role = t.dataset.umrole;
+        document.querySelectorAll('[data-umrole]').forEach((o) =>
+          o.classList.toggle('is-active', o.dataset.umrole === state.role));
+        render();
+      }));
+    el('umRevokeAll').addEventListener('click', () => {
+      el('umSessions').innerHTML = '<li class="op-listitem"><span class="field-hint">Only your own session is open.</span></li>';
+      toast('umToast', 'All other sessions signed out');
+    });
+
+    const d = drawer('umDrawer', 'umBackdrop');
+    el('umInvite').addEventListener('click', () => {
+      d.open();
+      el('umName').focus();
+    });
+    el('umClose').addEventListener('click', d.close);
+    el('umCancel').addEventListener('click', d.close);
+    el('umSave').addEventListener('click', () => {
+      const name = el('umName').value.trim();
+      const email = el('umEmail').value.trim();
+      if (!name || !email) {
+        (name ? el('umEmail') : el('umName')).focus();
+        return;
+      }
+      USERS.push({ name, email, role: el('umRole').value, status: 'Invited', last: 'never' });
+      el('umName').value = '';
+      el('umEmail').value = '';
+      render();
+      d.close();
+      toast('umToast', 'Invitation sent to ' + email);
+    });
+
+    render();
+  }
+
+  /* ================= OMS Settings ================= */
+  if (page === 'settings-oms') {
+    tabs('ostab', {
+      system: 'osSystem', sales: 'osSales', communities: 'osCommunities',
+      backups: 'osBackups', logs: 'osLogs'
+    });
+
+    el('osIntegrations').innerHTML = [
+      ['Google Workspace', 'Connected · drive, calendar, mail', 'green'],
+      ['Airtable', 'Connected · one-way import', 'green'],
+      ['PostHog', 'Connected · website analytics', 'green'],
+      ['WhatsApp Business', 'Needs re-authentication', 'orange'],
+      ['Xero', 'Not connected', 'none']
+    ].map(([name, note, dot]) =>
+      '<li class="op-listitem"><div><strong>' + name + '</strong><span class="field-hint">' + note + '</span></div>' +
+      '<span class="status-pill"><span class="action-dot action-dot--' + dot + '"></span>' +
+      (dot === 'green' ? 'OK' : dot === 'orange' ? 'Action needed' : 'Off') + '</span></li>').join('');
+
+    el('osStages').innerHTML = ['New', 'In Contact', 'Viewing', 'Negotiation', 'Closed'].map((s, i) =>
+      '<li class="op-listitem"><div><strong>' + s + '</strong>' +
+      '<span class="field-hint">Position ' + (i + 1) + '</span></div>' +
+      '<div class="op-listitem__actions"><button type="button" class="btn btn-ghost">Rename</button>' +
+      '<button type="button" class="btn btn-ghost">Remove</button></div></li>').join('');
+
+    el('osCommBody').innerHTML = [
+      ['Banyan Ubud Rentals', 'WhatsApp', 'Daily 04:00', '2 Sep 2026'],
+      ['Bali Long Stay', 'Telegram', 'Daily 04:00', '2 Sep 2026'],
+      ['Ubud Villas & Land', 'Facebook', 'Daily 04:00', '2 Sep 2026'],
+      ['Bali Co-brokers', 'Telegram', 'Paused', 'never']
+    ].map(([n, p, s, l]) =>
+      '<tr><td><strong>' + n + '</strong></td><td>' + p + '</td><td>' + s + '</td>' +
+      '<td class="rp-muted">' + l + '</td>' +
+      '<td><button type="button" class="icon-action" aria-label="Edit community">' +
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>' +
+      '</button></td></tr>').join('');
+
+    el('osBackupBody').innerHTML = [
+      ['2 Sep 2026, 02:00', '412 MB', 'Nightly', 'Complete'],
+      ['1 Sep 2026, 02:00', '409 MB', 'Nightly', 'Complete'],
+      ['31 Aug 2026, 02:00', '407 MB', 'Nightly', 'Complete'],
+      ['30 Aug 2026, 14:22', '406 MB', 'Manual', 'Complete']
+    ].map(([when, size, type, status]) =>
+      '<tr><td>' + when + '</td><td class="rp-num">' + size + '</td><td>' + type + '</td>' +
+      '<td><span class="status-pill"><span class="action-dot action-dot--green"></span>' + status + '</span></td>' +
+      '<td><button type="button" class="btn btn-ghost">Download</button></td></tr>').join('');
+
+    const LOGS = [
+      ['2 Sep, 09:14', 'Info', 'sync', 'Community snapshot completed — 8 communities'],
+      ['2 Sep, 04:00', 'Info', 'sync', 'Nightly Airtable import — 12 listings updated'],
+      ['2 Sep, 02:00', 'Info', 'backup', 'Nightly backup complete (412 MB)'],
+      ['1 Sep, 22:41', 'Warning', 'publisher', 'WhatsApp Groups session expired — re-authentication needed'],
+      ['1 Sep, 18:03', 'Error', 'scout', 'Facebook Groups collector timed out after 30s'],
+      ['1 Sep, 12:20', 'Info', 'auth', 'User ketut@banyan.com invited by andries@banyan.com'],
+      ['1 Sep, 09:00', 'Warning', 'fx', 'Exchange rate refresh returned stale data — kept previous']
+    ];
+    let level = 'all';
+    function renderLogs() {
+      const rows = LOGS.filter((l) => level === 'all' || l[1] === level);
+      el('osLogBody').innerHTML = rows.map(([when, lv, src, msg]) =>
+        '<tr><td class="rp-muted">' + when + '</td>' +
+        '<td><span class="status-pill"><span class="action-dot action-dot--' +
+          (lv === 'Error' ? 'red' : lv === 'Warning' ? 'orange' : 'none') + '"></span>' + lv + '</span></td>' +
+        '<td>' + src + '</td><td>' + msg + '</td></tr>').join('');
+      el('osLogEmpty').hidden = rows.length !== 0;
+    }
+    el('osLogLevel').addEventListener('change', (e) => {
+      level = e.target.value;
+      renderLogs();
+    });
+    renderLogs();
+
+    document.querySelectorAll('[data-os-save]').forEach((b) =>
+      b.addEventListener('click', () => toast('osToast', 'Saved')));
+    el('osBackupNow').addEventListener('click', () => toast('osToast', 'Backup started — this runs in the background'));
+  }
+});

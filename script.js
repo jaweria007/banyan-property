@@ -2621,7 +2621,10 @@ document.addEventListener('DOMContentLoaded', () => {
             (c.live
               ? '<span class="sb-state sb-state--live"><span class="sb-newpill__dot"></span>Listening</span>'
               : '<span class="sb-state sb-state--idle">Not added yet</span>') +
-            '<span class="sb-matchcount"><strong>' + total + '</strong> matches</span>' +
+            '<button type="button" class="sb-matchcount" data-peek="' + c.id + '"' +
+              (total ? '' : ' disabled') + ' title="See which properties match">' +
+              '<strong>' + total + '</strong> matches' + (total ? '<span class="sb-peekchev"></span>' : '') +
+            '</button>' +
             '<span class="sb-hint">Last checked ' + fmtDate(c.lastChecked) + '</span>' +
             (c.live
               ? (unreviewed
@@ -2631,6 +2634,23 @@ document.addEventListener('DOMContentLoaded', () => {
               : (fresh ? '<span class="sb-newbadge">+' + fresh + ' NEW when added</span>' : '')) +
           '</div>' +
         '</header>' +
+
+        // what those matches actually are, without leaving the page
+        '<div class="sb-peek" id="peek-' + c.id + '" hidden>' +
+          '<p class="sb-peek__title">These ' + total + ' properties match right now</p>' +
+          '<ul class="sb-peek__list">' +
+            matchesFor(c).map(function (p) {
+              var isNew = p.added > c.lastChecked;
+              return '<li class="sb-peek__row' + (isNew ? ' is-new' : '') + '">' +
+                '<span class="sb-peek__name">' + p.name + (isNew ? '<span class="sb-peek__new">NEW</span>' : '') + '</span>' +
+                '<span class="sb-peek__meta">' + IDR(p.price) + ' · ' + p.beds + ' bed · ' + p.area + '</span>' +
+              '</li>';
+            }).join('') +
+          '</ul>' +
+          (c.live
+            ? '<p class="field-hint">Already in Selection — review them there.</p>'
+            : '<p class="field-hint">Nothing is added until you press the button below.</p>') +
+        '</div>' +
 
         '<div class="sb-criteria__body">' +
           '<div class="drawer-row drawer-row--2">' +
@@ -2909,6 +2929,16 @@ document.addEventListener('DOMContentLoaded', () => {
       c.live = true;
       renderAll();
       goto('selection');
+      return;
+    }
+
+    const peek = e.target.closest('[data-peek]');
+    if (peek) {
+      const panel = document.getElementById('peek-' + peek.dataset.peek);
+      if (panel) {
+        panel.hidden = !panel.hidden;
+        peek.classList.toggle('is-open', !panel.hidden);
+      }
       return;
     }
 

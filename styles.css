@@ -3185,12 +3185,23 @@ body[data-page="listings"] .page-count {
     flex: 1;
   }
 
+  /* On a narrow card the side-by-side layout squeezes the photo into a
+     tall strip. Stack it: photo on top, details beneath. */
   .list-card {
+    flex-direction: column;
+    align-items: stretch;
     padding: 0 18px 18px;
   }
 
   .list-card__thumb {
+    flex: 0 0 auto;
+    height: 190px;
     margin: 0 -18px 16px;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+
+  .list-card__body {
+    padding-left: 0;
   }
 
   .list-card__price-row {
@@ -12585,4 +12596,108 @@ body[data-page="overview"] .attention-card__value {
   opacity: 0.45;
   cursor: not-allowed;
   transform: none;
+}
+
+/* --- The match count opens a preview of what it means --- */
+.sb-matchcount {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.86rem;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.16s var(--ease), background 0.16s var(--ease);
+}
+
+.sb-matchcount:hover:not(:disabled) {
+  border-color: var(--green-accent);
+  background: rgba(111, 208, 164, 0.1);
+}
+
+.sb-matchcount:disabled {
+  cursor: default;
+  color: var(--muted);
+}
+
+.sb-peekchev {
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.2s var(--ease);
+  opacity: 0.6;
+}
+
+.sb-matchcount.is-open .sb-peekchev {
+  transform: rotate(-135deg) translate(-3px, -3px);
+}
+
+.sb-peek {
+  padding: 14px 18px 16px;
+  border-top: 1px solid var(--line-soft);
+  background: #fbfaf7;
+}
+
+.sb-peek__title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.sb-peek__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.sb-peek__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding: 8px 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 0.84rem;
+}
+
+.sb-peek__row.is-new {
+  border-color: rgba(214, 158, 46, 0.5);
+}
+
+.sb-peek__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.sb-peek__new {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  background: #d69e2e;
+  color: #fff;
+}
+
+.sb-peek__meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
 }

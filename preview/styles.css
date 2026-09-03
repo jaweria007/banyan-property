@@ -12456,3 +12456,126 @@ body[data-page="overview"] .attention-card__value {
   opacity: 0.45;
   pointer-events: none;
 }
+
+/* A collapsed search says where it stands without being opened */
+.sb-state {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.sb-state--live {
+  background: rgba(47, 133, 90, 0.14);
+  color: #2f855a;
+}
+
+.sb-state--live .sb-newpill__dot {
+  background: #2f855a;
+}
+
+.sb-state--idle {
+  background: #f1f3f2;
+  color: var(--muted);
+}
+
+/* The review badge is a shortcut into Selection, so it looks pressable */
+.sb-newbadge--btn {
+  border: 1px solid rgba(214, 158, 46, 0.5);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.16s var(--ease);
+}
+
+.sb-newbadge--btn:hover {
+  background: rgba(214, 158, 46, 0.28);
+}
+
+/* --- Saved search: name is editable in place, tools sit beside it --- */
+.sb-criteria__left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.sb-criteria__toggle {
+  flex-shrink: 0;
+  padding: 6px;
+}
+
+.sb-criteria__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 340px;
+  padding: 6px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green);
+  transition: border-color 0.16s var(--ease), background 0.16s var(--ease);
+}
+
+.sb-criteria__name:hover {
+  border-color: var(--card-border);
+  background: #fbfaf7;
+}
+
+.sb-criteria__name:focus {
+  outline: none;
+  border-color: var(--green-accent);
+  background: var(--surface);
+  box-shadow: 0 0 0 3px rgba(111, 208, 164, 0.18);
+}
+
+.sb-criteria__tools {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.16s var(--ease);
+}
+
+.sb-criteria:hover .sb-criteria__tools,
+.sb-criteria__left:focus-within .sb-criteria__tools {
+  opacity: 1;
+}
+
+.sb-tool {
+  border: none;
+  background: none;
+  padding: 5px 9px;
+  border-radius: 7px;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sb-tool:hover {
+  background: #f1f3f2;
+  color: var(--green);
+}
+
+.sb-tool--danger:hover {
+  background: rgba(192, 57, 43, 0.1);
+  color: #c0392b;
+}
+
+/* A search nobody has narrowed yet says so */
+.sb-warn {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #975a16;
+}

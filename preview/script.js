@@ -4420,8 +4420,29 @@ document.addEventListener('DOMContentLoaded', () => {
         el('pbNewLabel').textContent = mode === 'channel' ? 'Add channel' : 'Create campaign';
       }));
 
-    el('pbChannelPick').innerHTML = CHANNELS.map((c) =>
-      '<label class="tag-check"><input type="checkbox"><span>' + c.type + ' · ' + c.label + '</span></label>').join('');
+    // Staging offers every listing here; these are real entries from the portfolio
+    const LISTINGS = [
+      'BUY-1301 · Spacious Luxury Villa with Separate Guest House in Singakerta',
+      'BUY-1241 · 1 Bedroom exclusive Villa',
+      'BUY-1212 · 2 Bedroom Off Plan Boutique Villa in Sayan',
+      'BUY-1186 · Brand New 2 Bedroom Villa in Singakerta',
+      'BUY-1192 · 1 Bedroom Modern Tropical Villa in Bingin',
+      'BUY-1193 · 2 Bedroom Modern Tropical Villa in Bingin (off plan)',
+      'BUY-1199 · 2 Bedroom Villa Next to Nyang Nyang Beach',
+      'BUY-1221 · 3 Bedroom Ubud River Escape near Nyuh Kuning',
+      'BUY-1229 · 2 Story Villa in Nyuh Kuning with 6 Years Lease',
+      'BUY-1237 · 2 bedrooms sanctuary in Pejeng',
+      'LAND-1252 · 4 Are Singakerta — 4 are land in central Singakerta',
+      'LAND-1259 · 18 are Yellow Zone Land in Sayan',
+      'LAND-1261 · 24.5 Are Pink Zone Land in Sayan'
+    ];
+    const listingSel = el('pbListing');
+    listingSel.appendChild(new Option('—', ''));
+    LISTINGS.forEach((l) => listingSel.appendChild(new Option(l, l)));
+
+    const CHANNEL_TYPES = ['Facebook Page', 'Instagram', 'Telegram', 'WhatsApp Groups', 'Facebook Groups', 'TikTok'];
+    el('pbChannelPick').innerHTML = CHANNEL_TYPES.map((t) =>
+      '<label class="tag-check"><input type="checkbox"><span>' + t + '</span></label>').join('');
 
     el('pbNew').addEventListener('click', () => {
       const isCh = mode === 'channel';
@@ -4464,19 +4485,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ================= Blog ================= */
   if (page === 'marketing-blog') {
+    let blogSeq = 240;
     const ARTICLES = [
-      { title: 'What a long-term rental in Ubud actually costs in 2026', category: 'Renting guide', author: 'Ratna', status: 'Published', date: '2026-08-28' },
-      { title: 'Leasehold vs freehold: what foreigners can really buy', category: 'Buying guide', author: 'Andries', status: 'Published', date: '2026-08-21' },
-      { title: 'Living near Green School — the honest version', category: 'Living in Bali', author: 'Berry', status: 'Published', date: '2026-08-14' },
-      { title: 'Ubud market update — Q3 2026', category: 'Market update', author: 'Andries', status: 'Published', date: '2026-08-02' },
-      { title: 'Five villages worth considering instead of central Ubud', category: 'Living in Bali', author: 'Ratna', status: 'Scheduled', date: '2026-09-08' },
-      { title: 'How our shortlists work', category: 'Renting guide', author: 'Berry', status: 'Scheduled', date: '2026-09-15' },
-      { title: 'Zoning explained without the jargon', category: 'Buying guide', author: 'Andries', status: 'In review', date: '2026-09-01' },
-      { title: 'What a good notary does for you', category: 'Buying guide', author: 'Kashif', status: 'In review', date: '2026-08-30' },
-      { title: 'Bringing pets to Bali', category: 'Living in Bali', author: 'Ratna', status: 'Draft', date: '2026-08-27' },
-      { title: 'The Banyan community groups', category: 'Community', author: 'Berry', status: 'Draft', date: '2026-08-19' },
-      { title: 'Wet season and what it means for your villa', category: 'Living in Bali', author: 'Kashif', status: 'Draft', date: '2026-08-11' },
-      { title: 'Rice field views: which ones are protected', category: 'Market update', author: 'Andries', status: 'Draft', date: '2026-07-29' }
+      { id: 'BLOG-0231', featured: true,  title: 'What a long-term rental in Ubud actually costs in 2026', category: 'Renting guide', author: 'Ratna', status: 'Published', date: '2026-08-28' },
+      { id: 'BLOG-0230', featured: true,  title: 'Leasehold vs freehold: what foreigners can really buy', category: 'Buying guide', author: 'Andries', status: 'Published', date: '2026-08-21' },
+      { id: 'BLOG-0229', featured: false, title: 'Living near Green School — the honest version', category: 'Living in Bali', author: 'Berry', status: 'Published', date: '2026-08-14' },
+      { id: 'BLOG-0228', featured: true,  title: 'Ubud market update — Q3 2026', category: 'Market update', author: 'Andries', status: 'Published', date: '2026-08-02' },
+      { id: 'BLOG-0227', featured: false, title: 'Five villages worth considering instead of central Ubud', category: 'Living in Bali', author: 'Ratna', status: 'Scheduled', date: '2026-09-08' },
+      { id: 'BLOG-0226', featured: false, title: 'How our shortlists work', category: 'Renting guide', author: 'Berry', status: 'Scheduled', date: '2026-09-15' },
+      { id: 'BLOG-0225', featured: false, title: 'Zoning explained without the jargon', category: 'Buying guide', author: 'Andries', status: 'In review', date: '2026-09-01' },
+      { id: 'BLOG-0224', featured: false, title: 'What a good notary does for you', category: 'Buying guide', author: 'Kashif', status: 'In review', date: '2026-08-30' },
+      { id: 'BLOG-0223', featured: false, title: 'Bringing pets to Bali', category: 'Living in Bali', author: 'Ratna', status: 'Draft', date: '2026-08-27' },
+      { id: 'BLOG-0222', featured: false, title: 'The Banyan community groups', category: 'Community', author: 'Berry', status: 'Draft', date: '2026-08-19' },
+      { id: 'BLOG-0221', featured: false, title: 'Wet season and what it means for your villa', category: 'Living in Bali', author: 'Kashif', status: 'Draft', date: '2026-08-11' },
+      { id: 'BLOG-0220', featured: false, title: 'Rice field views: which ones are protected', category: 'Market update', author: 'Andries', status: 'Draft', date: '2026-07-29' }
     ];
 
     const state = { q: '', status: 'all', category: 'all', author: 'all' };
@@ -4493,11 +4515,14 @@ document.addEventListener('DOMContentLoaded', () => {
         return true;
       });
       const list = sorter ? sorter.apply(rows) : rows;
-      el('blBody').innerHTML = list.map((a) =>
-        '<tr><td><strong>' + a.title + '</strong></td>' +
+      el('blBody').innerHTML = list.map((a, i) =>
+        '<tr><td><code class="ws-slug">' + a.id + '</code></td>' +
+        '<td><strong>' + a.title + '</strong></td>' +
         '<td>' + a.category + '</td>' +
         '<td>' + a.author + '</td>' +
         '<td><span class="status-pill"><span class="action-dot action-dot--' + cls(a.status) + '"></span>' + a.status + '</span></td>' +
+        '<td><button type="button" class="bl-star' + (a.featured ? ' is-on' : '') + '" data-bl="' + a.id + '" aria-pressed="' + a.featured + '" aria-label="Feature this article">' +
+          (a.featured ? '★' : '☆') + '</button></td>' +
         '<td class="rp-muted">' + new Date(a.date + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) + '</td>' +
         '<td><button type="button" class="icon-action" aria-label="Edit article">' +
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>' +
@@ -4523,8 +4548,17 @@ document.addEventListener('DOMContentLoaded', () => {
           o.classList.toggle('is-active', o.dataset.blstatus === state.status));
         render();
       }));
+    el('blBody').addEventListener('click', (e) => {
+      const star = e.target.closest('.bl-star');
+      if (!star) return;
+      const a = ARTICLES.find((x) => x.id === star.dataset.bl);
+      a.featured = !a.featured;
+      render();
+    });
+
     el('blNew').addEventListener('click', () => {
-      ARTICLES.unshift({ title: 'Untitled article', category: 'Living in Bali', author: 'Ratna',
+      ARTICLES.unshift({ id: 'BLOG-0' + (++blogSeq), featured: false, title: 'Untitled article',
+                         category: 'Living in Bali', author: 'Ratna',
                          status: 'Draft', date: '2026-09-02' });
       state.status = 'all';
       document.querySelectorAll('[data-blstatus]').forEach((o) =>
@@ -4650,22 +4684,53 @@ document.addEventListener('DOMContentLoaded', () => {
       '<label class="field"><span class="field__label">Min</span><input type="text" class="input-field" value="' + min + '"></label>' +
       '<label class="field"><span class="field__label">Max</span><input type="text" class="input-field" value="' + max + '"></label></div>').join('');
 
-    /* --- Site content: text blocks, grouped by page --- */
+    /* --- Site content: text blocks, grouped by the page they appear on.
+       Keys mirror the staging Site Content tab so the wiring is one-to-one. --- */
+    const SERVICES = ['Villas for Rent', 'Villas for Sale', 'Lands for Sale',
+                      'Commercial for Sale', 'Real Estate Advisory', 'Management'];
+    const REGIONS = ['Ubud', 'the Canggu, Kuta, Tanah Lot corridor', 'the Bukit area (Uluwatu, Nusa Dua, Jimbaran)',
+                     'Sanur', 'Central Bali (Kintamani, Bedugul, Munduk, Jatiluwih)',
+                     'East Bali (Amed, Candidasa, Sidemen)', 'North Bali (Lovina, Pemuteran, Singaraja)',
+                     'West Bali (Medewi, Balian, Pekutatan)', 'Denpasar & Reno',
+                     'the Nusa Islands (Lembongan, Ceningan, Penida)'];
+
     const TEXT = {
       'Homepage': [
         ['Hero | Title', 'Villas in Bali, handled by people who live here'],
         ['Hero | Subtitle', 'Long-term rentals and property sales across Ubud and beyond.'],
-        ['Section 2 | Properties Listed', '400+'],
-        ['Section 2 | Happy Clients', '1,200+'],
-        ['Section 2 | Languages Spoken', '5'],
-        ['Section 2 | Contact Us Button', 'Talk to us']
+        ['Link to Marketplace Button | Button', 'Browse properties']
+      ],
+      'Homepage Section 2': [
+        ['Properties Listed | Small cap description', '400+ properties listed'],
+        ['Happy Clients | Small cap description', '1,200+ happy clients'],
+        ['Years in Bali | Small cap description', '8 years in Bali'],
+        ['Languages Spoken | Small cap description', '5 languages spoken'],
+        ['Contact Us Button | Button', 'Talk to us'],
+        ['Link to Marketplace Button | Button', 'See what is available']
+      ],
+      'Homepage Section 3 — Our Services': SERVICES.reduce((acc, sv) => {
+        acc.push(['Our Services ' + sv + ' | Title', sv]);
+        acc.push(['Our Services ' + sv + ' | Description',
+                  'What we do for ' + sv.toLowerCase() + ', in plain terms.']);
+        return acc;
+      }, []),
+      'Homepage Section 4 — Latest Blogs': [
+        ['Latest Blogs | Title', 'From the blog'],
+        ['Latest Blogs | Description', 'What we have learned living and working here.'],
+        ['Explore other articles | Button', 'Read the blog']
       ],
       'About Us': [
         ['Top section | Small cap description', 'Who we are'],
-        ['Title', 'About Banyan'],
-        ['Body', 'We have been finding homes in Bali since 2018 — first for friends, then for everyone they sent our way.'],
-        ['Contact us', 'Come and see us in Nyuh Kuning, or send a message. We answer.']
+        ['About Banyan | Title', 'About Banyan'],
+        ['About Banyan | Description', 'Villa rentals and property sales in Ubud, Bali.'],
+        ['Body | Long text with paragraphs',
+         'We have been finding homes in Bali since 2018 — first for friends, then for everyone they sent our way.'],
+        ['Contact us | Long text with paragraphs',
+         'Come and see us in Nyuh Kuning, or send a message. We answer.'],
+        ['Contact Us Button | Button', 'Get in touch']
       ],
+      'Marketplace — Why choose': REGIONS.map((r) =>
+        ['Why choose ' + r + '?', 'What makes ' + r.replace(/^the /, '') + ' worth considering.']),
       'Footer': [
         ['About Banyan | Title', 'Banyan Properties'],
         ['About Banyan | Description', 'Villa rentals and property sales in Ubud, Bali.'],
@@ -4697,96 +4762,116 @@ document.addEventListener('DOMContentLoaded', () => {
     ['wsSaveSliders', 'wsSaveText', 'wsSaveSeo'].forEach((id) =>
       el(id).addEventListener('click', () => toast('wsToast', 'Saved')));
 
+    /* --- Site content: website images (read-only reference, as in staging) --- */
+    const IMG_BASE = 'https://banyan-images.morning-truth-a68a.workers.dev';
+    const IMAGES = [
+      ['All Listing Images', 'Banyan image watermark', IMG_BASE + '/drive/1qex9xSpyVYK629fiskPFGSNCvIcS7kH9?sz=w1200'],
+      ['Header/Footer', 'Banyan Properties logo', IMG_BASE + '/drive/1jOc7Sqn6IZP7U-OTeqL4dEVxZRkZxANB?sz=w1200'],
+      ['Homepage', 'Main cover video 1 — Balinese farmer walking in rice field', IMG_BASE + '/static/videos/1OepxWoRccWKB-I72cASAhmBAHAR0UrpV.mp4'],
+      ['Homepage', 'Main cover video 2 — Villa pool at sunrise', IMG_BASE + '/static/videos/2Kpr8YkTccWKB-I72cASAhmBAHAR0Urqk.mp4'],
+      ['Homepage', 'Section 2 background', IMG_BASE + '/drive/1Bq7XsPvYK629fiskPFGSNCvIcS7kH9a?sz=w1600'],
+      ['Our Services', 'Villas for Rent card', IMG_BASE + '/drive/1Cd8YtQwZL730gjtlQGHTOdWJdT8lI0b?sz=w1200'],
+      ['Our Services', 'Villas for Sale card', IMG_BASE + '/drive/1De9ZuRxAM841hkumRHIUPeXKeU9mJ1c?sz=w1200'],
+      ['Our Services', 'Lands for Sale card', IMG_BASE + '/drive/1EfA0vSyBN952iluvSIJVQfYLfV0nK2d?sz=w1200'],
+      ['About Us', 'Team photo', IMG_BASE + '/drive/1FgB1wTzCO063jmvwTJKWRgZMgW1oL3e?sz=w1600'],
+      ['Marketplace', 'Ubud region cover', IMG_BASE + '/drive/1GhC2xU0DP174knwxUKLXShANhX2pM4f?sz=w1200']
+    ];
+    el('wsImgBody').innerHTML = IMAGES.map(([section, label, url]) =>
+      '<tr><td>' + section + '</td><td><strong>' + label + '</strong></td>' +
+      '<td><a href="' + url + '" target="_blank" rel="noopener" class="ws-slug ws-imgurl">' + url + '</a></td></tr>').join('');
+    el('wsImgCount').textContent = String(IMAGES.length);
+
     renderNav();
     renderText('');
   }
 
   /* ================= User Management ================= */
   if (page === 'settings-users') {
+    const HUBS = ['home', 'listings', 'sales', 'relationships', 'marketing', 'settings', 'reporting'];
+    const LEVELS = ['none', 'view', 'edit', 'full'];
+
     const USERS = [
-      { name: 'Andries de Vos', email: 'andries@banyan.com', role: 'Admin', status: 'Active', last: 'Today, 09:12' },
-      { name: 'Umar Bilal', email: 'umar@banyan.com', role: 'Admin', status: 'Active', last: 'Today, 08:40' },
-      { name: 'Ratna Dewi', email: 'ratna@banyan.com', role: 'Agent', status: 'Active', last: 'Today, 10:02' },
-      { name: 'Berry Wijaya', email: 'berry@banyan.com', role: 'Agent', status: 'Active', last: 'Yesterday, 17:26' },
-      { name: 'Made Putra', email: 'made@banyan.com', role: 'Agent', status: 'Suspended', last: '14 Aug 2026' },
-      { name: 'Kashif Ali', email: 'kashif@banyan.com', role: 'Ops', status: 'Active', last: 'Today, 07:55' },
-      { name: 'Ketut Sari', email: 'ketut@banyan.com', role: 'Marketing', status: 'Invited', last: 'never' }
+      { email: 'umarbilalpersonal@gmail.com', role: 'super_admin',
+        access: { home: 'full', listings: 'full', sales: 'full', relationships: 'full', marketing: 'full', settings: 'full', reporting: 'full' } },
+      { email: 'andries@banyan.com', role: 'super_admin',
+        access: { home: 'full', listings: 'full', sales: 'full', relationships: 'full', marketing: 'full', settings: 'full', reporting: 'full' } },
+      { email: 'ratna@banyan.com', role: 'agent',
+        access: { home: 'view', listings: 'edit', sales: 'full', relationships: 'edit', marketing: 'view', settings: 'none', reporting: 'view' } },
+      { email: 'berry@banyan.com', role: 'agent',
+        access: { home: 'view', listings: 'edit', sales: 'full', relationships: 'edit', marketing: 'view', settings: 'none', reporting: 'view' } },
+      { email: 'kashif@banyan.com', role: 'ops',
+        access: { home: 'view', listings: 'edit', sales: 'view', relationships: 'edit', marketing: 'none', settings: 'none', reporting: 'none' } },
+      { email: 'made@banyan.com', role: 'agent',
+        access: { home: 'view', listings: 'view', sales: 'view', relationships: 'view', marketing: 'none', settings: 'none', reporting: 'none' } },
+      { email: 'ketut@banyan.com', role: 'invited',
+        access: { home: 'none', listings: 'none', sales: 'none', relationships: 'none', marketing: 'none', settings: 'none', reporting: 'none' } }
     ];
 
     const SESSIONS = [
-      ['Ratna Dewi', 'Chrome on macOS · Ubud', 'Active now'],
-      ['Kashif Ali', 'Safari on iPhone · Gianyar', '2 hours ago'],
-      ['Andries de Vos', 'Chrome on Windows · Amsterdam', 'Yesterday']
+      ['ratna@banyan.com', 'Chrome on macOS · Ubud', 'Active now'],
+      ['kashif@banyan.com', 'Safari on iPhone · Gianyar', '2 hours ago'],
+      ['andries@banyan.com', 'Chrome on Windows · Amsterdam', 'Yesterday']
     ];
 
-    const state = { q: '', role: 'all' };
+    let q = '';
     let sorter;
 
+    // super_admin bypasses per-hub access, so its selects are disabled
+    const accessCell = (u, hub) =>
+      '<td><select class="inline-edit um-access" data-email="' + u.email + '" data-hub="' + hub + '"' +
+      (u.role === 'super_admin' ? ' disabled' : '') + '>' +
+      LEVELS.map((l) => '<option value="' + l + '"' +
+        ((u.role === 'super_admin' ? 'full' : u.access[hub]) === l ? ' selected' : '') +
+        '>' + l + '</option>').join('') + '</select></td>';
+
     function render() {
-      const rows = USERS.filter((u) => {
-        if (state.role !== 'all') {
-          if (state.role === 'Invited' ? u.status !== 'Invited' : u.role !== state.role) return false;
-        }
-        if (state.q && !(u.name + ' ' + u.email).toLowerCase().includes(state.q)) return false;
-        return true;
-      });
+      const rows = USERS.filter((u) => !q || u.email.toLowerCase().includes(q));
       const list = sorter ? sorter.apply(rows) : rows;
       el('umBody').innerHTML = list.map((u) =>
-        '<tr><td><div class="opp-client"><span class="opp-avatar">' + u.name.charAt(0) + '</span>' +
-          '<strong>' + u.name + '</strong></div></td>' +
-        '<td class="rp-muted">' + u.email + '</td>' +
-        '<td><span class="opp-chip opp-chip--stage">' + u.role + '</span></td>' +
-        '<td><span class="status-pill"><span class="action-dot action-dot--' +
-          (u.status === 'Active' ? 'green' : u.status === 'Invited' ? 'orange' : 'red') +
-          '"></span>' + u.status + '</span></td>' +
-        '<td class="rp-muted">' + u.last + '</td>' +
-        '<td><button type="button" class="icon-action" aria-label="Edit user">' +
-          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>' +
-        '</button></td></tr>').join('');
+        '<tr><td><strong>' + u.email + '</strong></td>' +
+        '<td><span class="opp-chip opp-chip--' + (u.role === 'super_admin' ? 'high' : u.role === 'invited' ? 'med' : 'stage') + '">' + u.role + '</span></td>' +
+        HUBS.map((h) => accessCell(u, h)).join('') + '</tr>').join('');
       el('umEmpty').hidden = list.length !== 0;
+      el('umCount').textContent = String(USERS.length);
     }
 
     el('umSessions').innerHTML = SESSIONS.map(([who, where, when]) =>
       '<li class="op-listitem"><div><strong>' + who + '</strong><span class="field-hint">' + where + '</span></div>' +
-      '<span class="op-when">' + when + '</span></li>').join('');
+      '<div class="op-listitem__actions"><span class="op-when">' + when + '</span>' +
+      '<button type="button" class="btn btn-ghost">Revoke</button></div></li>').join('');
 
-    sorter = sortable(document.querySelector('.data-table'), null, render, 'name');
+    sorter = sortable(document.querySelector('.um-table'), null, render, 'email');
     el('umSearch').addEventListener('input', (e) => {
-      state.q = e.target.value.trim().toLowerCase();
+      q = e.target.value.trim().toLowerCase();
       render();
     });
-    document.querySelectorAll('[data-umrole]').forEach((t) =>
-      t.addEventListener('click', () => {
-        state.role = t.dataset.umrole;
-        document.querySelectorAll('[data-umrole]').forEach((o) =>
-          o.classList.toggle('is-active', o.dataset.umrole === state.role));
-        render();
-      }));
-    el('umRevokeAll').addEventListener('click', () => {
-      el('umSessions').innerHTML = '<li class="op-listitem"><span class="field-hint">Only your own session is open.</span></li>';
-      toast('umToast', 'All other sessions signed out');
+
+    el('umBody').addEventListener('change', (e) => {
+      const sel = e.target.closest('.um-access');
+      if (!sel) return;
+      const u = USERS.find((x) => x.email === sel.dataset.email);
+      if (u) u.access[sel.dataset.hub] = sel.value;
     });
 
-    const d = drawer('umDrawer', 'umBackdrop');
     el('umInvite').addEventListener('click', () => {
-      d.open();
-      el('umName').focus();
-    });
-    el('umClose').addEventListener('click', d.close);
-    el('umCancel').addEventListener('click', d.close);
-    el('umSave').addEventListener('click', () => {
-      const name = el('umName').value.trim();
       const email = el('umEmail').value.trim();
-      if (!name || !email) {
-        (name ? el('umEmail') : el('umName')).focus();
+      const pass = el('umPass').value.trim();
+      if (!email || !pass) {
+        (email ? el('umPass') : el('umEmail')).focus();
         return;
       }
-      USERS.push({ name, email, role: el('umRole').value, status: 'Invited', last: 'never' });
-      el('umName').value = '';
+      USERS.push({ email, role: 'invited',
+        access: HUBS.reduce((a, h) => { a[h] = 'none'; return a; }, {}) });
       el('umEmail').value = '';
+      el('umPass').value = '';
       render();
-      d.close();
-      toast('umToast', 'Invitation sent to ' + email);
+      toast('umToast', 'Invited ' + email + ' — grant hub access in the table');
+    });
+
+    el('umSaveAccess').addEventListener('click', () => toast('umToast', 'Access saved'));
+    el('umRevokeAll').addEventListener('click', () => {
+      el('umSessions').innerHTML = '<li class="op-listitem"><span class="field-hint">Only your own session is open.</span></li>';
+      toast('umToast', 'All other sessions revoked');
     });
 
     render();
@@ -4799,53 +4884,131 @@ document.addEventListener('DOMContentLoaded', () => {
       backups: 'osBackups', logs: 'osLogs'
     });
 
-    el('osIntegrations').innerHTML = [
-      ['Google Workspace', 'Connected · drive, calendar, mail', 'green'],
-      ['Airtable', 'Connected · one-way import', 'green'],
-      ['PostHog', 'Connected · website analytics', 'green'],
-      ['WhatsApp Business', 'Needs re-authentication', 'orange'],
-      ['Xero', 'Not connected', 'none']
-    ].map(([name, note, dot]) =>
-      '<li class="op-listitem"><div><strong>' + name + '</strong><span class="field-hint">' + note + '</span></div>' +
-      '<span class="status-pill"><span class="action-dot action-dot--' + dot + '"></span>' +
-      (dot === 'green' ? 'OK' : dot === 'orange' ? 'Action needed' : 'Off') + '</span></li>').join('');
+    const rowList = (items) => items.map(([label, note]) =>
+      '<li class="op-listitem"><div><strong>' + label + '</strong>' +
+      (note ? '<span class="field-hint">' + note + '</span>' : '') + '</div>' +
+      '<div class="op-listitem__actions"><button type="button" class="btn btn-ghost">Rename</button>' +
+      '<button type="button" class="btn btn-ghost">Remove</button></div></li>').join('');
 
-    el('osStages').innerHTML = ['New', 'In Contact', 'Viewing', 'Negotiation', 'Closed'].map((s, i) =>
+    el('osInterests').innerHTML = rowList([
+      ['rent', 'Searches the rental inventory'],
+      ['sale', 'Searches villas for sale'],
+      ['land', 'Searches land listings'],
+      ['commercial', 'Searches commercial listings']
+    ]);
+
+    el('osObjectives').innerHTML = rowList([
+      ['Family & Lifestyle', ''], ['Investor (Passive Income)', ''], ['Retiree', ''],
+      ['Property Developer', ''], ['Land Banker', ''], ['Fix & Flip', ''],
+      ['Fix & Live', ''], ['Collector (No ROI)', '']
+    ]);
+
+    el('osStages').innerHTML = ['New', 'Qualified', 'Requirements Defined', 'Shortlist Active',
+      'Viewing', 'Negotiation', 'Contracts', 'Closed', 'Lost'].map((s, i) =>
       '<li class="op-listitem"><div><strong>' + s + '</strong>' +
       '<span class="field-hint">Position ' + (i + 1) + '</span></div>' +
       '<div class="op-listitem__actions"><button type="button" class="btn btn-ghost">Rename</button>' +
       '<button type="button" class="btn btn-ghost">Remove</button></div></li>').join('');
 
+    el('osTransactions').innerHTML = rowList([
+      ['Rental agreement', 'Document package: rental'],
+      ['Sale — leasehold', 'Document package: leasehold-sale'],
+      ['Sale — freehold', 'Document package: freehold-sale'],
+      ['Land sale', 'Document package: land'],
+      ['Management agreement', 'Document package: management']
+    ]);
+
+    el('osEvents').innerHTML = [
+      ['shortlist_published', 'Shortlist published', 'Shortlist'],
+      ['shortlist_viewed', 'Client opened the shortlist', 'Shortlist'],
+      ['favorite_added', 'Client favourited a property', 'Shortlist'],
+      ['viewing_logged', 'Viewing logged', 'Viewings'],
+      ['offer_made', 'Offer made', 'Offers'],
+      ['offer_accepted', 'Offer accepted', 'Offers'],
+      ['stage_changed', 'Stage changed', 'System'],
+      ['task_created', 'Task created', 'Tasks']
+    ].map(([t, l, c]) =>
+      '<tr><td><code class="ws-slug">' + t + '</code></td><td>' + l + '</td>' +
+      '<td><span class="opp-chip opp-chip--stage">' + c + '</span></td></tr>').join('');
+
+    el('osClauses').innerHTML = rowList([
+      ['Rental — standard library', '9 clauses'],
+      ['Leasehold sale — standard library', '14 clauses'],
+      ['Freehold sale — standard library', '12 clauses'],
+      ['Deposit and settlement', 'Clause · used by 3 libraries'],
+      ['Early termination', 'Clause · used by 2 libraries']
+    ]);
+
+    el('osTemplates').innerHTML = rowList([
+      ['3BR Ubud family home', 'IDR 20m–50m · Ubud · 3+ bedrooms · car access'],
+      ['Budget long-stay', 'IDR 10m–25m · any area · 2+ bedrooms'],
+      ['Freehold land, Ubud', 'Land · freehold · Ubud'],
+      ['Investor villa', 'Sale · pool · 3+ bedrooms · managed']
+    ]);
+
+    el('osNotify').innerHTML = [
+      ['shortlist_published', 'email', 'Client', true],
+      ['favorite_added', 'in_app', 'Assigned agent', true],
+      ['offer_accepted', 'whatsapp', 'Assigned agent', true],
+      ['task_overdue', 'in_app', 'Assignee', true],
+      ['lease_expiring', 'email', 'Ops', false]
+    ].map(([e, ch, who, on]) =>
+      '<tr><td><code class="ws-slug">' + e + '</code></td><td>' + ch + '</td><td>' + who + '</td>' +
+      '<td><label class="tag-check"><input type="checkbox"' + (on ? ' checked' : '') + '><span>' +
+      (on ? 'On' : 'Off') + '</span></label></td></tr>').join('');
+
+    el('osAutomation').innerHTML = [
+      ['Shortlist search finds new matches', 'Create a task for the agent, due in 48h', true],
+      ['Shortlist stays in draft', 'Create a task for the agent, due in 48h', true],
+      ['Opportunity created by a Scout', 'Set Action status to Triage', true],
+      ['Waiting follow-up date passes', 'Set Action status to Needs Action', true],
+      ['Lease expires within 90 days', 'Notify Ops', false]
+    ].map(([t, a, on]) =>
+      '<tr><td>' + t + '</td><td>' + a + '</td>' +
+      '<td><label class="tag-check"><input type="checkbox"' + (on ? ' checked' : '') + '><span>' +
+      (on ? 'On' : 'Off') + '</span></label></td></tr>').join('');
+
     el('osCommBody').innerHTML = [
-      ['Banyan Ubud Rentals', 'WhatsApp', 'Daily 04:00', '2 Sep 2026'],
-      ['Bali Long Stay', 'Telegram', 'Daily 04:00', '2 Sep 2026'],
-      ['Ubud Villas & Land', 'Facebook', 'Daily 04:00', '2 Sep 2026'],
-      ['Bali Co-brokers', 'Telegram', 'Paused', 'never']
-    ].map(([n, p, s, l]) =>
-      '<tr><td><strong>' + n + '</strong></td><td>' + p + '</td><td>' + s + '</td>' +
-      '<td class="rp-muted">' + l + '</td>' +
-      '<td><button type="button" class="icon-action" aria-label="Edit community">' +
-        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>' +
-      '</button></td></tr>').join('');
+      [1, 'Banyan Ubud Rentals', 'WhatsApp', 'https://chat.whatsapp.com/BanyanUbud', 'WhatsApp API', true],
+      [2, 'Bali Long Stay', 'Telegram', 'https://t.me/balilongstay', 'Telegram API', true],
+      [3, 'Ubud Villas & Land', 'Other', 'https://facebook.com/groups/ubudvillas', 'Manual', true],
+      [4, 'Green School Families', 'WhatsApp', 'https://chat.whatsapp.com/GSFamilies', 'WhatsApp API', true],
+      [5, 'Bali Co-brokers', 'Telegram', 'https://t.me/balicobrokers', 'Manual', false]
+    ].map(([pos, name, platform, link, source, on]) =>
+      '<tr><td class="rp-num">' + pos + '</td><td><strong>' + name + '</strong></td>' +
+      '<td><select class="inline-edit">' +
+        ['WhatsApp', 'Telegram', 'Other'].map((p) =>
+          '<option' + (p === platform ? ' selected' : '') + '>' + p + '</option>').join('') +
+      '</select></td>' +
+      '<td><a href="' + link + '" target="_blank" rel="noopener" class="ws-slug ws-imgurl">' + link + '</a></td>' +
+      '<td>' + source + '</td>' +
+      '<td><label class="tag-check"><input type="checkbox"' + (on ? ' checked' : '') + '><span>Enabled</span></label></td></tr>').join('');
 
     el('osBackupBody').innerHTML = [
-      ['2 Sep 2026, 02:00', '412 MB', 'Nightly', 'Complete'],
-      ['1 Sep 2026, 02:00', '409 MB', 'Nightly', 'Complete'],
-      ['31 Aug 2026, 02:00', '407 MB', 'Nightly', 'Complete'],
-      ['30 Aug 2026, 14:22', '406 MB', 'Manual', 'Complete']
-    ].map(([when, size, type, status]) =>
-      '<tr><td>' + when + '</td><td class="rp-num">' + size + '</td><td>' + type + '</td>' +
-      '<td><span class="status-pill"><span class="action-dot action-dot--green"></span>' + status + '</span></td>' +
-      '<td><button type="button" class="btn btn-ghost">Download</button></td></tr>').join('');
+      ['2 Sep 2026, 02:00', '02:04', '48,210', '412 MB', 'Complete'],
+      ['1 Sep 2026, 02:00', '02:04', '47,986', '409 MB', 'Complete'],
+      ['31 Aug 2026, 02:00', '02:03', '47,802', '407 MB', 'Complete'],
+      ['30 Aug 2026, 14:22', '14:26', '47,744', '406 MB', 'Complete']
+    ].map(([started, finished, rows, size, status]) =>
+      '<tr><td>' + started + '</td><td>' + finished + '</td><td class="rp-num">' + rows + '</td>' +
+      '<td class="rp-num">' + size + '</td>' +
+      '<td><span class="status-pill"><span class="action-dot action-dot--green"></span>' + status + '</span></td></tr>').join('');
+
+    const TABLES = ['parties', 'opportunities', 'proposals', 'proposal_versions', 'shortlists',
+      'shortlist_items', 'favorites', 'contracts', 'offers', 'tasks', 'viewings',
+      'viewing_listings', 'master_listings', 'submissions'];
+    el('osTables').innerHTML = TABLES.map((t) =>
+      '<a class="tag-check os-csv" href="#" download>' + t + '.csv</a>').join('');
+    el('osTableCount').textContent = TABLES.length + ' tables';
 
     const LOGS = [
       ['2 Sep, 09:14', 'Info', 'sync', 'Community snapshot completed — 8 communities'],
       ['2 Sep, 04:00', 'Info', 'sync', 'Nightly Airtable import — 12 listings updated'],
-      ['2 Sep, 02:00', 'Info', 'backup', 'Nightly backup complete (412 MB)'],
-      ['1 Sep, 22:41', 'Warning', 'publisher', 'WhatsApp Groups session expired — re-authentication needed'],
+      ['2 Sep, 02:00', 'Info', 'backup', 'Nightly backup complete (412 MB, 14 tables)'],
+      ['1 Sep, 22:41', 'Warn', 'publisher', 'WhatsApp Groups session expired — re-authentication needed'],
       ['1 Sep, 18:03', 'Error', 'scout', 'Facebook Groups collector timed out after 30s'],
-      ['1 Sep, 12:20', 'Info', 'auth', 'User ketut@banyan.com invited by andries@banyan.com'],
-      ['1 Sep, 09:00', 'Warning', 'fx', 'Exchange rate refresh returned stale data — kept previous']
+      ['1 Sep, 12:20', 'Info', 'auth', 'ketut@banyan.com invited by andries@banyan.com'],
+      ['1 Sep, 09:00', 'Warn', 'fx', 'Exchange rate refresh returned stale data — kept previous']
     ];
     let level = 'all';
     function renderLogs() {
@@ -4853,18 +5016,26 @@ document.addEventListener('DOMContentLoaded', () => {
       el('osLogBody').innerHTML = rows.map(([when, lv, src, msg]) =>
         '<tr><td class="rp-muted">' + when + '</td>' +
         '<td><span class="status-pill"><span class="action-dot action-dot--' +
-          (lv === 'Error' ? 'red' : lv === 'Warning' ? 'orange' : 'none') + '"></span>' + lv + '</span></td>' +
-        '<td>' + src + '</td><td>' + msg + '</td></tr>').join('');
+          (lv === 'Error' ? 'red' : lv === 'Warn' ? 'orange' : 'none') + '"></span>' + lv + '</span></td>' +
+        '<td><code class="ws-slug">' + src + '</code></td><td>' + msg + '</td></tr>').join('');
       el('osLogEmpty').hidden = rows.length !== 0;
+      el('osLogCount').textContent = String(rows.length);
     }
-    el('osLogLevel').addEventListener('change', (e) => {
-      level = e.target.value;
-      renderLogs();
-    });
+    document.querySelectorAll('#osLogLevels .seg__btn').forEach((b) =>
+      b.addEventListener('click', () => {
+        level = b.dataset.loglevel;
+        document.querySelectorAll('#osLogLevels .seg__btn').forEach((o) =>
+          o.classList.toggle('is-active', o.dataset.loglevel === level));
+        renderLogs();
+      }));
     renderLogs();
 
     document.querySelectorAll('[data-os-save]').forEach((b) =>
       b.addEventListener('click', () => toast('osToast', 'Saved')));
-    el('osBackupNow').addEventListener('click', () => toast('osToast', 'Backup started — this runs in the background'));
+    document.querySelectorAll('[data-os-add]').forEach((b) =>
+      b.addEventListener('click', () => toast('osToast', 'Add ' + b.dataset.osAdd + ' — opens an editor in the real OMS')));
+    el('osBackupNow').addEventListener('click', () => toast('osToast', 'Backup started — exporting 14 tables'));
+    el('osLogCsv').addEventListener('click', () => toast('osToast', 'Log CSV downloaded'));
+    el('osAddCommunity').addEventListener('click', () => toast('osToast', 'Add community — opens an editor in the real OMS'));
   }
 });

@@ -12103,3 +12103,28 @@ body[data-page="overview"] .attention-card__value {
   .seg { width: 100%; justify-content: stretch; }
   .seg__btn { flex: 1; padding: 8px 10px; }
 }
+
+/* Featured toggle in the blog list */
+.bl-star {
+  border: none;
+  background: none;
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--card-border);
+  cursor: pointer;
+  padding: 2px 4px;
+  transition: color 0.16s var(--ease), transform 0.16s var(--ease);
+}
+
+.bl-star:hover { transform: scale(1.15); color: var(--gold-2); }
+.bl-star.is-on { color: var(--gold-2); }
+
+.ws-imgurl {
+  display: inline-block;
+  max-width: 420px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: bottom;
+  color: var(--gold);
+}

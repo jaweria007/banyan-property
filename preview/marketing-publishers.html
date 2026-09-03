@@ -294,7 +294,7 @@
         <button class="drawer-backdrop" id="pbBackdrop" aria-label="Close" hidden></button>
         <aside class="drawer" id="pbDrawer" aria-labelledby="pbDrawerTitle" aria-hidden="true">
           <header class="drawer__head">
-            <h2 class="drawer__title" id="pbDrawerTitle">Create campaign</h2>
+            <h2 class="drawer__title" id="pbDrawerTitle">New campaign</h2>
             <button type="button" class="icon-btn drawer__close" id="pbClose" aria-label="Close">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
             </button>
@@ -311,7 +311,7 @@
                 <input type="text" class="input-field" id="pbBucket" placeholder="e.g. Rentals — Ubud">
               </label>
               <label class="field">
-                <span class="field__label">Week number</span>
+                <span class="field__label">Week number (1–8)</span>
                 <select class="select-field" id="pbWeek">
                   <option value="">—</option>
                   <option>1</option><option>2</option><option>3</option><option>4</option>
@@ -321,17 +321,18 @@
             </div>
             <label class="field">
               <span class="field__label">Reference listing <span class="field-hint">(optional)</span></span>
-              <input type="search" class="input-field" id="pbListing" list="pbListingOptions" placeholder="Search by ID or name…">
-              <datalist id="pbListingOptions">
-                <option value="BUY-1301 · Spacious Luxury Villa with Guest House, Singakerta"></option>
-                <option value="BUY-1241 · 1 Bedroom Exclusive Villa"></option>
-                <option value="BUY-1212 · 2 Bedroom Off Plan Boutique Villa in Sayan"></option>
-                <option value="LAND-1280 · 12.25 Are Freehold Land in Petulu"></option>
-                <option value="LAND-1269 · 18 Are Land in Nyuh Kuning, Ubud"></option>
-              </datalist>
+              <select class="select-field" id="pbListing"></select>
+            </label>
+            <label class="field">
+              <span class="field__label">Caption</span>
+              <textarea class="input-field input-field--area" id="pbCaption" rows="4" placeholder="The post text, as the audience will read it…"></textarea>
+            </label>
+            <label class="field">
+              <span class="field__label">Media image key <span class="field-hint">(clean R2 key)</span></span>
+              <input type="text" class="input-field" id="pbMedia" placeholder="e.g. listings/buy-1301/cover.jpg">
             </label>
             <section class="drawer-group">
-              <h3 class="drawer-group__title">Broadcast to</h3>
+              <h3 class="drawer-group__title">Channels</h3>
               <div class="tagset" id="pbChannelPick"></div>
             </section>
           </div>

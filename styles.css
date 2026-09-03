@@ -12128,3 +12128,202 @@ body[data-page="overview"] .attention-card__value {
   vertical-align: bottom;
   color: var(--gold);
 }
+
+/* ============================================================
+   Component fit — nothing clipped, nothing wrapped mid-label
+   ============================================================ */
+
+/* A toolbar that cannot wrap pushes its last controls off the edge on
+   anything narrower than a large desktop. Let it flow onto a second row. */
+.toolbar,
+.work-bar,
+.work-filters,
+.opp-toolbar,
+.inbox-toolbar,
+.page-head__actions,
+.op-block__actions {
+  flex-wrap: wrap;
+}
+
+/* A button label should never break across two lines */
+.btn,
+.seg__btn,
+.cat-tab,
+.op-tab,
+.view-link,
+.btn-shortlist,
+.queue-stat__label,
+.sb-step__label {
+  white-space: nowrap;
+}
+
+/* Selects and search fields shrink rather than shove their neighbours out */
+.toolbar .select-wrap,
+.work-bar .select-wrap,
+.work-filters .select-wrap {
+  min-width: 0;
+}
+
+.toolbar .select-field,
+.work-bar .select-field,
+.work-filters .select-field {
+  max-width: 100%;
+}
+
+.select-field--areas {
+  max-width: 260px;
+}
+
+.toolbar .search-field,
+.work-bar .search-field {
+  flex: 1 1 220px;
+  min-width: 180px;
+}
+
+/* Long option text truncates instead of forcing the control wider */
+.select-field {
+  text-overflow: ellipsis;
+}
+
+/* Tab strips scroll rather than being cut off */
+.cat-tabs,
+.op-tabs,
+.detail-tabs,
+.sb-steps {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cat-tabs::-webkit-scrollbar,
+.op-tabs::-webkit-scrollbar,
+.detail-tabs::-webkit-scrollbar,
+.sb-steps::-webkit-scrollbar {
+  display: none;
+}
+
+/* Grid and flex children may shrink below their content width */
+.main,
+.content,
+.op-panel,
+.detail-panel,
+.card,
+.op-block,
+.work-list,
+.queue-stats,
+.rp-funnel,
+.sc-grid,
+.sb-cards,
+.cs-list,
+.rel-grid,
+.board {
+  min-width: 0;
+}
+
+/* Any table wider than its card scrolls inside the card */
+.work-list,
+.opp-table,
+.listings-table {
+  overflow-x: auto;
+}
+
+@media (max-width: 900px) {
+  /* On small screens the toolbar reads as stacked rows, not a squeezed line */
+  .toolbar .search-field,
+  .work-bar .search-field {
+    flex: 1 1 100%;
+  }
+
+  .toolbar .select-wrap,
+  .work-filters .select-wrap {
+    flex: 1 1 calc(50% - 5px);
+  }
+
+  .select-field--areas {
+    max-width: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .toolbar .select-wrap,
+  .work-filters .select-wrap,
+  .toolbar .btn,
+  .work-filters .btn {
+    flex: 1 1 100%;
+  }
+
+  .page-head__actions .btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+/* --- Inputs carry a browser default width; without this they refuse to
+       shrink and burst out of any narrow grid column --- */
+.field .input-field,
+.field .select-field,
+.op-grid input,
+.op-grid select,
+.drawer-row input,
+.drawer-row select {
+  min-width: 0;
+}
+
+/* Field labels wrap rather than clip */
+.field__label {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* The deeper CRM panel is narrow; two columns at most inside it */
+.rd-deeper__body .op-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+/* Card headers wrap instead of clipping their badge */
+.rp-card__head,
+.cal-head,
+.cal-toolbar,
+.supply-card__head,
+.panel-head {
+  flex-wrap: wrap;
+}
+
+.supply-card__title,
+.rp-card__head h2,
+.cal-title {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+/* Calendar: let the week grid scroll rather than stretch the page */
+.cal-card {
+  min-width: 0;
+}
+
+.cal-body {
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+@media (max-width: 640px) {
+  .cal-head {
+    gap: 10px;
+  }
+
+  .cal-toolbar {
+    width: 100%;
+  }
+
+  /* Weekly grid needs room; scroll it instead of squeezing seven columns */
+  .cal-m__grid,
+  .cal-wg {
+    min-width: 620px;
+  }
+}
+
+/* Activity text wraps rather than clipping */
+.activity__text {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}

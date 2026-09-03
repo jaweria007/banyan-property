@@ -1,0 +1,387 @@
+<!--
+  my-work.html
+  data-page="my-work"   (script.js dispatches on this)
+  replaces staging route: /tasks
+
+  This is the page content only — no <html>, <head>, sidebar or topbar.
+  Drop it inside your app shell and convert to JSX:
+    class= -> className=   for= -> htmlFor=   self-close <img> <input> <br>
+-->
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">My Work</h1>
+            <p class="page-subtitle">Your work queue — what needs doing, who owns it and when it is due.</p>
+          </div>
+          <div class="page-head__actions">
+            <button type="button" class="btn btn-primary" id="newTaskBtn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              New Task
+            </button>
+          </div>
+        </section>
+
+        <!-- Queue summary — the visual guide for the day -->
+        <section class="queue-stats" aria-label="Work summary">
+          <button type="button" class="queue-stat is-active" data-queue="all">
+            <span class="queue-stat__value">18</span>
+            <span class="queue-stat__label">All open</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="todo">
+            <span class="queue-stat__value queue-stat__value--amber">6</span>
+            <span class="queue-stat__label">To Do</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="progress">
+            <span class="queue-stat__value queue-stat__value--blue">3</span>
+            <span class="queue-stat__label">In Progress</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="waiting">
+            <span class="queue-stat__value queue-stat__value--green">5</span>
+            <span class="queue-stat__label">Waiting</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="today">
+            <span class="queue-stat__value">2</span>
+            <span class="queue-stat__label">Due today</span>
+          </button>
+          <button type="button" class="queue-stat" data-queue="overdue">
+            <span class="queue-stat__value queue-stat__value--red">4</span>
+            <span class="queue-stat__label">Overdue</span>
+          </button>
+        </section>
+
+        <div class="work-bar">
+          <div class="view-toggle" role="group" aria-label="My Work view">
+            <button type="button" class="view-link is-active" data-workview="board" aria-pressed="true">Board</button>
+            <button type="button" class="view-link" data-workview="list" aria-pressed="false">List</button>
+          </div>
+
+          <div class="work-filters">
+            <label class="search-field">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="search" id="taskSearch" placeholder="Search tasks…" aria-label="Search tasks">
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filter by record type</span>
+              <select class="select-field" id="taskHub">
+                <option value="all">All hubs</option>
+                <option value="Sales">Sales</option>
+                <option value="Listings">Listings</option>
+                <option value="Relationships">Relationships</option>
+                <option value="Marketing">Marketing</option>
+              </select>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filter by assignee</span>
+              <select class="select-field" id="taskAssignee">
+                <option value="all">All team members</option>
+                <option value="Ratna">Ratna</option>
+                <option value="Berry">Berry</option>
+                <option value="Andries">Andries</option>
+                <option value="Kashif">Kashif</option>
+              </select>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filter by due date</span>
+              <select class="select-field" id="taskDue">
+                <option value="all">Any due date</option>
+                <option value="overdue">Overdue</option>
+                <option value="today">Due today</option>
+                <option value="week">Due this week</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <!-- ============ BOARD VIEW ============ -->
+        <!-- Status is the source of truth: dropping a card into a column sets its Status. -->
+        <section class="board" id="taskBoard" aria-label="Task board">
+
+          <div class="board-col" data-status="inbox">
+            <header class="board-col__head">
+              <h2 class="board-col__title">Inbox <span class="board-col__count">4</span></h2>
+              <p class="board-col__hint">Arrived, nobody has picked it up</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card" draggable="true" data-task="t1" data-status="inbox" data-assignee="Unassigned" data-due="2026-09-04" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Viewing enquiry from Andries — 3-Bedroom Eco-Luxury Home in Taman Petanu</p>
+                <div class="task-card__meta">
+                  <span class="task-chip task-chip--unassigned">Unassigned</span>
+                  <span class="task-due">4 Sep</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales" title="Open linked Opportunity">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t2" data-status="inbox" data-assignee="Unassigned" data-due="2026-09-02" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Shortlist comment from Andries — 4-Bedroom Family Villa near Green School</p>
+                <div class="task-card__meta">
+                  <span class="task-chip task-chip--unassigned">Unassigned</span>
+                  <span class="task-due">2 Sep</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales" title="Open linked Opportunity">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t3" data-status="inbox" data-assignee="Unassigned" data-due="2026-08-08" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Contract signed — 2-Story Villa with Garden, Nyuh Kuning</p>
+                <div class="task-card__meta">
+                  <span class="task-chip task-chip--unassigned">Unassigned</span>
+                  <span class="task-due is-overdue">8 Aug</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales" title="Open linked Contract">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t4" data-status="inbox" data-assignee="Unassigned" data-due="2026-09-10" data-hub="Listings" tabindex="0">
+                <p class="task-card__desc">New listing needs photos and marketing copy — Bali Moons Shop</p>
+                <div class="task-card__meta">
+                  <span class="task-chip task-chip--unassigned">Unassigned</span>
+                  <span class="task-due">10 Sep</span>
+                  <a href="listings.html" class="record-pill" data-hub="Listings" title="Open linked Listing">Listings</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="board-col" data-status="todo">
+            <header class="board-col__head">
+              <h2 class="board-col__title">To Do <span class="board-col__count">3</span></h2>
+              <p class="board-col__hint">Someone needs to do it</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card" draggable="true" data-task="t5" data-status="todo" data-assignee="Andries" data-due="2026-08-31" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Send contract to Umar Hassan</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Andries</span>
+                  <span class="task-due is-overdue">31 Aug</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t6" data-status="todo" data-assignee="Ratna" data-due="2026-09-01" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Review new matches — Umar / 3BR Ubud Family Home</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Ratna</span>
+                  <span class="task-due is-today">Today</span>
+                  <a href="shortlist.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t7" data-status="todo" data-assignee="Kashif" data-due="2026-09-05" data-hub="Listings" tabindex="0">
+                <p class="task-card__desc">Chase owner for lease extension documents</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Kashif</span>
+                  <span class="task-due">5 Sep</span>
+                  <a href="listing-detail.html" class="record-pill" data-hub="Listings">Listings</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="board-col" data-status="progress">
+            <header class="board-col__head">
+              <h2 class="board-col__title">In Progress <span class="board-col__count">3</span></h2>
+              <p class="board-col__hint">Actively being worked on</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card" draggable="true" data-task="t8" data-status="progress" data-assignee="Berry" data-due="2026-09-01" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Prepare shortlist for M. Samo — Ubud family homes</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Berry</span>
+                  <span class="task-due is-today">Today</span>
+                  <a href="shortlist.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t9" data-status="progress" data-assignee="Ratna" data-due="2026-09-03" data-hub="Relationships" tabindex="0">
+                <p class="task-card__desc">Verify landlord contact details — Maria Santos</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Ratna</span>
+                  <span class="task-due">3 Sep</span>
+                  <a href="relationships.html" class="record-pill" data-hub="Relationships">Relationships</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t10" data-status="progress" data-assignee="Kashif" data-due="2026-09-06" data-hub="Marketing" tabindex="0">
+                <p class="task-card__desc">Publish September blog post — Ubud rental guide</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Kashif</span>
+                  <span class="task-due">6 Sep</span>
+                  <a href="#" class="record-pill" data-hub="Marketing">Marketing</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="board-col" data-status="waiting">
+            <header class="board-col__head">
+              <h2 class="board-col__title">Waiting <span class="board-col__count">3</span></h2>
+              <p class="board-col__hint">Blocked / waiting on someone else</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card" draggable="true" data-task="t11" data-status="waiting" data-assignee="Ratna" data-due="2026-08-30" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Follow up with Umar after viewing</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Ratna</span>
+                  <span class="task-due is-overdue">30 Aug</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t12" data-status="waiting" data-assignee="Berry" data-due="2026-09-08" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Awaiting client decision on Villa A offer</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Berry</span>
+                  <span class="task-due">8 Sep</span>
+                  <a href="opportunities.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card" draggable="true" data-task="t13" data-status="waiting" data-assignee="Andries" data-due="2026-09-12" data-hub="Listings" tabindex="0">
+                <p class="task-card__desc">Waiting on notary for freehold certificate</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Andries</span>
+                  <span class="task-due">12 Sep</span>
+                  <a href="listing-detail.html" class="record-pill" data-hub="Listings">Listings</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="board-col" data-status="done">
+            <header class="board-col__head">
+              <h2 class="board-col__title">Done <span class="board-col__count">2</span></h2>
+              <p class="board-col__hint">Completed</p>
+            </header>
+            <div class="board-col__body" data-dropzone>
+
+              <article class="task-card is-done" draggable="true" data-task="t14" data-status="done" data-assignee="Ratna" data-due="2026-08-28" data-hub="Sales" tabindex="0">
+                <p class="task-card__desc">Publish shortlist — Umar / Ubud Family Homes</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Ratna</span>
+                  <span class="task-due">28 Aug</span>
+                  <a href="shortlist.html" class="record-pill" data-hub="Sales">Sales</a>
+                </div>
+              </article>
+
+              <article class="task-card is-done" draggable="true" data-task="t15" data-status="done" data-assignee="Berry" data-due="2026-08-26" data-hub="Relationships" tabindex="0">
+                <p class="task-card__desc">Log viewing for Sarah Wilson</p>
+                <div class="task-card__meta">
+                  <span class="task-chip">Berry</span>
+                  <span class="task-due">26 Aug</span>
+                  <a href="relationships.html" class="record-pill" data-hub="Relationships">Relationships</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ============ LIST VIEW ============ -->
+        <!-- Four columns only. The [Sales] pill sits at the end of the description. -->
+        <section class="work-list" id="taskList" hidden aria-label="Task list">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th scope="col" class="th-sort" data-sort="desc">Task Description</th>
+                <th scope="col" class="th-sort" data-sort="status">Status</th>
+                <th scope="col" class="th-sort" data-sort="assignee">Assignee</th>
+                <th scope="col" class="th-sort" data-sort="due">Due</th>
+              </tr>
+            </thead>
+            <tbody id="taskListBody"></tbody>
+          </table>
+          <p class="list-empty" id="taskListEmpty" hidden>No tasks match your filters.</p>
+        </section>
+
+        <!-- Task detail / edit drawer -->
+        <button class="drawer-backdrop" id="taskBackdrop" aria-label="Close task" hidden></button>
+        <aside class="drawer" id="taskDrawer" aria-labelledby="taskDrawerTitle" aria-hidden="true">
+          <header class="drawer__head">
+            <h2 class="drawer__title" id="taskDrawerTitle">Task</h2>
+            <button type="button" class="icon-btn drawer__close" id="taskDrawerClose" aria-label="Close task">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            </button>
+          </header>
+
+          <div class="drawer__body">
+            <label class="field">
+              <span class="field__label">Task Description</span>
+              <textarea class="input-field input-field--area" id="tdDesc" rows="3"></textarea>
+            </label>
+
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Status</span>
+                <select class="select-field" id="tdStatus">
+                  <option value="inbox">Inbox</option>
+                  <option value="todo">To Do</option>
+                  <option value="progress">In Progress</option>
+                  <option value="waiting">Waiting</option>
+                  <option value="done">Done</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">Assignee</span>
+                <select class="select-field" id="tdAssignee">
+                  <option value="Unassigned">Unassigned</option>
+                  <option value="Ratna">Ratna</option>
+                  <option value="Berry">Berry</option>
+                  <option value="Andries">Andries</option>
+                  <option value="Kashif">Kashif</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Due date</span>
+                <input type="date" class="input-field" id="tdDue">
+              </label>
+              <label class="field">
+                <span class="field__label">Priority</span>
+                <select class="select-field" id="tdPriority">
+                  <option value="normal">Normal</option>
+                  <option value="high">High</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </label>
+            </div>
+
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Linked record</h3>
+              <label class="field">
+                <span class="field__label">Search by name, WhatsApp, shortlist, listing or record ID</span>
+                <input type="search" class="input-field" id="tdLink" list="recordOptions" placeholder="e.g. Umar Hassan, REL-00124, 0812…">
+                <datalist id="recordOptions">
+                  <option value="Umar Hassan · REL-00124 · Buyer"></option>
+                  <option value="Sarah Wilson · REL-00318 · Tenant"></option>
+                  <option value="Maria Santos · REL-00072 · Landlord"></option>
+                  <option value="3BR Villa — Nyuh Kuning · LST-0421"></option>
+                  <option value="Bali Moons Shop · LST-0388"></option>
+                  <option value="Umar — Ubud Family Homes · SHL-0091"></option>
+                </datalist>
+              </label>
+              <p class="field-hint" id="tdLinkCurrent">Currently linked to <a href="opportunities.html">Sales · Opportunity</a></p>
+            </section>
+
+            <label class="field">
+              <span class="field__label">Notes</span>
+              <textarea class="input-field input-field--area" id="tdNotes" rows="4" placeholder="Anything the next person needs to know…"></textarea>
+            </label>
+          </div>
+
+          <footer class="drawer__foot">
+            <button type="button" class="btn btn-ghost" id="tdDelete">Delete</button>
+            <button type="button" class="btn btn-primary" id="tdSave">Save task</button>
+          </footer>
+        </aside>
+
+
+      

@@ -1,0 +1,140 @@
+<!--
+  marketing-scouts.html
+  data-page="marketing-scouts"   (script.js dispatches on this)
+  replaces staging route: /marketing?section=monitors
+
+  This is the page content only — no <html>, <head>, sidebar or topbar.
+  Drop it inside your app shell and convert to JSX:
+    class= -> className=   for= -> htmlFor=   self-close <img> <input> <br>
+-->
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">Scouts</h1>
+            <p class="page-subtitle">Inbound — data-collection campaigns watching co-broker channels. Nothing reaches an Opportunity or a Listing without a human qualifying it first.</p>
+          </div>
+          <div class="page-head__actions">
+            <button type="button" class="btn btn-primary" id="scNewCampaign">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Create campaign
+            </button>
+          </div>
+        </section>
+
+        <!-- The Monitors / Promotion / Blog strip is gone: the left nav does that job -->
+        <nav class="op-tabs" role="tablist" aria-label="Scouts sections">
+          <button type="button" class="op-tab is-active" role="tab" aria-selected="true" data-sctab="campaigns">Campaigns</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-sctab="quarantine">Quarantine <span class="page-count" id="scQCount">3</span></button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-sctab="groups">Groups</button>
+        </nav>
+
+        <!-- ============ CAMPAIGNS ============ -->
+        <section class="op-panel" id="scCampaigns" role="tabpanel">
+          <div class="sc-grid" id="scCampaignList"></div>
+        </section>
+
+        <!-- ============ QUARANTINE ============ -->
+        <section class="op-panel" id="scQuarantine" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Quarantine</h2>
+                <p class="sb-hint">Messages the Guard held back. Nothing here has touched an Opportunity or a Listing.</p>
+              </div>
+              <label class="select-wrap">
+                <span class="sr-only">Filter by platform</span>
+                <select class="select-field" id="scQPlatform">
+                  <option value="all">All platforms</option>
+                  <option value="WhatsApp">WhatsApp</option>
+                  <option value="Telegram">Telegram</option>
+                  <option value="Facebook">Facebook</option>
+                </select>
+              </label>
+            </div>
+            <div class="work-list">
+              <table class="data-table sc-qtable">
+                <thead>
+                  <tr>
+                    <th scope="col">Message</th>
+                    <th scope="col">Reasons</th>
+                    <th scope="col">Platform</th>
+                    <th scope="col">Received</th>
+                    <th scope="col">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="scQBody"></tbody>
+              </table>
+            </div>
+            <p class="list-empty" id="scQEmpty" hidden>Nothing in Quarantine.</p>
+          </section>
+        </section>
+
+        <!-- ============ GROUPS ============ -->
+        <section class="op-panel" id="scGroups" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Monitored groups</h2>
+                <p class="sb-hint">The channels the scouts listen to. Pausing a group stops collection without losing its history.</p>
+              </div>
+              <button type="button" class="btn btn-ghost" id="scAddGroup">Add group</button>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th-sort is-asc" data-sort="name">Group</th>
+                    <th scope="col" class="th-sort" data-sort="platform">Platform</th>
+                    <th scope="col" class="th-sort" data-sort="members">Members</th>
+                    <th scope="col" class="th-sort" data-sort="messages">Messages / 24h</th>
+                    <th scope="col" class="th-sort" data-sort="status">Status</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody id="scGBody"></tbody>
+              </table>
+            </div>
+            <p class="list-empty" id="scGEmpty" hidden>No groups match this filter.</p>
+          </section>
+        </section>
+
+        <!-- Create campaign -->
+        <button class="drawer-backdrop" id="scBackdrop" aria-label="Close" hidden></button>
+        <aside class="drawer" id="scDrawer" aria-labelledby="scDrawerTitle" aria-hidden="true">
+          <header class="drawer__head">
+            <h2 class="drawer__title" id="scDrawerTitle">Create campaign</h2>
+            <button type="button" class="icon-btn drawer__close" id="scClose" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            </button>
+          </header>
+          <div class="drawer__body">
+            <label class="field">
+              <span class="field__label">New campaign name</span>
+              <input type="text" class="input-field" id="scName" placeholder="e.g. Ubud Rental Listings">
+            </label>
+            <label class="field">
+              <span class="field__label">Category</span>
+              <select class="select-field" id="scCategory">
+                <option value="Rental Listing">Rental Listing</option>
+                <option value="Rental Lead">Rental Lead</option>
+                <option value="Sale Listing">Sale Listing</option>
+                <option value="Buyer Lead">Buyer Lead</option>
+              </select>
+            </label>
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Groups to watch</h3>
+              <div class="tagset" id="scGroupPick"></div>
+            </section>
+            <p class="field-hint">Everything a campaign collects lands in review first — it never reaches an Opportunity or a Listing on its own.</p>
+          </div>
+          <footer class="drawer__foot">
+            <button type="button" class="btn btn-ghost" id="scCancel">Cancel</button>
+            <button type="button" class="btn btn-primary" id="scSave">Create campaign</button>
+          </footer>
+        </aside>
+
+        <div class="cs-toast" id="scToast" hidden></div>
+
+      
+
+      

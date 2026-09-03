@@ -1,0 +1,418 @@
+<!--
+  client-inbox.html
+  data-page="client-inbox"   (script.js dispatches on this)
+  replaces staging route: /sales
+
+  This is the page content only — no <html>, <head>, sidebar or topbar.
+  Drop it inside your app shell and convert to JSX:
+    class= -> className=   for= -> htmlFor=   self-close <img> <input> <br>
+-->
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">Client Inbox <span class="page-count" id="inboxCount">16</span></h1>
+            <p class="page-subtitle">
+              Every client, their journey and what needs attention.
+              <a href="listings.html" class="subtle-link">← Back to Listings</a>
+            </p>
+          </div>
+        </section>
+
+        <section class="inbox-summary" aria-label="Pipeline summary">
+
+          <article class="inbox-card inbox-card--overdue">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </span>
+            <div class="inbox-card__num">2</div>
+            <div class="inbox-card__label">Follow-up Overdue</div>
+          </article>
+
+          <article class="inbox-card inbox-card--high">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22V4a1 1 0 0 1 1-1h15l-3.5 4L20 11H5"/></svg>
+            </span>
+            <div class="inbox-card__num">1</div>
+            <div class="inbox-card__label">High Priority</div>
+          </article>
+
+          <article class="inbox-card inbox-card--new">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            </span>
+            <div class="inbox-card__num">12</div>
+            <div class="inbox-card__label">New</div>
+          </article>
+
+          <article class="inbox-card inbox-card--viewing">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+            </span>
+            <div class="inbox-card__num">2</div>
+            <div class="inbox-card__label">Viewing</div>
+          </article>
+
+          <article class="inbox-card inbox-card--shortlist">
+            <span class="inbox-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <div class="inbox-card__num">1</div>
+            <div class="inbox-card__label">Shortlist Active</div>
+          </article>
+
+        </section>
+
+        <div class="toolbar inbox-toolbar">
+          <label class="search-field">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="search" id="inboxSearch" placeholder="Search name, phone, email…" aria-label="Search clients">
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Filter by stage</span>
+            <select class="select-field" id="journeySelect">
+              <option value="all">All stages</option>
+              <option value="New">New</option>
+              <option value="Viewing">Viewing</option>
+              <option value="Contracts">Contracts</option>
+              <option value="Shortlist Active">Shortlist Active</option>
+            </select>
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Filter by interest</span>
+            <select class="select-field" id="interestSelect">
+              <option value="all">All interest</option>
+              <option value="Rent">Rent</option>
+              <option value="Rent, Buy Villa">Rent &amp; Buy Villa</option>
+              <option value="none">No interest</option>
+            </select>
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Filter by objective</span>
+            <select class="select-field" id="objectiveSelect">
+              <option value="all">All objectives</option>
+              <option value="Unsure">Unsure</option>
+              <option value="Find Short-Term Accommodation">Find short-term accommodation</option>
+              <option value="Find Long-Term Home">Find long-term home</option>
+            </select>
+          </label>
+          <label class="select-wrap">
+            <span class="sr-only">Filter by agent</span>
+            <select class="select-field" id="agentSelect">
+              <option value="all">All agents</option>
+              <option value="kashif">kashif</option>
+              <option value="none">Unassigned</option>
+            </select>
+          </label>
+          <button type="button" class="btn btn-primary btn-filter" id="inboxFilterBtn">Filter</button>
+          <button type="button" class="btn btn-ghost" id="inboxResetBtn">Reset</button>
+        </div>
+
+        <section class="inbox-table" aria-label="Client list">
+          <table class="inbox-table__grid">
+            <thead>
+              <tr>
+                <th scope="col">Client</th>
+                <th scope="col">Journey</th>
+                <th scope="col">Interest</th>
+                <th scope="col">Objective</th>
+                <th scope="col">Agent</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Needs Attention</th>
+              </tr>
+            </thead>
+            <tbody id="inboxBody">
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="Follow-up Overdue" data-query="unnamed">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">—</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td><span class="inbox-chip inbox-chip--status inbox-chip--overdue">Follow-up Overdue</span></td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="Contracts" data-interest="" data-objective="Unsure" data-agent="kashif" data-priority="high" data-attention="Follow-up Overdue" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">Contracts</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td><span class="inbox-chip inbox-chip--agent">kashif</span></td>
+                <td><span class="inbox-chip inbox-chip--high">High priority</span></td>
+                <td><span class="inbox-chip inbox-chip--status inbox-chip--overdue">Follow-up Overdue</span></td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="Viewing" data-interest="Rent" data-objective="Find Short-Term Accommodation" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">Viewing</span></td>
+                <td class="inbox-muted">Rent</td>
+                <td class="inbox-objective">Find Short-Term Accommodation</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="Rent, Buy Villa" data-objective="Find Short-Term Accommodation" data-agent="" data-priority="med" data-attention="" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">Rent, Buy Villa</td>
+                <td class="inbox-objective">Find Short-Term Accommodation</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="Viewing" data-interest="Rent" data-objective="Find Long-Term Home" data-agent="" data-priority="med" data-attention="" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">Viewing</span></td>
+                <td class="inbox-muted">Rent</td>
+                <td class="inbox-objective">Find Long-Term Home</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="New" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="unnamed 08123456789">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">Unnamed</p>
+                      <p class="inbox-phone">08123456789</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">New</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+              <tr class="inbox-row" data-journey="Shortlist Active" data-interest="" data-objective="Unsure" data-agent="" data-priority="med" data-attention="" data-query="umar 123">
+                <td>
+                  <div class="inbox-client">
+                    <span class="inbox-avatar">U</span>
+                    <div>
+                      <p class="inbox-name">umar</p>
+                      <p class="inbox-phone">123</p>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="inbox-chip inbox-chip--journey">Shortlist Active</span></td>
+                <td class="inbox-muted">—</td>
+                <td class="inbox-objective">Unsure</td>
+                <td class="inbox-muted">—</td>
+                <td><span class="inbox-chip inbox-chip--medium">Medium priority</span></td>
+                <td class="inbox-muted">—</td>
+              </tr>
+
+            </tbody>
+          </table>
+          <p class="inbox-empty" id="inboxEmpty" hidden>No clients match your filters.</p>
+        </section>
+
+      

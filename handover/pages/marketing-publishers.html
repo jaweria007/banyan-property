@@ -1,0 +1,189 @@
+<!--
+  marketing-publishers.html
+  data-page="marketing-publishers"   (script.js dispatches on this)
+  replaces staging route: /marketing?section=promotion
+
+  This is the page content only — no <html>, <head>, sidebar or topbar.
+  Drop it inside your app shell and convert to JSX:
+    class= -> className=   for= -> htmlFor=   self-close <img> <input> <br>
+-->
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">Publishers</h1>
+            <p class="page-subtitle">Outbound — campaign broadcasts paced across your channels.</p>
+          </div>
+          <div class="page-head__actions">
+            <button type="button" class="btn btn-primary" id="pbNew">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              <span id="pbNewLabel">Create campaign</span>
+            </button>
+          </div>
+        </section>
+
+        <nav class="op-tabs" role="tablist" aria-label="Publishers sections">
+          <button type="button" class="op-tab is-active" role="tab" aria-selected="true" data-pbtab="campaigns">Campaigns</button>
+          <button type="button" class="op-tab" role="tab" aria-selected="false" data-pbtab="channels">Channels</button>
+        </nav>
+
+        <!-- ============ CAMPAIGNS ============ -->
+        <section class="op-panel" id="pbCampaigns" role="tabpanel">
+          <section class="queue-stats" aria-label="Campaign summary">
+            <button type="button" class="queue-stat is-active" data-pbstatus="all">
+              <span class="queue-stat__value">6</span><span class="queue-stat__label">All</span>
+            </button>
+            <button type="button" class="queue-stat" data-pbstatus="Scheduled">
+              <span class="queue-stat__value queue-stat__value--blue">2</span><span class="queue-stat__label">Scheduled</span>
+            </button>
+            <button type="button" class="queue-stat" data-pbstatus="Sending">
+              <span class="queue-stat__value queue-stat__value--amber">1</span><span class="queue-stat__label">Sending</span>
+            </button>
+            <button type="button" class="queue-stat" data-pbstatus="Sent">
+              <span class="queue-stat__value queue-stat__value--green">2</span><span class="queue-stat__label">Sent</span>
+            </button>
+            <button type="button" class="queue-stat" data-pbstatus="Draft">
+              <span class="queue-stat__value">1</span><span class="queue-stat__label">Draft</span>
+            </button>
+          </section>
+
+          <section class="card op-block">
+            <div class="op-block__head">
+              <h2 class="section-title">Campaigns</h2>
+              <label class="search-field search-field--wide">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="search" id="pbSearch" placeholder="Search campaigns…" aria-label="Search campaigns">
+              </label>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="th-sort is-asc" data-sort="name">Campaign</th>
+                    <th scope="col" class="th-sort" data-sort="bucket">Bucket</th>
+                    <th scope="col" class="th-sort" data-sort="week">Week</th>
+                    <th scope="col">Reference listing</th>
+                    <th scope="col" class="th-sort" data-sort="channels">Channels</th>
+                    <th scope="col" class="th-sort" data-sort="status">Status</th>
+                    <th scope="col" class="th-edit">Edit</th>
+                  </tr>
+                </thead>
+                <tbody id="pbBody"></tbody>
+              </table>
+            </div>
+            <p class="list-empty" id="pbEmpty" hidden>No campaigns match your filters.</p>
+          </section>
+        </section>
+
+        <!-- ============ CHANNELS ============ -->
+        <section class="op-panel" id="pbChannels" role="tabpanel" hidden>
+          <section class="card op-block">
+            <div class="op-block__head">
+              <div>
+                <h2 class="section-title">Registered channels</h2>
+                <p class="sb-hint">Where campaigns are broadcast. A channel that loses its session has to be re-authenticated before the next send.</p>
+              </div>
+            </div>
+            <div class="work-list">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Channel</th>
+                    <th scope="col">Mechanism</th>
+                    <th scope="col">Label</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Re-authenticate</th>
+                  </tr>
+                </thead>
+                <tbody id="pbChBody"></tbody>
+              </table>
+            </div>
+            <p class="list-empty" id="pbChEmpty" hidden>No channels registered yet.</p>
+          </section>
+        </section>
+
+        <!-- Create campaign / Add channel -->
+        <button class="drawer-backdrop" id="pbBackdrop" aria-label="Close" hidden></button>
+        <aside class="drawer" id="pbDrawer" aria-labelledby="pbDrawerTitle" aria-hidden="true">
+          <header class="drawer__head">
+            <h2 class="drawer__title" id="pbDrawerTitle">New campaign</h2>
+            <button type="button" class="icon-btn drawer__close" id="pbClose" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            </button>
+          </header>
+
+          <div class="drawer__body" id="pbFormCampaign">
+            <label class="field">
+              <span class="field__label">Name</span>
+              <input type="text" class="input-field" id="pbName" placeholder="e.g. September rice-field villas">
+            </label>
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Bucket</span>
+                <input type="text" class="input-field" id="pbBucket" placeholder="e.g. Rentals — Ubud">
+              </label>
+              <label class="field">
+                <span class="field__label">Week number (1–8)</span>
+                <select class="select-field" id="pbWeek">
+                  <option value="">—</option>
+                  <option>1</option><option>2</option><option>3</option><option>4</option>
+                  <option>5</option><option>6</option><option>7</option><option>8</option>
+                </select>
+              </label>
+            </div>
+            <label class="field">
+              <span class="field__label">Reference listing <span class="field-hint">(optional)</span></span>
+              <select class="select-field" id="pbListing"></select>
+            </label>
+            <label class="field">
+              <span class="field__label">Caption</span>
+              <textarea class="input-field input-field--area" id="pbCaption" rows="4" placeholder="The post text, as the audience will read it…"></textarea>
+            </label>
+            <label class="field">
+              <span class="field__label">Media image key <span class="field-hint">(clean R2 key)</span></span>
+              <input type="text" class="input-field" id="pbMedia" placeholder="e.g. listings/buy-1301/cover.jpg">
+            </label>
+            <section class="drawer-group">
+              <h3 class="drawer-group__title">Channels</h3>
+              <div class="tagset" id="pbChannelPick"></div>
+            </section>
+          </div>
+
+          <div class="drawer__body" id="pbFormChannel" hidden>
+            <div class="drawer-row drawer-row--2">
+              <label class="field">
+                <span class="field__label">Channel</span>
+                <select class="select-field" id="pbChType">
+                  <option>Facebook Page</option>
+                  <option>Instagram</option>
+                  <option>Telegram</option>
+                  <option>WhatsApp Groups</option>
+                  <option>Facebook Groups</option>
+                  <option>TikTok</option>
+                </select>
+              </label>
+              <label class="field">
+                <span class="field__label">Mechanism</span>
+                <select class="select-field" id="pbChMech">
+                  <option>Graph API</option>
+                  <option>VPS session</option>
+                </select>
+              </label>
+            </div>
+            <label class="field">
+              <span class="field__label">Label <span class="field-hint">(optional)</span></span>
+              <input type="text" class="input-field" id="pbChLabel" placeholder="e.g. Banyan Bali — main page">
+            </label>
+            <p class="field-hint">VPS sessions expire and need re-authenticating; Graph API connections do not.</p>
+          </div>
+
+          <footer class="drawer__foot">
+            <button type="button" class="btn btn-ghost" id="pbCancel">Cancel</button>
+            <button type="button" class="btn btn-primary" id="pbSave">Save</button>
+          </footer>
+        </aside>
+
+        <div class="cs-toast" id="pbToast" hidden></div>
+
+      
+
+      

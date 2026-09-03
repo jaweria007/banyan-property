@@ -1,0 +1,153 @@
+<!--
+  shortlist.html
+  data-page="shortlist"   (script.js dispatches on this)
+  replaces staging route: /opportunities/<id>/shortlist
+
+  This is the page content only — no <html>, <head>, sidebar or topbar.
+  Drop it inside your app shell and convert to JSX:
+    class= -> className=   for= -> htmlFor=   self-close <img> <input> <br>
+-->
+
+        <section class="page-head sb-head">
+          <div>
+            <p class="sb-crumb"><a href="opportunities.html">Opportunities</a> › Umar Hassan</p>
+            <h1 class="page-title">Shortlist Builder</h1>
+            <p class="page-subtitle">Define what the client wants, find matching properties, select them, publish.</p>
+          </div>
+
+          <!-- The two things that always matter: what I picked, and what I should review -->
+          <div class="sb-head__meta">
+            <span class="sb-status" id="sbStatus" data-state="draft">Draft</span>
+            <button type="button" class="sb-counter" id="sbCounter" title="Open the shortlist draft">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+              Shortlist <span class="sb-counter__num" id="sbCount">0</span>
+            </button>
+            <button type="button" class="sb-newpill" id="sbNewPill" hidden>
+              <span class="sb-newpill__dot"></span>
+              <span id="sbNewCount">0</span> new to review
+            </button>
+            <button type="button" class="btn btn-primary" id="sbPublishTop">Publish shortlist</button>
+          </div>
+        </section>
+
+        <!-- Search Criteria → Selection → Shortlist Draft -->
+        <nav class="sb-steps" aria-label="Shortlist workflow">
+          <button type="button" class="sb-step is-active" data-step="criteria">
+            <span class="sb-step__num">1</span>
+            <span class="sb-step__label">Search Criteria</span>
+          </button>
+          <button type="button" class="sb-step" data-step="selection">
+            <span class="sb-step__num">2</span>
+            <span class="sb-step__label">Selection</span>
+            <span class="sb-step__count" id="sbSelCount">0</span>
+            <span class="sb-newbadge sb-step__new" id="sbSelNew" hidden>+0 NEW</span>
+          </button>
+          <button type="button" class="sb-step" data-step="draft">
+            <span class="sb-step__num">3</span>
+            <span class="sb-step__label">Shortlist Draft</span>
+            <span class="sb-step__count" id="sbDraftCount">0</span>
+          </button>
+        </nav>
+
+        <!-- ================= STEP 1 — SEARCH CRITERIA ================= -->
+        <section class="sb-panel" id="stepCriteria" aria-label="Search criteria">
+          <div class="sb-panel__head">
+            <div>
+              <h2 class="sb-h2">Search criteria for Umar</h2>
+              <p class="sb-hint">Save more than one brief — clients often want a stretch option and a safer one.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" id="sbAddCriteria">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Add search criteria
+            </button>
+          </div>
+
+          <div class="sb-criteria-list" id="sbCriteriaList"></div>
+        </section>
+
+        <!-- ================= STEP 2 — SELECTION ================= -->
+        <section class="sb-panel" id="stepSelection" hidden aria-label="Selection">
+          <div class="sb-panel__head">
+            <div>
+              <button type="button" class="sb-back" data-goto="criteria">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                Back to criteria
+              </button>
+              <h2 class="sb-h2">Selection</h2>
+              <p class="sb-hint">Your searches feed this list. Review each one and either add it to the shortlist or set it aside — nothing reaches the client until you add it.</p>
+            </div>
+            <div class="sb-selstats">
+              <span class="sb-selstat"><strong id="sbOptionCount">0</strong> to review</span>
+              <span class="sb-selstat sb-selstat--new" id="sbNewStat" hidden><strong id="sbNewStatNum">0</strong> new</span>
+              <button type="button" class="btn btn-ghost" id="sbMarkSeen" hidden>Mark all reviewed</button>
+            </div>
+          </div>
+
+          <div class="sb-selfilter" id="sbSelFilter" hidden>
+            <button type="button" class="seg__btn is-active" data-selfilter="all">All</button>
+            <button type="button" class="seg__btn" data-selfilter="new">New only</button>
+          </div>
+
+          <div class="sb-cards" id="sbOptions"></div>
+          <p class="list-empty" id="sbOptionsEmpty" hidden>You have reviewed every option for this search.</p>
+
+          <!-- Rejected properties stay out of this shortlist's future searches -->
+          <details class="sb-rejected" id="sbRejectedWrap" hidden>
+            <summary class="sb-rejected__summary">
+              Not for client · <span id="sbRejectedCount">0</span>
+            </summary>
+            <ul class="sb-rejected__list" id="sbRejectedList"></ul>
+          </details>
+        </section>
+
+        <!-- ================= STEP 3 — SHORTLIST DRAFT ================= -->
+        <section class="sb-panel" id="stepDraft" hidden aria-label="Shortlist draft">
+          <div class="sb-panel__head">
+            <div>
+              <button type="button" class="sb-back" data-goto="selection">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+                Back to Selection
+              </button>
+              <h2 class="sb-h2">Shortlist draft</h2>
+              <p class="sb-hint">This is close to what the client will see. Removing returns a property to Selection — it is not rejected.</p>
+            </div>
+          </div>
+
+          <div class="sb-cards" id="sbDraft"></div>
+          <p class="list-empty" id="sbDraftEmpty">Nothing selected yet. Generate options and pick the properties you like.</p>
+
+          <!-- Publish -->
+          <section class="sb-publish" id="sbPublish">
+            <div class="sb-publish__draft" id="sbPublishDraft">
+              <div>
+                <h3 class="sb-h3">Publish shortlist</h3>
+                <p class="sb-hint">The client gets a link — no account needed.</p>
+              </div>
+              <div class="sb-publish__row">
+                <label class="field sb-publish__name">
+                  <span class="field__label">Shortlist name</span>
+                  <input type="text" class="input-field" id="sbName" value="Umar — Ubud Family Homes" placeholder="e.g. Umar — Ubud Family Homes">
+                </label>
+                <button type="button" class="btn btn-primary" id="sbPublishBtn">Publish shortlist</button>
+                <a href="client-shortlist.html" target="_blank" rel="noopener" class="btn btn-ghost" id="sbPreview">Preview</a>
+              </div>
+              <p class="field-hint" id="sbPublishHint"></p>
+            </div>
+
+            <div class="sb-publish__live" id="sbPublishLive" hidden>
+              <p class="sb-published">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                Shortlist published
+              </p>
+              <code class="sb-url" id="sbUrl">banyan.properties/s/xxxxx</code>
+              <div class="sb-publish__row">
+                <button type="button" class="btn btn-ghost" id="sbCopy">Copy link</button>
+                <a href="client-shortlist.html" target="_blank" rel="noopener" class="btn btn-ghost" id="sbPreview2">Preview as client</a>
+                <a href="client-shortlist.html" target="_blank" rel="noopener" class="btn btn-primary" id="sbOpen">Open shortlist</a>
+              </div>
+              <p class="sb-hint" id="sbLiveHint">This shortlist is live. Anything you add now appears for the client straight away — the link never changes.</p>
+            </div>
+          </section>
+        </section>
+
+      

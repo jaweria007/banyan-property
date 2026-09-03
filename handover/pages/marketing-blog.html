@@ -1,0 +1,97 @@
+<!--
+  marketing-blog.html
+  data-page="marketing-blog"   (script.js dispatches on this)
+  replaces staging route: /marketing?section=blogseo&tab=blog
+
+  This is the page content only — no <html>, <head>, sidebar or topbar.
+  Drop it inside your app shell and convert to JSX:
+    class= -> className=   for= -> htmlFor=   self-close <img> <input> <br>
+-->
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">Blog</h1>
+            <p class="page-subtitle">The article pipeline for the public website — drafts, review and what is live.</p>
+          </div>
+          <div class="page-head__actions">
+            <button type="button" class="btn btn-primary" id="blNew">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              New article
+            </button>
+          </div>
+        </section>
+
+        <section class="queue-stats" aria-label="Article summary">
+          <button type="button" class="queue-stat is-active" data-blstatus="all">
+            <span class="queue-stat__value">12</span><span class="queue-stat__label">All</span>
+          </button>
+          <button type="button" class="queue-stat" data-blstatus="Draft">
+            <span class="queue-stat__value">4</span><span class="queue-stat__label">Draft</span>
+          </button>
+          <button type="button" class="queue-stat" data-blstatus="In review">
+            <span class="queue-stat__value queue-stat__value--amber">2</span><span class="queue-stat__label">In review</span>
+          </button>
+          <button type="button" class="queue-stat" data-blstatus="Scheduled">
+            <span class="queue-stat__value queue-stat__value--blue">2</span><span class="queue-stat__label">Scheduled</span>
+          </button>
+          <button type="button" class="queue-stat" data-blstatus="Published">
+            <span class="queue-stat__value queue-stat__value--green">4</span><span class="queue-stat__label">Published</span>
+          </button>
+        </section>
+
+        <div class="work-bar">
+          <label class="search-field search-field--wide">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input type="search" id="blSearch" placeholder="Search title, slug or author…" aria-label="Search articles">
+          </label>
+          <div class="work-filters">
+            <label class="select-wrap">
+              <span class="sr-only">Filter by category</span>
+              <select class="select-field" id="blCategory">
+                <option value="all">All categories</option>
+                <option value="Living in Bali">Living in Bali</option>
+                <option value="Buying guide">Buying guide</option>
+                <option value="Renting guide">Renting guide</option>
+                <option value="Market update">Market update</option>
+                <option value="Community">Community</option>
+              </select>
+            </label>
+            <label class="select-wrap">
+              <span class="sr-only">Filter by author</span>
+              <select class="select-field" id="blAuthor">
+                <option value="all">All authors</option>
+                <option value="Ratna">Ratna</option>
+                <option value="Berry">Berry</option>
+                <option value="Andries">Andries</option>
+                <option value="Kashif">Kashif</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <section class="card op-block">
+          <div class="work-list">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th scope="col" class="th-sort" data-sort="id">ID</th>
+                  <th scope="col" class="th-sort is-asc" data-sort="title">Title</th>
+                  <th scope="col" class="th-sort" data-sort="category">Category</th>
+                  <th scope="col" class="th-sort" data-sort="author">Author</th>
+                  <th scope="col" class="th-sort" data-sort="status">Status</th>
+                  <th scope="col" class="th-sort" data-sort="featured">Featured</th>
+                  <th scope="col" class="th-sort" data-sort="date">Updated</th>
+                  <th scope="col" class="th-edit">Edit</th>
+                </tr>
+              </thead>
+              <tbody id="blBody"></tbody>
+            </table>
+          </div>
+          <p class="list-empty" id="blEmpty" hidden>No articles match your filters.</p>
+        </section>
+
+        <p class="field-hint">SEO settings and the PostHog analytics that used to sit alongside the blog have moved — SEO is under <a href="marketing-website-settings.html">Website Settings</a>, analytics under <a href="reporting-website.html">Website Dashboard</a>.</p>
+
+      
+
+      

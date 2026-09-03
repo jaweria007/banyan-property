@@ -1,0 +1,93 @@
+<!--
+  reporting-growth.html
+  data-page="reporting-growth"   (script.js dispatches on this)
+  replaces staging route: /reporting
+
+  This is the page content only — no <html>, <head>, sidebar or topbar.
+  Drop it inside your app shell and convert to JSX:
+    class= -> className=   for= -> htmlFor=   self-close <img> <input> <br>
+-->
+
+        <section class="page-head">
+          <div>
+            <h1 class="page-title">Growth Dashboard</h1>
+            <p class="page-subtitle">The AARRR funnel at a glance. Every card and every row answers to the one time filter below.</p>
+          </div>
+          <div class="page-head__actions">
+            <a href="reporting-community.html" class="btn btn-ghost">Community Dashboard</a>
+          </div>
+        </section>
+
+        <!-- One filter drives every card and every KPI row -->
+        <div class="work-bar">
+          <div class="seg" role="group" aria-label="Time period" id="growthPeriod">
+            <button type="button" class="seg__btn" data-period="today">Today</button>
+            <button type="button" class="seg__btn" data-period="week">This Week</button>
+            <button type="button" class="seg__btn is-active" data-period="month">This Month</button>
+            <button type="button" class="seg__btn" data-period="quarter">This Quarter</button>
+            <button type="button" class="seg__btn" data-period="year">This Year</button>
+            <button type="button" class="seg__btn" data-period="custom">Custom range</button>
+          </div>
+          <p class="sb-hint" id="growthPeriodNote">Showing <strong>This Month</strong> · the URL keeps your selection.</p>
+        </div>
+
+        <div class="drawer-row drawer-row--2 rp-custom" id="growthCustom" hidden>
+          <label class="field"><span class="field__label">From</span><input type="date" class="input-field" id="growthFrom"></label>
+          <label class="field"><span class="field__label">To</span><input type="date" class="input-field" id="growthTo"></label>
+        </div>
+
+        <!-- Acquisition -> Activation -> Retention -> Conversion -> Referral -->
+        <section class="rp-funnel" id="growthFunnel" aria-label="Funnel stages"></section>
+
+        <section class="card op-block">
+          <div class="op-block__head">
+            <div>
+              <h2 class="section-title">KPI table</h2>
+              <p class="sb-hint">Every KPI at once. Click a row to open the operational list behind it.</p>
+            </div>
+          </div>
+          <div class="work-list">
+            <table class="data-table rp-kpi">
+              <thead>
+                <tr>
+                  <th scope="col" class="th-sort is-asc" data-sort="kpi">KPI</th>
+                  <th scope="col" class="th-sort" data-sort="stage">Stage</th>
+                  <th scope="col" class="th-sort" data-sort="current">Current</th>
+                  <th scope="col" class="th-sort" data-sort="previous">Previous</th>
+                  <th scope="col" class="th-sort" data-sort="change">% change</th>
+                  <th scope="col" class="th-sort" data-sort="trend">Trend</th>
+                  <th scope="col">Sync</th>
+                </tr>
+              </thead>
+              <tbody id="kpiBody"></tbody>
+            </table>
+          </div>
+          <p class="list-empty" id="kpiEmpty" hidden>No KPIs for this period.</p>
+        </section>
+
+        <section class="op-block">
+          <h2 class="section-title">More report cards</h2>
+          <p class="sb-hint">Listings, Sales, Operations and Finance dashboards are planned — each needs its own spec before it is built.</p>
+          <div class="rp-soon">
+            <article class="rp-sooncard">
+              <div class="rp-sooncard__head"><h3>Listings</h3><span class="rp-soonpill">Coming soon</span></div>
+              <p>Listing performance and portfolio health</p>
+            </article>
+            <article class="rp-sooncard">
+              <div class="rp-sooncard__head"><h3>Sales</h3><span class="rp-soonpill">Coming soon</span></div>
+              <p>Opportunities, conversion and closed deals</p>
+            </article>
+            <article class="rp-sooncard">
+              <div class="rp-sooncard__head"><h3>Operations</h3><span class="rp-soonpill">Coming soon</span></div>
+              <p>Task, pipeline and workflow throughput</p>
+            </article>
+            <article class="rp-sooncard">
+              <div class="rp-sooncard__head"><h3>Finance</h3><span class="rp-soonpill">Coming soon</span></div>
+              <p>Revenue, fees and financial summaries</p>
+            </article>
+          </div>
+        </section>
+
+      
+
+      

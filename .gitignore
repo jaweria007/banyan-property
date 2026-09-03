@@ -1,3 +1,6 @@
 .DS_Store
 .shipstudio/
 Thumbs.db
+
+# handover bundle is a build artifact, rebuilt on demand
+banyan-oms-ui-handover.zip

@@ -1,0 +1,172 @@
+<!--
+  relationship-detail.html
+  data-page="relationship-detail"   (script.js dispatches on this)
+  replaces staging route: /relationships/<id>
+
+  This is the page content only — no <html>, <head>, sidebar or topbar.
+  Drop it inside your app shell and convert to JSX:
+    class= -> className=   for= -> htmlFor=   self-close <img> <input> <br>
+-->
+
+        <a class="sb-back" href="relationships.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+          Back to Relationships
+        </a>
+
+        <!-- Header mirrors the card: WHO -> TYPE -> how to reach them -->
+        <section class="rd-head">
+          <div class="rd-head__who">
+            <div class="rd-head__title">
+              <h1 class="page-title" id="rdName">—</h1>
+              <span class="rel-type" id="rdType">—</span>
+              <span class="rel-id" id="rdId">—</span>
+            </div>
+            <p class="rd-head__company" id="rdCompany"></p>
+            <div class="rd-head__contact">
+              <span class="rel-wa" id="rdWa" data-wa="">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.8c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.7.9-.3.2-.5.1a6.5 6.5 0 0 1-1.9-1.2 7.3 7.3 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 8 8 0 0 0 2.9.7 2.5 2.5 0 0 0 1.7-.8 2.1 2.1 0 0 0 .4-1.4c0-.2-.1-.2-.3-.3z"/></svg>
+                <span id="rdWaLabel">—</span>
+              </span>
+              <a class="rd-mail" id="rdEmail" href="#">—</a>
+              <span class="rd-assigned">Assigned to <strong id="rdAgent">—</strong></span>
+            </div>
+          </div>
+
+          <div class="rd-head__actions">
+            <button type="button" class="btn btn-primary" id="rdNewTask">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Create Task
+            </button>
+          </div>
+        </section>
+
+        <!-- Same four facts as the card, so the two never disagree -->
+        <section class="rd-facts" id="rdFacts"></section>
+
+        <div class="rd-cols">
+          <div class="rd-main">
+
+            <!-- The workspace: what needs doing, then what has happened -->
+            <section class="card op-block">
+              <div class="op-block__head">
+                <h2 class="section-title">Open tasks</h2>
+                <a href="my-work.html" class="record-pill">My Work</a>
+              </div>
+              <ul class="op-list" id="rdTasks"></ul>
+              <p class="list-empty" id="rdTasksEmpty" hidden>Nothing open. Nice.</p>
+            </section>
+
+            <section class="card op-block">
+              <h2 class="section-title">Activity history</h2>
+              <ol class="op-timeline" id="rdHistory"></ol>
+            </section>
+
+            <section class="card op-block">
+              <div class="op-block__head">
+                <h2 class="section-title">Notes</h2>
+              </div>
+              <label class="field">
+                <span class="field__label">Add a note</span>
+                <textarea class="input-field input-field--area" id="rdNoteText" rows="2" placeholder="Preferences, context, anything the next person should know…"></textarea>
+              </label>
+              <div class="rd-noterow">
+                <button type="button" class="btn btn-primary" id="rdAddNote">Add note</button>
+              </div>
+              <ul class="op-list" id="rdNotes"></ul>
+            </section>
+
+            <section class="card op-block">
+              <h2 class="section-title">Connected records</h2>
+              <ul class="op-list" id="rdConnections"></ul>
+              <p class="field-hint">Named, not coded — the internal IDs stay out of the way.</p>
+            </section>
+          </div>
+
+          <aside class="rd-side">
+
+            <section class="card op-block">
+              <h2 class="section-title">Contact details</h2>
+              <dl class="rd-kv" id="rdContact"></dl>
+            </section>
+
+            <!-- Where applicable, per the feedback -->
+            <section class="card op-block" id="rdBrokerCard" hidden>
+              <h2 class="section-title">Referring broker / partner</h2>
+              <a class="rd-broker" id="rdBrokerLink" href="relationships.html">
+                <span class="rd-broker__name" id="rdBrokerName">—</span>
+                <span class="rd-broker__meta" id="rdBrokerMeta">—</span>
+              </a>
+            </section>
+
+            <section class="card op-block">
+              <h2 class="section-title">Activity with Banyan</h2>
+              <dl class="rd-kv" id="rdActivity"></dl>
+            </section>
+
+            <section class="card op-block">
+              <h2 class="section-title">Documents</h2>
+              <ul class="op-list" id="rdDocs"></ul>
+              <p class="field-hint">Documents belong to the property, booking or contract that owns them — Google Drive stays the source of truth.</p>
+            </section>
+          </aside>
+        </div>
+
+        <!-- Deeper CRM detail, out of the way until it is wanted -->
+        <details class="rd-deeper">
+          <summary class="rd-deeper__summary">Marketing attribution &amp; CRM detail</summary>
+          <div class="rd-deeper__body">
+            <section class="card op-block">
+              <h2 class="section-title">First touch</h2>
+              <dl class="rd-kv rd-kv--wide" id="rdFirstTouch"></dl>
+            </section>
+            <section class="card op-block">
+              <h2 class="section-title">Lifecycle</h2>
+              <dl class="rd-kv rd-kv--wide" id="rdLifecycle"></dl>
+              <p class="field-hint">Derived from the relationship's event stream on every read — never stored, so it cannot go stale.</p>
+            </section>
+            <section class="card op-block">
+              <h2 class="section-title">Preferences</h2>
+              <div class="op-grid">
+                <label class="field"><span class="field__label">Acquisition source</span>
+                  <select class="select-field"><option>Unset</option><option>Website</option><option>Referral</option><option>Scout</option><option>Walk-in</option></select></label>
+                <label class="field"><span class="field__label">Preferred channel</span>
+                  <select class="select-field"><option>Unset</option><option>WhatsApp</option><option>Email</option><option>Phone</option></select></label>
+                <label class="field"><span class="field__label">Communication frequency</span>
+                  <select class="select-field"><option>Unset</option><option>Weekly</option><option>Monthly</option><option>Only when relevant</option></select></label>
+                <label class="field"><span class="field__label">Newsletter</span>
+                  <select class="select-field"><option>Unset</option><option>Subscribed</option><option>Unsubscribed</option></select></label>
+              </div>
+            </section>
+          </div>
+        </details>
+
+        <!-- Create Task, consistent with My Work and the Opportunity page -->
+        <button class="drawer-backdrop" id="rdTaskBackdrop" aria-label="Close" hidden></button>
+        <aside class="drawer" id="rdTaskDrawer" aria-labelledby="rdTaskTitle" aria-hidden="true">
+          <header class="drawer__head">
+            <h2 class="drawer__title" id="rdTaskTitle">Create task</h2>
+            <button type="button" class="icon-btn drawer__close" id="rdTaskClose" aria-label="Close">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
+            </button>
+          </header>
+          <div class="drawer__body">
+            <label class="field">
+              <span class="field__label">Task Description</span>
+              <textarea class="input-field input-field--area" id="rdTaskDesc" rows="3" placeholder="Call about the lease renewal"></textarea>
+            </label>
+            <div class="drawer-row drawer-row--2">
+              <label class="field"><span class="field__label">Status</span>
+                <select class="select-field"><option>Inbox</option><option selected>To Do</option><option>In Progress</option><option>Waiting</option><option>Done</option></select></label>
+              <label class="field"><span class="field__label">Assignee</span>
+                <select class="select-field"><option>Ratna</option><option>Berry</option><option>Andries</option><option>Kashif</option><option>Unassigned</option></select></label>
+            </div>
+            <label class="field"><span class="field__label">Due date</span><input type="date" class="input-field"></label>
+            <p class="field-hint">Linked to <strong id="rdTaskLink">this relationship</strong> · appears in My Work and drives the Actions status.</p>
+          </div>
+          <footer class="drawer__foot">
+            <button type="button" class="btn btn-ghost" id="rdTaskCancel">Cancel</button>
+            <button type="button" class="btn btn-primary" id="rdTaskSave">Create task</button>
+          </footer>
+        </aside>
+
+        <div class="cs-toast" id="rdToast" hidden></div>

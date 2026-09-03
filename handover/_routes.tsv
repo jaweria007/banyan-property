@@ -1,0 +1,25 @@
+page	data-page	staging route
+index.html	overview	/
+listings.html	listings	/master
+listing-detail.html	listing-detail	/master/<id>
+availability.html	availability	/master/availability
+supply.html	supply	/master/supply
+client-inbox.html	client-inbox	/sales
+opportunities.html	opportunities	/opportunities
+profile.html	profile	/opportunities/<id>
+shortlist.html	shortlist	/opportunities/<id>/shortlist
+my-work.html	my-work	/tasks
+relationships.html	relationships	/relationships
+relationship-detail.html	relationship-detail	/relationships/<id>
+client-shortlist.html	client-shortlist	/shortlists/<token>  (public)
+client-property.html	client-property	/shortlists/<token>/<id>  (public)
+reporting-growth.html	reporting-growth	/reporting
+reporting-community.html	reporting-community	/reporting/communities
+reporting-website.html	reporting-website	/marketing?section=blogseo&tab=insights
+marketing-scouts.html	marketing-scouts	/marketing?section=monitors
+marketing-publishers.html	marketing-publishers	/marketing?section=promotion
+marketing-blog.html	marketing-blog	/marketing?section=blogseo&tab=blog
+website-content.html	website-settings	/nav  +  /settings (Site content)  +  blogseo&tab=seo
+settings-users.html	settings-users	/settings/users
+settings-oms.html	settings-oms	/settings/system, /configuration, /communities, /backups, /logs
+login.html	login	/login

@@ -2568,11 +2568,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const summary =
         IDR(c.priceMin) + '–' + IDR(c.priceMax) + ' · ' +
-        (c.locations.length > 3 ? c.locations.slice(0, 2).join('/') + ' +' + (c.locations.length - 2) : c.locations.join('/')) +
+        (c.locations.length
+          ? (c.locations.length > 3
+              ? c.locations.slice(0, 2).join('/') + ' +' + (c.locations.length - 2)
+              : c.locations.join('/'))
+          : 'Any location') +
         ' · ' + c.bedsMin + '+ bedrooms';
+
+      // a search nobody has narrowed yet matches almost everything, which is
+      // true but unhelpful — say so rather than letting the number puzzle
+      const untouched = !c.locations.length && c.bedsMin <= 1 && !c.access;
 
       // The match count is the headline, and stays visible whether or not
       // there are new ones — the button never replaces it.
+      const hint = (!c.live && untouched)
+        ? '<p class="sb-warn">No criteria set yet — this matches almost the whole portfolio. Narrow it down first.</p>'
+        : '';
+
       const action = c.live
         ? '<div class="sb-liveline">' +
             '<span class="sb-listening"><span class="sb-newpill__dot"></span>Listening — new matches go to Selection</span>' +
@@ -2586,14 +2598,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.innerHTML =
         '<header class="sb-criteria__head">' +
-          '<button type="button" class="sb-criteria__toggle" aria-expanded="' + c.open + '">' +
-            '<span class="sb-criteria__chev"></span>' +
-            '<span class="sb-criteria__title">' + c.name + '</span>' +
-          '</button>' +
+          '<div class="sb-criteria__left">' +
+            '<button type="button" class="sb-criteria__toggle" aria-expanded="' + c.open + '">' +
+              '<span class="sb-criteria__chev"></span>' +
+            '</button>' +
+            // click the name to rename it — no separate dialog
+            '<input type="text" class="sb-criteria__name" data-rename value="' +
+              c.name.replace(/"/g, '&quot;') + '" aria-label="Search name">' +
+            '<span class="sb-criteria__tools">' +
+              '<button type="button" class="sb-tool" data-dup title="Duplicate this search">Duplicate</button>' +
+              '<button type="button" class="sb-tool sb-tool--danger" data-del title="Delete this search">Delete</button>' +
+            '</span>' +
+          '</div>' +
           '<div class="sb-criteria__meta">' +
+            // the collapsed row has to say where this search stands on its own
+            (c.live
+              ? '<span class="sb-state sb-state--live"><span class="sb-newpill__dot"></span>Listening</span>'
+              : '<span class="sb-state sb-state--idle">Not added yet</span>') +
             '<span class="sb-matchcount"><strong>' + total + '</strong> matches</span>' +
             '<span class="sb-hint">Last checked ' + fmtDate(c.lastChecked) + '</span>' +
-            (fresh ? '<span class="sb-newbadge">+' + fresh + ' NEW</span>' : '') +
+            (c.live
+              ? (unreviewed
+                  ? '<button type="button" class="sb-newbadge sb-newbadge--btn sb-goreview" data-gen="' + c.id +
+                      '">' + unreviewed + ' to review →</button>'
+                  : '')
+              : (fresh ? '<span class="sb-newbadge">+' + fresh + ' NEW when added</span>' : '')) +
           '</div>' +
         '</header>' +
 
@@ -2696,7 +2725,7 @@ document.addEventListener('DOMContentLoaded', () => {
           '</div>' +
 
           '<div class="sb-criteria__foot">' +
-            '<p class="sb-hint">' + summary + '</p>' +
+            '<div><p class="sb-hint">' + summary + '</p>' + hint + '</div>' +
             action +
           '</div>' +
         '</div>';
@@ -2877,6 +2906,30 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    const dup = e.target.closest('[data-dup]');
+    if (dup) {
+      const card = dup.closest('.sb-criteria');
+      const c = CRITERIA.find((x) => x.id === card.dataset.criteria);
+      const copy = Object.assign({}, c, {
+        id: 'c' + Date.now(), name: c.name + ' (copy)',
+        live: false, open: true, locations: c.locations.slice()
+      });
+      CRITERIA.splice(CRITERIA.indexOf(c) + 1, 0, copy);
+      renderCriteria();
+      return;
+    }
+
+    const del = e.target.closest('[data-del]');
+    if (del) {
+      const card = del.closest('.sb-criteria');
+      const c = CRITERIA.find((x) => x.id === card.dataset.criteria);
+      // whatever this search put in Selection stays; only the search goes
+      CRITERIA.splice(CRITERIA.indexOf(c), 1);
+      state.selection.forEach((sel) => { if (sel.from === c.id) sel.from = null; });
+      renderAll();
+      return;
+    }
+
     const go = e.target.closest('.sb-goreview');
     if (go) {
       state.selFilter = 'all';
@@ -2886,6 +2939,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   criteriaList.addEventListener('input', (e) => {
+    if (e.target.dataset.rename !== undefined) {
+      const card = e.target.closest('.sb-criteria');
+      const c = CRITERIA.find((x) => x.id === card.dataset.criteria);
+      c.name = e.target.value;
+      return;
+    }
     if (e.target.dataset.locsearch === undefined) return;
     // filter the full location list as the agent types
     const q = e.target.value.trim().toLowerCase();
@@ -2935,11 +2994,14 @@ document.addEventListener('DOMContentLoaded', () => {
   el('sbAddCriteria').addEventListener('click', () => {
     CRITERIA.forEach((c) => (c.open = false));
     CRITERIA.push({
-      id: 'c' + (CRITERIA.length + 1), name: 'New search ' + (CRITERIA.length + 1),
+      id: 'c' + Date.now(), name: 'Untitled search',
       lastChecked: TODAY, live: false, priceMin: 10000000, priceMax: 100000000,
       locations: [], bedsMin: 1, access: '', excludeCoBroker: false, open: true
     });
     renderCriteria();
+    // land straight in the name field so it gets a real name
+    const fresh = criteriaList.lastElementChild.querySelector('[data-rename]');
+    if (fresh) { fresh.focus(); fresh.select(); }
   });
 
   /* ================= Selection interactions ================= */

@@ -12579,3 +12579,10 @@ body[data-page="overview"] .attention-card__value {
   font-size: 0.8rem;
   color: #975a16;
 }
+
+/* Nothing to add until a brief actually exists */
+.sb-addall:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}

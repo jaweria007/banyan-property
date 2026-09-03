@@ -4539,23 +4539,64 @@ document.addEventListener('DOMContentLoaded', () => {
   if (page === 'website-settings') {
     tabs('wstab', { navigation: 'wsNavigation', content: 'wsContent', seo: 'wsSeo' });
 
-    /* --- Navigation --- */
-    const CATS = ['Top Main Nav', 'Top Left Nav', 'Top Right Nav', 'Rent', 'Buy', 'Land', 'Commercial', 'Footer'];
-    const AREAS = ['Ubud', 'Canggu', 'Uluwatu', 'Seminyak', 'Sanur', 'Sibang', 'Pejeng', 'Nyuh Kuning', 'Penestanan', 'Kedewatan'];
+    /* --- Navigation ---
+       These are the public website's menu and filter pages, not the OMS nav:
+       every row is a real URL on banyan.properties. Staging holds 299 of them;
+       this is a representative sample of the same shapes. */
+    const AREAS = {
+      Ubud: ['Penestanan & Sayan', 'Nyuh Kuning', 'Titi Batu Area', 'Mas', 'Pengosekan', 'Tegallalang'],
+      Bukit: ['Bingin', 'Padang Padang', 'Pecatu', 'Balangan'],
+      'Central Bali': ['Abiansemal', 'Sibang', 'Pejeng'],
+      'Nusa & Gili Islands': ['Nusa Penida', 'Nusa Lembongan', 'Gili Air, Meno & Trawangan'],
+      'Tanah Lot – Canggu': ['Berawa', 'Pererenan', 'Umalas']
+    };
+    const FEATURES = [
+      'Any', 'Banyan Selection', 'Newly Listed', 'Hot Deal', 'Luxury',
+      'Family Friendly', 'Large Garden', 'Large Pool', 'Managed Property',
+      '10min from Green School', '10min from Yoga Barn', '10min from Ubud Palace',
+      '25min from Green School'
+    ];
+    const TENURE = ['Freehold', 'Leasehold', 'Long Lease Above 40 Years', 'Off Plan', 'Orange Zone'];
+    const slugify = (t) => t.toLowerCase()
+      .replace(/&/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
     const NAVITEMS = [];
-    CATS.forEach((cat, ci) => {
-      AREAS.forEach((area, ai) => {
-        if ((ci + ai) % 3 === 0) return;
-        NAVITEMS.push({
-          category: cat,
-          type: ci < 3 ? 'Page' : 'Filter',
-          primary: cat === 'Footer' ? 'About' : area,
-          secondary: ci < 3 ? '—' : (ai % 2 ? 'Villas' : 'Land'),
-          slug: '/' + cat.toLowerCase().replace(/\s+/g, '-') + '/' + area.toLowerCase().replace(/\s+/g, '-'),
-          sort: (ai + 1) * 10
-        });
+    ['Buy', 'Rent', 'Land', 'Commercial'].forEach((cat) => {
+      const base = '/' + cat.toLowerCase();
+      NAVITEMS.push({ category: cat, type: 'Landing', primary: cat, secondary: '—', slug: base, sort: 1 });
+      [1, 2, 3, 4, 5].forEach((n) => NAVITEMS.push({
+        category: cat, type: 'Filter', primary: 'Bedrooms', secondary: String(n),
+        slug: base + '/bedrooms/' + n, sort: n
+      }));
+      FEATURES.forEach((f, i) => NAVITEMS.push({
+        category: cat, type: 'Filter', primary: f, secondary: '—',
+        slug: base + '/' + slugify(f), sort: i + 1
+      }));
+      if (cat === 'Buy' || cat === 'Land') TENURE.forEach((t, i) => NAVITEMS.push({
+        category: cat, type: 'Filter', primary: t, secondary: '—',
+        slug: base + '/' + slugify(t), sort: i + 1
+      }));
+      Object.entries(AREAS).forEach(([area, subs], ai) => {
+        NAVITEMS.push({ category: cat, type: 'Area', primary: area, secondary: '—',
+                        slug: base + '/' + slugify(area), sort: ai + 1 });
+        subs.forEach((sub, si) => NAVITEMS.push({
+          category: cat, type: 'Area', primary: area, secondary: sub,
+          slug: base + '/' + slugify(area) + '/' + slugify(sub),
+          sort: Number((ai + 1) + '.' + (si + 1))
+        }));
       });
     });
+    [['Top Main Nav', 'Buy', '/buy', 1], ['Top Main Nav', 'Rent', '/rent', 2],
+     ['Top Main Nav', 'Land', '/land', 3], ['Top Main Nav', 'Commercial', '/commercial', 4],
+     ['Top Left Nav', 'Advanced Search', '/advanced-search', 1],
+     ['Top Right Nav', 'Bali Guides', '/bali-guides', 1],
+     ['Top Right Nav', 'About', '/about-banyan-properties', 2],
+     ['Footer', 'Relocate to Bali', '/bali-guides/relocate-to-bali', 1],
+     ['Footer', "Buyer's Advisory", '/bali-guides/buyers-advisory', 2],
+     ['Footer', 'About Banyan', '/about-banyan-properties', 3]
+    ].forEach(([cat, label, slug, sort]) => NAVITEMS.push({
+      category: cat, type: 'Page', primary: label, secondary: '—', slug, sort
+    }));
 
     const navState = { q: '', category: 'all' };
     let navSorter;

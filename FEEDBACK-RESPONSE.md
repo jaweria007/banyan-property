@@ -244,6 +244,26 @@ says so and why.
 
 ---
 
+## How this was checked
+
+Not by eye. Two automated passes, both repeatable:
+
+1. **Navigation against your document.** The nav you wrote out was transcribed into a test —
+   every group, every child, in order, plus the renames and the removals. It passes 25 of 25.
+2. **Page content against the staging app.** Every heading, table column, form label and
+   dropdown option on each staging page was extracted and checked against our version, with
+   hidden tabs opened so nothing was missed. All pages now match, with one deliberate exception:
+   staging calls a section "Needs Attention rules" and we call it "Action rules", because you
+   asked for that rename.
+
+The rule we followed throughout: **your feedback wins; where the feedback is silent, staging
+wins.** So the sections you did not mention — the Google and email keys, the monitor rules, the
+per-hub user permissions, the backup tables — are carried over as staging has them.
+
+Also checked across all 24 pages at 1440px and 390px: no horizontal overflow, no JS errors.
+
+---
+
 ## Still open
 
 **Three decisions we need from you** — in each case the document says two different things, so we built the option that loses nothing:

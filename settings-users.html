@@ -200,113 +200,78 @@
         <section class="page-head">
           <div>
             <h1 class="page-title">User Management</h1>
-            <p class="page-subtitle">Who can sign in to the OMS, what they can reach, and which sessions are open.</p>
+            <p class="page-subtitle">Who can sign in, and which hubs each person can reach.</p>
           </div>
-          <div class="page-head__actions">
-            <button type="button" class="btn btn-primary" id="umInvite">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-              Invite user
-            </button>
-          </div>
-        </section>
-
-        <section class="queue-stats" aria-label="User summary">
-          <button type="button" class="queue-stat is-active" data-umrole="all">
-            <span class="queue-stat__value">7</span><span class="queue-stat__label">All users</span>
-          </button>
-          <button type="button" class="queue-stat" data-umrole="Admin">
-            <span class="queue-stat__value">2</span><span class="queue-stat__label">Admin</span>
-          </button>
-          <button type="button" class="queue-stat" data-umrole="Agent">
-            <span class="queue-stat__value">3</span><span class="queue-stat__label">Agent</span>
-          </button>
-          <button type="button" class="queue-stat" data-umrole="Ops">
-            <span class="queue-stat__value">1</span><span class="queue-stat__label">Ops</span>
-          </button>
-          <button type="button" class="queue-stat" data-umrole="Invited">
-            <span class="queue-stat__value queue-stat__value--amber">1</span><span class="queue-stat__label">Invited</span>
-          </button>
-        </section>
-
-        <div class="work-bar">
-          <label class="search-field search-field--wide">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-            <input type="search" id="umSearch" placeholder="Search name or email…" aria-label="Search users">
-          </label>
-        </div>
-
-        <section class="card op-block">
-          <div class="work-list">
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th scope="col" class="th-sort is-asc" data-sort="name">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col" class="th-sort" data-sort="role">Role</th>
-                  <th scope="col" class="th-sort" data-sort="status">Status</th>
-                  <th scope="col" class="th-sort" data-sort="last">Last active</th>
-                  <th scope="col" class="th-edit">Edit</th>
-                </tr>
-              </thead>
-              <tbody id="umBody"></tbody>
-            </table>
-          </div>
-          <p class="list-empty" id="umEmpty" hidden>No users match your filters.</p>
         </section>
 
         <section class="card op-block">
           <div class="op-block__head">
             <div>
-              <h2 class="section-title">Open sessions</h2>
-              <p class="sb-hint">Signing a session out forces that device to log in again.</p>
+              <h2 class="section-title">Invite user</h2>
+              <p class="sb-hint">Creates a credential login with no hub access — grant access below once invited.</p>
             </div>
-            <button type="button" class="btn btn-ghost" id="umRevokeAll">Sign out all other sessions</button>
           </div>
-          <ul class="op-list" id="umSessions"></ul>
+          <div class="drawer-row drawer-row--3">
+            <label class="field">
+              <span class="field__label">Email</span>
+              <input type="email" class="input-field" id="umEmail" placeholder="name@banyan.com">
+            </label>
+            <label class="field">
+              <span class="field__label">Temporary password</span>
+              <input type="text" class="input-field" id="umPass" placeholder="They change it on first sign-in">
+            </label>
+            <label class="field">
+              <span class="field__label">&nbsp;</span>
+              <button type="button" class="btn btn-primary" id="umInvite">Invite user</button>
+            </label>
+          </div>
         </section>
 
         <section class="card op-block">
-          <h2 class="section-title">Roles</h2>
-          <p class="sb-hint">What each role can reach. Roles are fixed for now — per-user permissions come later.</p>
+          <div class="op-block__head">
+            <div>
+              <h2 class="section-title">Users <span class="page-count" id="umCount">0</span></h2>
+              <p class="sb-hint"><strong>super_admin</strong> bypasses per-hub access — the selects are disabled for those users.</p>
+            </div>
+            <label class="search-field">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+              <input type="search" id="umSearch" placeholder="Search email…" aria-label="Search users">
+            </label>
+          </div>
           <div class="work-list">
-            <table class="data-table">
+            <table class="data-table um-table">
               <thead>
-                <tr><th>Role</th><th>Listings</th><th>Sales</th><th>Relationships</th><th>Marketing</th><th>Settings</th></tr>
+                <tr>
+                  <th scope="col" class="th-sort is-asc" data-sort="email">Email</th>
+                  <th scope="col" class="th-sort" data-sort="role">Role</th>
+                  <th scope="col">Home</th>
+                  <th scope="col">Listings</th>
+                  <th scope="col">Sales</th>
+                  <th scope="col">Relationships</th>
+                  <th scope="col">Marketing</th>
+                  <th scope="col">Settings</th>
+                  <th scope="col">Reporting</th>
+                </tr>
               </thead>
-              <tbody>
-                <tr><td><strong>Admin</strong></td><td>Full</td><td>Full</td><td>Full</td><td>Full</td><td>Full</td></tr>
-                <tr><td><strong>Agent</strong></td><td>Edit</td><td>Full</td><td>Edit</td><td>View</td><td>None</td></tr>
-                <tr><td><strong>Ops</strong></td><td>Edit</td><td>View</td><td>Edit</td><td>None</td><td>None</td></tr>
-                <tr><td><strong>Marketing</strong></td><td>View</td><td>None</td><td>View</td><td>Full</td><td>None</td></tr>
-              </tbody>
+              <tbody id="umBody"></tbody>
             </table>
+          </div>
+          <p class="list-empty" id="umEmpty" hidden>No users match that search.</p>
+          <div class="rd-noterow">
+            <button type="button" class="btn btn-primary" id="umSaveAccess">Save access</button>
           </div>
         </section>
 
-        <button class="drawer-backdrop" id="umBackdrop" aria-label="Close" hidden></button>
-        <aside class="drawer" id="umDrawer" aria-labelledby="umDrawerTitle" aria-hidden="true">
-          <header class="drawer__head">
-            <h2 class="drawer__title" id="umDrawerTitle">Invite user</h2>
-            <button type="button" class="icon-btn drawer__close" id="umClose" aria-label="Close">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>
-            </button>
-          </header>
-          <div class="drawer__body">
-            <label class="field"><span class="field__label">Full name</span><input type="text" class="input-field" id="umName" placeholder="e.g. Ketut Sari"></label>
-            <label class="field"><span class="field__label">Email</span><input type="email" class="input-field" id="umEmail" placeholder="name@banyan.com"></label>
-            <label class="field">
-              <span class="field__label">Role</span>
-              <select class="select-field" id="umRole">
-                <option>Agent</option><option>Ops</option><option>Marketing</option><option>Admin</option>
-              </select>
-            </label>
-            <p class="field-hint">They get an email invitation. The account stays <strong>Invited</strong> until they set a password.</p>
+        <section class="card op-block">
+          <div class="op-block__head">
+            <div>
+              <h2 class="section-title">Sessions</h2>
+              <p class="sb-hint">Open sign-ins. Revoking one forces that device to log in again.</p>
+            </div>
+            <button type="button" class="btn btn-ghost" id="umRevokeAll">Revoke all other sessions</button>
           </div>
-          <footer class="drawer__foot">
-            <button type="button" class="btn btn-ghost" id="umCancel">Cancel</button>
-            <button type="button" class="btn btn-primary" id="umSave">Send invitation</button>
-          </footer>
-        </aside>
+          <ul class="op-list" id="umSessions"></ul>
+        </section>
 
         <div class="cs-toast" id="umToast" hidden></div>
 

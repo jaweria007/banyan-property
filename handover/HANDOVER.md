@@ -23,7 +23,7 @@ conversion.
 | Part | Effort | What to do |
 |---|---|---|
 | **`styles.css`** (12k lines) | **Copy in as-is** | This is the design. Drop it into your global CSS. Nothing to rewrite. |
-| **HTML** (`handover/pages/*.html`) | **Mechanical** | Each file is one page's markup with no shell. Convert to JSX: `class=` → `className=`, `for=` → `htmlFor=`, self-close `<img> <input> <br>`. Roughly 20–30 min per page. |
+| **React components** (`handover/react/*.tsx`) | **Copy in** | Already converted — 24 components, each validated as parsable JSX. Copy each to the path named in its header comment. |
 | **`script.js`** | **Rewrite as state** | React does not manipulate the DOM. Read the behaviour here, implement it with `useState`. The code is the spec, not the implementation. |
 
 ### One decision to make first
@@ -186,9 +186,22 @@ handover/
   HANDOVER.md        this file
   COMPONENTS.md      every block class, grouped by stylesheet section
   TOKENS.md          the design tokens from :root
+  react/*.tsx        24 React components — copy straight in
+  react/README.md    which component goes to which app/ path
   shell.html         sidebar + topbar, rendered once around every page
-  pages/*.html       one file per page, shell-free, ready to convert to JSX
+  pages/*.html       the same pages as plain HTML, if you prefer the source
   _routes.tsv        the page map above, tab-separated
 ```
+
+### What the conversion already did
+
+`class` → `className`, `for` → `htmlFor`, void elements self-closed, SVG attributes
+camelCased, HTML comments as `{/* */}`, inline styles as objects (CSS custom properties
+kept quoted), and `value`/`checked` as `defaultValue`/`defaultChecked` so each page renders
+uncontrolled until you attach state. Every file was parsed with Babel's JSX/TypeScript
+parser — 24 of 24 clean.
+
+**What it did not do:** wire data or behaviour. Each component renders the page with its
+placeholder content; the arrays to replace and the interactions to add are described above.
 
 And from the repo root: **`styles.css`** and **`script.js`**.

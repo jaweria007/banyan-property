@@ -1,0 +1,327 @@
+'use client';
+
+/*
+ * OmsSettingsPage
+ * Copy to: app/(app)/settings/page.tsx
+ *
+ * Markup only. Replace the placeholder data with your own, and add the
+ * interactions described in handover/HANDOVER.md.
+ */
+
+export default function OmsSettingsPage() {
+  return (
+    <>
+      <section className="page-head">
+                <div>
+                  <h1 className="page-title">OMS Settings</h1>
+                  <p className="page-subtitle">How the system itself behaves. Anything the public website reads lives under <a href="marketing-website-settings.html">Website Settings</a>; people live under <a href="settings-users.html">User Management</a>.</p>
+                </div>
+              </section>
+
+              <nav className="op-tabs" role="tablist" aria-label="OMS settings sections">
+                <button type="button" className="op-tab is-active" role="tab" aria-selected="true" data-ostab="system">System</button>
+                <button type="button" className="op-tab" role="tab" aria-selected="false" data-ostab="sales">Sales configuration</button>
+                <button type="button" className="op-tab" role="tab" aria-selected="false" data-ostab="communities">Communities</button>
+                <button type="button" className="op-tab" role="tab" aria-selected="false" data-ostab="backups">Backups</button>
+                <button type="button" className="op-tab" role="tab" aria-selected="false" data-ostab="logs">Logs</button>
+              </nav>
+
+              {/* ============ SYSTEM ============ */}
+              <section className="op-panel" id="osSystem" role="tabpanel">
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <h2 className="section-title">Currency</h2>
+                    <button type="button" className="btn btn-primary" data-os-save>Save</button>
+                  </div>
+                  <div className="op-grid">
+                    <label className="field">
+                      <span className="field__label">Currency sync frequency</span>
+                      <select className="select-field"><option>Weekly</option><option>Daily</option><option>Manual</option></select>
+                    </label>
+                    <label className="field"><span className="field__label">Base currency</span>
+                      <select className="select-field"><option defaultSelected>IDR</option><option>USD</option></select></label>
+                  </div>
+                  <p className="field-hint">Drives the IDR display price on every listing. Last refreshed 1 Sep 2026 · 1 USD = IDR 16,250.</p>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Translation</h2>
+                  <label className="field">
+                    <span className="field__label">Translation API key</span>
+                    <input type="password" className="input-field" defaultValue="••••••••••••••••" autoComplete="off" />
+                  </label>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Google</h2>
+                  <p className="sb-hint">Entering these activates live Google Docs / Calendar and the lease-alert emails.</p>
+                  <div className="op-grid">
+                    <label className="field"><span className="field__label">Drive root folder ID</span><input type="text" className="input-field" defaultValue="1qex9xSpyVYK629fiskPFGSNCvIcS7kH9" /></label>
+                    <label className="field"><span className="field__label">Drive template file ID</span><input type="text" className="input-field" defaultValue="1jOc7Sqn6IZP7U-OTeqL4dEVxZRkZxANB" /></label>
+                    <label className="field"><span className="field__label">Google Calendar ID</span><input type="text" className="input-field" defaultValue="ops@banyan.com" /></label>
+                    <label className="field"><span className="field__label">Google Calendar API key</span><input type="password" className="input-field" defaultValue="••••••••••••••••" autoComplete="off" /></label>
+                    <label className="field"><span className="field__label">Google service-account email</span><input type="email" className="input-field" defaultValue="oms@banyan-ops.iam.gserviceaccount.com" /></label>
+                    <label className="field"><span className="field__label">Google service-account private key</span><input type="password" className="input-field" defaultValue="••••••••••••••••" autoComplete="off" /></label>
+                  </div>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Email</h2>
+                  <p className="sb-hint">Used for lease alerts and any mail the OMS sends.</p>
+                  <div className="op-grid">
+                    <label className="field"><span className="field__label">Resend API key</span><input type="password" className="input-field" defaultValue="••••••••••••••••" autoComplete="off" /></label>
+                    <label className="field"><span className="field__label">Lease alert "from" address</span><input type="email" className="input-field" defaultValue="alerts@banyan.properties" /></label>
+                  </div>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Marketing — AI monitoring</h2>
+                  <p className="sb-hint">Entering the keys activates the live social-listening pipeline; until then a free heuristic parser runs. Model IDs are optional.</p>
+                  <div className="op-grid">
+                    <label className="field"><span className="field__label">Fireworks API key</span><input type="password" className="input-field" defaultValue="••••••••••••••••" autoComplete="off" /></label>
+                    <label className="field"><span className="field__label">DeepSeek API key</span><input type="password" className="input-field" placeholder="Not set" autoComplete="off" /></label>
+                    <label className="field"><span className="field__label">Parse model ID (Fireworks)</span><input type="text" className="input-field" placeholder="Optional" /></label>
+                    <label className="field"><span className="field__label">Relevancy model ID (DeepSeek)</span><input type="text" className="input-field" placeholder="Optional" /></label>
+                    <label className="field"><span className="field__label">Vision / OCR model ID (Fireworks)</span><input type="text" className="input-field" placeholder="Optional" /></label>
+                  </div>
+                </section>
+
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <h2 className="section-title">Marketing monitor rules</h2>
+                    <button type="button" className="btn btn-primary" data-os-save>Save</button>
+                  </div>
+                  <p className="sb-hint">The Guard rules the scouts apply before anything reaches review.</p>
+                  <label className="field">
+                    <span className="field__label">Monitor rules JSON</span>
+                    <textarea className="input-field input-field--area ws-mono" rows={8}>&#123;
+        "minLength": 40,
+        "requirePrice": true,
+        "blockKeywords": ["urgent", "dm fast", "best deal"],
+        "allowPlatforms": ["whatsapp", "telegram", "facebook"]
+      &#125;</textarea>
+                  </label>
+                </section>
+
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <h2 className="section-title">Marketing outbound channels</h2>
+                    <button type="button" className="btn btn-primary" data-os-save>Save</button>
+                  </div>
+                  <p className="sb-hint">Credentials the Publishers page broadcasts with.</p>
+                  <div className="op-grid">
+                    <label className="field"><span className="field__label">Facebook Page ID</span><input type="text" className="input-field" defaultValue="10219384756" /></label>
+                    <label className="field"><span className="field__label">Facebook Page access token</span><input type="password" className="input-field" defaultValue="••••••••••••••••" autoComplete="off" /></label>
+                    <label className="field"><span className="field__label">Instagram business user ID</span><input type="text" className="input-field" defaultValue="17841400000000" /></label>
+                    <label className="field"><span className="field__label">VPS drive command API URL</span><input type="url" className="input-field" defaultValue="https://vps.banyan.internal/command" /></label>
+                    <label className="field"><span className="field__label">VPS drive command token</span><input type="password" className="input-field" defaultValue="••••••••••••••••" autoComplete="off" /></label>
+                  </div>
+                </section>
+              </section>
+
+              {/* ============ SALES CONFIGURATION ============ */}
+              <section className="op-panel" id="osSales" role="tabpanel" hidden>
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <div>
+                      <h2 className="section-title">Property Interests</h2>
+                      <p className="sb-hint">What kind of property a journey is for — this is what tells shortlist matching which inventory to search.</p>
+                    </div>
+                    <button type="button" className="btn btn-ghost" data-os-add="interest">Add</button>
+                  </div>
+                  <ul className="op-list" id="osInterests"></ul>
+                </section>
+
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <div>
+                      <h2 className="section-title">Client Objectives</h2>
+                      <p className="sb-hint">Why a journey exists. Context and reporting only — nothing in the app branches on the value.</p>
+                    </div>
+                    <button type="button" className="btn btn-ghost" data-os-add="objective">Add</button>
+                  </div>
+                  <ul className="op-list" id="osObjectives"></ul>
+                </section>
+
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <div>
+                      <h2 className="section-title">Opportunity Stages</h2>
+                      <p className="sb-hint">Rename, reorder or add a stage. The Stage is stored and agent-set, so a new stage is one an Opportunity can actually be in.</p>
+                    </div>
+                    <button type="button" className="btn btn-ghost" data-os-add="stage">Add stage</button>
+                  </div>
+                  <ul className="op-list" id="osStages"></ul>
+                </section>
+
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <div>
+                      <h2 className="section-title">Action rules</h2>
+                      <p className="sb-hint">How an Opportunity's Action status is derived. A disabled rule stays in the config but neither fires nor renders.</p>
+                    </div>
+                  </div>
+                  <div className="work-list">
+                    <table className="data-table">
+                      <thead><tr><th>Status</th><th>Set by</th><th>Rule</th><th>Enabled</th></tr></thead>
+                      <tbody>
+                        <tr><td><span className="status-pill"><span className="action-dot action-dot--red"></span>Overdue</span></td><td>System</td><td>An open task's due date has passed</td><td><label className="tag-check"><input type="checkbox" defaultChecked /><span>On</span></label></td></tr>
+                        <tr><td><span className="status-pill"><span className="action-dot action-dot--orange"></span>Needs Action</span></td><td>System</td><td>There is an open task due now</td><td><label className="tag-check"><input type="checkbox" defaultChecked /><span>On</span></label></td></tr>
+                        <tr><td><span className="status-pill"><span className="action-dot action-dot--green"></span>Waiting</span></td><td>Agent</td><td>Requires a Next Follow-Up date; flips to Needs Action once it passes</td><td><label className="tag-check"><input type="checkbox" defaultChecked /><span>On</span></label></td></tr>
+                        <tr><td><span className="status-pill"><span className="action-dot action-dot--none"></span>No Action</span></td><td>System</td><td>No open task</td><td><label className="tag-check"><input type="checkbox" defaultChecked /><span>On</span></label></td></tr>
+                        <tr><td><span className="status-pill"><span className="action-dot action-dot--yellow"></span>Triage</span></td><td>System</td><td>Created by a Scout and not yet qualified</td><td><label className="tag-check"><input type="checkbox" defaultChecked /><span>On</span></label></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <div>
+                      <h2 className="section-title">Transaction Types</h2>
+                      <p className="sb-hint">What kind of deal a Transaction is, and the key into its Document Package — a new deal is typed from this at acceptance.</p>
+                    </div>
+                    <button type="button" className="btn btn-ghost" data-os-add="transaction">Add</button>
+                  </div>
+                  <ul className="op-list" id="osTransactions"></ul>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Event Catalog</h2>
+                  <p className="sb-hint">Maps an event type to the label and Timeline category it renders with. An event type with no entry still renders — with its raw type as the label.</p>
+                  <div className="work-list">
+                    <table className="data-table">
+                      <thead><tr><th>Event type</th><th>Label</th><th>Timeline category</th></tr></thead>
+                      <tbody id="osEvents"></tbody>
+                    </table>
+                  </div>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Contract clauses and clause libraries</h2>
+                  <p className="sb-hint">Clause text, and the libraries that group clauses for a contract type. A library naming a clause that does not exist has that reference dropped.</p>
+                  <ul className="op-list" id="osClauses"></ul>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Saved search templates</h2>
+                  <p className="sb-hint">Named starting points for the Shortlist search. Filter values must be text or numbers.</p>
+                  <ul className="op-list" id="osTemplates"></ul>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Notification rules</h2>
+                  <p className="sb-hint">Which events notify, and on which channel — a rule naming any other channel is dropped.</p>
+                  <div className="work-list">
+                    <table className="data-table">
+                      <thead><tr><th>Event</th><th>Channel</th><th>Recipient</th><th>Enabled</th></tr></thead>
+                      <tbody id="osNotify"></tbody>
+                    </table>
+                  </div>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Workflow automation rules</h2>
+                  <p className="sb-hint">Trigger and action pairs. A rule that is not enabled sits inert rather than firing.</p>
+                  <div className="work-list">
+                    <table className="data-table">
+                      <thead><tr><th>Trigger</th><th>Action</th><th>Enabled</th></tr></thead>
+                      <tbody id="osAutomation"></tbody>
+                    </table>
+                  </div>
+                </section>
+              </section>
+
+              {/* ============ COMMUNITIES ============ */}
+              <section className="op-panel" id="osCommunities" role="tabpanel" hidden>
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <div>
+                      <h2 className="section-title">Community Registry</h2>
+                      <p className="sb-hint">Every Banyan community, and the single source the <code>/join</code> page reads. Rename, reorder, add or disable — the page and the worker API update automatically. <strong>Untick Enabled to hide a community without deleting it</strong>; it keeps its row and its history.</p>
+                    </div>
+                    <button type="button" className="btn btn-ghost" id="osAddCommunity">Add community</button>
+                  </div>
+                  <div className="work-list">
+                    <table className="data-table">
+                      <thead>
+                        <tr><th>Position</th><th>Name</th><th>Platform</th><th>Invite link</th><th>Member-count source</th><th>Enabled</th></tr>
+                      </thead>
+                      <tbody id="osCommBody"></tbody>
+                    </table>
+                  </div>
+                  <div className="rd-noterow">
+                    <button type="button" className="btn btn-primary" data-os-save>Save registry</button>
+                  </div>
+                </section>
+              </section>
+
+              {/* ============ BACKUPS ============ */}
+              <section className="op-panel" id="osBackups" role="tabpanel" hidden>
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <div>
+                      <h2 className="section-title">Backup now</h2>
+                      <p className="sb-hint">Exports every operational table to CSV and records a run below.</p>
+                    </div>
+                    <button type="button" className="btn btn-primary" id="osBackupNow">Backup now</button>
+                  </div>
+                </section>
+
+                <section className="card op-block">
+                  <h2 className="section-title">Backup runs</h2>
+                  <div className="work-list">
+                    <table className="data-table">
+                      <thead><tr><th>Started</th><th>Finished</th><th>Row counts</th><th>Size</th><th>Status</th></tr></thead>
+                      <tbody id="osBackupBody"></tbody>
+                    </table>
+                  </div>
+                </section>
+
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <div>
+                      <h2 className="section-title">Download current data <span className="page-count" id="osTableCount">14</span></h2>
+                      <p className="sb-hint">CSV of each table's live current state.</p>
+                    </div>
+                  </div>
+                  <div className="tagset" id="osTables"></div>
+                </section>
+              </section>
+
+              {/* ============ LOGS ============ */}
+              <section className="op-panel" id="osLogs" role="tabpanel" hidden>
+                <section className="card op-block">
+                  <div className="op-block__head">
+                    <div>
+                      <h2 className="section-title">Logs <span className="page-count" id="osLogCount">0</span></h2>
+                      <p className="sb-hint">Automated task streams and errors.</p>
+                    </div>
+                    <div className="op-block__actions">
+                      <div className="seg" role="group" aria-label="Log level" id="osLogLevels">
+                        <button type="button" className="seg__btn is-active" data-loglevel="all">All</button>
+                        <button type="button" className="seg__btn" data-loglevel="Info">Info</button>
+                        <button type="button" className="seg__btn" data-loglevel="Warn">Warn</button>
+                        <button type="button" className="seg__btn" data-loglevel="Error">Error</button>
+                      </div>
+                      <button type="button" className="btn btn-ghost" id="osLogCsv">Download CSV</button>
+                    </div>
+                  </div>
+                  <div className="work-list">
+                    <table className="data-table">
+                      <thead><tr><th>Time</th><th>Level</th><th>Source</th><th>Message</th></tr></thead>
+                      <tbody id="osLogBody"></tbody>
+                    </table>
+                  </div>
+                  <p className="list-empty" id="osLogEmpty" hidden>No logs.</p>
+                </section>
+              </section>
+
+              <div className="cs-toast" id="osToast" hidden></div>
+
+
+
+
+    </>
+  );
+}

@@ -202,6 +202,10 @@
             <p class="page-subtitle">Your work queue — what needs doing, who owns it and when it is due.</p>
           </div>
           <div class="page-head__actions">
+            <div class="view-toggle" role="group" aria-label="My Work view">
+              <button type="button" class="view-link is-active" data-workview="board" aria-pressed="true">Board</button>
+              <button type="button" class="view-link" data-workview="list" aria-pressed="false">List</button>
+            </div>
             <button type="button" class="btn btn-primary" id="newTaskBtn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
               New Task
@@ -237,12 +241,9 @@
           </button>
         </section>
 
-        <div class="work-bar">
-          <div class="view-toggle" role="group" aria-label="My Work view">
-            <button type="button" class="view-link is-active" data-workview="board" aria-pressed="true">Board</button>
-            <button type="button" class="view-link" data-workview="list" aria-pressed="false">List</button>
-          </div>
-
+        <!-- Board/List moved up beside New Task (client, 6 Sept) so the four
+             filters have the whole row and sit on one line. -->
+        <div class="work-bar work-bar--filters-only">
           <div class="work-filters">
             <label class="search-field">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>

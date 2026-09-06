@@ -5970,59 +5970,6 @@ button.supply-area__head:hover {
   margin-bottom: 30px;
 }
 
-.dash-cols .attention .section-title {
-  margin-bottom: 20px;
-}
-
-/* ---- Dashboard two-column: Needs attention + Recent activity ---- */
-.dash-cols {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 16px;
-  align-items: stretch;
-  margin-bottom: 30px;
-}
-
-.dash-cols .attention {
-  margin-bottom: 0;
-}
-
-.dash-cols .attention-grid {
-  grid-template-columns: repeat(2, 200px);
-}
-
-.dash-cols .attention-card {
-  padding: 16px;
-}
-
-.dash-cols .attention-card__icon {
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-.dash-cols .attention-card__icon svg {
-  width: 17px;
-  height: 17px;
-}
-
-.dash-cols .attention-card__value {
-  font-size: 1.7rem;
-}
-
-.dash-cols .attention-card__cta {
-  margin-top: 20px;
-  padding: 6px 12px;
-}
-
-.dash-cols .duo-grid {
-  margin-bottom: 0;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-  gap: 16px;
-}
-
 /* ---- Needs attention cards ---- */
 .attention-grid {
   display: grid;
@@ -6693,13 +6640,6 @@ body[data-page="overview"] .attention-card__value {
 
 /* ---- Responsive ---- */
 @media (max-width: 1280px) {
-  .dash-cols {
-    grid-template-columns: 1fr;
-  }
-
-  .dash-cols .attention-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
 }
 
 @media (max-width: 1160px) {
@@ -6710,10 +6650,6 @@ body[data-page="overview"] .attention-card__value {
 
 @media (max-width: 1024px) {
   .attention-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .dash-cols .attention-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -6753,10 +6689,6 @@ body[data-page="overview"] .attention-card__value {
 
 @media (max-width: 560px) {
   .attention-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .dash-cols .attention-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -12700,4 +12632,133 @@ body[data-page="overview"] .attention-card__value {
   font-size: 0.8rem;
   color: var(--muted);
   white-space: nowrap;
+}
+
+/* ============================================================
+   My Work — filter row
+   Client, 6 September: the four filters were wrapping onto a second
+   line and Board/List sat above them, unaligned. Board/List moved up
+   beside New Task, so this bar carries only the filters and they hold
+   one line on a desktop.
+   ============================================================ */
+
+.work-bar--filters-only {
+  justify-content: flex-start;
+}
+
+.work-bar--filters-only .work-filters {
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+/* The search takes the slack; each select shrinks to its label before
+   any of them is pushed onto a second line. */
+.work-bar--filters-only .search-field {
+  flex: 1 1 200px;
+  min-width: 140px;
+}
+
+.work-bar--filters-only .select-wrap {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.work-bar--filters-only .select-field {
+  width: 100%;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .work-bar--filters-only .work-filters {
+    flex-wrap: wrap;
+  }
+  .work-bar--filters-only .select-wrap {
+    flex: 1 1 160px;
+  }
+}
+
+/* ============================================================
+   Overview — Needs attention
+   Client, 6 September: full width, four across and two rows, because
+   eight metrics are coming. Each card now states the rule it counts,
+   so "4" is never a number nobody can check. The four Marketing-hub
+   metrics are placeholders and say so — an invented figure for an
+   unbuilt feature would be read as a measurement.
+   ============================================================ */
+
+.attention-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.attention-card__label {
+  margin-top: 10px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* The definition under the label: what the count actually counts. */
+.attention-card__rule {
+  margin-top: 4px;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+/* The action sits on the card's floor, so eight cards of different
+   label lengths still line their buttons up across the row. */
+.attention-card__cta {
+  margin-top: auto;
+  margin-block-start: auto;
+}
+
+/* Two class selectors would outrank the `margin-top: auto` above and
+   drop the buttons back out of line, so the gap is spent below the rule
+   instead of above the action. */
+.attention-card__rule {
+  margin-bottom: 14px;
+}
+
+.attention-card--pending {
+  background: #fbfaf7;
+  border-style: dashed;
+  box-shadow: none;
+}
+
+.attention-card--pending:hover {
+  transform: none;
+}
+
+.attention-card--pending .attention-card__value {
+  color: var(--muted);
+}
+
+.attention-card--pending .attention-card__icon {
+  opacity: 0.55;
+}
+
+.attention-card__soon {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: #f0efe9;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media (max-width: 1180px) {
+  .attention-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .attention-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

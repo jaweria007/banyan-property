@@ -11,8 +11,29 @@
  *
  * Exit code 0 = every check passed.
  */
-const { chromium } = require('playwright');
 const crypto = require('crypto');
+const path = require('path');
+const { createRequire } = require('module');
+
+// This project has no package.json on purpose, so Playwright is not installed
+// beside this file. Resolve it from wherever it IS — the folder the command was
+// run from, usually the dashboard checkout — and say so plainly if it is nowhere.
+function loadPlaywright() {
+  for (const from of [__filename, path.join(process.cwd(), 'x.js')]) {
+    try { return createRequire(from)('playwright'); } catch { /* try the next */ }
+  }
+  console.error([
+    '',
+    '  Playwright is not installed here.',
+    '  Run this from a folder that has it - the dashboard checkout will do:',
+    '',
+    '    cd <banyan-dashboard>',
+    '    node "' + __filename + '"',
+    '',
+  ].join(String.fromCharCode(10)));
+  process.exit(2);
+}
+const { chromium } = loadPlaywright();
 
 const BASE = (process.argv[2] || 'https://jaweria007.github.io/banyan-property/preview').replace(/\/$/, '');
 const LOGO_SOURCE = 'https://banyanproperties.co/logo.png?v=2';
